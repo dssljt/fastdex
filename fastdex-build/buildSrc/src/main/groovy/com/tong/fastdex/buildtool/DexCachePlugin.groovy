@@ -1,6 +1,5 @@
 package com.tong.fastdex.buildtool
 
-import com.android.build.gradle.api.BaseVariant
 import com.tong.fastdex.buildtool.utils.FastDexUtils
 import com.tong.fastdex.buildtool.utils.FolderComparator
 import com.tong.fastdex.buildtool.utils.FolderComparatorFactory;
@@ -10,7 +9,6 @@ import org.gradle.api.Task;
 import org.gradle.api.execution.TaskExecutionListener
 import org.gradle.api.tasks.TaskState
 import org.gradle.api.tasks.Delete
-import org.gradle.api.tasks.compile.JavaCompile
 
 /**
  * 缓存dex,hook android打包流程并应用已缓存的dex
@@ -22,15 +20,10 @@ class DexCachePlugin implements Plugin<Project>,TaskExecutionListener  {
     public static final boolean DEBUG = false;
 
     private File cacheDir;
-    private String bootTaskName;
     private Project appProject;
 
     File getCacheDir() {
         return cacheDir
-    }
-
-    File getSourceDir() {
-        return new File(cacheDir,"compile_source")
     }
 
     void dlog(String msg) {
@@ -54,20 +47,10 @@ class DexCachePlugin implements Plugin<Project>,TaskExecutionListener  {
     }
 
     Set<String> scanKeepMainDexList(Project project) {
-        Map<String,String> properties = new HashMap<>()
-        File configFile = new File(getCacheDir(),"fasetdex-config.properties")
-        configFile.eachLine {line->
-            if (line != null && !line.startsWith("#")) {
-                String[] keyValue = line.split("=")
-                properties.put(keyValue[0].trim(),keyValue[1].trim())
-            }
-        }
-
-        String packageName = properties.get("package.name")
         Set<String> keepMainDexList = new HashSet<>()
-        keepMainDexList.add("android/support/multidex/**")
-        keepMainDexList.add(packageName.replaceAll("\\.","/") + "/R.class")
-        keepMainDexList.add(packageName.replaceAll("\\.","/") + "/R\$**.class")
+        keepMainDexList.add("**/R.class")
+        keepMainDexList.add("**/R\$**.class")
+        keepMainDexList.add("**/BuildConfig.class")
 
         FolderComparator folderComparator = null
         dlog('scanKeepMainDexList incremental: ' + project.fastdex.incremental)
@@ -92,18 +75,6 @@ class DexCachePlugin implements Plugin<Project>,TaskExecutionListener  {
                 dlog('scanKeepMainDexList: use rootPackage: ' + project.fastdex.rootPackage)
                 keepMainDexList.add(project.fastdex.rootPackage.replaceAll("\\.","/") + "/**")
             }
-        }
-        //是否存在${projectdir}/keep_main_dex_list.txt
-        File rulesFile = new File(project.getProjectDir(),PROJECT_NAME + "_keep_main_dex.txt");
-        if (rulesFile.exists() && rulesFile.isFile()) {
-            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(rulesFile)));
-            String line = null;
-            while((line = br.readLine()) != null){
-                if (line != null && !line.startsWith("#")) {
-                    keepMainDexList.add(line.replaceAll("\\.","/"))
-                }
-            }
-            br.close();
         }
         return keepMainDexList;
     }
@@ -145,10 +116,6 @@ class DexCachePlugin implements Plugin<Project>,TaskExecutionListener  {
             into unzipDir
         }
 
-        project.copy {
-            from new File(getCacheDir(),"classes")
-            into unzipDir
-        }
 
         zipFile.delete()
         project.ant.zip(baseDir: unzipDir, destFile: zipFile)
@@ -169,32 +136,6 @@ class DexCachePlugin implements Plugin<Project>,TaskExecutionListener  {
         }
     }
 
-    void replaceManifestApplicationClassName(Project project) {
-        dlog("replace minifest application class name")
-        File manifestFile = FastDexUtils.getManifestFile(project)
-        String content = FastDexUtils.readUTF8Content(manifestFile)
-
-        Map<String,String> properties = new HashMap<>()
-        File configFile = new File(getCacheDir(),"fasetdex-config.properties")
-        configFile.eachLine {line->
-            if (line != null && !line.startsWith("#")) {
-                String[] keyValue = line.split("=")
-                properties.put(keyValue[0].trim(),keyValue[1].trim())
-            }
-        }
-        String originApplicationClassName = properties.get("origin.application.name")
-        String delegateApplicationClassName = properties.get("delegate.application.name")
-
-        dlog("originApplicationClassName: ${originApplicationClassName}")
-        dlog("delegateApplicationClassName: ${delegateApplicationClassName}")
-        content = content.replaceAll(originApplicationClassName,delegateApplicationClassName)
-
-        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(manifestFile)))
-        writer.write(content)
-        writer.flush()
-        writer.close()
-    }
-
     @Override
     void beforeExecute(Task task) {
 
@@ -213,14 +154,9 @@ class DexCachePlugin implements Plugin<Project>,TaskExecutionListener  {
                 hookDex(appProject)
             }
         }
-        else if ('processDebugManifest'.equals(task.name)) {
-            if (hasCachedDex()) {
-                replaceManifestApplicationClassName(appProject)
-            }
-        }
         else if ('assembleDebug'.equals(task.name)) {
             if (hasCachedDex()) {
-                log("***请使用5.0以上的设备调试，否则会报类找不到***")
+                log("***请关闭Instant Run,使用5.0以上的设备调试***")
             }
         }
     }
@@ -238,32 +174,6 @@ class DexCachePlugin implements Plugin<Project>,TaskExecutionListener  {
 
         def bootTaskName = project.gradle.startParameter.taskNames[0]
         dlog('bootTaskName: ' + bootTaskName + ' projectDir: ' + project.getProjectDir())
-
-//        project.afterEvaluate {
-//            Task processDebugManifest = project.tasks["processDebugManifest"]
-//            processDebugManifest.doLast {
-//                dlog('=processDebugManifest doLast')
-//            }
-//        }
-
-
-        def sourceCompatibility = '1.7'
-        def targetCompatibility = '1.7'
-
-        project.afterEvaluate {
-            if (!project.android.hasProperty('applicationVariants')) return
-            project.android.applicationVariants.all { BaseVariant variant ->
-                if (variant.buildType.name == 'debug') {
-                    variant.javaCompile.doFirst { JavaCompile it2 ->
-                        sourceCompatibility = it2.sourceCompatibility
-                        targetCompatibility = it2.targetCompatibility
-
-                        dlog("sourceCompatibility ${sourceCompatibility}")
-                        dlog("targetCompatibility ${targetCompatibility}")
-                    }
-                }
-            }
-        }
 
         project.task('cleanDex', group: PROJECT_NAME, description: 'Clean all dex',type: Delete,dependsOn: 'clean') {
             project.afterEvaluate {
@@ -302,103 +212,6 @@ class DexCachePlugin implements Plugin<Project>,TaskExecutionListener  {
                         into(new File(getCacheDir(), "/java"))
                     }
                 }
-
-
-                //解析数据，写入到配置文件里
-                File manifestFile = FastDexUtils.getManifestFile(project)
-                String applicationClassName = FastDexUtils.getApplicationClassName(manifestFile)
-                String packageName = FastDexUtils.getManifestPackageName(manifestFile)
-
-                File propertiesFile = new File(getCacheDir(),"fasetdex-config.properties")
-                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(propertiesFile)))
-
-                writer.writeLine("#<application android:name=\"\${value}\" >")
-                writer.writeLine("origin.application.name=${applicationClassName}")
-                writer.writeLine("package.name=${packageName}")
-                writer.writeLine("delegate.application.name=fastdex_classes.FastDexDelegateApplication")
-                writer.writeLine("delegate.application.class=fastdex_classes/FastDexDelegateApplication.class")
-                writer.close()
-
-
-                //创建source目录
-                File delegateAppDir = new File(getSourceDir(), "fastdex_classes")
-                delegateAppDir.mkdirs();
-
-                File dalegateAppFile = new File(delegateAppDir, "FastDexDelegateApplication.java")
-
-                def printWriter = dalegateAppFile.newPrintWriter()
-                printWriter.write("package fastdex_classes;\n" +
-                        "\n" +
-                        "import android.app.Application;\n" +
-                        "import android.app.Instrumentation;\n" +
-                        "import android.content.Context;\n" +
-                        "import android.util.Log;\n" +
-                        "import java.lang.reflect.Field;\n" +
-                        "import java.lang.reflect.Method;\n" +
-                        "import android.support.multidex.MultiDexApplication;\n" +
-                        "\n" +
-                        "/**\n" +
-                        " * Created by tong on 16/7/16.\n" +
-                        " */\n" +
-                        "public class FastDexDelegateApplication extends MultiDexApplication {\n" +
-                        "    private static final String TAG = \"FASTDEX\";\n" +
-                        "\n" +
-                        "    private String originApplicationClassName = \"${applicationClassName}\";\n" +
-                        "\n" +
-                        "    public void onCreate() {\n" +
-                        "        super.onCreate();\n" +
-                        "\n" +
-                        "        Log.d(TAG, \"originApplicationClassName: \" + originApplicationClassName);\n" +
-                        "        Log.d(TAG, \"currentApplicationClassName: \" + FastDexDelegateApplication.class);\n" +
-                        "\n" +
-                        "        try {\n" +
-                        "            Class e = Class.forName(originApplicationClassName);\n" +
-                        "            Application originApplication = Instrumentation.newApplication(e, (Context) this);\n" +
-                        "            Instrumentation appInstrumentation = this.getInstrumentation();\n" +
-                        "            appInstrumentation.callApplicationOnCreate(originApplication);\n" +
-                        "        } catch (Exception var5) {\n" +
-                        "            var5.printStackTrace();\n" +
-                        "        }\n" +
-                        "\n" +
-                        "    }\n" +
-                        "\n" +
-                        "    private Instrumentation getInstrumentation() {\n" +
-                        "        try {\n" +
-                        "            Class e = Class.forName(\"android.app.ActivityThread\");\n" +
-                        "            Method method = e.getMethod(\"currentActivityThread\", new Class[0]);\n" +
-                        "            Object thread = method.invoke((Object)null, (Object[])null);\n" +
-                        "            Field field = e.getDeclaredField(\"mInstrumentation\");\n" +
-                        "            field.setAccessible(true);\n" +
-                        "            return (Instrumentation)field.get(thread);\n" +
-                        "        } catch (Exception var5) {\n" +
-                        "            var5.printStackTrace();\n" +
-                        "            return null;\n" +
-                        "        }\n" +
-                        "    }\n" +
-                        "}")
-                printWriter.flush()
-                printWriter.close()
-
-
-                //编译代理类
-                dlog("compile FastDexDelegateApplication.java")
-                new File(getCacheDir(), "classes").mkdirs()
-
-                def cf = project.android.defaultConfig
-                def androidJar = new File(project.android.getSdkDirectory(), "platforms/android-${cf.targetSdkVersion.getApiLevel()}/android.jar")
-
-                File multidexJarDir = new File(project.getBuildDir(), "/intermediates/exploded-aar/com.android.support/multidex")
-                String multidexJarVersion = multidexJarDir.listFiles()[0].getName()
-                File multidexJar = new File(multidexJarDir, "${multidexJarVersion}/jars/classes.jar")
-                project.ant.javac(
-                        srcdir: getSourceDir(),
-                        source: sourceCompatibility,
-                        target: targetCompatibility,
-                        destdir: new File(getCacheDir(), "classes"),
-                        bootclasspath: androidJar.getAbsolutePath(),
-                        classpath: multidexJar.getAbsolutePath())
-
-                replaceManifestApplicationClassName(project)
             }
         }
     }

@@ -7,10 +7,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.example.fertilizercrm.R;
-
-import com.example.fertilizercrm.common.utils.Logger;
 
 /**
  * Created by tong on 14/11/8.
