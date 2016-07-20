@@ -78,6 +78,19 @@ class DexCachePlugin implements Plugin<Project>,TaskExecutionListener  {
                 keepMainDexList.add(project.fastdex.rootPackage.replaceAll("\\.","/") + "/**")
             }
         }
+
+        //是否存在${projectdir}/keep_main_dex_list.txt
+        File rulesFile = new File(project.getProjectDir(),PROJECT_NAME + "_keep_main_dex.txt");
+        if (rulesFile.exists() && rulesFile.isFile()) {
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(rulesFile)));
+            String line = null;
+            while((line = br.readLine()) != null){
+                if (line != null && !line.startsWith("#")) {
+                    keepMainDexList.add(line.replaceAll("\\.","/"))
+                }
+            }
+            br.close();
+        }
         return keepMainDexList;
     }
 
