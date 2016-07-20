@@ -22,6 +22,40 @@ import java.util.regex.Pattern
 
 public class FastDexUtils {
     /**
+     * 解析manifest中Application对应的类名(<application android:name="xxx" >)
+     * @param manifest
+     * @return
+     */
+    public static String getApplicationClassName(File manifest) {
+        StringBuilder sb = new StringBuilder();
+        if (manifest.exists() && manifest.isFile()) {
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(manifest)));
+            String line = null;
+            while((line = br.readLine()) != null){
+                sb.append(line);
+            }
+            br.close();
+        }
+
+        sb = new StringBuilder(sb.toString().replaceAll("(?s)<!--.*?-->",""));
+
+        Pattern pattern = Pattern.compile("<application[^>]{1,}>");
+        Pattern pattern2 = Pattern.compile("android:name\\s*=\\s*\\\"[^\\\"]{1,}\\\"");
+        Matcher matcher = pattern.matcher(sb.toString());
+        if (matcher.find()) {
+            String str = matcher.group(0);
+
+            Matcher matcher2 = pattern2.matcher(str);
+
+            if (matcher2.find()) {
+                String result = matcher2.group(0).replaceAll("\\s", "").trim().substring("android:name=\"".length()).replaceAll("\"","");
+                return result;
+            }
+        }
+        return "";
+    }
+
+    /**
      * 解析manifest中package节点值(<manifest package="xxx" >)
      * @param manifest
      * @return

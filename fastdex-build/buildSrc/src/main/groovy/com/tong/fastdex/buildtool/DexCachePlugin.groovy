@@ -48,6 +48,8 @@ class DexCachePlugin implements Plugin<Project>,TaskExecutionListener  {
 
     Set<String> scanKeepMainDexList(Project project) {
         Set<String> keepMainDexList = new HashSet<>()
+        String applicationClassName = FastDexUtils.getApplicationClassName(FastDexUtils.getManifestFile(project))
+        keepMainDexList.add(applicationClassName.replaceAll("\\.","/") + ".class")
         keepMainDexList.add("**/R.class")
         keepMainDexList.add("**/R\$**.class")
         keepMainDexList.add("**/BuildConfig.class")
