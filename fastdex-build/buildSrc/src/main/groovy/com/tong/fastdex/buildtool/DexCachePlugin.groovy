@@ -159,19 +159,35 @@ class DexCachePlugin implements Plugin<Project>,TaskExecutionListener  {
     @Override
     void afterExecute(Task task, TaskState state) {
         if ('transformClassesWithJarMergingForDebug'.equals(task.name)) {
-            //hook /intermediates/transforms/jarMerging/debug/jars/1/1f/combined.jar
-            if (hasCachedDex()) {
+            Properties properties = new Properties()
+            properties.load(appProject.rootProject.file('local.properties').newDataInputStream())
+            def enable = properties.getProperty('fastdex.enable',"true")
+
+            if (hasCachedDex() && !"false".equals(enable)) {
                 hookJar(appProject)
             }
         }
         else if ('transformClassesWithDexForDebug'.equals(task.name)) {
-            if (hasCachedDex()) {
+            Properties properties = new Properties()
+            properties.load(appProject.rootProject.file('local.properties').newDataInputStream())
+            def enable = properties.getProperty('fastdex.enable',"true")
+
+            if (hasCachedDex() && !"false".equals(enable)) {
                 hookDex(appProject)
             }
         }
         else if ('assembleDebug'.equals(task.name)) {
+            Properties properties = new Properties()
+            properties.load(appProject.rootProject.file('local.properties').newDataInputStream())
+            def enable = properties.getProperty('fastdex.enable',"true")
+
             if (hasCachedDex()) {
                 log("***请关闭Instant Run,使用5.0以上的设备调试***")
+            }
+            else {
+                if (!"false".equals(enable)) {
+                    log("***执行cacheDex预先缓存dex,能加速assembleDebug任务apk的生成***")
+                }
             }
         }
     }
