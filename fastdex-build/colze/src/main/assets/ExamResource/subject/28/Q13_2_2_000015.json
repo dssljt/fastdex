@@ -1,0 +1,234 @@
+﻿{
+    "T": {
+        "Head": {
+            "Part": "完型填空",
+            "Type1": "TXT",
+            "Type2": "4",
+            "Rem": "REM",
+            "AnsQues": "10",
+            "Txt": "Q13_2_2_000015.txt",
+            "Pic": "",
+            "Sound": ""
+        },
+        "Q1": {
+            "Body": {
+                "Sub": "",
+                "An1": "doctor",
+                "An2": "farmer",
+                "An3": "teacher",
+                "An4": "cleaner"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "worknn【注释】nnv. 工作，运作，经营nnn. 工作，产品，文学、音乐或艺术作品 nn【词组】nnat work(在工作)；work with(与...共事)；hard work(努力工作)；work on（影响，对...起作用）nn",
+                "Content": "【原文】Mr Black works in a hospital . As a good （doctor）, the people in the town like him.nn【翻译】Black先生在一家医院工作。身为医生，小镇里的人名都很喜欢他nn【解析】doctor(医生)；farmer(农民)；teacher(老师)；cleaner(清洁工)；前文提到“hospital”,因此与之对应的职业是医生",
+                "Skill": "",
+                "Point": "本题考查上下文的理解",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q2": {
+            "Body": {
+                "Sub": "",
+                "An1": "bad",
+                "An2": "fine",
+                "An3": "cold",
+                "An4": "kind"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "kindnn【注释】nnadj. 亲切的，诚挚的nnn. 种类，本质 nn【词组】nna kind of(一种，一类)nn",
+                "Content": "【原文】He’s often （kind） to the patients and looks them over carefully.nn【翻译】他经常对病人很亲切且检查的很仔细nn【解析】从前文“the people in the town like him. ”故可先排除A和C；“be kind to”固定搭配，对....很好，所以选D",
+                "Skill": "",
+                "Point": "本题考查上下文的理解及固定搭配",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q3": {
+            "Body": {
+                "Sub": "",
+                "An1": "Or",
+                "An2": "But",
+                "An3": "So",
+                "An4": "Then"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "restnn【注释】nnn. 休息，剩余部分nnv. 休息，躺nn【词组】nnat rest (静止，休息)；the rest of(其余的，剩下的)；rest in(在于，依赖于)nn",
+                "Content": "【原文】（So） he’s always busy and has little time to rest.nn【翻译】所以他经常很忙没有时间休息nn【解析】从前文“He’s often kind to the patients and looks them over carefully.”及下文“always busy and has little time to rest.”是因果关系，所以选so",
+                "Skill": "",
+                "Point": "本题考查上下文的理解",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q4": {
+            "Body": {
+                "Sub": "",
+                "An1": "classroom",
+                "An2": "waiting room",
+                "An3": "park",
+                "An4": "zoo"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "waitnn【注释】nnv. 等待，延缓nnn. 等待 nn【词组】nnwait for(等待）nn",
+                "Content": "【原文】One morning Mr Black got to the hospital and saw there was a fat woman in the （waiting room）.nn【翻译】一天早上Black先生去医院，看见一位胖的女士在候诊室nn【解析】 classroom(教室)；waiting room (候诊室)；park(公园)；zoo(动物园)；纵观上下文，只有B符合题意",
+                "Skill": "",
+                "Point": "本题考查上下文的理解",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q5": {
+            "Body": {
+                "Sub": "",
+                "An1": "How do you do",
+                "An2": "How are you",
+                "An3": "What’s the matter",
+                "An4": "How old are you"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "matternn【注释】nnv. 有重要性，有重大关系nnn. 材料，物品，事情 nn【词组】nnno matter how(不管怎样）It doesn’t matter(没关系)",
+                "Content": "【原文】He called her into his office and asked, “（What’s the matter）, madam?”nn【翻译】他请那位女士去了办公室并问“太太，有哪里不舒服吗”nn【解析】“How do you do”“How are you ”表示“你好吗”“How old are you”表示“你几岁了”而看病时医生问病人哪里不舒服，“What’s the matter”或“What’s wrong”",
+                "Skill": "",
+                "Point": "本题考查上下文的理解",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "1",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q6": {
+            "Body": {
+                "Sub": "",
+                "An1": "flower",
+                "An2": "birthday cake",
+                "An3": "gift",
+                "An4": "kiss"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "",
+                "Content": "【原文】My husband gave me a（gift）. But I couldn’t push my way in it.nn【翻译】我的丈夫给我买了一个礼物，但是我挤不进去。nn【解析】flower花，birthday cake生日蛋糕，gift礼物，kiss吻，根据后半句话“But I couldn’t push my way in it.（但是我挤不进去）”，可知只有比较笼统意义上的gift最合理。",
+                "Skill": "",
+                "Point": "本题考查上下文的理解",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q7": {
+            "Body": {
+                "Sub": "",
+                "An1": "It doesn’t matter",
+                "An2": "It’s a pleasure",
+                "An3": "I have no idea",
+                "An4": "It’s my favourite"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "pushnn【注释】nnv. 推，促进 nnn. 推动，攻势 nn【词组】nnpush forward(推进，抓紧进行）；push on(推动)",
+                "Content": "【原文】 “But I couldn’t push my way in it.”“ （It doesn’t matter）, madam,” said Mr Black, nn【翻译】“但是我挤不进去”“没有关系，太太”nn【解析】根据上下文，故可先排除B和D，而后文提到“you must lose some weight.”也可排除C,选A",
+                "Skill": "",
+                "Point": "本题考查上下文的理解",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q8": {
+            "Body": {
+                "Sub": "",
+                "An1": "put",
+                "An2": "wear",
+                "An3": "buy",
+                "An4": "wash"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "wearnn【注释】nnv. 穿，装着，耐磨nnn. 穿，佩戴，磨损nn过去式/过去分词 wore/worn",
+                "Content": "【原文】 You’ll be able to （wear） your coat, if you do all that I say. nn【翻译】如果你全按照我说的做，那你就能穿上你那件外套了nn【解析】固定搭配，穿衣服用“wear”，其余三个选项都不合适",
+                "Skill": "",
+                "Point": "本题考查上下文的理解及易混淆动词的词义辨析",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q9": {
+            "Body": {
+                "Sub": "",
+                "An1": "right",
+                "An2": "wrong",
+                "An3": "easy",
+                "An4": "safe"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "wrongnn【注释】nnadj.错误的，不适当的nnn. 坏事，不公正nnadv. 错误地，邪恶地nn反义词:rightnn【词组】nngo wrong(出毛病，弄错）；what’s wrong(怎么了)",
+                "Content": "【原文】 You’re （wrong）, sir,” said the rich woman.  nn【翻译】有钱的女士说道“你说错了，先生”nn【解析】根据前文医生以为这女人的生日礼物是件大衣及后文“He bought me not a coat,”得知，此处选择wrong",
+                "Skill": "",
+                "Point": "本题考查上下文的理解",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q10": {
+            "Body": {
+                "Sub": "",
+                "An1": "bike",
+                "An2": "bus",
+                "An3": "car",
+                "An4": "truck"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "expensivenn【注释】nnAdj.昂贵的，奢华的nn近义词:dearnn反义词:inexpensive,cheap",
+                "Content": "【原文】He bought me not a coat, but an expensive （car）.  nn【翻译】他买给我的不是一件外套，而是一辆昂贵的车nn【解析】bike （自行车）；bus （公交车）；car （汽车）D. truck（卡车）根据上下文，可先排除B和D,自行车不用挤进去，也可排除。故此处Car最符合文意",
+                "Skill": "",
+                "Point": "本题考查上下文的理解及相近意思词的区别",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        }
+    }
+}

@@ -1,0 +1,234 @@
+﻿{
+    "T": {
+        "Head": {
+            "Part": "完型填空",
+            "Type1": "TXT",
+            "Type2": "1",
+            "Rem": "REM",
+            "AnsQues": "10",
+            "Txt": "Q13_1_1_000030.txt",
+            "Pic": "",
+            "Sound": ""
+        },
+        "Q1": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "looking",
+                "Word": "looknn【注释】nnv. 看；看上去像nnn. 看；样子；面容nn【辨析】nn同义词:watch；seenn扩展:look、see、watch的比较:look强调看的动作，如:“look at the blackboard”；see强调看的结果，如“see a film”；watch强调观看，如“watch TV”。nn【词形变化】nn名词形式:lookernn过去式/过去分词:lookednn现在分词:looking（名词时表示有…的样子）nn【词组】nnlook for（寻找）；look about（环顾）；look after（照料）；look at（看、着眼于）；look back on（回顾）；look forward to（期待）；look like（看上去像）；take /have a look（看一下）；look on（旁观）",
+                "Content": "【原文】A fox is (looking) for food.nn【翻译】一只狐狸正在找食物nn【解析】下文“He is very hungry”(他非常饿）可推断出，本句的中文意思应该是“狐狸在找食物”。look for意为“寻找，搜寻”的意思。故本空格填look较合适。此题还需注意时态，be动词后加现在分词表现在进行时，故应填写“looking。",
+                "Skill": "",
+                "Point": "本题考查上下文语境、固定搭配及时态的掌握。nn现在进行时的用法nn表示此时此刻或现阶段正在进行的动作。如:nn例: They are having a meeting.（他们在开会）。nn表示计划或安排好了的将来动作，常与一个表示将来的时间状语连用。nn例:Mike is coming home on Thursday.（迈克星期四回来）。nnlook的习惯短语:nn① look at （看；着眼于）nn例:The children looked at their new teacher in curiosity.（孩子们好奇地望着新老师。）nn② look for（寻找）nn例:What should I look for?（是要我寻找什么吗？）nn③ take a look（看一下）例:Take a look at the picture。（看看下面这张照片）",
+                "S1": "0",
+                "S2": "1",
+                "S3": "1",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q2": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "comes",
+                "Word": "comenn【注释】nnv. 来；开始；出现；发生；变成；到达 nn【词形变化】nn复数/第三人称单数:comesnn过去式/过去分词:came/comenn现在分词:comingnn【词组】nncome near（走进，靠近）；come on（祈使句，用于鼓励某人做某事）；come true ( 实现，成真)；come from (来自；出生于)",
+                "Content": "【原文】 Now he (comes) near a wall.nn【翻译】他走到了墙边。nn【解析】狐狸太饿了，因此来到墙边。come表示走过来的动作。同时本题需注意时态，主语he为第三人称单数，故应填写“comes”",
+                "Skill": "",
+                "Point": "本题考查一般现在时。nn一般现在时的构成及用法:时间状语通常是every day ,sometimes, often, usually...nnbe动词要随着主语人称和数的变化而变化。nn例:I am, You are, He/She/It is等等。nn若主语是第三人称单数，则要在动词原形后面加s, es 或将词尾的 y 变为 i 再加 es例:She works/The earth goes around the sun/He studies（原形study）",
+                "S1": "0",
+                "S2": "0",
+                "S3": "1",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q3": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "high",
+                "Word": "highnn【注释】nnadj.高的，崇高的nn【辨析】nn同义词:tall, seniornn反义词:low，shortnn【词形变化】nn副词形式:highlynn名词形式:heightnn比较级和最高级:higher，highestnn【词组】nnhigh quality（高品质）；high speed （高速全速）；high temperature （高温）；high school（中学）",
+                "Content": "【原文】The wall is very (high).nn【翻译】墙很高。nn【解析】下文:“狐狸抬头向上看去。”由此可以知道墙是很高的。因此这里的形容词high最为合适。",
+                "Skill": "",
+                "Point": "本题考查上下文语境及形容词的辨析。nntall和high的用法区别:nn① tall用于说人，动物，树木等有生命的东西，如:a tall woman (一个高个子妇女)；a tall horse （一匹高大的马）；其反义词:short。nn② high用于指一个不与地面接触的人和物的高时，如:He is high up in the tree.（他高高地爬在树上）；The plane is so high in the sky.（飞机在空中这么高）。其反义词:low.nn③ high与low都可形容建筑物、山。high的程度比tall高。nn④ high可作副词，tall不能",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q4": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "lot",
+                "Word": "seenn【注释】nnv看见，看到，观察nn【辨析】nn同义词:watch，looknnlook、see、watch的比较:look强调看的动作，如:look at the blackboard；see强调看的结果，如see a film；watch强调观看，如watch TV。nn【词组】nnsee about（查看、考虑）；see off（送行）；see through（看穿）；see you again（再见）；let me see（让我想想）；seeing is believing（眼见为实）；see sb doing sth（看见某人正在做某事）；see sb do sth 看见某做某事（表示结果）",
+                "Content": "【原文】He sees a (lot) of fine grapes on the wall.nn【翻译】它在墙沿看到了很可口的葡萄。nn【解析】本句中grapes表示葡萄有很多串。a lot of+可数或不可数名词，表示许多大量，用来形容墙上的葡萄很多。",
+                "Skill": "",
+                "Point": "本题考查固定短语搭配。nna lot of，much，many的用法:nn①a lot of＝lots of后面接可数名词和不可数名词均可，接可数名词时谓语用复数，接不可数名词时，谓语用单数。lots不单独用；nn②much修饰不可数名词；nn③many修饰可数名词复数",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q5": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "on",
+                "Word": "finenn【注释】nnadj. 好的；优良的；精美的；健康的；晴朗的nnn. 罚款nn【辨析】nn同义词:good、well、nicenn反义词:bad  terriblennfine、good、nice、well的比较:都有“好”的意思。good一般用于状况好；well指人的健康状况好，有时也指情况正确、良好；fine指质量、特点、能力方面的好，语气比good强；nice指某人或某物能取悦他人的感官，使人感到喜悦和舒服。",
+                "Content": "【原文】He sees a lot of fine grapes (on) the wall.nn【翻译】它在墙沿看到了很可口的葡萄。nn【解析】on表示在物品的上面，与物品有接触；over表示在物品上方，与物品没有接触。葡萄是在墙的表面上生长，故填on。",
+                "Skill": "",
+                "Point": "本题考查介词的用法。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q6": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "How",
+                "Word": "① smilenn【注释】nnv.微笑nnn.笑容nn【辨析】nnsmile、beam、laugh的比较:smile指不出声地微笑；beam指面带笑容；laugh指出声大笑。smile at（朝…微笑）；laugh at（嘲笑）nn【词形变化】nna)复数/第三人称单数:smilesnn过去式/过去分词:smilednn现在分词:smilingnn【词组】nnsmile to oneself（暗笑）；smile on（向…微笑、对…加以赞许）；all smiles（满面笑容）nnnn② wantnn【注释】nnv.想要，想nn【辨析】nn同义词:neednn反义词:dislikenn【词形变化】nn复数/第三人称单数:wantsnn过去式/过去分词:wanted，wantednn现在分词:wantingnn【扩展】nnfeel like:想要，feel like doing sth.(想要做某事)；want to do sth(想要做某事) want sb to do sth (想要某人做某事)",
+                "Content": "【原文】(How) nice they are!nn【翻译】这些葡萄看起来好诱人啊。nn【解析】How引导的感叹句，修饰其后形容词nice，故填How，注意首字母大写。",
+                "Skill": "",
+                "Point": "本题考查感叹句的运用nn① How+ adj./adv.+主语+谓语例:How hard the worker are working!nn② What+ a(an)+adj.+单数可数名词+主语+谓语！nn例:What an apple this is!nn③ What+ adj.+可数名词复数或不可数名词+主语+谓语！nn例:What kind women they are!",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q7": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "but",
+                "Word": "againnn【注释】再一次，又一次nn【词组】nnagain and again（反复地）；try again（再来一次）；over again（再一次）；come again（回来）",
+                "Content": "【原文】He jumps and jumps, (but) the wall is too high. nn【翻译】他跳啊跳的，但是墙太高了。nn【解析】上句与狐狸跳跃下句墙太高有转折的意味。因此，答案只有but表示转折。",
+                "Skill": "",
+                "Point": "本题考查上下文语境及并列连词的掌握。nn①并列连词but:可以连接两个并列成分或两个并列分句，意为“但是，然而”。nn例:He is young but very experienced. （他虽然年轻，但很有经验）。nn②并列连词and:可以连接两个词或句子，表示因果、对比、条件、假设、目的等。nn例:They didn't catch the bus, and had to stay in a hotel for the night.（他们没赶上汽车，只好在旅馆过夜）。（表因果）nn③并列连词both…and, not only…but also:可以并列主语、宾语、表语、状语、谓语等成分。nn例:Both New York and London have traffic problems. （纽约和伦敦都存在交通问题）。nn④并列连词or:表示选择关系，多用于否定或者疑问句中。主语的人称、数不一致时, 动词随着接近的主语而变化。nn例:John or you are in Class Two.（约翰或者你在二班）。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q8": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "can",
+                "Word": "getnn【注释】nnv.得到；获得；产生nn【词形变化】nn过去式:got，nn 过去分词:gottennn现在分词:gettingnn【词组】nnget there（到达那里）；get used to（习惯于…）；get along（进展）；get on/off（上/下车）；get ready for（为…准备）get to（抵达）get up（起床）；get on well with（与某人相处得好）",
+                "Content": "【原文】 He (can) not get the grapes.nn【翻译】他拿不到葡萄。nn【解析】can在这里表示能会的意思，从上文可以知道，葡萄太高了，因此小狐狸是够不到的，can表示一种能力",
+                "Skill": "",
+                "Point": "本题考查上下文语境理解及情态动词的掌握。nncan的用法，主要包括:nn① 表示能、会指脑力或体力方面的能力nn例:I can speak English.（我会讲英语）。nn② 表示可能，常用于否定句或疑问句中指某种能性。nn例:Han Mei can't be in the classroom.（韩梅不可能在教室里）。nn③ 表示可以，常用于口语中。指许可或请求做某事。nn例:Can I have a cup of tea, please?（请问我可以喝一杯茶吗？）",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q9": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "They",
+                "Word": "",
+                "Content": "【原文】(They) are green. nn【翻译】葡萄很青涩。nn【解析】这里指代的是葡萄，因此选择代词They，注意首字母大写。",
+                "Skill": "",
+                "Point": "本题考查上下文语境理解及人称代词的掌握。nn① 一般情况下，人称代词的主格作主语，放在句子的开头。nn例1:I am a teacher. 我是一名教师。（I是主语）nn例2:You are 11 years old. 你11岁了。（You 是主语）nn例2::He is my friend. 他是我的朋友。（He是主语）nn例3:It is hot today. 今天天气热。（It是主语）nn② 宾格作宾语，通常放在动词，let, like, help, give, ask或介词for, to, of, at的后面。nn例1:Can you help me？你能帮我吗？（me是宾语）nn例2:The ake is for you. 这个蛋糕是给你的。（you是宾语）nn③ 作表语（用主格，口语中常用宾格）nnWho is that？It's me（I）. 是谁啊？是我",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q10": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "good",
+                "Word": "eatnn【注释】nnv. 吃、食nn【辨析】nn同义词:havenneat和have的比较:eat一般指吃什么比较具体的东西,如eat an apple；have的是固定搭配只用于三餐nn【词形变化】nn复数/第三人称单数:eatsnn过去式/过去分词:ate，eatennn现在分词:eatingnn【词组】nneat well （吃的好、胃口好）；eat at 困扰；eat meat（吃肉）；eat up （吃光；耗尽；击垮）",
+                "Content": "【原文】They are not (good) to eat.nn【翻译】他们不好吃。nn【解析】上文狐狸够不到葡萄，因此狐狸就抱怨说他们不好吃。固定表达:be good to do sth。做某事很好，很容易。",
+                "Skill": "对固定词组的灵活使用，总结整理常用的词组短语很重要。",
+                "Point": "本题考查上下文语境理解以及固定短语搭配。nngood相关的词组用法:nn①be good for sth:对某事有好处nn例:Running is good for your health. 跑步对你身体有好处。nn②be good at:“擅长……”，后接名词、代词或ving形式。nn例:I’m good at playing chess.（我擅长下象棋。）nn③be good with:“灵巧的；与……相处得好”。nnHe is very good with the children.（他与这些孩子处得很好。）nn④be good to:“对……友好”。nn例:My friend was good to me when I was ill. （我生病时我的朋友对我关怀备至。）nn⑤be good for:“对……有好处”。nn例:Eating more vegetables is good for your health. nn（多吃蔬菜对你的健康有好处。）,",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        }
+    }
+}

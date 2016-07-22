@@ -20,7 +20,7 @@ import com.example.fertilizercrm.basic.BaseActivity;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.example.fertilizercrm.common.utils.Logger;
@@ -32,10 +32,10 @@ import com.example.fertilizercrm.common.utils.Logger;
 public class WorkDailyReportHeadView extends LinearLayout {
     private static final int REQUESTCODE_SALESMAN = 100;
 
-    @Bind(R.id.btn)       Button btn;
-    @Bind(R.id.et)        EditText et;
-    @Bind(R.id.ib_search) ImageButton ib_search;
-    @Bind(R.id.tv_salesman) TextView tv_salesman;
+    @BindView(R.id.btn)       Button btn;
+    @BindView(R.id.et)        EditText et;
+    @BindView(R.id.ib_search) ImageButton ib_search;
+    @BindView(R.id.tv_salesman) TextView tv_salesman;
     private OnSearchListener mOnSearchListener;
     private AlertView alertView;
 

@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.example.fertilizercrm.R;
 import com.example.fertilizercrm.basic.JSONArrayListActivity;
@@ -96,7 +96,7 @@ public class OutsideSystemChannelActivity extends JSONArrayListActivity<OutsideS
     }
 
     public static final class ViewHolder {
-        @Bind(R.id.tv_name)     TextView tv_name;
-        @Bind(R.id.tv_mobile)   TextView tv_mobile;
+        @BindView(R.id.tv_name)     TextView tv_name;
+        @BindView(R.id.tv_mobile)   TextView tv_mobile;
     }
 }

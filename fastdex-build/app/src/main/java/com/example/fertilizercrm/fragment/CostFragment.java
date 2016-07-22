@@ -20,7 +20,7 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.example.fertilizercrm.common.utils.Logger;
@@ -30,10 +30,10 @@ import com.example.fertilizercrm.common.utils.Logger;
  * 业务申请-费用
  */
 public class CostFragment extends BaseFragment {
-    @Bind(R.id.et_subject)    EditText et_subject;
-    @Bind(R.id.tv_type)       TextView tv_type;
-    @Bind(R.id.et_amount)     EditText et_amount;
-    @Bind(R.id.et_content)    TextView et_content;
+    @BindView(R.id.et_subject)    EditText et_subject;
+    @BindView(R.id.tv_type)       TextView tv_type;
+    @BindView(R.id.et_amount)     EditText et_amount;
+    @BindView(R.id.et_content)    TextView et_content;
 
     private String content;
 

@@ -9,7 +9,7 @@ import com.example.fertilizercrm.bean.SendOutOrder;
 import com.example.fertilizercrm.http.Req;
 import com.example.fertilizercrm.view.SendOutOrInHeadView;
 import org.apache.http.Header;
-import butterknife.Bind;
+import butterknife.BindView;
 
 /**
  * 进货单
@@ -17,11 +17,11 @@ import butterknife.Bind;
 public class SendInDetailActivity extends ListViewActivity<SendOutDetailAdapter> {
     public static final String KEY_INNUMBERS = "innumbers";
 
-    @Bind(R.id.tv_customer)    TextView tv_customer;//客户名称
-    @Bind(R.id.tv_quantity)    TextView tv_quantity;//数量
-    @Bind(R.id.tv_total_sales) TextView tv_total_sales;//销售总金额
-    @Bind(R.id.tv_total_should)TextView tv_total_should;//应收总计
-    @Bind(R.id.head_view)      SendOutOrInHeadView head_view;
+    @BindView(R.id.tv_customer)    TextView tv_customer;//客户名称
+    @BindView(R.id.tv_quantity)    TextView tv_quantity;//数量
+    @BindView(R.id.tv_total_sales) TextView tv_total_sales;//销售总金额
+    @BindView(R.id.tv_total_should)TextView tv_total_should;//应收总计
+    @BindView(R.id.head_view)      SendOutOrInHeadView head_view;
     private String innumbers;
 
     @Override

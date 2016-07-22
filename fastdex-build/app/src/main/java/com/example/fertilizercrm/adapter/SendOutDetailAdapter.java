@@ -12,7 +12,7 @@ import com.example.fertilizercrm.bean.SendOutOrder;
 import com.example.fertilizercrm.utils.FerUtil;
 import com.squareup.picasso.Picasso;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.example.fertilizercrm.common.view.BeanArrayAdapter;
 
@@ -56,27 +56,27 @@ public class SendOutDetailAdapter extends BeanArrayAdapter<SendOutOrder.Productd
     }
 
     static final class ViewHolder {
-        @Bind(R.id.iv)
+        @BindView(R.id.iv)
         ImageView iv;
-        @Bind(R.id.tv_shipping_address)
+        @BindView(R.id.tv_shipping_address)
         TextView tv_shipping_address;//出货地址
-        @Bind(R.id.tv_receiving_address)
+        @BindView(R.id.tv_receiving_address)
         TextView tv_receiving_address;//收货地址
-        @Bind(R.id.tv_sub_label)
+        @BindView(R.id.tv_sub_label)
         TextView tv_sub_label;//化肥名称
-        @Bind(R.id.tv_inprice)
+        @BindView(R.id.tv_inprice)
         TextView tv_inprice;//定价
-        @Bind(R.id.tv_selling_price)
+        @BindView(R.id.tv_selling_price)
         TextView tv_selling_price;//售价
-        @Bind(R.id.tv_origin_price)
+        @BindView(R.id.tv_origin_price)
         TextView tv_origin_price;//应收定价
-        @Bind(R.id.tv_selling_amount)
+        @BindView(R.id.tv_selling_amount)
         TextView tv_selling_amount;//销售金额
-        @Bind(R.id.tv_quantity)
+        @BindView(R.id.tv_quantity)
         TextView tv_quantity;//总吨数
-        @Bind(R.id.ll_shipping_address)
+        @BindView(R.id.ll_shipping_address)
         View ll_shipping_address;//发货地址
-        @Bind(R.id.ll_receive_address)
+        @BindView(R.id.ll_receive_address)
         View ll_receive_address;//收货地址
     }
 }

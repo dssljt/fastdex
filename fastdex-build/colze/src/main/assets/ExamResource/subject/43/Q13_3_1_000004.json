@@ -1,0 +1,234 @@
+﻿{
+    "T": {
+        "Head": {
+            "Part": "完型填空",
+            "Type1": "TXT",
+            "Type2": "1",
+            "Rem": "REM",
+            "AnsQues": "10",
+            "Txt": "Q13_3_1_000004.txt",
+            "Pic": "",
+            "Sound": ""
+        },
+        "Q1": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "visited",
+                "Word": "restaurantnn【注释】nnn. 餐厅，饭馆，饭店nn【扩展】nn小升初有关“场所”类的单词:nnsquare（广场）；cinema（电影院）；park（公园）；hospital（医院）；school（学校）；factory（工厂）；house（房子）；shop（商店）；zoo（动物园）；company（公司）；garden（花园）；toilet（厕所）；home（家）；street（街道）；airport（飞机场）；bus stop（公共汽车站）；railway station（火车站）；office（办公室）；apartment（公寓）；theatre（戏院）；hotel（旅馆）；classroom（教室）nn",
+                "Content": "【原文】In 1995, Ray Kroc (visited) a small restaurant in California.nn【翻译】1995年，Ray Kroc走访了加州的一家小餐馆.nn【解析】根据后面的a small restaurant in California可推断此空格的词性为动词，意为“走访”题目已给出首字母v，所以visit最合适。但此处另需注意时态，全文用的是过去式，故正确应填visited。",
+                "Skill": "有的学生经过思考确定了一个意思正确的词作为答案，但忽略了从语法角度再进行验证，因而出现了一些与时态、人称等有关的词形变化的错误。如果是动词，要考虑应使用什么时态和语态",
+                "Point": "本题考查上下文理解及动词的辨析",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q2": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "owner",
+                "Word": "ownernn【注释】nnn. 物主；主人nn【词组】nnhouse owner  （房东,房主）；shop owner  （商店老板）nn",
+                "Content": "【原文】The (owner) of it was the McDonald brothers.nn【翻译】这家餐馆的主人就是麦当劳兄弟.nn【解析】句中的it指代“restaurant”，表语是“McDonald brothers”。故可推断出本句想表达的意思是拥有这个餐厅的人是McDonald brothers。题目已给出首字母o，考生容易错填成own，由于本空前有定冠词the，可知个名词词性，故填写owner最符合语境。",
+                "Skill": "词义判断正确了不等于答题正确，同学们还应从词法、句法、惯用法等方面考虑答案的准确性。",
+                "Point": "本题考查句意理解及词义辨析",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q3": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "road",
+                "Word": "",
+                "Content": "【原文】They built it by the (road), so people could drive up to the restaurant....nn【翻译】他们选择在公路旁开店,这样人们可以在开车经过餐馆时不用下车…nn【解析】根据句意可知这里填的是一个地点，而下文提到这是家“drive-in” restaurant (汽车餐厅)，因此可推断是建造在路边，人们可以不用下车就能买到食物，by the road，在路边的意思。",
+                "Skill": "解决这类题目要求考生多读、多记，对所学词语或固定搭配牢固掌握，并能灵活运用。",
+                "Point": "本题考查上下文理解及常见的英语固定短语和习惯用法的掌握情况。如动词与名词的搭配；介词与名词的搭配等。",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q4": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "getting",
+                "Word": "",
+                "Content": "【原文】…buy food without（getting）out of their cars and drive away easily.nn【翻译】这样人们可以在开车经过餐馆时不用下车就买到了食物, 买完后轻松地开车离去.nn【解析】下文提到这是家“drive-in” restaurant (汽车餐厅)，汽车餐厅在美国比较普遍，人们可以不用下车就能买到食物，“下车”固定搭配“get out of the car”，由于前面是介词“without”，所以这里用动名词getting,此处还需注意，get是重读闭音节，末尾需双写t再+ing",
+                "Skill": "动词的搭配在完形填空题中出现的比例也是比较大的，多数题目涉及到动词的用法和各种搭配关系。解决这类题目要求考生多读、多记，对所学词语或固定搭配牢固掌握，并能灵活运用。",
+                "Point": "本题考查词组固定搭配及介词后加动名词",
+                "S1": "0",
+                "S2": "1",
+                "S3": "1",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q5": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "future",
+                "Word": "",
+                "Content": "【原文】Ray Kroc saw the bright (future) of the restaurant of this kind.nn【翻译】Ray Kroc 意识到了这种模式的餐馆将有光明的前景.nn【解析】后文他为自己的这个看法而付出了实际行动就是买下了那家餐馆，可见他非常看好这种运作模式的前景。bright future常用来表示美好的未来。",
+                "Skill": "解决这类题目要求考生多读、多记，对所学词语或固定搭配牢固掌握，并能灵活运用。",
+                "Point": "本题考查上下文理解及词的习惯用法和固定搭配",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q6": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "restaurant",
+                "Word": "chainnn【注释】nna）n. 链，束缚，连锁nnb）v. 用锁链拴住，束缚，囚禁nn【词组】nnchain store（连锁商店,联号）；chain down（拴住,束缚）；chain one's attention to sb（全神贯注于某人）；chain reaction（连锁反应）",
+                "Content": "【原文】He bought the restaurant and used the brother’s family name for his new (restaurant)nn【翻译】他买下了那家餐馆并且用兄弟俩的姓为他的新餐馆起了名。nn【解析】根据推理，Ray Kroc买下这家餐厅后这家店便是他的了，于是他需要给自己的餐厅重新命名，restaurant是文中反复出现的词",
+                "Skill": "在填首字母的完形填空中，考生可以多注意上下文，有时填的词可能会多次出现",
+                "Point": "本题考查上下文理解",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q7": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "more",
+                "Word": "",
+                "Content": "【原文】Now in the United States, there are (more) than 5,000 restaurants....nn【翻译】如今在美国，麦当劳已经超过了5000家....nn【解析】more than后跟数词相当于over，意为“超过...”若不熟悉本短语，我们还可根据than，推断出此空填的是比较级，而这段文字主要讲述的是麦当劳发展的的很快，已经超过了5000家，所以填more",
+                "Skill": "解决这类题目要求考生多读、多记，对所学词语或固定搭配牢固掌握，并能灵活运用。",
+                "Point": "本题考查形容词的比较级",
+                "S1": "0",
+                "S2": "1",
+                "S3": "1",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q8": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "chain",
+                "Word": "chainnn【注释】nna）n. 链，束缚，连锁nnb）v. 用锁链拴住，束缚，囚禁nn【词组】nnchain store（连锁商店,联号）；chain down（拴住,束缚）；chain one's attention to sb（全神贯注于某人）；chain reaction（连锁反应）",
+                "Content": "【原文】Now in the United States, there are more than 5,000 restaurants and it has its (chain) restaurants in 60 other countries.nn【翻译】如今的美国, 麦当劳拥有5000多个店面, 此外它在其他60个国家都开设了连锁店.nn【解析】上文提到“The first McDonald’s restaurant chain was born.(第一家麦当劳连锁店诞生了”，本段讲述麦当劳发展的很快，在其他国家也有了连锁店，因此填chain。",
+                "Skill": "前面某词是对后面某空的暗示，后面某词是对前面某空的回应，在观察上下文的过程中，要善于捕捉这类信息，找到问题的答案",
+                "Point": "本题考查上下文理解及词义的辨析能力",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q9": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "largest",
+                "Word": "",
+                "Content": "【原文】The (largest) McDonald’s restaurant is in Beijing, China. nn【翻译】最大的麦当劳开在中国北京。nn【解析】下文提到这家店有1000多名员工，并能同时容纳700多人在里面，是突显这家麦当劳的“大”。题目已给出首字母l，故可推断出单词为large。再结合句子结构，形容词前的最高级前要加the，所以正确答案为large的最高级形式largest",
+                "Skill": "词义判断正确了不等于答题正确，考生应从词法、句法等方面考虑答案的准确性。",
+                "Point": "本题考查上下文理解及形容词的最高级",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q10": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "eat",
+                "Word": "",
+                "Content": "【原文】About 700 people can sit and (eat) there at one timenn【翻译】它能同时容纳约有700人在内坐着吃东西nn【解析】通常and用来连接前后两个同等成分的词或短语或句子。由句中的sit可推断出本空格的单词词性为动词且是动词原形。根据常识，人们除了坐在麦当劳，另一个最普遍的行为就是去吃饭，而e开头的词只有eat符合句意。",
+                "Skill": "",
+                "Point": "本题考查上下文理解",
+                "S1": "0",
+                "S2": "0",
+                "S3": "1",
+                "S4": "1",
+                "S5": "0",
+                "Frequency": ""
+            }
+        }
+    }
+}

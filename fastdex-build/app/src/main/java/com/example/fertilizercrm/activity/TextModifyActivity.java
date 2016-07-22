@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.example.fertilizercrm.R;
 import com.example.fertilizercrm.basic.BaseActivity;
@@ -23,8 +23,8 @@ public class TextModifyActivity extends BaseActivity {
     public static final String EXTRA_KEY_INPUTTYPE = "input_type";
     public static TextView target;
 
-    @Bind(R.id.et)     EditText et;
-    @Bind(R.id.ib_del) ImageButton ib_del;
+    @BindView(R.id.et)     EditText et;
+    @BindView(R.id.ib_del) ImageButton ib_del;
     private String originText;
     private int inputType;
 

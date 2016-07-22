@@ -13,13 +13,13 @@ import com.example.fertilizercrm.view.SalesmanSearchHeadView;
 import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import butterknife.Bind;
+import butterknife.BindView;
 
 /**
  * 业务申请查询列表
  */
 public class BusinessApplyListActivity extends JSONArrayListActivity<BusinessApplyListActivity.ViewHolder> {
-    @Bind(R.id.head_view) SalesmanSearchHeadView head_view;
+    @BindView(R.id.head_view) SalesmanSearchHeadView head_view;
 
     @Override
     protected int getCellLayoutResId() {
@@ -95,9 +95,9 @@ public class BusinessApplyListActivity extends JSONArrayListActivity<BusinessApp
     }
 
     public static final class ViewHolder {
-        @Bind(R.id.tv_content)        TextView tv_content;//业务申请类型
-        @Bind(R.id.tv_apply_name)     TextView tv_apply_name;//申请人label
-        @Bind(R.id.tv_name)           TextView tv_name;//申请人名字
-        @Bind(R.id.tv_time)           TextView tv_time;//时间
+        @BindView(R.id.tv_content)        TextView tv_content;//业务申请类型
+        @BindView(R.id.tv_apply_name)     TextView tv_apply_name;//申请人label
+        @BindView(R.id.tv_name)           TextView tv_name;//申请人名字
+        @BindView(R.id.tv_time)           TextView tv_time;//时间
     }
 }

@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.example.fertilizercrm.common.utils.Logger;
@@ -35,21 +35,21 @@ public class ReceivablesActivity extends BaseActivity {
      */
     private static final int REQUEST_CODE_GET_CUSTOMER = 1;
 
-    @Bind(R.id.iv)          ImageView iv;
-    @Bind(R.id.tv_customer_label) TextView tv_customer_label;
-    @Bind(R.id.tv_company)  TextView tv_company;
-    @Bind(R.id.tv_name)     TextView tv_name;
-    @Bind(R.id.tv_mobile)   TextView tv_mobile;
-    @Bind(R.id.tv_pay_type) TextView tv_pay_type;
-    @Bind(R.id.iv_pay_type) ImageView iv_pay_type;
-    @Bind(R.id.tv_use)      TextView tv_use;
-    @Bind(R.id.iv_use)      ImageView iv_use;
-    @Bind(R.id.tv_balance)  TextView tv_balance;
-    @Bind(R.id.tv_amount)   TextView tv_amount;
-    @Bind(R.id.et_remark)   EditText et_remark;
+    @BindView(R.id.iv)          ImageView iv;
+    @BindView(R.id.tv_customer_label) TextView tv_customer_label;
+    @BindView(R.id.tv_company)  TextView tv_company;
+    @BindView(R.id.tv_name)     TextView tv_name;
+    @BindView(R.id.tv_mobile)   TextView tv_mobile;
+    @BindView(R.id.tv_pay_type) TextView tv_pay_type;
+    @BindView(R.id.iv_pay_type) ImageView iv_pay_type;
+    @BindView(R.id.tv_use)      TextView tv_use;
+    @BindView(R.id.iv_use)      ImageView iv_use;
+    @BindView(R.id.tv_balance)  TextView tv_balance;
+    @BindView(R.id.tv_amount)   TextView tv_amount;
+    @BindView(R.id.et_remark)   EditText et_remark;
 
-    @Bind(R.id.rl_customer) View rl_customer;
-    @Bind(R.id.rl_receiver) View rl_receiver;
+    @BindView(R.id.rl_customer) View rl_customer;
+    @BindView(R.id.rl_receiver) View rl_receiver;
     private AlertView alertView;
     private RoleBean roleBean;
     private Receivable receivable;

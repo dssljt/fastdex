@@ -7,7 +7,7 @@ import android.widget.TextView;
 import com.example.fertilizercrm.R;
 import com.example.fertilizercrm.bean.RoleBean;
 import java.util.List;
-import butterknife.Bind;
+import butterknife.BindView;
 import com.example.fertilizercrm.common.utils.Logger;
 import com.example.fertilizercrm.common.view.SmartBeanArrayAdapter;
 
@@ -80,8 +80,8 @@ public class LinkmanAdapter extends SmartBeanArrayAdapter {
     }
 
     public static class ViewHolder {
-        @Bind(R.id.tv_name)   TextView tv_name;
-        @Bind(R.id.tv_mobile) TextView tv_mobile;
-        @Bind(R.id.iv)        ImageView iv;
+        @BindView(R.id.tv_name)   TextView tv_name;
+        @BindView(R.id.tv_mobile) TextView tv_mobile;
+        @BindView(R.id.iv)        ImageView iv;
     }
 }

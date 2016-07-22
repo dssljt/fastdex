@@ -1,0 +1,124 @@
+﻿{
+    "T": {
+        "Head": {
+            "Part": "完型填空",
+            "Type1": "TXT",
+            "Type2": "4",
+            "Rem": "REM",
+            "AnsQues": "5",
+            "Txt": "Q13_1_2_000021.txt",
+            "Pic": "",
+            "Sound": ""
+        },
+        "Q1": {
+            "Body": {
+                "Sub": "",
+                "An1": "places",
+                "An2": "activities",
+                "An3": "clubs",
+                "An4": "programs"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "①vacationnn【注释】:nnn.假期，休假nnvi.度假；nn【辨析】:nn同义词:holiday；restnnnn②activitynn【注释】:nnn.活动；活跃，；活动力；教育活动；nn【辨析】:nn复数:activitiesnn同义词:movement；action；energy",
+                "Content": "【原文】It’s a good time to work on different interests or (activities).nn【翻译】暑假是从事各种兴趣或活动的好时机nn【解析】place地方；activity活动；club俱乐部；program节目。所填词与interests并列，因此选用activities。",
+                "Skill": "",
+                "Point": "本题考查基础词汇的掌握。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q2": {
+            "Body": {
+                "Sub": "",
+                "An1": "weekend",
+                "An2": "summer",
+                "An3": "festival",
+                "An4": "year"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "boringnn【注释】:nnadj.无聊的，无趣的；令人厌烦的；单调的，乏味的nnn.钻孔；钻屑",
+                "Content": "【原文】We asked our readers what they wanted to do over the (summer) and if they thought it would be too busy or kind of boring.nn【翻译】我们询问我们的读者暑假想做什么，他们是否觉得暑假很忙或很无聊。nn【解析】上下文都是围绕暑假这一话题展开，因此时间状语应该是over the summer。",
+                "Skill": "",
+                "Point": "本题考查语境判断。",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q3": {
+            "Body": {
+                "Sub": "",
+                "An1": "busy",
+                "An2": "free",
+                "An3": "long",
+                "An4": "tired"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "①freenn【注释】:nnadj.自由的；免费的；免税的；空闲的nnadv.免费地；自由地，无拘束地；一帆风顺地nnv.免除；释放；使自由；解救nn【词组】nnfor free 免费的，无偿的nnfree and easy随便的，无拘无束nnnn②tirednn【注释】:nnadj.疲倦的；困倦的；对…不耐烦的；陈旧的nnv.（使）疲劳（ tire的过去式和过去分词）；对（做）某事感到厌倦",
+                "Content": "【原文】We asked our readers what they wanted to do over the summer and if they thought it would be too (busy) or kind of boring.nn【翻译】我们询问我们的读者暑假想做什么，他们是否觉得暑假很忙或很无聊。nn【解析】下文提到About half of the people...would be busy，因此所填词与would be busy一致，故选用形容词busy。",
+                "Skill": "",
+                "Point": "本题考查特定语境中形容词的辨析。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q4": {
+            "Body": {
+                "Sub": "",
+                "An1": "and",
+                "An2": "or",
+                "An3": "but",
+                "An4": "so"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "",
+                "Content": "【原文】About half(52%) of the people said their summer vacation would be busy (but) they would still have time to relax.nn【翻译】大约一半的人说他们的暑假挺忙的但是他们仍会有时间去休息nn【解析】从句意上理解，busy和still have time to relax为对立关系，所以选转折连词but。",
+                "Skill": "",
+                "Point": "考查考生对前后句的关联以及上下文的逻辑关系的理解。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "1",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q5": {
+            "Body": {
+                "Sub": "",
+                "An1": "relax",
+                "An2": "work",
+                "An3": "study",
+                "An4": "play"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "relaxnn【注释】:nnv.（使）轻松；（使）松弛；放宽；缓和，减轻",
+                "Content": "【原文】During school I am really tired, so on summer vacation I can (relax), like reading books, going outside and swimming.nn【翻译】在学校的日子真的很累，所以暑假的时候我可以放松一下，比如读书，出去旅游和游泳。nn【解析】前句提到“学习的一年很辛苦”因此暑假的时候不会再读书工作，排除BC。play过于片面，所以relax最符合语境。",
+                "Skill": "",
+                "Point": "本题考查语境判断。",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        }
+    }
+}

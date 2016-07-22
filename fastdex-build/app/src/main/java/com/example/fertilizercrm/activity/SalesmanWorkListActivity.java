@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -30,7 +30,7 @@ public class SalesmanWorkListActivity extends BaseActivity {
     private static final String KEY_ICON = "icon";
     private static final String KEY_TITLE = "title";
 
-    @Bind(R.id.grid_view)
+    @BindView(R.id.grid_view)
     GridView mGridView;
 
     @Override

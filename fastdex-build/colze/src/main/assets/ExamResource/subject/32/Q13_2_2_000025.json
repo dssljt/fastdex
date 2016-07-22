@@ -1,0 +1,124 @@
+﻿{
+    "T": {
+        "Head": {
+            "Part": "完型填空",
+            "Type1": "TXT",
+            "Type2": "1",
+            "Rem": "REM",
+            "AnsQues": "5",
+            "Txt": "Q13_2_2_000025.txt",
+            "Pic": "",
+            "Sound": ""
+        },
+        "Q1": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "only",
+                "Word": "hownn【注释】nna）adv. 如何；多少；多么nnb）n. 方法；方式nnc）conj. 如何nn【辨析】nn同义词:somewhatnn【词组】nnhow to do（如何做；怎样做）；how do you do（你好）",
+                "Content": "【原文】He is (only) five, and doesn’t know how to read or write.nn【翻译】他只有五岁，不知道怎么写，怎么读。nn【解析】文章首句“Jack is Linda’s little brother.”Jack是Linda的小弟弟，可得知本句的中文意思是“他只有5岁”，首字母o开头的单词，只有only比较合适。",
+                "Skill": "",
+                "Point": "本题考查学生对于上下文的理解nnonly的用法:nn①常位于所修饰的动词、短语或从句前，意为“只是、仅仅”。如: nn例:I only touched it. （我只不过摸了它一下。）nn②only可修饰复数名词，意为“仅有的、惟一的一些”，作定语。如: nn例:They were the only people present.（出席的只有他们这些人。）nn③与the连用，意为“最好的、最适当的”，作定语。如: nn例:He is the only man for me. （对于我来说，他是最合适的人。）nn④ 与the连用，意为“唯一的”，作定语。如: nn例:She is the only girl here who knows how to drive a car. （她是这儿唯一会开车的姑娘。）",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q2": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "saw",
+                "Word": "① a piece ofnn【注释】一片，一块nn【词组】nna large piece of（大片）；nn② in front ofnn【注释】在…前面nn【辨析】nna) 同义词:in the front ofnnb) in front of 和 in the front of的比较:nn①in front of…意思是“在……前面”，指甲物在乙物之前，两者互不包括；其反义词是behind（在……的后面）。nn例:He walked in front of me.（他走在我的前面。）nn②in the front of 意思是“在某一空间内的前部”，即甲物在乙物的范围之内；其反义词是at the back of…（在……范围内的后部）。nn例: Our teacher stands in the fount of the classroom.（我们的老师站在教室前。）",
+                "Content": "【原文】One day Linda (saw) her little brother at the table with a pen in his hand,nn【翻译】一天，玛丽看到他的小弟弟手里拿着一支笔坐在桌边。nn【解析】强调看到的结果，因此选用see，one day引导的是过去时态，因此使用see的过去式“saw。”",
+                "Skill": "词义判断正确了不等于答题正确，同学们还应从词法、句法、习惯用法等方面考虑答案的准确性。",
+                "Point": "本题考查动词词义的辨析和情景语境的运用",
+                "S1": "0",
+                "S2": "0",
+                "S3": "1",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q3": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "with",
+                "Word": "",
+                "Content": "【原文】One day Linda saw her little brother at the table (with) a pen in his hand,nn【翻译】一天，玛丽看到他的小弟弟手里拿着一支笔坐在桌边。nn【解析】with表示“携带，具有”的意思，此处就使用with。",
+                "Skill": "",
+                "Point": "本题考查介词短语，with的用法;nn①表示拥有某物nn例:I often dream of a big house with a nice garden .我经常梦想有一个带花园的大房子。②with表用某种工具或手段例1:I cut the apple with a sharp knife .我用一把锋利的刀削平果。例2:Jack drew the picture with a pencil .汤母用铅笔画画。③表示原因或理由例:John was in bed with high fever .约翰因发烧卧床。④表示“带来”，或“带有,具有”，在…身上，在…身边之意nn例:The girl with golden hair looks beautiful .那个金头发的女孩看起来漂亮。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q4": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "writing",
+                "Word": "",
+                "Content": "【原文】“I’m (writing) a letter to my friend, Mike”nn【翻译】我正在给我的好朋友麦克写信呢！nn【解析】固定词组:write a letter，同时此句使用的是现在进行时态，因此用write的ing形式“writing”",
+                "Skill": "做该类题型只需要从句意上就可以判断是否需要使用进行时态",
+                "Point": "本题考查固定词组和现在进行时态的灵活运用:nn现在进行时态的练习现在进行时:  表示正在进行的、发生的动作nn通常在句子中有以下的词:now, look, listen.nn肯定句:be + doingnn否定句:be not + doingnn疑问句:Be + 主语 + doing？",
+                "S1": "0",
+                "S2": "1",
+                "S3": "1",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q5": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "know",
+                "Word": "① matternn【注释】nna）n. 物质；原因；事件nnb）vi. 有关系；要紧nn【辨析】nna)同义词: eventnn【词组】nnno matter（不论怎样；不要紧）；no matter how（不管怎样）；no matter what（不管什么，无论什么）nnnn② becausenn【注释】nnconj. 因为nn【辨析】nna)同义词:since,fornnb）because、since、for的用法比较:nn① because是连词，表示直接原因，它所指的原因通常是听话人所不知道的，其语气最强。其后接原因状语从句或回答以why开头的问句；nn② since侧重主句，从句表示显然的或已为人所知的理由，常译为“因为”、“既然”，语气比because稍弱，通常置于句首，表示一种含有勉强语气的原因。nn③ for用作连词时，与because相似，但它所表示的原因往往提供上文未交待过的情况。 nn④ because of是复合介词，其后接名词、代词或动名词，或者what引导的名词性从句。",
+                "Content": "【原文】“You even don’t (know) how to write.”nn【翻译】你甚至不知道怎么写字！nn【解析】 由下文 “it doesn’t matter, because Mike doesn’t know how to read.”（没关系，因为Mike也不知道如何阅读），可推断出，本句的中文意思是，“你甚至不知道怎么写字”主语为you，谓语动词的否定形式为don’t，所以本空格是动词原形know。",
+                "Skill": "解题时学生不要只局限在句子层面上，要从段落或整篇文章入手，整体把握文章的内容，结合上下文，寻找答案的线索",
+                "Point": "本题考查学生对于上下文语境的理解",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        }
+    }
+}

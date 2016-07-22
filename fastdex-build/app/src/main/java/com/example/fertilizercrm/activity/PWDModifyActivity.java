@@ -3,7 +3,7 @@ package com.example.fertilizercrm.activity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.EditText;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.example.fertilizercrm.R;
@@ -17,9 +17,9 @@ import org.json.JSONObject;
  * 修改密码
  */
 public class PWDModifyActivity extends BaseActivity {
-    @Bind(R.id.et_old_pwd)    EditText et_old_pwd;
-    @Bind(R.id.et_pwd)        EditText et_pwd;
-    @Bind(R.id.et_pwd_repeat) EditText et_pwd_repeat;
+    @BindView(R.id.et_old_pwd)    EditText et_old_pwd;
+    @BindView(R.id.et_pwd)        EditText et_pwd;
+    @BindView(R.id.et_pwd_repeat) EditText et_pwd_repeat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

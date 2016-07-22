@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.example.fertilizercrm.common.utils.Logger;
@@ -40,10 +40,10 @@ public class MessageExpandActivity extends BaseActivity {
 
     private static final int REQUEST_CODE_LINKMAN_SELECT = 1;
 
-    @Bind(R.id.message_type)         MessageTypeSwitchView message_type;
-    @Bind(R.id.et)                   EditText et;
-    @Bind(R.id.hslv)                 View hslv;
-    @Bind(R.id.ll_linkman_container) LinearLayout ll_linkman_container;
+    @BindView(R.id.message_type)         MessageTypeSwitchView message_type;
+    @BindView(R.id.et)                   EditText et;
+    @BindView(R.id.hslv)                 View hslv;
+    @BindView(R.id.ll_linkman_container) LinearLayout ll_linkman_container;
     private List<RoleBean> roleBeans;
 
     @Override

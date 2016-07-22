@@ -1,3 +1,5 @@
 rootProject.name = 'fastdex-build'
 
 include ':app'
+
+include 'colze'

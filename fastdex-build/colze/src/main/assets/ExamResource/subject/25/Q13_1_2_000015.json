@@ -1,0 +1,124 @@
+﻿{
+    "T": {
+        "Head": {
+            "Part": "完型填空",
+            "Type1": "TXT",
+            "Type2": "4",
+            "Rem": "REM",
+            "AnsQues": "5",
+            "Txt": "Q13_1_2_000015.txt",
+            "Pic": "",
+            "Sound": ""
+        },
+        "Q1": {
+            "Body": {
+                "Sub": "",
+                "An1": "listening",
+                "An2": "talking",
+                "An3": "reading",
+                "An4": "writing"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "①listennn【注释】nnv.倾听；听信；（让对方注意）听着nnn.听，倾听nnnn②talknn【注释】nnv讨论；说话；（用以强调款额、情况严重程度等）讲的是nnn.空话；交谈；话题nnnn③readnn【注释】:nnv阅读，朗读；显示；研究；看得懂nnn.阅读；读物；读书nnnn④writennv. 写；写信；写作；作曲",
+                "Content": "【原文】The best way of learning spoken English is (talking) in English as much as possible.nn【翻译】最佳的学习英语口语的方法是尽可能的多说英语nn【解析】在听、说、读、写四个学习环节中，学英语口语最好的方法只能是“说”才合乎实际。且下文都在描述如何开口去说英语，所以选talking。",
+                "Skill": "",
+                "Point": "本题考查特定语境中词义的辨析。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q2": {
+            "Body": {
+                "Sub": "",
+                "An1": "mix",
+                "An2": "mixing",
+                "An3": "to mix with",
+                "An4": "mixed up"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "",
+                "Content": "【原文】Sometimes you’ll get your words (mixed up) and..nn【翻译】有时你会将你想说的混为一谈nn【解析】mix up固定词组搭配，意为“使弄不清；使混乱；混淆”；本题比较容易错选成C，mix with意为“把东西混合起来”，例:Oil does not mix with water.（油不能和水融合在一起）。且get sth. done意为"使...被"，因此是语言被混淆，故选D。",
+                "Skill": "",
+                "Point": "本题考查固定短语的搭配。",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q3": {
+            "Body": {
+                "Sub": "",
+                "An1": "like",
+                "An2": "know",
+                "An3": "help",
+                "An4": "understand"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "understandnn【注释】:nnv. 懂，理解；默认；听说；领会nn【辨析】nn过去式:understood；过去分词:understood；现在分词:understanding",
+                "Content": "【原文】Sometimes you’ll get your words mixed up and people will not (understand) you.nn【翻译】有些时候你混入一些其他词，别人就不能明白你在说什么。nn【解析】like(喜欢)，know(知道)，help(帮助)，understand(理解)，“说不清，道不明”，听的人自然不 “明白或理解”说的是什么，故选understand",
+                "Skill": "",
+                "Point": "本题考查特定语境中的词义辨析。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q4": {
+            "Body": {
+                "Sub": "",
+                "An1": "say",
+                "An2": "talk",
+                "An3": "tell",
+                "An4": "speak"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "",
+                "Content": "【原文】Sometimes people will (say) things too quickly and you can’t understand them.nn【翻译】有时候人们说话太快导致你听不懂他们在说什么。nn【解析】这四个词都有“说”的意思，say着重说的内容，talk 强调两个人之间说话，tell着重把一件事情传给别人，speak 着重说某种语言。“说得太快”指说话的内容而言，因此，选say。",
+                "Skill": "",
+                "Point": "本题考查易混淆动词的词义辨析。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q5": {
+            "Body": {
+                "Sub": "",
+                "An1": "if",
+                "An2": "when",
+                "An3": "since",
+                "An4": "although"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "①althoughnn【注释】:nnconj.尽管；虽然；然而       nnnn②sense of humornn【注释】:nn幽默感",
+                "Content": "【原文】But (if) you keep your sense of humor， you can always have a good laugh at the mistakes you make.nn【翻译】不过当你保持你的幽默感，你可以经常嘲笑你自己犯的错。nn【解析】“保持幽默感”与“嘲笑错误”是条件与结果的关系，所以本句是个条件状语从句。when和since引导时间状语从句，although 引导让步状语从句，只有if引导条件状语从句。",
+                "Skill": "",
+                "Point": "本题考查状语从句及引导词的掌握。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "1",
+                "S5": "0",
+                "Frequency": ""
+            }
+        }
+    }
+}

@@ -17,7 +17,7 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -25,19 +25,19 @@ import butterknife.OnClick;
  * Created by tong on 15/12/23.
  */
 public class SendOutOrInHeadView extends LinearLayout {
-    @Bind(R.id.tv_time)
+    @BindView(R.id.tv_time)
     TextView tv_time;
 
-    @Bind(R.id.tv_provision)
+    @BindView(R.id.tv_provision)
     TextView tv_provision;
 
-    @Bind(R.id.tv_cost)
+    @BindView(R.id.tv_cost)
     TextView tv_cost;
 
-    @Bind(R.id.tv_amount)
+    @BindView(R.id.tv_amount)
     TextView tv_amount;
 
-    @Bind(R.id.rl_cost)
+    @BindView(R.id.rl_cost)
     View rl_cost;
 
     private String dateString;

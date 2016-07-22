@@ -25,7 +25,7 @@ import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.Serializable;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 import com.example.fertilizercrm.common.utils.Logger;
 
@@ -59,7 +59,7 @@ public class CustomerListActivity extends ListViewActivity<CustomerListAdapter> 
 
     private static final int REQUEST_UPDATE_CUSTOMER = 2;
 
-    @Bind(R.id.customer_switch) CustomerTypeSwitchView customer_switch;
+    @BindView(R.id.customer_switch) CustomerTypeSwitchView customer_switch;
     private Gson gson = new Gson();
 
     @Override

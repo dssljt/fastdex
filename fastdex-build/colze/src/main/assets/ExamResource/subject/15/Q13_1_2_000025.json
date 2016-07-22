@@ -1,0 +1,124 @@
+﻿{
+    "T": {
+        "Head": {
+            "Part": "完型填空",
+            "Type1": "TXT",
+            "Type2": "4",
+            "Rem": "REM",
+            "AnsQues": "5",
+            "Txt": "Q13_1_2_000025.txt",
+            "Pic": "",
+            "Sound": ""
+        },
+        "Q1": {
+            "Body": {
+                "Sub": "",
+                "An1": "into",
+                "An2": "off",
+                "An3": "on",
+                "An4": "out"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "putnn【注释】nnv.放；表达；给予（重视、信任、价值等）；使处于（某种状态）nn【辨析】nn同义词:set， laynn【词组】nnput away（把…收起来，储存…备用，处理掉）；put on（穿上，戴上）；put off（延期，推迟）；put under（把…放在…下面）；put back（拨回；向后移）",
+                "Content": "【原题】The students are putting their books, pencil-boxes (into) their school bags.nn【翻译】学生们正在把他们的书，铅笔盒放进他们的书包。nn【解析】put…into…意为“把...放进”，put off意为“推迟”，put on意为“张贴”，put out意为“扑灭”，把书铅笔盒放进书包里，故答案选A。",
+                "Skill": "从历年考题来看，诸如:put、set等搭配能力强、语义丰富的常用动词短语是命题的重点对象。nn解答这类试题时，一定要在理解语境的基础上，从语义逻辑、固定搭配、前后关系等角度去确定答案。",
+                "Point": "本题考查同根动词短语的辨析",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q2": {
+            "Body": {
+                "Sub": "",
+                "An1": "have",
+                "An2": "has",
+                "An3": "be",
+                "An4": "is"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "① go awaynn【注释】走开，离开nn【词组】nngo away from here（离开这里）；just go away（那就让它们滚开）；don't go away（别走开哦） nnnn② carefullynn【注释】nnadv.小心谨慎地；警惕地；仔细地；周密地nn【辨析】nn同义词:cautiouslynn反义词:carelesslynn【词形变化】nn形容词:carefulnn比较级:more carefullynn最高级:most carefullynnnn③ meetingnn【注释】nnn.会议；集会；汇合 nn【辨析】nnmeeting前常加介词at，表示“在会议上”；而表示“在会议期间私下说话”则用介词in。 nn【词组】nncall a meeting（召集会议）；have a meeting（开会）；opening meeting（开幕式）",
+                "Content": "【原题】There’s going to （be）a parents’ meeting in our school.nn【翻译】我们学校将会有一个家长会。nn【解析】么有there has/have的句型，排除AB。有会议可以用“There is a meeting.”来表达，be going to 表示“将要……”，to后加动词原形，故选be。",
+                "Skill": "there be句型的各种变形，总结的理解会对这方面的题型完全掌握。",
+                "Point": "本题考查的是There be句型的be going to 结构。nn①be going to是一种固定结构，它后面要接动词原形，用来表示按计划或安排要发生的动作，有时也可以表示推测将要或肯定会发生的动作，有“准备；打算”的意思。nn②There be句型的be going to 结构为:There is /are going to be...（注意句型中going to后面的be不能改为have）。常用来表示将有某事发生。",
+                "S1": "0",
+                "S2": "0",
+                "S3": "1",
+                "S4": "1",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q3": {
+            "Body": {
+                "Sub": "",
+                "An1": "for",
+                "An2": "with",
+                "An3": "give",
+                "An4": "and"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "reportnn【注释】nnn.报告；成绩；报告单；传闻；流言蜚语nnv. 报道；公布；宣告；告发，举报；使报到nn【辨析】nn同义词:message，speech，talknn【词组】nnreport arrival（报到）；report for（报到…）；report to（告发…）；report sick（请病假）；report about（叙述，对…作报道）",
+                "Content": "【原题】Here are your school reports and letters （for） your parents.nn【翻译】这是给你们父母的成绩单和信。nn【解析】介词for有多种用法，而本题中的for表示对象、用途等，意为“对于、给...”的意思，根据上下文可推测出本句的意思是将成绩单和信交给父母，故选A合适。",
+                "Skill": "介词的灵活性很高，需要不断的积累句子，从句式中理解介词的深意，对解决这类题型有很好的效果。",
+                "Point": "本题考查介词中for的常见用法。nn① 表示“当作、作为”。nn例:I like some bread and milk for breakfast.（我喜欢把面包和牛奶作为早餐。）nn② 表示“因为、由于”。nn例:Thank you for helping me with my English.（谢谢你帮我学习英语。）nn③ 用于固定搭配中。nn例:Who are you waiting for?（你在等谁？）nn例:For example， Mr. Green is a kind teacher.（比如，格林先生是一位心地善良的老师。）nn④ 表示时间、距离，意为“计、达”。nn例:We will stay there for two days.（我们将在那里逗留两天。）nn⑤表示所属关系或用途，意为“为、适于……的”。nn例:Here is a letter for you.（这儿有你的一封信。）",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q4": {
+            "Body": {
+                "Sub": "",
+                "An1": "speak",
+                "An2": "say",
+                "An3": "talk",
+                "An4": "give"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "givenn【注释】nnv. 给予；赠送；作出；供给；产生；举办；（为购买某物或做某事而）支付nn【辨析】nn同义词:supply，offernn反义词:takenn【词形变化】nn过去式/过去分词:gave/givennn现在分词:givingnn【词组】nngive up（放弃、投降）； give sb. a hand（帮某人忙）；give…in（交上）；give in to sb./ sth.（屈服于；对…让步）；give…back（归还、报复）",
+                "Content": "【原题】Give your parents the letters and （give） them your school reports.nn【翻译】给你们父母信件和成绩单。nn【解析】结合上下文可知，此处表达的是给家长信件和成绩单，因此动词应与前者的give一致。本句除选项D以外，其他选项都是“说”的意思，故答案为D。",
+                "Skill": "要做好这类试题，必须明确各个动词的词义和用法，然后根据题意需要选用合适的动词。",
+                "Point": "本题考查学生动词词义辨析以及结合情景语境的综合理解能力。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q5": {
+            "Body": {
+                "Sub": "",
+                "An1": "come",
+                "An2": "comes",
+                "An3": "to come",
+                "An4": "coming"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "asknn【注释】nn v. 问，询问；需要；要求，请求；邀请；要价nn【辨析】nn反义词:answer， reply， respondnn【词组】nnask about（询问，打听）；ask after（问候）；；ask into（调查）；ask with（用…方式问）nnask for（请求，要求）； ask to（邀请某人参加）",
+                "Content": "【原题】Ask them (to come) to the meeting on time tomorrow， because I’m going to say something about next term.nn【翻译】请他们明天准时参加会议，因为我明天要说的是关于下学期的事。nn【解析】ask sb to do，意为“要求某人做某事”，固定搭配，故选择C。",
+                "Skill": "建议平时注意积累材料，对于一些常用的短语、句型、习惯用法和词组的固定搭配要熟练掌握。也要会分析句子、能辨认各种简单句、并列句及复合句的结构。",
+                "Point": "本题考查学生结合上下文语境，对于动词短语的把握能力。",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "1",
+                "S5": "0",
+                "Frequency": ""
+            }
+        }
+    }
+}

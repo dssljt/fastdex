@@ -1,0 +1,124 @@
+﻿{
+    "T": {
+        "Head": {
+            "Part": "完型填空",
+            "Type1": "TXT",
+            "Type2": "4",
+            "Rem": "REM",
+            "AnsQues": "5",
+            "Txt": "Q13_2_2_000018.txt",
+            "Pic": "",
+            "Sound": ""
+        },
+        "Q1": {
+            "Body": {
+                "Sub": "",
+                "An1": "hear",
+                "An2": "been heard",
+                "An3": "hears",
+                "An4": "heard"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "①evernn【注释】nna）adv. 在任何时候；从来；永远；究竟；nnb）pref. 表示“永远”，“持续”（构成形容词）nn【词组】nnever so（非常,极其）；ever since（此后一直）；as...as ever（和以前一样…）；ever more（越来越）；if ever there was one（无可置疑）；than ever（比以前更）；if ever（很少,难得）nnnn② wealthynn【注释】nna）adj. 富有的；充分的nnb）n. 富人nn【辨析】nna）近义词:rich、luxurious；nnb）反义词:poor；nnnn③ wisenn【注释】nna）adj. 聪明的；博学的nn b）v. 教导；指点nn【辨析】nna）近义词:smart、clever；nnb）反义词:stupid、foolishnn",
+                "Content": "【原文】Have you ever (heard) of it?nn【翻译】你曾经听说过吗？nn【解析】看到ever，就明白是一个完成时态的句子，必须用have done形式，故要用hear的过去分词heard。",
+                "Skill": "通过选项判断这是否是一道考时态的题目。若是的话，可以先观察是否有关键词汇，再结合句意作答",
+                "Point": "本题考查现在完成时。nn表示过去发生并且已经完成的动作对现在造成影响或后果。nn① 基本结构:主语+have/has+动词的过去分词nn② 表示现在完成时的关键词，主要有:nnfor、since、 ever、never、just、 yet、（always多数用一般现在时）",
+                "S1": "0",
+                "S2": "0",
+                "S3": "1",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q2": {
+            "Body": {
+                "Sub": "",
+                "An1": "clever",
+                "An2": "bigger",
+                "An3": "foolish",
+                "An4": "fat"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "clevernn【注释】nnadj.聪明的；熟练的；机敏的nn【辨析】nna）同义词:bright、smart、wise；nnb）反义词:foolish、stupid、silly；nn【词形变化】nna) 名词形式:cleverness ；nnb) 副词形式:cleverly； nnc) 比较级/最高级:cleverer/cleverest；nn【词组】nnclever at（擅长）；clever with（擅长使用）；clever about（精于干…）；clever dick（夸耀；喜欢卖弄聪明的人）nn",
+                "Content": "【原文】If we do, we shall be strong and (clever).nn【翻译】如果我们这么做了，我们就会强壮、聪明。nn【解析】这是对上文谚语的理解。根据常识可知，“早睡早起”不可能使人变得更大（bigger），变得更蠢（foolish），变胖（fat）；根据谚语...makes a man healthy, wealthy and wise, clever一词正与wise呼应，故A为最佳选项。",
+                "Skill": "对于常识性问题的知晓与理解，结合从上下文的逻辑关系中琢磨出的含义，来判断正确答案。",
+                "Point": "本题考查形容词的词义掌握及全文的理解",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q3": {
+            "Body": {
+                "Sub": "",
+                "An1": "plenty",
+                "An2": "many",
+                "An3": "enough",
+                "An4": "any"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "",
+                "Content": "【原文】If you don't, you can't have (enough) sleep.nn【翻译】如果你不这么做，那你就不会有充足的睡眠。nn【解析】sleep做抽象名词“睡眠”讲时，是不可数名词，不可用many修饰，many修饰可数，much才是修饰不可数；plenty后面接名词，要跟上介词of，故不可选；若选any，则说明你根本就没有睡眠，与句意不合。故C为最佳选项。",
+                "Skill": "考察有数量意义的修饰词时，先弄清这类词语修饰可数名词及不可数名词的情况，通常可排除一些选项；此外根据上下文句意理解文章，选出最佳答案。",
+                "Point": "本题考查plenty、many、enough、any的用法以及对上下文的理解。nna) plenty of意思是“许多，充足的”，主要用在陈述句中。后面跟可数名词和不可数名词。nn例:plenty of water；plenty of booksnnb)many后面常跟可数名词复数。既可以用作形容词，也可以用作代词。nn例:I have many books.（我有许多书。）nnc)enough意思是“足够”。当形容词时，放在名词前面形容词后面。例:enough time；good enough。nnd)any表示“一些”，用于否定句或疑问句中。在复数名词或不可数名词之前。nn例:We haven't got any milk in the fridge.（我们冰箱里没有牛奶了。）",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q4": {
+            "Body": {
+                "Sub": "",
+                "An1": "being done",
+                "An2": "did",
+                "An3": "doing",
+                "An4": "do"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "meannn【注释】nna）adj. 平均的，卑鄙的,小气的nnb）vt. 意味，想要nnc）vi. 用意nn【辨析】nn同根词:meaningful有意义的，意味深长的；meaningless无意义的nn【词形变化】nn过去式/过去分词:meant。nn【词组】nnin the mean time（同时）；mean by（意思是）nn",
+                "Content": "【原文】Exercise means (doing) things with the body.nn【翻译】锻炼意味着用身体做事情。nn【解析】句子结构分析，exercise是主语，means是谓语，填空部分是动词短语作宾语，故要用动名词doing形式；being done是被动，含义与句意不合。故C为最佳选项。",
+                "Skill": "该类题目所填的词往往是动词，但放在宾语的位置，故要做非谓语动词，即动名词（doing）或不定式（to do）使用。",
+                "Point": "本题考查固定词组搭配nn① mean doing sth 意味着做…；nn例:Losing a bus in London means waiting for another hour.（在伦敦错过一般车意味着再等一个小时）nn② mean to do sth 打算做，想要做…#nn例:I mean to go, but my father would not allow me to. （我想去，但是我父亲不肯让我去）",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q5": {
+            "Body": {
+                "Sub": "",
+                "An1": "keeps",
+                "An2": "keep",
+                "An3": "get",
+                "An4": "becomes"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "strongnn【注释】nna）adj. 强的；坚强的；强壮的nnb）adv. 强劲地；猛烈地；nn【辨析】nna）近义词:powerfulnnb）反义词:weaknn【词形变化】nna）比较级:strongernnb）最高级:strongestnn【词组】nngoing strong（保持尽力充沛）；be strong on（擅于）；one's strong point（强项）nn",
+                "Content": "【原文】Exercise (keeps) it strong.nn【翻译】锻炼能保持身体强健。nn【解析】it代指the body。通过前文理解来看，这句句子所要表达的意思应是保持身体强健，get是得到，become是变得，变成，在此处都不适用，主语exercise有个第三人称单数的因素，故A为最佳选项。",
+                "Skill": "keep、get等这类词汇是属于经常出现在考试中的常用重点词汇，因此熟记它的用法与含义将对解题有极大帮助。",
+                "Point": "本题考查时态和理解。nn生活常识性问题用一般现在时。在一般现在时中，当主语是第三人称单数（本题exercise为单数可数名词作主语）时，系动词be 变成is，谓语动词要用第三人称单数形式，即在动词原形后加-s或-es",
+                "S1": "0",
+                "S2": "0",
+                "S3": "1",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        }
+    }
+}

@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.EditText;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.example.fertilizercrm.R;
@@ -16,13 +16,13 @@ import com.example.fertilizercrm.utils.FerUtil;
  * 系统外进货渠道添加
  */
 public class OutsideSystemChannelActivityAddActivity extends BaseActivity {
-    @Bind(R.id.et_name)
+    @BindView(R.id.et_name)
     EditText et_name;
 
-    @Bind(R.id.et_contacter)
+    @BindView(R.id.et_contacter)
     EditText et_contacter;
 
-    @Bind(R.id.et_mobile)
+    @BindView(R.id.et_mobile)
     EditText et_mobile;
 
     @Override

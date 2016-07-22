@@ -1,0 +1,234 @@
+﻿{
+    "T": {
+        "Head": {
+            "Part": "完型填空",
+            "Type1": "TXT",
+            "Type2": "4",
+            "Rem": "REM",
+            "AnsQues": "10",
+            "Txt": "Q13_1_2_000026.txt",
+            "Pic": "",
+            "Sound": ""
+        },
+        "Q1": {
+            "Body": {
+                "Sub": "",
+                "An1": "full",
+                "An2": "empty",
+                "An3": "bad",
+                "An4": "nice"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "①go acrossnn【注释】穿过，横过nn【辨析】nn同义词:crossnnnn②emptynn【注释】nnadj. 空的；无意义的；无知的；徒劳的nnv. 使失去；使…成为空的nn【辨析】nn同义词:vacantnn反义词:fullnn【词形变化】nn名词:emptiness（空虚；无知）nn【词组】nnfeel empty （觉得饿）；empty space （真空，真空区）；empty stomach （空腹）；empty talk （空话，空谈）；empty of （缺乏）",
+                "Content": "【原文】Her basket is (empty).nn【翻译】他的篮子是空的。nn【解析】full(满的)，empty(空的)，bad(坏的)，nice(好看的)；根据前文“A women is going shopping.”这位女士提着篮子正准备去购物，推断篮子是空的，故选B。",
+                "Skill": "利用排除法。有时我们会遇上对某个题目的正确选项的含义、用法不甚明了、但发现其它选项显而易见是不符合题意的，这时候我们可以试着将发现有错误的选项，立即剔除出选择范围。随着选择范围的缩小，选项的准确率就会不断提高。",
+                "Point": "本题考查形容词的辨析和逻辑分析能力。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q2": {
+            "Body": {
+                "Sub": "",
+                "An1": "wall",
+                "An2": "room",
+                "An3": "water",
+                "An4": "ground"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "basketnn【注释】nnn. 篮子；（篮球比赛的）得分；篮筐nnvt. 装入篮nn【词组】nnpicnic basket （野餐篮）；fruit basket （果篮，水果篮）；bamboo basket （竹篮；竹篓）；shopping basket （购物篮；提篮 ）",
+                "Content": "【原文】My basket is in the (water). Help!nn【翻译】我的篮子掉进水里了，帮帮我。nn【解析】上文提到“The boat is going across the river.”，因此推断篮子掉到了水里，所以填water",
+                "Skill": "完形填空所选的文章都是具有逻辑关系，意义相连的语篇。考生可充分利用文章的上下文或前后句，找到有提示作用的词或句。",
+                "Point": "本题考查情景语境的运用。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q3": {
+            "Body": {
+                "Sub": "",
+                "An1": "getting",
+                "An2": "got",
+                "An3": "get",
+                "An4": "gets"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "worrynn【注释】nnv.（使）烦恼，担心；折磨；nnn. 烦恼，担心nn【辨析】nn同义词:bother、trouble、carenn反义词:comfortnn第三人称单数:worriesnn过去式/过去分词:worriednn【扩展】nnworry, bother和trouble的区别:nn“worry”:表示不必要的、于事无补的“困扰”“烦恼”。nn“bother”:表示暂时的、无关紧要的“困扰”“烦恼”。nn“trouble”:表示的意义很广泛,事无巨细,并且比worry和bother更正式一些。nn【词组】nndon't worry(不用担心)；worry about/over(为...担忧)；worry at（拽、摆弄）；worry out（绞尽脑汁解决）",
+                "Content": "【原文】Don't worry. I can (get) it.nn【翻译】不要担心，我能够到。nn【解析】can是情态动词，后面的动词应为原形，所以选C。",
+                "Skill": "",
+                "Point": "本题考查动词的词义辨析",
+                "S1": "0",
+                "S2": "0",
+                "S3": "1",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q4": {
+            "Body": {
+                "Sub": "",
+                "An1": "out",
+                "An2": "down",
+                "An3": "up",
+                "An4": "off"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "takenn【注释】nnv. 取，抓；带去，拿去；耗费；乘，搭；以为；拍摄，记下nn【辨析】nn同义词:bring,carrynn反义词:givenn过去式/过去分词:took/takennn【扩展】nntake和bring的比较:nn“take”意指从说话人的方向离去；“bring”意指向说话人的方向运动。nn【词组】nntake away（拿走）；take back（收回）；take care（小心）；take care of（照顾，照料）；take down（记下）；take place（发生）；take it easy（不要紧张）；take advantage of（利用）；take part in（参加）；take up（拿起）",
+                "Content": "【原文】 He takes (off) his shirt and shoes.nn【翻译】他脱下了衣服和鞋子。nn【解析】take off意为 “脱下（衣服）”；take out意为“拿出”；take down意为“取下来”；take up意为“开始"，文中提到男孩说自己会游泳，故可推断出此处的动作是脱掉外衣，再游泳，比较符合逻辑，故选D。
+                "Skill": "形容词含义是解题的关键，因此记忆单词含义很重要。",
+                "Point": "本题考查学生特殊语境中，正确使用动词短语。take的习惯用法如下:nn①take off脱下；飞机(等起飞)   nn例1:Sorry! You have to take off your shoes before getting into the computer room. （对不起，在进入微机室之前，先要把你的鞋子脱掉。）nn例2:The plane is going to take off soon. （飞机马上就要起飞了。）nn②take care (=be careful=look out)   nnTake care! The car is coming! （小心！车来了！）nn③take (good) care of (好好)照顾，照料   nnI can take care of the baby all by myself. （我自己能照顾这个小孩。）nn④take down 取下来   nnTake down the picture and put up the map of the worlD: （摘下这张图画，挂上一幅世界地图。）⑤take out 拿出   nnPlease take out a piece of paper and write down your names on it, OK? （拿出一张纸，在上面写下你们的名字，好吗？）",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q5": {
+            "Body": {
+                "Sub": "",
+                "An1": "after",
+                "An2": "on",
+                "An3": "for",
+                "An4": "up"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "",
+                "Content": "【原文】Look (after) my shirt and shoes, please!nn【翻译】请看好我的衣服和鞋子nn【解析】固定词组的使用，look after“照顾，关照”，他脱下了衣服，需要别人看管好是比较符合逻辑的，故选A。look on意为“看待”；look for意为“寻找”；look up意为“查找/拜访”都不符合文意。",
+                "Skill": "基数词和序数词一直是考点，因此在这方面多加练习，熟练掌握很重要。",
+                "Point": "本题考查学生特殊语境中，正确使用动词短语。look的常见搭配如下:nn①look after 照顾 nn例:Looked after his younger brother.（照顾他的小弟弟）nn②look for 寻找；搜索 希望nn例1:Looking for my gloves.找我的手套  nn③look on 或 look upon认为，看待:用某种方式看待 nnLooked on them as incompetents.（认为他们不胜任）nn④look out 小心，当心；注意 nn例:If you don't look out, you may fall on the ice.（如果不小心的话，你会在冰上摔倒的。）nn⑤look up查找:在参考书中寻找并找到,拜访nn例:Look up an old frienD:（拜访一个老朋友。）",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q6": {
+            "Body": {
+                "Sub": "",
+                "An1": "sea",
+                "An2": "stream",
+                "An3": "river",
+                "An4": "pool"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "①pleasenn【注释】nnvt. 使喜欢；使高兴，使满意nnvi. 讨人喜欢；令人高兴nnint. 请（礼貌用语）nn【辨析】nn同义词:glad, satisfynn反义词:sadnn扩展:nn【词形变化】nn名词:pleasure  nn形容词:pleasant；pleased；pleasingnn【词组】nnplease oneself （感到满意）； please check 请检查 ；please wait 请稍候，请稍等；nnnn② streamnn【注释】nnn.小河，溪；潮流；nnv.飘扬；流；涌进，涌出；nn【辨析】nn同义词:river、brooknnstream、river和brook的比较:nn“stream”指溪和小河，“river”指较大的河；“brook”指比stream更小的溪流。nn【词组】nncross a stream （涉过一条小溪）；in streams（连续不断,川流不息）；a stream of words（滔滔不绝的话）",
+                "Content": "【原文】he says, and jumps into the (river).nn【翻译】他说着，就跳进了河里。nn【解析】上文提到，男孩在女士的求助下，需要去水里捞篮子，因此可推断他是跳进了河里。且四个选项中，只有C“river”是重复出现在文章中的，sea“大海”；stream“小溪”；pool“水塘”均不符合文意",
+                "Skill": "",
+                "Point": "本题考查情景语境的运用和句意的理解",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q7": {
+            "Body": {
+                "Sub": "",
+                "An1": "ball",
+                "An2": "basket",
+                "An3": "boat",
+                "An4": "box"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "get intonn【注释】(使)进入；渗入；(使)染上(习惯)nn【辨析】nn同义词:come into, go intonn反义词:come out",
+                "Content": "【原文】I can go by (basket).nn【翻译】我可以乘着篮子游走...nn【解析】前句提到“A duck sees the basket”，后文说到“It gets into the basket.”（小鸭子跳进了篮子里），题中的by是指的是方式，可以判断鸭子是想和篮子一块游走，故选B。",
+                "Skill": "有时正确答案往往就是在该空格之前或者之后出现过，可能是原词，也可能是该词的近、反义词。",
+                "Point": "本题考查上下文理解。",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q8": {
+            "Body": {
+                "Sub": "",
+                "An1": "swimming",
+                "An2": "swiming",
+                "An3": "swims",
+                "An4": "swims"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "awaynn【注释】nnadv. 离去，离开；在远处nn【辨析】nn同义词:aside, nn【词组】nnaway from（ 远离，离开；避开痛苦）；far away （遥远的 ）；right away（ 立刻 ）；far away from （远离；离…远 ）",
+                "Content": "【原文】The boy is (swimming) in the river.nn【翻译】这个男孩在河里游泳。nn【解析】is+动词的现在分词（ing形式）表示现在进行时，故也可排除选项C和D。当知道swim正确的ing形式是“swimming”时，很容易得出正确答案为A。若不确定，也没关系，文章第二段的“I'm a good swimmer”已给出暗示，可知，此处需要双写m再加ing",
+                "Skill": "",
+                "Point": "本题考查动词时态的变化规则。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "1",
+                "S4": "1",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q9": {
+            "Body": {
+                "Sub": "",
+                "An1": "on",
+                "An2": "in",
+                "An3": "under",
+                "An4": "at"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "awaynn【注释】nnadv. 离去，离开；在远处nn【辨析】nn同义词:aside, nn【词组】nnaway from（ 远离，离开；避开痛苦）；far away （遥远的 ）；right away（ 立刻 ）；far away from （远离；离…远 ）",
+                "Content": "【原文】He sees the basket (under) the duck.nn【翻译】他看到了鸭子下面的篮子。nn【解析】因为鸭子跳进了篮子里，因此篮子在鸭子的下面。under“下面的”垂直的正下方的含义。",
+                "Skill": "",
+                "Point": "本题考查学生特殊语境中，动词短语的正确运用。look的常见搭配如下:nn①look after 照顾 nn例:Looked after his younger brother.（照顾他的小弟弟）nn②look for 寻找；搜索 希望nn例1:Looking for my gloves.找我的手套  nn③look on 或 look upon认为，看待:用某种方式看待 nnLooked on them as incompetents.（认为他们不胜任）nn④look out 小心，当心；注意 nn例:If you don't look out, you may fall on the ice.（如果不小心的话，你会在冰上摔倒的。）nn⑤look up查找:在参考书中寻找并找到,拜访nn例:Look up an old frienD:（拜访一个老朋友）。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q10": {
+            "Body": {
+                "Sub": "",
+                "An1": "walk",
+                "An2": "jumps",
+                "An3": "jump",
+                "An4": "walks"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "takenn【注释】nnv. 取，抓；带去，拿去；耗费；乘，搭；以为；拍摄，记下nn【辨析】nn同义词:bring,carrynn反义词:givenn过去式/过去分词:took/takennn【扩展】nntake和bring的比较:nn“take”意指从说话人的方向离去；“bring”意指向说话人的方向运动。nn【词组】nntake away（拿走）；take back（收回）；take care（小心）；take care of（照顾，照料）；take down（记下）；take place（发生）；take it easy（不要紧张）；take advantage of（利用）；take part in（参加）；take up（拿起）",
+                "Content": "【原文】The duck (jumps) out of the basket.nn【翻译】小鸭子跳出了篮子。nn【解析】主语the duck是第三人称单数，动词应用第三人称单数形式。故此处可先排除A和C。从后句“The boy takes the basket to the woman. ”可以判断鸭子从篮子里离开了，根据题意的理解应该是跳出了篮子最符合逻辑，故选B。",
+                "Skill": "",
+                "Point": "本题考查特殊语境中的动词时态及词义辨析。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "1",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        }
+    }
+}

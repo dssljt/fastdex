@@ -36,7 +36,7 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.example.fertilizercrm.common.utils.ImageCropHelper;
 import com.example.fertilizercrm.common.utils.Logger;
@@ -108,17 +108,17 @@ public class ProfileActivity extends BaseActivity {
      */
     public static final String EVENT_GET_NEW_HICON = "get_new_hicon";
 
-    @Bind(R.id.ll_container) ViewGroup ll_container;
-    @Bind(R.id.iv_head) ImageView iv_head;
-    @Bind(R.id.tv_name) TextView tv_name;
-    @Bind(R.id.tv_mobile) TextView tv_mobile;
-    @Bind(R.id.tv_factory_info_label) TextView tv_factory_info_label;
+    @BindView(R.id.ll_container) ViewGroup ll_container;
+    @BindView(R.id.iv_head) ImageView iv_head;
+    @BindView(R.id.tv_name) TextView tv_name;
+    @BindView(R.id.tv_mobile) TextView tv_mobile;
+    @BindView(R.id.tv_factory_info_label) TextView tv_factory_info_label;
 
     @Nullable
-    @Bind(R.id.tv_contacter)
+    @BindView(R.id.tv_contacter)
     TextView tv_contacter;
     @Nullable
-    @Bind(R.id.tv_address)
+    @BindView(R.id.tv_address)
     TextView tv_address;
 
     private ImageCropHelper imageCropHelper;

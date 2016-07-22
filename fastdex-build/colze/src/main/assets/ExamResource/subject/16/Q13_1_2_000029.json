@@ -1,0 +1,234 @@
+﻿{
+    "T": {
+        "Head": {
+            "Part": "完型填空",
+            "Type1": "TXT",
+            "Type2": "4",
+            "Rem": "REM",
+            "AnsQues": "10",
+            "Txt": "Q13_1_2_000029.txt",
+            "Pic": "",
+            "Sound": ""
+        },
+        "Q1": {
+            "Body": {
+                "Sub": "",
+                "An1": "careful",
+                "An2": "carefully",
+                "An3": "careless",
+                "An4": "carelessly"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "look overnn【注释】nn检查；从…上面看nn【辨析】nn同义词:examine, inspectnn【词组】nnlook at (看；考虑；着眼于) ;look for (寻找) ;look forward to(期待；盼望 ); have a look (看一下，看一眼)",
+                "Content": "【原文】The doctor looked him over (carefully) and said,“...”nn【翻译】医生仔细地做了检查...nn【解析】这里所填的词修饰动词“looked over”，可推断词性为副词，故可先排除A和C；而根据下文医生提供他的详细建议，可知医生的检查是很仔细严谨的，因此选B“carefully”。carelessly意为“粗心大意地”，不符文意。",
+                "Skill": "",
+                "Point": "本题考查同根形容词及副词的把握。nn①一般情况下直接加“ly”，如quick---quickly nn② 以“y”结尾的,先将“y”改成“i”,再加“ly”，如happy---happily nn③少数以e结尾的形容词，要去掉e再加-ly。例如:true-truly等。 nn但绝大多数以e结尾的形容词仍然直接加-ly。例如:polite-politely, wide-widely等",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q2": {
+            "Body": {
+                "Sub": "",
+                "An1": "medicine",
+                "An2": "doctor",
+                "An3": "relax",
+                "An4": "rest"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "restnn【注释】nnrestnn【注释】nnvt. 使休息，使轻松；把…寄托于nnn. 休息，静止；休息时间；剩余部分；支架nnvi. 休息；静止；依赖；安置nn【辨析】nn同义词:relax, nnrelax是指放轻松，如:He stretched and flexed his knees to relax himself. 他伸屈膝关节使自己放松一下。nnrest是指休息,如:Almost no one took any rest. 几乎没有一个人歇过一下。nn【词形变化】nn形容词:restless  焦躁不安的；不安宁的；得不到满足的nn副词:restlessly  不安地；慌张地nn名词:restlessness  坐立不安；不安定nn【词组】nnthe rest of( 其余的；剩下的) ；rest in(在于；依赖于) ；rest on(停留在，依靠);have/take a rest (休息一会儿)；have a good rest (好好休息一下)",
+                "Content": "【原文】You must have a good (rest).nn【翻译】你必须好好休息nn【解析】medicine(药)不可数，不能加定冠词“a”，可先排除；根据下文“Go to bed early....walk a lot”可知医生给他的建议是让他自身做调整，并不是需要一个好的医生，故也可排除B；relax(放松)是动词，且不可做名词，也排除；根据下文医生的建议，可以判断医生让他好好休息下，且下文提到“I had a good rest”，固定词组have a good rest，好好休息，所以正确答案为D。,",
+                "Skill": "",
+                "Point": "本题考查特定语境中的词义辨析能力。",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q3": {
+            "Body": {
+                "Sub": "",
+                "An1": "drink",
+                "An2": "drinking",
+                "An3": "drinks",
+                "An4": "drank"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "drinknn【注释】nnvt. 喝；吸收；举杯庆贺nnVi. 喝酒；饮水；干杯nnn. 酒，饮料；喝酒nn【辨析】nn【词形变化】nn形容词:drunk  喝醉了的；drinkable  可饮用的；可以喝的nn过去式/过去分词:drank/drunknn名词:drinking  喝，饮；喝酒nn【词组】nndrink in (吸收) ；drink water (喝水，饮水) ；something to drink(喝的东西；一些喝的东西 )",
+                "Content": "【原文】(drink) a lot of milknn【翻译】喝些牛奶。nn【解析】根据前后文“Go to bed early.......walk a lot”判断这里时态也需保持一致，故选A动词原形drink。",
+                "Skill": "",
+                "Point": "本题考查上下文理解及一般现在时的动词变化。",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q4": {
+            "Body": {
+                "Sub": "",
+                "An1": "sell",
+                "An2": "smoke",
+                "An3": "eat",
+                "An4": "draw"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "smokenn【注释】nnn. 烟；抽烟；nnvi. 冒烟，吸烟；弥漫nnvt. 吸烟nn【辨析】nn同义词:tobacconn【词形变化】nn形容词:smoking  准许吸烟的；smokeless  无烟的；不冒烟的nn名词:smoking  抽烟；冒气；smoker  吸烟者；薰制工nn【词组】nnlike smoke(俚语:一溜烟地，飞快地  )；tobacco smoke (烟草烟雾) ；go up in smoke(化为乌有；被烧光)  ；black smoke( 黑烟；浓烟)",
+                "Content": "【原文】walk a lot and (smoke) only one cigar a day.nn【翻译】多走路，一天只抽一根烟。nn【解析】cigar是雪茄、烟的意思，可推断出选项C和D不符句意。医生为了他健康让他每天就吸一根烟，因此sell(卖)也可排除；下文已给暗示“you told me to smoke one cigar a day”，故选B。固定词组:smoke cigar，吸烟",
+                "Skill": "",
+                "Point": "本题考查上下文语境及固定词组搭配。nn常用短语补充:smoke cigar，drink water，have supper，wash clothes等",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "1",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q5": {
+            "Body": {
+                "Sub": "",
+                "An1": "moment",
+                "An2": "while",
+                "An3": "month",
+                "An4": "century"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "monthnn【注释】nnn. 月，一个月的时间nn【辨析】nn扩展时间名词:nnthe day before yesterday前天；year 年 ；the day after tomorrow后天；this month这个月；last month上个月；next month下个月nn【词形变化】nn形容词:monthly  每月的，每月一次的；有效期为一个月的nn副词:monthly  每月，每月一次nn名词: monthly  月刊nn【词组】nnlast month （上个月）；once a month （一月一次）；in a month（一个月后） ；past month（上个月 ）",
+                "Content": "【原文】After a (month), the man came to the doctor’s again. nn【翻译】一个月之后，这个人又再次来到医生这儿。nn【解析】由下文可知，过了段时间这老人去复诊了，after+时间名词，表示过多久之后。moment(时刻)，while(一会儿)，此两选项时间都太短了，而century(世纪)时间过长，都不符合文意，且上文提到“Then go to the country place for a month”，因此选month最为合适。",
+                "Skill": "技巧:",
+                "Point": "本题考查特定语境中，习惯短语的用法。",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q6": {
+            "Body": {
+                "Sub": "",
+                "An1": "only",
+                "An2": "also",
+                "An3": "too",
+                "An4": "again"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "againnn【注释】nnadv. 又，此外；再一次nn【辨析】nn同义词:moreover, besidesnn【词组】nnagain and again（再三地，反复地） ；try again （再来一次） ；over again （再一次）",
+                "Content": "【原文】After a month, the man came to the doctor’s (again). nn【翻译】一个月之后，这个人又再次来到医生这儿。nn【解析】only，also不能放在句尾，故可先排除；too（也），again(再一次)上文提到他已经来一次了，因此这次他又来了，所以选D“again。",
+                "Skill": "",
+                "Point": "本题考查副词的使用及对上下文的理解。",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q7": {
+            "Body": {
+                "Sub": "",
+                "An1": "glad",
+                "An2": "nice",
+                "An3": "sorry",
+                "An4": "exciting"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "gladnn【注释】nnadj. 高兴的；乐意的；令人高兴的nnvt. 使高兴nn【辨析】nn同义词:happy, pleased, delightednn反义词:sadnn【词形变化】nn形容词:gladsome  高兴的；可喜的nn副词:gladly  乐意地；高兴地；欢喜地nn名词:gladness  愉快，高兴nn【词组】nnglad to meet you（见到你很高兴）； glad of（对……感到高兴 ）nnnnyoungernn【注释】nnn. 年纪较小者；幼辈nnadj. 较年轻的nn【辨析】nn反义词:oldernn【词形变化】nn形容词: young  年轻的；初期的；没有经验的nn副词:youthfully  年轻地，无经验地；精神饱满地nn名词:youth 青年，青少年时期nn【词组】nnyounger brother（ 弟弟 ）；younger sister （妹妹） ；younger generation （年轻一代）",
+                "Content": "【原文】I am (glad) to see you again. You look much younger.nn【翻译】我很高兴再次见到你，你看起来更年轻了。nn【解析】根据下文“You look much younger.”可知这老人恢复的不错，因此医生很高兴见到他。可知正确答案为A，固定搭配:be glad to do sth（很高兴做某事）。exciting是形容事物的；而nice的搭配是“It’s nice to see you”故都不正确。",
+                "Skill": "",
+                "Point": "本题考查固定词组的灵活运用，根据全文意义做出选择。",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q8": {
+            "Body": {
+                "Sub": "",
+                "An1": "bad",
+                "An2": "worse",
+                "An3": "goodness",
+                "An4": "well"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "quitenn【注释】nnadv. 很；相当；完全nn【辨析】nn quiet(安静的)nn【词组】nnquite something（非同寻常）  ；quite a（ 相当，完全；了不起的） ；quite good （相当好） ；quite well（ 相当好；十分好）",
+                "Content": "【原文】I feel quite (well) nownn【翻译】我现在感觉很好。nn【解析】从上文“You look much younger.”下文“I had a good rest...”等可看出这老人自我感觉还不错，因此可先排除A和B；goodness是名词，“善良、优秀”的意思，不符句意，故也可排除；well有 “身体健康的”含义，fell well在此表示“感觉舒服了”，故选D。",
+                "Skill": "",
+                "Point": "本题考查感官动词的用法:nn“感觉”类:与五种感觉器官相关的动词.常见的有: nn①look(看起来)，feel(摸上去)，smell(闻起来) , nn②taste(尝起来)，sound(听起来)等。nn例1: What he says sounds (like) a good idea. nn例2:Those oranges taste good.nn例3:She looks much younger in her red dress.",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q9": {
+            "Body": {
+                "Sub": "",
+                "An1": "late",
+                "An2": "late",
+                "An3": "earliy",
+                "An4": "early"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "earlynn【注释】nnadj. 早期的；早熟的nnadv. 提早；在初期nn【辨析】nn同义词:precociousnn反义词:latenn【词组】nnas early as（ 早在…的时候） ；early or late （迟早） ；early on （在早期；从事）",
+                "Content": "【原文】 I went to bed (early), drank a lot of milk and walked a lot.nn【翻译】我早早的上了床，喝了很多的牛奶，走了很长的路。nn【解析】上句提到“I had a good rest”因此可知这人时遵守医生的建议的，而上文医生建议“Go to bed early”，所以正确答案为D。",
+                "Skill": "上文暗示法:nn完形填空所选的文章都是具有逻辑关系，意义相连的语篇。考生可充分利用文章的上下文或前后句，找到有提示作用的词或句",
+                "Point": "本题考查上下文理解。",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q10": {
+            "Body": {
+                "Sub": "",
+                "An1": "but",
+                "An2": "and",
+                "An3": "yet",
+                "An4": "then"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "tellnn【注释】nnvt. 告诉；辨别；吩咐；断定nnvi. 讲述；泄密；识别nn【辨析】nn同义词: talk, observenn【词形变化】nn形容词: telling  有效的；生动的；显著的nn名词:teller   出纳员；讲述者；讲故事者；计票员；telling  命令；叙述；吐露真情nn【词组】nntell me about（ 告诉我关于…） ；tell you the truth （说实话 ）；tell from（区别，辨别，认出 ） ；tell lies（ 撒谎） ； tell of （讲述）",
+                "Content": "【原文】It really helped, (but) you told me to smoke one cigar a day...nn【翻译】他真的很有用，但是你让我一天吸一根烟。。。nn【解析】上文提到老人遵守医生的建议，感觉很好，后文“which almost killed me”可知一天吸一根烟让他感觉并不好受，这里有转折的含义，因此选“but”最为合适",
+                "Skill": "",
+                "Point": "本题考查转折连词的用法:nn作为并列连词，but 可以连接两个并列的分句或者两个并列的成份，译为“但是”，“可是”。能表示下列意义:表示意义转折。nn例:They are tired but happy. I was going to write, but I lost your address.",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        }
+    }
+}

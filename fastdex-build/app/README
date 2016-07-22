@@ -1,0 +1,5 @@
+processDebugResources
+app/build/generated/source/r/debug/com/example/fertilizercrm/R
+任务会生成R文件app/build/intermediates/symbols/debug/R.txt
+生成app/build/intermediates/res/resources-debug.ap_
+

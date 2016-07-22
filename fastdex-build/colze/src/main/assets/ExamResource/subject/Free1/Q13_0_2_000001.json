@@ -1,0 +1,234 @@
+﻿{
+    "T": {
+        "Head": {
+            "Part": "完型填空",
+            "Type1": "TXT",
+            "Type2": "4",
+            "Rem": "REM",
+            "AnsQues": "10",
+            "Txt": "Q13_0_2_000001.txt",
+            "Pic": "",
+            "Sound": ""
+        },
+        "Q1": {
+            "Body": {
+                "Sub": "",
+                "An1": "children",
+                "An2": "boy",
+                "An3": "cat",
+                "An4": "girl"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "①livenn【注释】nnadj.有生命的，活的；现场直播的；nnvi. 生存；居住nnvt. 经历过；度过nn【词形变化】nn名词形式:living（生活，生存）；liveliness（活泼）life（生活）nn第三人称单数:livesnn过去式/过去分词:livednn现在分词:livingnn【词组】nnlive on（靠…生活）；live by（靠…为生）；live up to（按…行事）；long live（万岁）；nnnn②familynn【注释】nnn. 家，家庭；家庭成员；家世；子女nn【辨析】nn复数形式:familiesnn【词组】nnfamily name（姓氏）；family tree（家谱）；come of a family（出身于…家庭）；head a famil（担当一家之主）；support one's family （养家糊口）；nn【扩展】nnfamily作为一个集体名词,在强调家庭成员个体时,谓语动词通常用复数。nn例:My family are all tall.（我全家每个人都很高）nn2.family被看成是一个整体时,谓语动词通常用单数。nn例:My family is very large.（我家是一个大家庭）nn",
+                "Content": "【原文】Jean is an American (girl).nn【翻译】Jean是个美国女孩。nn【解析】本句的主语Jean是第三人称单数，故可先排除选项A. children是复数形式。下文全部是用she来代替Jean，可知Jean是一个女孩的名字，正确答案为D",
+                "Skill": "下文暗示法:nn完形填空所选的文章都是具有逻辑关系，意义相连的语篇。考生可充分利用文章的上下文或前后句，找到有提示作用的词或句。",
+                "Point": "本题考查学生的上下文理解能力。",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q2": {
+            "Body": {
+                "Sub": "",
+                "An1": "in",
+                "An2": "with",
+                "An3": "on",
+                "An4": "at"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "①livenn【注释】nnadj.有生命的，活的；现场直播的；nnvi. 生存；居住nnvt. 经历过；度过nn【词形变化】nn名词形式:living（生活，生存）；liveliness（活泼）life（生活）nn第三人称单数:livesnn过去式/过去分词:livednn现在分词:livingnn【词组】nnlive on（靠…生活）；live by（靠…为生）；live up to（按…行事）；long live（万岁）；nnnn②familynn【注释】nnn. 家，家庭；家庭成员；家世；子女nn【辨析】nn复数形式:familiesnn【词组】nnfamily name（姓氏）；family tree（家谱）；come of a family（出身于…家庭）；head a famil（担当一家之主）；support one's family （养家糊口）；nn【扩展】nn1. family作为一个集体名词,在强调家庭成员个体时,谓语动词通常用复数。nn例:My family are all tall.（我全家每个人都很高）nn2.family被看成是一个整体时,谓语动词通常用单数。nn例:My family is very large.（我家是一个大家庭）nn",
+                "Content": "【原文】She lives (with) her family in China.nn【翻译】她和她的家人住在中国。nn【解析】live with意为“住在一起”，最符合文意。其他三个选项融入语境后，都不符合逻辑，live in和live at都表示“生活在...”的意思，前者跟国家、城市，后者跟街道，区等。live on意为“靠...生活",
+                "Skill": "live搭配能力强，是命题的重点对象。nn解答这类试题时，一定要在理解语境的基础上，从语义逻辑、前后关系等角度去确定答案。",
+                "Point": "本题考查固定词组使用不同介词in/on/with的意义",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q3": {
+            "Body": {
+                "Sub": "",
+                "An1": "three",
+                "An2": "four",
+                "An3": "five",
+                "An4": "two"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "familynn【注释】nnn. 家，家庭；家庭成员；家世；子女nn【辨析】nn复数形式:familiesnn【词组】nnfamily name（姓氏）；family tree（家谱）；come of a family（出身于…家庭）；head a famil（担当一家之主）；support one's family （养家糊口）；nn【扩展】nn1. family作为一个集体名词,在强调家庭成员个体时,谓语动词通常用复数。nn例:My family are all tall.（我全家每个人都很高）nn2.family被看成是一个整体时,谓语动词通常用单数。nn例:My family is very large.（我家是一个大家庭）nn",
+                "Content": "【原文】There are (four) people in her family, her father David Brown, her mother Carry and her little sister Alice.nn【翻译】她们家有四口人，她的爸爸David Brown，妈妈Carry和她的小妹妹Alice。nn【解析】由下文“她的爸爸、妈妈和小妹妹”可知，她的家里总共有四口人，答案为B",
+                "Skill": "",
+                "Point": "本题考查通过寻找上下文的相关信息答题",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q4": {
+            "Body": {
+                "Sub": "",
+                "An1": "has",
+                "An2": "have",
+                "An3": "is having",
+                "An4": "/"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "",
+                "Content": "【原文】She (has) a white cat. Its name is Cherry.nn【翻译】她有一只雪白的猫咪，名字叫Cherry。nn【解析】主语she为第三人称单数形式，谓语动词应用相应的第三人称单数形式，故可先排除B和D。根据此句所表达的意思，养猫是一个习惯性的状态，用一般现在时，故答案为A。",
+                "Skill": "注意识记动词一般现在时的单数第三人称变化",
+                "Point": "本题考查一般现在时的基本用法。nn一般现在时表示主语现在的状态和特征，或经常,习惯性的动作，has用于第三人称单数；have用于其它人称。",
+                "S1": "0",
+                "S2": "0",
+                "S3": "1",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q5": {
+            "Body": {
+                "Sub": "",
+                "An1": "living",
+                "An2": "talking",
+                "An3": "playing",
+                "An4": "eating"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "①playnn【注释】nnn. 比赛；游戏；戏剧；；nnv. 玩耍；演出；充当…的角色；装扮nn【词组】nnplay with（同…一起玩）；play back（重播）；； nn【正误辨析】:nn“有空请到我家来玩”的英文说法:nn错误:Please come to my home and play when you have time.nn正确:Please come and see me when you have time.nn分析:在现代英语中, 不可把汉语“玩”一律译成play。play几乎只能用于儿童、动物或用于玩笑口吻中。nnnn②mendnn【注释】nnv. 修理，修补nnn. 改进，改良，修补处，好转nn【辨析】nn同义词:fix,repairnn反义词:destroynn【词组】nnmend for（为…修补）；mend with（用…修补）nn",
+                "Content": "【原文】Look! Alice is (playing) with Cherry.nn【翻译】看！Alice正在和Cherry玩呢。nn【解析】本题有“Look”标志词暗示，通过下文“is mending”“is cleaning”的描述，再结合本句空格前is的暗示，可推断出，此处也应用动词的ing形式。故可先排除A和B。Cherry是一只白色的猫咪，按常理推测，Alice应该是在跟Cherry玩耍，而不是eating（吃），故答案为C。",
+                "Skill": "根据上下文意思，理解填空处填入什么词既与介词搭配又符合句意",
+                "Point": "本题考查动词的词义、词组搭配、语法时态等。",
+                "S1": "0",
+                "S2": "0",
+                "S3": "1",
+                "S4": "1",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q6": {
+            "Body": {
+                "Sub": "",
+                "An1": "her",
+                "An2": "its",
+                "An3": "his",
+                "An4": "a"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "homeworknn【注释】nnn. 家庭作业；准备工作nn【词组】nndo one's homework做功课、做必要的准备工作nn【辨析】nnhomework的基本意思是“家庭作业”，指课外应预习或复习的功课，是不可数名词。",
+                "Content": "【原文】Ah, she is doing (her) homework in Chinese.nn【翻译】哦，她正在做她的中文作业。nn【解析】homework是不可数名词，故不能用“a”修饰，排除D。主语为she，其相对应的形容词性物主代词应是her，故答案为A。",
+                "Skill": "",
+                "Point": "本题考查物主代词:nn也叫人称代词的所有格。分为形容词性和名词性:nn① 形容词性物主代词+名词nn② 名词性物主代词=形容词性物主代词+名词nn③ 形容词性物主代词有:my、your、his、her、its、our、theirnn④ 名词性物主代词mine、yours、his、hers、its、ours、theirs",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q7": {
+            "Body": {
+                "Sub": "",
+                "An1": "say",
+                "An2": "speak",
+                "An3": "tell",
+                "An4": "talk"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "lovenn【注释】nnv. 爱；喜欢；爱慕nnn. 喜爱；热爱；酷爱；喜爱的事物nn【辨析】nn同义词:like、enjoynn反义词:hatennlove、like、enjoy的比较:nn三者表示不同程度的“喜爱”“喜欢”。其区别是:like表示一般意义上的“喜欢”, enjoy带有欣赏性质的“喜欢,喜爱”,且含“享受”之义,而love感情比like深刻。",
+                "Content": "【原文】She can’t (speak) Chinese well, but he loves Chinese very much.nn【翻译】虽然她的中文说得不好，但她很爱学习中文。nn【解析】speak是讲的意思，做及物动词时，后一般会直接接某一门语言，Chinese意为“汉语”，从四个选项的用法上来看只能用speak修饰",
+                "Skill": "要做好这类试题，必须明确各个动词的词义和用法，然后根据题意需要选用合适的动词",
+                "Point": "本题考查say、speak、talk、tell的用法区别。nn这四个动词都有“说”，“讲”的意思。nnsay:是及物动词，其宾语可以是名词、代词或从句，着重说话的内容；nn例:He can say his name. （他会说他的名字。）nnspeak:只表示发音或发言的动作，着重指说话的动作本身；nn例:Can you speak Chinese?（你会说汉语吗？）nntalk:强调“双方交谈”，一般用做不及物动词，表示同某人交谈时，常用talk to/with sb.nn例:She is talking with Lucy in English. （她正在和Lucy用英语交谈。）nntell:“告诉”，可接双宾语，“告诉某人某事”为tell sb. sth.；nn例:He is telling the children a story. （他正在给孩子们讲一个故事。）",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q8": {
+            "Body": {
+                "Sub": "",
+                "An1": "mother",
+                "An2": "sister",
+                "An3": "cat",
+                "An4": "father"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "worknn【注释】nnv.使工作；使运作；操作；使产生效果nnn.工作，操作；著作；工厂；行为，事业nn【词形变化】nn第三人称单数:worksnn过去式/过去分词:workednn现在分词:workingnnwrought也可做 work 的过去式，表示“做成的，精炼的”nn【词组】nnwork at（在…工作）；work for sb/sth（受雇于）；work out（解答、计算出）；work away（继续工作）； work oneself into（使自己惯于某项工作）",
+                "Content": "【原文】Jean’s (father) works in a middle school as an English teacher.nn【翻译】Jean的爸爸在一所中学教英语。nn【解析】文章最后一句“Jean and her sister study at the same school”，可知此处并不是她在学校工作，故先排除B。狗不能工作，C也排除。由下句“Her mother works at...”可知，Jean的妈妈并不在学校工作，所以正确答案为D",
+                "Skill": "运用排除法，最好能够结合原文中的句子来推敲，学生要学会融会贯通的理解全文，这样才能选择正确的选项",
+                "Point": "本题考查学生通过寻找上下文的相关信息，进行简单的逻辑推理",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q9": {
+            "Body": {
+                "Sub": "",
+                "An1": "Chinese",
+                "An2": "Japanese",
+                "An3": "English",
+                "An4": "American"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "asnn【注释】nn adv. 同样地；例如；nn prep. 以…的身份；如同；nn conj. 像…一样；由于；当…时；尽管；nn【扩展】nn① as词性较多，最常用且用法较复杂:可作连词、关系代词、介词以及副词。nn② 本题中，as作为介词，表示‘作为’”，与work连用，是‘任…工作，当…’的意思。nn③作为介词的用法:引导大多用作状语的介词短语；少数情况可作宾语补足语。",
+                "Content": "【原文】Jean's father works in a middle school as an (English) teacher.nn【翻译】Jean的爸爸在一所中学教英语。nn【解析】“an”修饰的是以元音音素开头的单词，四个选项中，只有English是符合的，故选C。",
+                "Skill": "这类题目需要学生留意不定冠词遇到元音开头的单词时的特殊变化，联系上下文，选出最佳答案。",
+                "Point": "对不定冠词使用规则的掌握",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q10": {
+            "Body": {
+                "Sub": "",
+                "An1": "station",
+                "An2": "factory",
+                "An3": "house",
+                "An4": "school"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "stationnn【注释】nnn. 车站；站；驻地；身份，地位nnv. 安置；驻扎nn【词组】nngas station（加油站）；police station（警察局）；radio station（广播电台,电台）；television station（电视台）",
+                "Content": "【原文】Her mother works at a TV (station).nn【翻译】她的妈妈在电视台工作。nn【解析】TV station=television station意为“电视台”",
+                "Skill": "解决这类题目要求考生多读、多记，对所学词语或固定搭配牢固掌握，并能灵活运用",
+                "Point": "本题考查固定词组搭配",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        }
+    }
+}

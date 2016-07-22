@@ -1,0 +1,124 @@
+﻿{
+    "T": {
+        "Head": {
+            "Part": "完型填空",
+            "Type1": "TXT",
+            "Type2": "4",
+            "Rem": "REM",
+            "AnsQues": "5",
+            "Txt": "Q13_1_2_000006.txt",
+            "Pic": "",
+            "Sound": ""
+        },
+        "Q1": {
+            "Body": {
+                "Sub": "",
+                "An1": "comes in",
+                "An2": "come in",
+                "An3": "comes on",
+                "An4": "came on"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "① festivalnn【注释】nn节日；节期；贺宴，会演nn【辨析】nn近义词:holiday,joy,celebration nn复数形式:festivalsnn【词组】nntraditional festival（传统节日）；spring festival（春节）；mid-autumn festival（中秋节）nn【扩展】nnInternational Children’s Day(国际儿童节)、National Day(国庆节)、Teachers Day(教师节)nnnn② comenn【注释】nnvi. 来；出现；发生nnvt. 做；假装nn【辨析】nn同义词:happen、figurenn反义词:gonn【词形变化】nn形容词形式:coming（即将到来的）nn名词形式:comer（来者）nn过去式/过去分词:came/comenn现在分词:comingnn【词组】nncome in（进来，到达，流行起来）；come on（快点，跟着来，进展）；come up （被提及，意外发生，出现）；nnnn③ usuallynn【注释】nnadv. 通常，经常nn【辨析】nn同义词:always，often，generallynn【词组】nnas usual（和往常一样）",
+                "Content": "【原文】It usually (comes in) January or February. nn【翻译】它春节通常是1月份或2月份nn【解析】月份前面用介词in，usually用于一般现在时，主语it为单数，所以动词come后加s，故选A。",
+                "Skill": "在答这种类型的试题时谨记:时间名词是大致的范围时用in，精确到时间点时就需要at，星期和日期前面用on，对这种形式的试题，不需要多大的做题技巧，只要我们多多练习，灵活使用即可掌握。",
+                "Point": "本题考查与月份搭配的介词以及动词的单数第三人称形式。nn当只有月份或年份时，用介词in，例:in January，in 2013；当表示具体某一天及其早、中、晚，用介词on。如on May 1, on Monday, on New Year’s Day, on a cold night in January, on a fine morning, on Sunday afternoon等。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q2": {
+            "Body": {
+                "Sub": "",
+                "An1": "After",
+                "An2": "Before",
+                "An3": "On",
+                "An4": "In"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "busynn【注释】nnadj.忙碌的；热闹的；正被占用的nnvt. 使忙于nn【辨析】nn反义词:freenn【词形变化】nn比较级/最高级:busier/busiestnn过去式/过去分词:busied/busiednn现在分词:busyingnn【词组】nnbe busy (in) doing sth（忙于做……）；busy with sth.（忙于……）busy hour（高峰时段）；busy line（占线）；busy season（旺季）",
+                "Content": "【原文】(Before) the Spring Festival, people are busy shopping and doing some cleaning.nn【翻译】春节前，人们忙着购物和打扫卫生。nn【解析】通读全句可以看到，人们忙着打扫卫生，在中国的传统里，春节前要打扫卫生以辞旧迎新，故选B。且文章是按照时间顺序叙述的，根据后文的除夕及春节第一天，也可推测这里描述的是春节前。",
+                "Skill": "这类题目往往四个选项在语法上没有错误，需要根据前后文意思，确定哪个选项符合和句意。",
+                "Point": "本题考查介词的意义，根据前后文意思，来确定哪个介词符合语境。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q3": {
+            "Body": {
+                "Sub": "",
+                "An1": "shop",
+                "An2": "shoping",
+                "An3": "shopping",
+                "An4": "shopped"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "shop nn【注释】nnn.商店nnv.（到…）去买东西nn【词形变化】nn复数/第三人称单数:shopsnn过去式/过去分词:shoppednn现在分词:shopping（做名词时，意为“购物”）nn【词组】nnshop assistant(店员)；flower shop(花店)；shop for something(买某物)",
+                "Content": "【原文】Before the Spring Festival, people are busy (shopping) and doing some cleaning.nn【翻译】春节前，人们忙着购物和打扫卫生。nn【解析】固定搭配be busy (in) doing sth.忙于做某事，排除AD。shop是重读闭音节，现在分词要双写p，故选C。",
+                "Skill": "句中出现and,在没有任何其他提示的情况下，前后两个动词的时态必定一致。",
+                "Point": "本题考查形容词busy搭配的非谓语动词形式以及重读闭音节单词的分词特殊变化。nn① busy with sth. 忙于……nn例:I’m busy with my homework. 我忙着写作业。nn② busy (in) doing sth. 忙于做……nn例:I’m busy (in) doing my homework. 我忙着写作业。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q4": {
+            "Body": {
+                "Sub": "",
+                "An1": "to",
+                "An2": "on",
+                "An3": "in",
+                "An4": "from"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "① stay upnn【注释】熬夜nn【辨析】nnstay 与stay up:nnstay有保持的含义，因此stay up就引申为一直保持清醒，熬夜的意思，另外stay还有逗留，待在某地的含义，但是只是短暂的停留。nnnn② do some +v-ing:nn【注释】干某事，做某事nn【辨析】nn在这里的v-ing属于名词性质，表示这项动作持续了一段时间。do在这里的意思是泛指，根据后面的动名词来决定nn例:do some washing  do some shopping,",
+                "Content": "【原文】After dinner, all the family stay up late (to) welcome the Spring Festival, there is a big family dinner.nn【翻译】晚饭后，所有的家庭成员都守夜，为迎接春节的到来。nn【解析】to welcome在这里是目的状语修饰谓语动词，in、on、from和动词搭配都没有这种用法，且后面需加动名词，故选A。",
+                "Skill": "排除法。这类题型主要考查的是句意的理解，了解to后面的动作的发生是目的时，我们就可以直接选用to。",
+                "Point": "本题考查to引导的目的状语。nn目的状语修饰谓语动词，说明动作的目的。to引导的目的状语可以位于句首和句末。nn例:I got up early today to catch the first bus. （我今早起得很早，为了赶首班车。）nn这里的to catch the bus就是目的状语，说明“起得很早”这一动作的目的。",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "1",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q5": {
+            "Body": {
+                "Sub": "",
+                "An1": "put on",
+                "An2": "wear",
+                "An3": "wears",
+                "An4": "puts on"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "say hello(sorry,greeting…)to sb:nn【注释】向某人问好，向某人说抱歉，欢迎某人...nn【辨析】nnsay 后面可以使用很多的词来代替，属于固定的短语搭配，to 表示自己要传达的对象，多用在口语表达里。",
+                "Content": "【原文】On the first day of the New Year, people (put on) their new clothes and go to visit their relatives and friends.nn【翻译】新年的第一天，人们穿上新衣去走亲访友。nn【解析】put on意为“穿上”，偏重穿衣的动作。wear意为“穿着”，偏重穿衣的状态。此处句意为人们穿上新衣服去拜访亲友，强调动作，排除B、C，people是表示群体概念的集体名词，谓语动词用复数形式，故选A。",
+                "Skill": "解答这类题目，注意辨析所给近义词，选出正确答案。遇到群体概念的集体名词，如people、police等，注意谓语动词应为复数形式。",
+                "Point": "本题考查表示“穿衣”的两个近义词的辨析。nn① put on强调动作“穿上”。nn例:He's putting on his shirt. 他正在穿衬衫。nn② wear强调状态“穿着”。nn例:He's wearing the blue shirt. 他穿着那件蓝色衬衫。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        }
+    }
+}

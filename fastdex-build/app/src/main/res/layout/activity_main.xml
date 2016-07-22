@@ -4,11 +4,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <TextView
+        android:id="@+id/tv_xxxxxxx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="fdfdfdddd"
+        />
+
     <FrameLayout
         android:id="@+id/fl_content"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_above="@+id/tabbar_view" />
+        android:layout_above="@+id/tabbar_view"
+        android:layout_below="@+id/tv_xxxxxxx"/>
 
     <com.example.fertilizercrm.view.TabGroupView
         android:id="@+id/tabbar_view"

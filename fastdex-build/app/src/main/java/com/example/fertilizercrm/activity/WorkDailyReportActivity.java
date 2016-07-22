@@ -3,7 +3,7 @@ package com.example.fertilizercrm.activity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.TextView;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.bigkoo.pickerview.TimePickerView;
@@ -19,9 +19,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class WorkDailyReportActivity extends BaseActivity {
-    @Bind(R.id.tv_time) TextView tv_time;
-    @Bind(R.id.et)      TextView et;
-    @Bind(R.id.work_switch) WorkReportSwitchView work_switch;
+    @BindView(R.id.tv_time) TextView tv_time;
+    @BindView(R.id.et)      TextView et;
+    @BindView(R.id.work_switch) WorkReportSwitchView work_switch;
 
     private Date date = new Date();
     private int currentTab;//0: 今日总结 1: 明日计划

@@ -1,0 +1,124 @@
+﻿{
+    "T": {
+        "Head": {
+            "Part": "完型填空",
+            "Type1": "TXT",
+            "Type2": "4",
+            "Rem": "REM",
+            "AnsQues": "5",
+            "Txt": "Q13_1_2_000014.txt",
+            "Pic": "",
+            "Sound": ""
+        },
+        "Q1": {
+            "Body": {
+                "Sub": "",
+                "An1": "spent",
+                "An2": "taken",
+                "An3": "cost",
+                "An4": "paid"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "①club feetnn【注释】:nnn.畸形足nnnn② treatmentnn【注释】nnn.治疗；处理；待遇，对待",
+                "Content": "【原文】The first three years of his life was (spent) in hospital.nn【翻译】他生命中的头三年是在医院里度过的nn【解析】cost是指花费某人多少钱，pay表示付钱，不符文章意思。take应用句型It takes sb. sometime to do sth.；spend有“花时间于……，度过”的意思，并且spend还可做及物动词，所以放在此处，不仅符合此处的语境，而且也符合此句的语法结构。",
+                "Skill": "",
+                "Point": "本题考查语法时态。",
+                "S1": "0",
+                "S2": "0",
+                "S3": "1",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q2": {
+            "Body": {
+                "Sub": "",
+                "An1": "talk",
+                "An2": "sit",
+                "An3": "study",
+                "An4": "walk"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "problemnn【注释】:nnn. 问题；难题nn【辨析】nnproblem“问题；难题”，指等待解决的问题。question“问题”，指需要考虑、讨论、回答的问题",
+                "Content": "【原文】you wouldn’t know he has a problem when you saw him (walk).nn【翻译】你不会知道当他走路的时候其实是有困难的。nn【解析】根据前文中The doctors said that with treatment he would be able to walk，可知医生认为作者的儿子在经过治疗后是能够走路的。因此可推出此处是“在他8岁时，当你看到他走路，你察觉不出他有什么问题”。故答案选D",
+                "Skill": "",
+                "Point": "本题考查上下文理解。",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q3": {
+            "Body": {
+                "Sub": "",
+                "An1": "after",
+                "An2": "before",
+                "An3": "during",
+                "An4": "till"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "duringnn【注释】:nnprep. 在…期间；在…时候nn【辨析】nn同义词:through，within，while，until",
+                "Content": "【原文】Children in our neighborhood always ran around (during) their playnn【翻译】邻居家的孩子在他们做游戏时总是跑来跑去nn【解析】联系此处的语境，再对照选项，可知这里应是“邻居家的孩子在他们做游戏时总是跑来跑去”。during的意思为“在……期间”，放在此处符合此处的语境。故答案选C。",
+                "Skill": "",
+                "Point": "本题考查上下文理解。",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q4": {
+            "Body": {
+                "Sub": "",
+                "An1": "either",
+                "An2": "too",
+                "An3": "though",
+                "An4": "yet"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "eithernn【注释】:nnpron （两者之中）任何一个nnadj  （两者中）任一的；非此即彼的，两者择一的",
+                "Content": "【原文】and Joey would jump and ran and play，(too).nn【翻译】Joey也会跑着跳着玩耍着。nn【解析】作者没有把儿子不能正常跑动的情况告诉给他的儿子，因此Joey不知道。前文提到邻居的孩子们在玩耍，所以Joey和邻居的孩子一样也在跳、跑、玩耍。too用于肯定句，either用于否定句，故答案选B。",
+                "Skill": "",
+                "Point": "本题考查上下文理解。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q5": {
+            "Body": {
+                "Sub": "",
+                "An1": "able",
+                "An2": "sorry",
+                "An3": "glad",
+                "An4": "afraid"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "ablenn【注释】nnadj. 能够的；有能力的nn【辨析】nn同义词:skillful, efficient, capablenn反义词:unable, nn【词组】nnbe able to 能；会",
+                "Content": "【原文】We never told him that he probably wouldn’t be (able) to run like the other children.【翻译】我们从未告诉他，也许他不能像其他的小朋友那样能够正常地跑动nn【解析】联系此处的语境，再对照选项，可知这里应是“他也许不能像其他的小朋友那样能够正常地跑动”。be able to do的意思为“能够做……事”，故答案选A。",
+                "Skill": "",
+                "Point": "本题考查固定词组搭配。",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        }
+    }
+}

@@ -17,7 +17,7 @@ import com.example.fertilizercrm.sdlv.SlideAndDragListView;
 import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import butterknife.Bind;
+import butterknife.BindView;
 import com.example.fertilizercrm.common.utils.DimensionPixelUtil;
 import com.example.fertilizercrm.common.utils.Logger;
 
@@ -143,9 +143,9 @@ public class SendOutListActivity extends JSONArrayListActivity<SendOutListActivi
     }
 
     public static final class ViewHolder {
-        @Bind(R.id.tv_agent_name) TextView tv_agent_name;//单号
-        @Bind(R.id.tv_principal)  TextView tv_principal;//日期
-        @Bind(R.id.tv_maintain)   TextView tv_maintain;//收货人
-        @Bind(R.id.tv_location)   TextView tv_location;//状态
+        @BindView(R.id.tv_agent_name) TextView tv_agent_name;//单号
+        @BindView(R.id.tv_principal)  TextView tv_principal;//日期
+        @BindView(R.id.tv_maintain)   TextView tv_maintain;//收货人
+        @BindView(R.id.tv_location)   TextView tv_location;//状态
     }
 }

@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 import com.example.fertilizercrm.R;
 import com.example.fertilizercrm.role.Role;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.example.fertilizercrm.common.utils.Logger;
 
@@ -37,9 +37,9 @@ public class CustomerTypeSwitchView extends LinearLayout {
     private int currentType;
     private Role currentRole;
 
-    @Bind(R.id.rl_yiji) View rl_yiji;
-    @Bind(R.id.rl_erji) View rl_erji;
-    @Bind(R.id.rl_farmer) View rl_farmer;
+    @BindView(R.id.rl_yiji) View rl_yiji;
+    @BindView(R.id.rl_erji) View rl_erji;
+    @BindView(R.id.rl_farmer) View rl_farmer;
 
     public CustomerTypeSwitchView(Context context, AttributeSet attrs) {
         super(context, attrs);

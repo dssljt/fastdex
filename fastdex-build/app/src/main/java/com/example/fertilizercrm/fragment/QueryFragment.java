@@ -14,7 +14,7 @@ import com.example.fertilizercrm.activity.SendOutListActivity;
 import com.example.fertilizercrm.activity.VisitRecordsListActivity;
 import com.example.fertilizercrm.basic.BaseFragment;
 import com.example.fertilizercrm.role.Role;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -65,18 +65,18 @@ public class QueryFragment extends BaseFragment {
     //    零售商业务员
     //    出货查询 款项查询 拜访轨迹
 
-    @Bind(R.id.rl_container) ViewGroup rl_container;
+    @BindView(R.id.rl_container) ViewGroup rl_container;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        int layoutId = R.layout.fragment_query;
-        if (currentRole() == Role.factory) {
-            layoutId = R.layout.fragment_query_factory;
-        }
-        else if (currentRole().isSalesman()) {
-            layoutId = R.layout.fragment_query_salesman;
-        }
+        int layoutId = R.layout.fragment_query_salesman;
+//        if (currentRole() == Role.factory) {
+//            layoutId = R.layout.fragment_query_factory;
+//        }
+//        else if (currentRole().isSalesman()) {
+//            layoutId = R.layout.fragment_query_salesman;
+//        }
         View contentView = obtainContentView(layoutId, container);
         ButterKnife.bind(this, contentView);
         return contentView;

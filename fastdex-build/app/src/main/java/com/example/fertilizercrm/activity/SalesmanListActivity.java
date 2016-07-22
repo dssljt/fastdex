@@ -14,7 +14,7 @@ import com.example.fertilizercrm.http.Req;
 import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import butterknife.Bind;
+import butterknife.BindView;
 import com.example.fertilizercrm.common.utils.JsonUtils;
 
 /**
@@ -195,15 +195,15 @@ public class SalesmanListActivity extends JSONArrayListActivity<SalesmanListActi
     }
 
     public static class ViewHolder {
-        @Bind(R.id.tv_name)     TextView tv_name;
-        @Bind(R.id.tv_mobile)   TextView tv_mobile;
-        @Bind(R.id.ib_menu)     ImageButton ib_menu;
-        @Bind(R.id.rl_item_click) View rl_item_click;
-        @Bind(R.id.ll_container) View ll_container;
-        @Bind(R.id.ll_tab_01)   View ll_tab_01;
-        @Bind(R.id.ll_tab_02)   View ll_tab_02;
-        @Bind(R.id.ll_tab_03)   View ll_tab_03;
-        @Bind(R.id.ll_tab_04)   View ll_tab_04;
+        @BindView(R.id.tv_name)     TextView tv_name;
+        @BindView(R.id.tv_mobile)   TextView tv_mobile;
+        @BindView(R.id.ib_menu)     ImageButton ib_menu;
+        @BindView(R.id.rl_item_click) View rl_item_click;
+        @BindView(R.id.ll_container) View ll_container;
+        @BindView(R.id.ll_tab_01)   View ll_tab_01;
+        @BindView(R.id.ll_tab_02)   View ll_tab_02;
+        @BindView(R.id.ll_tab_03)   View ll_tab_03;
+        @BindView(R.id.ll_tab_04)   View ll_tab_04;
     }
 }
 

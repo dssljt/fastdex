@@ -1,0 +1,234 @@
+﻿{
+    "T": {
+        "Head": {
+            "Part": "完型填空",
+            "Type1": "TXT",
+            "Type2": "4",
+            "Rem": "REM",
+            "AnsQues": "10",
+            "Txt": "Q13_1_2_000019.txt",
+            "Pic": "",
+            "Sound": ""
+        },
+        "Q1": {
+            "Body": {
+                "Sub": "",
+                "An1": "do",
+                "An2": "make",
+                "An3": "play",
+                "An4": "take"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "playgroundnn【注释】nn（学校的）操场；（儿童）游戏场",
+                "Content": "【原文】We all like to (play) games there after school.nn【翻译】我们都喜欢放学后在那里玩游戏。nn【解析】play games固定搭配，表示玩游戏的意思。所给的其他选项中的词和games搭配不能表达出这个意思，故选择C最合适。",
+                "Skill": "",
+                "Point": "本题考查学生固定搭配的掌握。",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q2": {
+            "Body": {
+                "Sub": "",
+                "An1": "there",
+                "An2": "have",
+                "An3": "at there",
+                "An4": "at have"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "",
+                "Content": "【原文】We all like to play games (there) after school.nn【翻译】我们都喜欢放学后在那里玩游戏。nn【解析】there意为“那里”的意思，通读上下文，此处表示操场这个地点，且there和here前不能用介词，所给的选项中，只有选项A最符合题意。",
+                "Skill": "",
+                "Point": "本题考查学生对于上下文及语境的理解。",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q3": {
+            "Body": {
+                "Sub": "",
+                "An1": "on",
+                "An2": "in",
+                "An3": "at",
+                "An4": "with"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "classnn【注释】nnn.班；等级；种类；课nnvt.把…编入某一班级nn【扩展】nnclassroom（教室）；classmate（同班同学）",
+                "Content": "【原文】We have only two classes (in) the afternoon.nn【翻译】我们在下午只有两节课。nn【解析】在上午、中午、下午之前，需用介词in，固定用法。",
+                "Skill": "",
+                "Point": "本题考查学生对于介词的正确用法。",
+                "S1": "1",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q4": {
+            "Body": {
+                "Sub": "",
+                "An1": "beginning",
+                "An2": "finish",
+                "An3": "all",
+                "An4": "over"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "",
+                "Content": "【原文】When school is (over)，a lot of students go to the playground.nn【翻译】放学后，许多同学都去操场。nn【解析】根据‘a lot of students go to the playground’，可推断，本句的意思是在放学后能去操场玩。在所给的选项中，只有B和D有‘结束’的意思，但finish是动词，一般用法‘finsh doing sth’；over 形容词 ，表示‘结束的，完了的’意思，符合题意，故选D。",
+                "Skill": "排除法是迅速找到对应内容，快速排除选项。一般来说，排除法选项内容都在文章中的相近相邻处。排除法和正向选择同时运用这样做题准确率更高。",
+                "Point": "本题考查学生上下文理解和词义辨析能力。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q5": {
+            "Body": {
+                "Sub": "",
+                "An1": "having",
+                "An2": "making",
+                "An3": "playing",
+                "An4": "doing"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "",
+                "Content": "【原文】The boys of Grade Two are (having) a basketball match.nn【翻译】二年级的男生们正在举行一场篮球比赛。nn【解析】make和do意为“做”，都不符题意，可先排除。此处看到basketball，学生容易错选C，由于是“a basketball match”，所以不能用play，选择 “having”表示“有/举行”最合适。",
+                "Skill": "排除法是迅速找到对应内容，快速排除选项。一般来说，排除法选项内容都在文章中的相近相邻处。排除法和正向选择同时运用这样做题准确率更高。",
+                "Point": "本题考查学生的词义辨析和习惯用法。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q6": {
+            "Body": {
+                "Sub": "",
+                "An1": "seeing",
+                "An2": "looking",
+                "An3": "watching",
+                "An4": "meeting"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "shoutnn【注释】nnv.叫喊；高声说或发出喊叫声nnn.大叫；大叫着说；呐喊nn【辨析】nn近义词：yell、screamnn反义词：whispernn【词组】nnshout at（冲着…叫喊）；shout out（大声喊叫）；shout to sb.（向某人喊话）",
+                "Content": "【原文】Some girls are (watching) and shouting.nn【翻译】一些女同学边看边呼喊。nn【解析】选项D明显不符题意，可以先排除。另外三个选项中，只有 “watching”表示一个观看的过程，最符合题意，故选C。",
+                "Skill": "",
+                "Point": "本题考查学生词义的辨析能力。nn① watch强调“专注地看”，有欣赏的意味，常用于看电视、看球赛等。例：Do you watch TV at night?（你晚上看电视吗？ ）nn② look指集中注意力地看，是有意的，强调“看”的动作。单独使用时，用来引起对方的注意；如果跟宾语，要和at连用。nn例1：Look! Tom is over there.（看！汤姆在那儿。）nn例2：Look at the blackboard, please.（请看黑板 ）nn③see强调“看”的结果，意为“看见、看到”。nn例： How many birds can you see in the tree?（你能看到树上有多少只鸟儿？）",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q7": {
+            "Body": {
+                "Sub": "",
+                "An1": "playing",
+                "An2": "playing the",
+                "An3": "play",
+                "An4": "play the"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "",
+                "Content": "【原文】Many teachers are also (playing) football.nn【翻译】许多老师们也正在踢足球。nn【解析】play后跟球类不能加定冠词the，排除BD。全文用的都是进行时态，且句子中已经有了be动词are，因此不能再选动词play，故此处选A。",
+                "Skill": "",
+                "Point": "本题考查学生短语的习惯用法及现在进行时的掌握。nn现在进行时表示动作发生的时间是“现在”，动作目前的状态是“正在进行中”。nn构成是：be+动词的ing〔现在分词〕形式。nn肯定句：主语+be+现在分词+其他。nn否定句：主语+be+not+现在分词+其他。nn一般疑问句：Be+主语+现在分词+其他？nn肯定回答：Yes+主语+be。nn否定回答：No+主语+be+not。nn注：is not可以缩写成isn‘t，are not可以缩写成aren’t，但是am not在现代英语中不可以缩写",
+                "S1": "0",
+                "S2": "0",
+                "S3": "1",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q8": {
+            "Body": {
+                "Sub": "",
+                "An1": "are",
+                "An2": "is",
+                "An3": "was",
+                "An4": "were"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "l",
+                "Content": "【原文】Zhang Jie,Wang Min,Li Hong （are）students of Grade One.nn【翻译】他们正在打排球。nn【解析】全文用的都是现在时态，故可先排除be动词为过去时的C和D。句中“students ”为复数，故此处选A。",
+                "Skill": "",
+                "Point": "本题考查be动词的掌握",
+                "S1": "0",
+                "S2": "0",
+                "S3": "1",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q9": {
+            "Body": {
+                "Sub": "",
+                "An1": "good",
+                "An2": "nice",
+                "An3": "well",
+                "An4": "bad"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "",
+                "Content": "【原文】They are playing very (well).nn【翻译】他们打的非常好。nn【解析】play是实意动词，需要用副词修饰。“well”是副词，结合语境，只有well能正确表达句子的意思，故选择C。",
+                "Skill": "",
+                "Point": "本题考查学生对于形容词和副词的用法掌握。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q10": {
+            "Body": {
+                "Sub": "",
+                "An1": "for go",
+                "An2": "to go",
+                "An3": "go",
+                "An4": "go to"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "",
+                "Content": "【原文】It’s time (to go) home.nn【翻译】到时间回家了。nn【解析】It’s time to do sth为固定用法。且go home的搭配中也无需加介词to，故答案为B",
+                "Skill": "",
+                "Point": "本题考查学生对于固定搭配的掌握。",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        }
+    }
+}

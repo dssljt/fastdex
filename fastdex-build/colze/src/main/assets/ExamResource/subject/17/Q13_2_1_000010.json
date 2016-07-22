@@ -1,0 +1,124 @@
+﻿{
+    "T": {
+        "Head": {
+            "Part": "完型填空",
+            "Type1": "TXT",
+            "Type2": "1",
+            "Rem": "REM",
+            "AnsQues": "5",
+            "Txt": "Q13_2_1_000010.txt",
+            "Pic": "",
+            "Sound": ""
+        },
+        "Q1": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "off",
+                "Word": "①Effendinn【注释】:nn阿凡提（人名）nnnn②ministernn【注释】:nna) n.大臣；部长；公使；牧师nnb) vi.辅助，服侍；执行牧师职务nnnn③fell offnn【注释】:跌落nnnn④primenn【注释】nna)adj.最好的；首要的；最初的； 基本的；nnb）n.精华；初期；全盛时期；青年；nn【辨析】nn同义词:principal、basic",
+                "Content": "【原文】the Minister fell （off） the horse and died.nn【翻译】丞相会从马上摔下来并且摔死nn【解析】fall off是固定搭配，意为“从….摔下来”",
+                "Skill": "",
+                "Point": "本题考查固定词组搭配",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q2": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "death",
+                "Word": "",
+                "Content": "【原文】Effendi, since you know when my Minister would die, you must know the date of your own （death）.nn【翻译】阿凡提，既然你知道了我的丞相什么时候会死，那你一定知道你自己的死期。nn【解析】本题的前半句“since you know when my Minister would die”可推断，接在date of your own的空格，词义应该也是跟“死亡”有关；your own意思是“你自己的”，后接名词词性，故空格内填“death”，date of death意为“死期”。",
+                "Skill": "上文暗示法:nn完形填空所选的文章都是具有逻辑关系，意义相连的语篇。考生可充分利用文章的上下文或前后句，找到有提示作用的词或句。",
+                "Point": "本题考查学生对于词义的辨析及习惯短语用法的掌握。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q3": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "looked",
+                "Word": "",
+                "Content": "【原文】Effendi （looked） at the king for a while, he answerednn【翻译】阿凡提看了国王一会儿，然后说。nn【解析】look at 是固定词组搭配，意味“看…..”，后面接宾语。此处需注意时态，本题后半句，“he answered”,用的是过去时，故本空格的正确答案应填写look的过去式looked.",
+                "Skill": "",
+                "Point": "本题考查固定词组搭配和过去式。",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q4": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "earlier",
+                "Word": "earliernn【注释】:nna）adj. 早期的，初期的nnb）adv. 早期（地），初期（地）nn【辨析】nna）同义词:before backnnb）反义词:laternn【词形变化】nna）原形: early； nnb）最高级earliest",
+                "Content": "【原文】I’ll die two days （earlier） than you.”nn【翻译】我将会比你早死2天nn【解析】根据下文“the king was afraid if he killed Effendi, he himself would die after that.”（国王担心若杀了阿凡提，他自己在那之后也会死去），可判断，本空格应填early意思是“早两天死”。本题还需注意的是:由than可判定需用形容词的比较级，故正确答案是early的比较级“earlier”",
+                "Skill": "",
+                "Point": "本题考查学生上下文的理解及形容词比较级的掌握。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q5": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "keep",
+                "Word": "①be afraid ofnn【注释】:v.害怕，担忧nnnn②alivenn【注释】nnadj. 活着的；活泼的；存在着；nn【辨析】nna）同义词:active、livennb）反义词:deadnnc）alive,live,living的比较:均有“活着的，活的”之意:nn“alive”指生命从奄奄一息到精力旺盛的各种状态；“live”通常作定语，指活生生的，生气勃勃的，还可表示现场直播的；“living”包括人和动植物的生命没有消失、仍然存在的状态。 nn【词组】nncome alive（栩栩如生）nnas long as possiblenn【注释】nn尽可能长的时间",
+                "Content": "【原文】He thought he must （keep） Effendi alive as long as possible, so he let Effendi go.nn【翻译】他认为他必须尽可能长的时间保持阿凡提活着，所以他放阿凡提走了。nn【解析】前文提到，阿凡提说“他将比国王早死2天”“国王恐怕阿凡提死后，他自己也将死去”，可推断，本句的想表达的意思是“他必须让阿凡提一直活着”，题目中已给出首字母已k，只有“keep”能表达出上述的意思。",
+                "Skill": "",
+                "Point": "本题考查学生的上下文理解能力。",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        }
+    }
+}

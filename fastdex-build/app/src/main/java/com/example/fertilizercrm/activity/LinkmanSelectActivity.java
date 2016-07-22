@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import butterknife.Bind;
+import butterknife.BindView;
 import com.example.fertilizercrm.common.utils.Logger;
 
 import com.example.fertilizercrm.R;
@@ -34,7 +34,7 @@ public class LinkmanSelectActivity extends ListViewActivity<LinkmanAdapter> {
     public static final String KEY_SIZE = "size";
     public static final String KEY_ROLEBEAN = "rolebean";
 
-    @Bind(R.id.link_select) LinkSelectView link_select;
+    @BindView(R.id.link_select) LinkSelectView link_select;
 
     private List selectedList = new ArrayList();
     private HashMap<Role,List> dataMap = new HashMap<>();

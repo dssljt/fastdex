@@ -14,7 +14,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.example.fertilizercrm.common.utils.DimensionPixelUtil;
@@ -30,7 +30,7 @@ public class ImageLinearLayout extends LinearLayout {
     public int max = 10;
     private boolean enable = true;
 
-    @Bind(R.id.ll_container) LinearLayout ll_container;
+    @BindView(R.id.ll_container) LinearLayout ll_container;
 
     public ImageLinearLayout(final Context context, AttributeSet attrs) {
         super(context, attrs);

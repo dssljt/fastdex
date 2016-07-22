@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.example.fertilizercrm.common.utils.Logger;
 import com.example.fertilizercrm.R;
@@ -36,14 +36,14 @@ public class FarmerActivity extends BaseActivity {
      */
     private static final int REQUEST_CODE_AREA = 2;
 
-    @Bind(R.id.tv_name) TextView tv_name;
-    @Bind(R.id.tv_mobile)  TextView tv_mobile;
-    @Bind(R.id.tv_contacter)  TextView tv_contacter;
-    @Bind(R.id.tv_area1)   TextView tv_area1;
-    @Bind(R.id.tv_area2)   TextView tv_area2;
-    @Bind(R.id.tv_area3)   TextView tv_area3;
-    @Bind(R.id.view_area3) View view_area3;
-    @Bind(R.id.ll_area3)   View ll_area3;
+    @BindView(R.id.tv_name) TextView tv_name;
+    @BindView(R.id.tv_mobile)  TextView tv_mobile;
+    @BindView(R.id.tv_contacter)  TextView tv_contacter;
+    @BindView(R.id.tv_area1)   TextView tv_area1;
+    @BindView(R.id.tv_area2)   TextView tv_area2;
+    @BindView(R.id.tv_area3)   TextView tv_area3;
+    @BindView(R.id.view_area3) View view_area3;
+    @BindView(R.id.ll_area3)   View ll_area3;
 
     private boolean isModify;
     private Farmer farmer;

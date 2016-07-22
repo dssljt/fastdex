@@ -23,7 +23,7 @@ import com.example.fertilizercrm.role.Role;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.example.fertilizercrm.common.utils.Logger;
@@ -36,13 +36,13 @@ public class SalesmanSearchHeadView extends LinearLayout {
     private static final int REQUESTCODE_SALESMAN = 100;
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    @Bind(R.id.tv_salesman) TextView tv_salesman;
-    @Bind(R.id.tv_start_date) TextView tv_start_date;
-    @Bind(R.id.tv_end_date)   TextView tv_end_date;
-    @Bind(R.id.tv_apply_type) TextView tv_apply_type;
-    @Bind(R.id.rl_apply_type) View rl_apply_type;
-    @Bind(R.id.rl_salesman) View rl_salesman;
-    @Bind(R.id.btn_submit) View btn_submit;
+    @BindView(R.id.tv_salesman) TextView tv_salesman;
+    @BindView(R.id.tv_start_date) TextView tv_start_date;
+    @BindView(R.id.tv_end_date)   TextView tv_end_date;
+    @BindView(R.id.tv_apply_type) TextView tv_apply_type;
+    @BindView(R.id.rl_apply_type) View rl_apply_type;
+    @BindView(R.id.rl_salesman) View rl_salesman;
+    @BindView(R.id.btn_submit) View btn_submit;
 
     private Date startDate;
     private Date endDate;

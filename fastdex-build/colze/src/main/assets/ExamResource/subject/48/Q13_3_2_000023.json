@@ -1,0 +1,234 @@
+﻿{
+    "T": {
+        "Head": {
+            "Part": "完型填空",
+            "Type1": "TXT",
+            "Type2": "4",
+            "Rem": "REM",
+            "AnsQues": "10",
+            "Txt": "Q13_3_2_000023.txt",
+            "Pic": "",
+            "Sound": ""
+        },
+        "Q1": {
+            "Body": {
+                "Sub": "",
+                "An1": "factory",
+                "An2": "cinema",
+                "An3": "shop",
+                "An4": "park"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "",
+                "Content": "【原文】Mr. Black was born in a small town in England. His father had a (shop) therenn【翻译】布莱克先生出生在一个英国的小城镇，他爸爸在那里有个店铺nn【解析】下文提到“The shopkeeper didn’t think ...” shopkeeper(店主)暗示此空选择“shop”，其他三个选项文中并无提及。",
+                "Skill": "前面某词是对后面某空的暗示，后面某词是对前面某空的回应，在观察上下文的过程中，要善于捕捉这类信息，找到问题的答案。",
+                "Point": "本题考查上下文理解",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q2": {
+            "Body": {
+                "Sub": "",
+                "An1": "useful",
+                "An2": "possible",
+                "An3": "easy",
+                "An4": "different"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "",
+                "Content": "【原文】The shopkeeper didn't think it was (useful) for his son to go to school.nn【翻译】店主认为儿子上学没有用nn【解析】useful(有用)，possible(可能)，easy (简单)，different(不同)；下文提到“So he taught him how to get more money.(所以他教儿子怎么赚钱)”，因此店主认为赚钱比较重要，读书是没有用的，所以选A",
+                "Skill": "",
+                "Point": "本题考查上下文理解",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q3": {
+            "Body": {
+                "Sub": "",
+                "An1": "went",
+                "An2": "got",
+                "An3": "ran",
+                "An4": "moved"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "managenn【注释】nnv. .经营,管理; 控制,操纵nn【辨析】nnmanage to do和try to do的比较:nn“manage to do”指设法做成〔完成〕某事,含有成功之义;nn“try to do”指争取做成某事,但不一定成功。nn",
+                "Content": "【原文】They got much money there and then（moved）to the city.nn【翻译】他们在小镇里赚到了很多钱，随后搬到了城市。nn【解析】上文提到他们住在小城镇里，而他们赚到钱后搬到了城市，搬到某地的固定动词应用move，所以选D",
+                "Skill": "完形填空所选的文章都是具有逻辑关系，意义相连的语篇。考生可充分利用文章的上下文或前后句，找到有提示作用的词或句。",
+                "Point": "考查考生对常见的英语固定短语和习惯用法的掌握情况。",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q4": {
+            "Body": {
+                "Sub": "",
+                "An1": "laughed at",
+                "An2": "helped",
+                "An3": "hurt",
+                "An4": "beaten"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "",
+                "Content": "【原文】As he had little knowledge, he was often (laughed at) in public and sometimes he got into trouble.nn【翻译】因为他没什么知识，所以他经常在公众场合被嘲笑有时也会陷入麻烦nn【解析】用and连接，表示此处选项的意思应与“got into trouble (陷入麻烦)”是并列的；B不符句意先排除，C指受伤，D指被殴打，因为知识少而受伤或被殴打不符合逻辑，A被嘲笑显然更符合句意",
+                "Skill": "",
+                "Point": "本题考查考生在特定语境中的词义辨析",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q5": {
+            "Body": {
+                "Sub": "",
+                "An1": "borrowed",
+                "An2": "found",
+                "An3": "bought",
+                "An4": "wrote"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "",
+                "Content": "【原文】So he (bought)a lot of books and shelves....nn【翻译】所以他买了很多书和架子nn【解析】borrowed (借)，found (找到)，bought (买)，wrote (写)上文提到他因为知识少而被嘲笑，因此他去买了些书和架子来显得自己很有知识，B和D不符合句意可先排除；A文章没有提及，C更符合句意",
+                "Skill": "",
+                "Point": "本题考查考生在特定语境中的词义辨析。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q6": {
+            "Body": {
+                "Sub": "",
+                "An1": "because",
+                "An2": "so that",
+                "An3": "though",
+                "An4": "if"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "",
+                "Content": "【原文】… and placed them in his sitting room (so that) the visitors could see them as soon as they went in.nn【翻译】所以他买了很多书和架子放在客厅为了让客人一进来就能看见他们nn【解析】他买了很多书是为了让客人看见，因此是表目的的从句；because表原因，though表转折，if表如果，所以选so that，表目的",
+                "Skill": "弄清上下文的关系，理清文章的脉络层次，从而作出正确的选择",
+                "Point": "考查考生对上下文逻辑关系的理解能力",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "1",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q7": {
+            "Body": {
+                "Sub": "",
+                "An1": "strange",
+                "An2": "kind",
+                "An3": "famous",
+                "An4": "foreign"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "",
+                "Content": "【原文】Once Mr. Black was told that it was a (famous) writer’s birthday that day.nn【翻译】一次布莱克先生被告知那天是一位著名作家的生日nn【解析】strange (陌生的)，kind (和蔼的)，famous (著名的)，foreign (国外的)，从下文“他和妻子匆忙赶到那里及送他昂贵的礼物”可以得知那位作家是很有名气的，如果只是陌生的和蔼的或国外来的作家，他们大可不必如此，所以选C",
+                "Skill": "要做好这种题目，必须尽量将词语辨析与情节推理和逻辑推理结合起来，从词汇意义入手，抓住情节线索解决问题。",
+                "Point": "本题考查考生的逻辑推理及词义辨析能力。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q8": {
+            "Body": {
+                "Sub": "",
+                "An1": "class",
+                "An2": "school",
+                "An3": "meeting",
+                "An4": "dinner"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "literarynn【注释】nnadj. 文学（上）的；书面的nn【辨析】nna）同义词:cultured, literatennb）名词:literaturenn【词组】nnliterary works （文学作品）；literary world (文学界)",
+                "Content": "【原文】After (dinner) they began to talk about the literary works.nn【翻译】晚饭后，他们开始讨论文学作品nn【解析】A和B明显不符合句意，故可排除；由于那天是作家的生日，因此布莱克夫妇赶到那里肯定是有个生日派对，因此meeting(会议)也不符合语境，故选D",
+                "Skill": "要做好这种题目，必须尽量将词语辨析与情节推理和逻辑推理结合起来，从词汇意义入手，抓住情节线索解决问题。",
+                "Point": "本题考查考生的逻辑推理",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q9": {
+            "Body": {
+                "Sub": "",
+                "An1": "more different",
+                "An2": "the most different",
+                "An3": "easier",
+                "An4": "the easiest"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "",
+                "Content": "【原文】The writer had to ask him (the easiest) one, “What was Shakespeare?”nn【翻译】那作家不得不问他最简单的一个问题，“谁是莎士比亚？”nn【解析】上文提到“He could hardly answer any question.（他几乎不能回答出任何问题）”，因此那位作家只能问他最简单的问题，故选D",
+                "Skill": "",
+                "Point": "本题考查上下文理解",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q10": {
+            "Body": {
+                "Sub": "",
+                "An1": "to talk",
+                "An2": "talking",
+                "An3": "to answer",
+                "An4": "answering"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "",
+                "Content": "【原文】The writer had a smile and soon he stopped (talking) with Mr. Black.nn【翻译】那作家笑了笑于是不再和布莱克先生说话了nn【解析】上文提到布莱克先生连最简单的问题“莎士比亚是谁”都不知道，因此the writer不想再和布莱克先生讲话了；C和D不符合句意可先排除。stop doing sth. 意为“停止做某事”，stop to do sth.意为“停止去做某事”，所以选B",
+                "Skill": "",
+                "Point": "本题考查上下文理解和固定词组搭配",
+                "S1": "0",
+                "S2": "1",
+                "S3": "1",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        }
+    }
+}

@@ -13,7 +13,7 @@ import com.example.fertilizercrm.role.Role;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -40,22 +40,22 @@ public class PerformanceRankingsHeadView extends LinearLayout {
      */
     public static final int TYPE_CUSTOMER_RANKING = 2;
 
-    @Bind(R.id.btn_type)
+    @BindView(R.id.btn_type)
     Button btn_type;
 
-    @Bind(R.id.btn_location)
+    @BindView(R.id.btn_location)
     Button btn_location;
 
-    @Bind(R.id.tv_start_date)
+    @BindView(R.id.tv_start_date)
     TextView tv_start_date;
 
-    @Bind(R.id.tv_end_date)
+    @BindView(R.id.tv_end_date)
     TextView tv_end_date;
 
-    @Bind(R.id.btn_product)
+    @BindView(R.id.btn_product)
     Button btn_product;
 
-    @Bind(R.id.btn_customer)
+    @BindView(R.id.btn_customer)
     Button btn_customer;
 
     private int type;

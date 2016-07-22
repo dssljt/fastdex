@@ -6,7 +6,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
-import butterknife.Bind;
+import butterknife.BindView;
 import com.example.fertilizercrm.R;
 import com.example.fertilizercrm.basic.BeanArrayListActivity;
 import com.example.fertilizercrm.bean.SignInfo;
@@ -20,7 +20,7 @@ import java.util.List;
  * 签到查询
  */
 public class SignInQueryListActivity extends BeanArrayListActivity<BusinessApplyListActivity.ViewHolder,SignInfo> {
-    @Bind(R.id.head_view) SalesmanSearchHeadView head_view;
+    @BindView(R.id.head_view) SalesmanSearchHeadView head_view;
 
     @Override
     protected int getCellLayoutResId() {
@@ -84,9 +84,9 @@ public class SignInQueryListActivity extends BeanArrayListActivity<BusinessApply
     }
 
     public static final class ViewHolder {
-        @Bind(R.id.tv_content)        TextView tv_content;
-        @Bind(R.id.tv_apply_name)     TextView tv_apply_name;
-        @Bind(R.id.tv_name)           TextView tv_name;
-        @Bind(R.id.tv_time)           TextView tv_time;
+        @BindView(R.id.tv_content)        TextView tv_content;
+        @BindView(R.id.tv_apply_name)     TextView tv_apply_name;
+        @BindView(R.id.tv_name)           TextView tv_name;
+        @BindView(R.id.tv_time)           TextView tv_time;
     }
 }

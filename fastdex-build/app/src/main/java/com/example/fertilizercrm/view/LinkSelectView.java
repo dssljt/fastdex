@@ -12,7 +12,7 @@ import com.example.fertilizercrm.role.Role;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.example.fertilizercrm.common.utils.Logger;
 
@@ -44,10 +44,10 @@ public class LinkSelectView extends LinearLayout {
     private List<Button> buttons = new ArrayList<Button>();
     private OnItemClickListener mOnItemClickListener;
 
-    @Bind(R.id.rl_yiji)     View rl_yiji;
-    @Bind(R.id.rl_erji)     View rl_erji;
-    @Bind(R.id.rl_farmer)   View rl_farmer;
-    @Bind(R.id.rl_salesman) View rl_salesman;
+    @BindView(R.id.rl_yiji)     View rl_yiji;
+    @BindView(R.id.rl_erji)     View rl_erji;
+    @BindView(R.id.rl_farmer)   View rl_farmer;
+    @BindView(R.id.rl_salesman) View rl_salesman;
 
     private Role currentRole;
 

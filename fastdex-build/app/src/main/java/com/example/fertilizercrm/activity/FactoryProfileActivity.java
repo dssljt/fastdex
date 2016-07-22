@@ -7,7 +7,7 @@ import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.example.fertilizercrm.common.utils.JsonUtils;
@@ -35,10 +35,10 @@ public class FactoryProfileActivity extends BaseActivity {
      */
     private static final int REQUEST_CODE_TEXT_MODIFY = 1;
 
-    @Bind(R.id.tv_ptype) TextView tv_ptype;
-    @Bind(R.id.tv_tech) TextView tv_tech;
-    @Bind(R.id.tv_capacity) TextView tv_capacity;
-    @Bind(R.id.tv_output) TextView tv_output;
+    @BindView(R.id.tv_ptype) TextView tv_ptype;
+    @BindView(R.id.tv_tech) TextView tv_tech;
+    @BindView(R.id.tv_capacity) TextView tv_capacity;
+    @BindView(R.id.tv_output) TextView tv_output;
     private int capacity;
     private int output;
     private boolean isModify;

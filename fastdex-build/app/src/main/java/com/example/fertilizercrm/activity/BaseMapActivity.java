@@ -23,14 +23,14 @@ import com.example.fertilizercrm.http.Req;
 import org.apache.http.Header;
 import org.json.JSONObject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
  * 地图页面
  */
 public class BaseMapActivity extends BaseActivity {
-    @Bind(R.id.map_view) MapView mMapView;
+    @BindView(R.id.map_view) MapView mMapView;
     // 定位相关
     protected LocationClient mLocClient;
     protected MyLocationListenner myListener = new MyLocationListenner();

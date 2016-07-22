@@ -8,7 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.jpush.android.api.JPushInterface;
@@ -64,8 +64,8 @@ public class LoginActivity extends BaseActivity {
     public static final String KEY_USERNAME = "KEY_USERNAME";
     public static final String KEY_PWD = "KEY_PWD";
 
-    @Bind(R.id.et_user) EditText et_user;
-    @Bind(R.id.et_pwd)  EditText et_pwd;
+    @BindView(R.id.et_user) EditText et_user;
+    @BindView(R.id.et_pwd)  EditText et_pwd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -3,7 +3,7 @@ package com.example.fertilizercrm.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import butterknife.Bind;
+import butterknife.BindView;
 import com.example.fertilizercrm.common.utils.Logger;
 import com.example.fertilizercrm.R;
 import com.example.fertilizercrm.adapter.CustomerListAdapter;
@@ -30,7 +30,7 @@ public class SalesmanCustomerListActivity extends ListViewActivity<CustomerListA
      */
     public static final String KEY_BSOID = "bsoid";
 
-    @Bind(R.id.customer_switch) CustomerTypeSwitchView customer_switch;
+    @BindView(R.id.customer_switch) CustomerTypeSwitchView customer_switch;
 
     private String bsoid;
 

@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.example.fertilizercrm.common.utils.Logger;
 import com.baidu.location.BDLocation;
@@ -40,7 +40,7 @@ public class LocationSyncActivity extends BaseActivity {
      */
     public static final int OPEN_TYPE_SIGN = 1;
 
-    @Bind(R.id.map_view) MapView mMapView;
+    @BindView(R.id.map_view) MapView mMapView;
     // 定位相关
     LocationClient mLocClient;
     public MyLocationListenner myListener = new MyLocationListenner();

@@ -39,7 +39,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.example.fertilizercrm.common.utils.Logger;
@@ -48,8 +48,8 @@ import com.example.fertilizercrm.common.utils.Logger;
  * 轨迹查询页面
  */
 public class LocusActivity extends BaseActivity {
-    @Bind(R.id.head_view) SalesmanSearchHeadView head_view;
-    @Bind(R.id.map_view)  MapView mMapView;
+    @BindView(R.id.head_view) SalesmanSearchHeadView head_view;
+    @BindView(R.id.map_view)  MapView mMapView;
     // 定位相关
     LocationClient mLocClient;
     public MyLocationListenner myListener = new MyLocationListenner();

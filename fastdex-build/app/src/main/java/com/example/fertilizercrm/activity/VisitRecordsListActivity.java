@@ -15,14 +15,14 @@ import com.example.fertilizercrm.utils.FerUtil;
 import com.example.fertilizercrm.view.SalesmanSearchHeadView;
 import org.apache.http.Header;
 import java.util.List;
-import butterknife.Bind;
+import butterknife.BindView;
 import com.example.fertilizercrm.common.utils.JsonUtils;
 
 /**
  * 拜访记录
  */
 public class VisitRecordsListActivity extends BeanArrayListActivity<VisitRecordsListActivity.ViewHolder,VisitInfo> {
-    @Bind(R.id.head_view) SalesmanSearchHeadView head_view;
+    @BindView(R.id.head_view) SalesmanSearchHeadView head_view;
 
     @Override
     protected int getCellLayoutResId() {
@@ -95,8 +95,8 @@ public class VisitRecordsListActivity extends BeanArrayListActivity<VisitRecords
     }
 
     public static final class ViewHolder {
-        @Bind(R.id.tv_dest)     TextView tv_dest;
-        @Bind(R.id.tv_name)     TextView tv_name;
-        @Bind(R.id.tv_time)     TextView tv_time;
+        @BindView(R.id.tv_dest)     TextView tv_dest;
+        @BindView(R.id.tv_name)     TextView tv_name;
+        @BindView(R.id.tv_time)     TextView tv_time;
     }
 }

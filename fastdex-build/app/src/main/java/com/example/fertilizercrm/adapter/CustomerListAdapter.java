@@ -5,7 +5,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.fertilizercrm.R;
 import org.json.JSONObject;
-import butterknife.Bind;
+import butterknife.BindView;
 import com.example.fertilizercrm.common.view.SmartJSONArrayAdapter;
 
 /**
@@ -55,10 +55,10 @@ public class CustomerListAdapter extends SmartJSONArrayAdapter {
     }
 
     public static final class ViewHolder {
-        @Bind(R.id.iv)          ImageView iv;
-        @Bind(R.id.tv_name)     TextView tv_name;
-        @Bind(R.id.tv_desc)     TextView tv_desc;
-        @Bind(R.id.tv_detail)   TextView tv_detail;
-        @Bind(R.id.tv_quantity) TextView tv_quantity;
+        @BindView(R.id.iv)          ImageView iv;
+        @BindView(R.id.tv_name)     TextView tv_name;
+        @BindView(R.id.tv_desc)     TextView tv_desc;
+        @BindView(R.id.tv_detail)   TextView tv_detail;
+        @BindView(R.id.tv_quantity) TextView tv_quantity;
     }
 }

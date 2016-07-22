@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
-import butterknife.Bind;
+import butterknife.BindView;
 import com.bigkoo.alertview.AlertView;
 import com.bigkoo.alertview.OnItemClickListener;
 import com.example.fertilizercrm.R;
@@ -31,7 +31,7 @@ public class MessageCenterActivity extends JSONArrayListActivity<MessageCenterAc
      */
     private static final int TYPE_MOBILE_MESSAGE = 1;
 
-    @Bind(R.id.message_type) MessageTypeSwitchView message_type;
+    @BindView(R.id.message_type) MessageTypeSwitchView message_type;
     private int types;//0收到的，1发出的--默认0
 
     @Override
@@ -144,11 +144,11 @@ public class MessageCenterActivity extends JSONArrayListActivity<MessageCenterAc
     }
 
     public static class ViewHolder {
-        @Bind(R.id.tv_date)
+        @BindView(R.id.tv_date)
         TextView tv_date;
-        @Bind(R.id.view_bottom)
+        @BindView(R.id.view_bottom)
         View view_bottom;
-        @Bind(R.id.tv_content)
+        @BindView(R.id.tv_content)
         TextView tv_content;
     }
 }

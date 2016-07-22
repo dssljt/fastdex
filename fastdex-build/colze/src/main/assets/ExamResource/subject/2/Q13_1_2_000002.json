@@ -1,0 +1,124 @@
+﻿{
+    "T": {
+        "Head": {
+            "Part": "完型填空",
+            "Type1": "TXT",
+            "Type2": "4",
+            "Rem": "REM",
+            "AnsQues": "5",
+            "Txt": "Q13_1_2_000002.txt",
+            "Pic": "",
+            "Sound": ""
+        },
+        "Q1": {
+            "Body": {
+                "Sub": "",
+                "An1": "make",
+                "An2": "tell",
+                "An3": "teach",
+                "An4": "know"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "teachnn【注释】nn v. 教；教导，训练；教授；教书nn【词形变化】nn过去式/过去分词:taughtnn【词组】nnteach sb a lesson（给某人一个教训）；teach for a living（以教书为生）；teach to do sth（教某人去做某事）",
+                "Content": "【原题】When he was three，he asked his father to (teach) him to play the piano.nn【翻译】三岁时NiuNiu就让爸爸教他弹钢琴。nn【解析】下文提到“Then he gave Niu Niu…and asked him to practice”可推断，由爸爸来负责安排他的钢琴学习。四个选项中，只有teach，让他爸爸教他弹钢琴最符合文意，故选C。题中另包含ask sb to do sth的固定搭配用法“要求某人做某事”动词需用原形。",
+                "Skill": "解题时考生不要只局限在句子层面上，而要从段落或整篇文章入手，整体把握文章的内容，结合上下文，寻找答案的线索。",
+                "Point": "本题考查特定语境中，动词词义的辨析。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q2": {
+            "Body": {
+                "Sub": "",
+                "An1": "much",
+                "An2": "more",
+                "An3": "many",
+                "An4": "any"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "practicenn【注释】nnn. 练习；实践nn【辨析】nna）同义词:exercisennb）practice与exercise、drill的比较:“practice”是指为求完善，熟练而有规律地做某事；“exercise”用于身心两方面；“drill”指严格的训练nn【词组】nnin practice（实际上）；be out of practice（不熟练，生疏）；practice makes perfect（熟能生巧）",
+                "Content": "【原题】Then he gave Niu Niu (more) music to play and asked him to practice.nn【翻译】然后爸爸给了NiuNiu更多的乐谱去弹奏，并且要求他练习。nn【解析】much修饰不可数名词，more用于比较级，表示“更多”；many修饰名词复数；any用于疑问句和否定句。本句是肯定句，故可先排除any。music是不可数，可再排除many。由前句“I was surprised … 80 percent right”可得知，NiuNiu的正确率很高，故可推断此处是强调用更多的琴谱练习。所以选more",
+                "Skill": "要做好这种题目，必须尽量将词语辨析与情节推理和逻辑推理结合起来，从词汇意义入手，抓住情节线索解决问题。",
+                "Point": "本题考查学生通过上下文的前后提示或暗示，对整体文意把握的能力。",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q3": {
+            "Body": {
+                "Sub": "",
+                "An1": "tell",
+                "An2": "speak",
+                "An3": "talk",
+                "An4": "say"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "stopnn【注释】nna）v. 停止；逗留；（使）停止工作；塞住；阻挠 nnb）n. 停车站；停止；nn【辨析】nna）同义词:end，pausennb）反义词:start，beginnnc）stop与pause的比较:“stop”是指停止某人某物的动作，或结束某一活动的进展；“pause”是指短期的间歇，暂时性的中止nn【词形变化】nna）过去式/过去分词:stopped nnb）现在分词:stoppingnn【词组】nnstop to do（停下来去做某事）；stop doing（停下正在做的事）；stop at nothing（不惜一切）；stop off/over(中途停留）；nnnn② findnn【注释】nna）v. 发现；找到；到达；发觉nnb）n. 发现物；被发现的人nn【辨析】nna）同义词:discover、look fornnb）find与look for的比较:“find”意为找到，发现，强调结果；“look for”强调动作和过程。nn【词形变化】nn过去式/过去分词:foundnn词组:nnfind out（查明）；find sth done（发现某事已做完）；find sb doing（发现某人正在做某事）；find in（供给，供应）",
+                "Content": "【原题】Dad asked me if I wanted to stop， but I found it was hard to (say) yes.nn【翻译】爸爸问我是否想停止练习，但是我发现很难说是。nn【解析】say yes是固定用法，意为“说是”。",
+                "Skill": "解决这类题目要求学生多读、多记，对所学词语或固定搭配牢固掌握，并能灵活运用。",
+                "Point": "本题主要考查短语搭配的使用能力",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q4": {
+            "Body": {
+                "Sub": "",
+                "An1": "always",
+                "An2": "usually",
+                "An3": "sometimes",
+                "An4": "never"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "performnn【注释】nn v. 执行；履行；表演；扮演nn【词形变化】nn名词形式:performance",
+                "Content": "【原题】Niu Niu has (never) taken any piano exams， but he is good at performing.nn【翻译】NiuNiu从未参加过任何钢琴考试，但她很擅长演奏。nn【解析】四个选项是最常用的表频率的词，always “总是”，usually“通常”，often“经常”，never意为“从不”。通过本句“take any piano exams”中的any可判断出本空格有含否定的意思，表示“从不参加”，故选D。",
+                "Skill": "解题时学生不要只局限在句子层面上，要从段落或整篇文章入手，整体把握文章的内容，结合上下文，寻找答案的线索。",
+                "Point": "本题主要考查学生的语言综合运用能力，包括基础知识的掌握和运用，对整个文章逻辑联系的理解能力。",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q5": {
+            "Body": {
+                "Sub": "",
+                "An1": "music",
+                "An2": "musics",
+                "An3": "musician",
+                "An4": "musicians"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "well-known nn【注释】nn adj. 出名的，众所周知的nn【辨析】nna）近义词:famousnnb）反义词:unknownnnnn② releasenn【注释】nna）v. 发布；发行nnb）n. 释放，排放，解除nn③albumnn【注释】nn n. 相册、集邮簿、签名册、唱片nn④ solo concert:个人演唱会nn⑤ National Grand Theater:国家大剧院",
+                "Content": "【原题】He has performed with other well-known Chinese (musicians)，such as Lang Lang，and has played for Prince Charles in London.nn【翻译】他曾与其他知名的中国音乐家合作演出，如郎朗，也曾在伦敦为查尔斯王子演奏。nn【解析】通过下文“such as Lang Lang”朗朗是音乐家，故此处可先排除选项A和B。根据“other+复数名词”=“others”的用法，可知，此处应为复数形式，故选D。",
+                "Skill": "从意思着手，进行选择，名词的互相转化也需要掌握。",
+                "Point": "本题考查学生明确文章语境的同时，对于词汇的综合运用能力。nn①动词变名词: teach-teacher；nn②事物名词人物名词: music-musician；nn③形容词变名词: important-importance；nn④形容词变副词: happy-happily；",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        }
+    }
+}

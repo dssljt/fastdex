@@ -41,7 +41,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.example.fertilizercrm.common.utils.Logger;
 import com.example.fertilizercrm.common.view.AutoImageViewPager;
@@ -173,13 +173,13 @@ public class ManagerFragment extends BaseFragment {
         }});
     }};
 
-    @Bind(R.id.view_pager) AutoImageViewPager mViewPager;
-    @Bind(R.id.pager_marker) PagerMarkerView mPagerMarker;
-    @Bind(R.id.grid_view) GridView mGridView;
-    @Bind(R.id.sector_view) SectorView sector_view;
-    @Bind(R.id.tv_mine) TextView tv_mine;
-    @Bind(R.id.tv_other) TextView tv_other;
-    @Bind(R.id.ll_scale) View ll_scale;
+    @BindView(R.id.view_pager) AutoImageViewPager mViewPager;
+    @BindView(R.id.pager_marker) PagerMarkerView mPagerMarker;
+    @BindView(R.id.grid_view) GridView mGridView;
+    @BindView(R.id.sector_view) SectorView sector_view;
+    @BindView(R.id.tv_mine) TextView tv_mine;
+    @BindView(R.id.tv_other) TextView tv_other;
+    @BindView(R.id.ll_scale) View ll_scale;
     private TextView tv_msg_count;
 
     protected List<Map<String,Object>> dataSourceList;

@@ -32,7 +32,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.example.fertilizercrm.common.imageloader.core.DisplayImageOptions;
@@ -102,12 +102,12 @@ public class MeFragment extends BaseFragment {
     public static final int ACTION_ABOUT_ME = 7;
 
 
-    @Bind(R.id.tv_name)    TextView  tv_name;
-    @Bind(R.id.tv_mobile)  TextView  tv_mobile;
-    @Bind(R.id.tv_company) TextView  tv_company;
-    @Bind(R.id.tv_type)    TextView  tv_type;
-    @Bind(R.id.iv_head)    ImageView iv_head;
-    @Bind(R.id.lv)         ListView  lv;
+    @BindView(R.id.tv_name)    TextView  tv_name;
+    @BindView(R.id.tv_mobile)  TextView  tv_mobile;
+    @BindView(R.id.tv_company) TextView  tv_company;
+    @BindView(R.id.tv_type)    TextView  tv_type;
+    @BindView(R.id.iv_head)    ImageView iv_head;
+    @BindView(R.id.lv)         ListView  lv;
 
     MeAdapter adapter;
     private int count;

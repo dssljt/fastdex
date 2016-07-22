@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import com.example.fertilizercrm.common.utils.ImageCropHelper;
@@ -50,12 +50,12 @@ public class SalesmanSaveOrEditActivity extends BaseActivity {
     public static final int OPEN_TYPE_EDIT = 1;
     public static final String KEY_SALESMAN = "salesman";
 
-    @Bind(R.id.iv_head)    ImageView iv_head;
-    @Bind(R.id.tv_name)    TextView tv_name;
-    @Bind(R.id.tv_mobile)  TextView tv_mobile;
-    @Bind(R.id.tv_area1)   TextView tv_area1;
-    @Bind(R.id.tv_area2)   TextView tv_area2;
-    @Bind(R.id.tv_area3)   TextView tv_area3;
+    @BindView(R.id.iv_head)    ImageView iv_head;
+    @BindView(R.id.tv_name)    TextView tv_name;
+    @BindView(R.id.tv_mobile)  TextView tv_mobile;
+    @BindView(R.id.tv_area1)   TextView tv_area1;
+    @BindView(R.id.tv_area2)   TextView tv_area2;
+    @BindView(R.id.tv_area3)   TextView tv_area3;
     private Salesman salesman;
     private ImageCropHelper imageCropHelper;
     private boolean isModify;

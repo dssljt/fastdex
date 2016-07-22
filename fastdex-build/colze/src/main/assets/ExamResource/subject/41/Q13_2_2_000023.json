@@ -1,0 +1,234 @@
+﻿{
+    "T": {
+        "Head": {
+            "Part": "完型填空",
+            "Type1": "TXT",
+            "Type2": "4",
+            "Rem": "REM",
+            "AnsQues": "10",
+            "Txt": "Q13_2_2_000023.txt",
+            "Pic": "",
+            "Sound": ""
+        },
+        "Q1": {
+            "Body": {
+                "Sub": "",
+                "An1": "cold",
+                "An2": "hot",
+                "An3": "cool",
+                "An4": "hottest"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "",
+                "Content": "【原文】It was a very (hot) daynn【翻译】这是非常热的一天。nn【解析】由下一句“A little girl for an ice cream.” 小女孩去买冰淇淋可推断天气很热，故可先排除A和C选项。very修饰形容词的原形，所以本题正确答案为B.",
+                "Skill": "下文暗示法nn完形填空所选的文章都是具有逻辑关系，意义相连的语篇。行文中不可避免的出现词语的复现。考生可充分利用文章的上下文或前后句，找到有提示作用的词或句。",
+                "Point": "本题考查学生上下文的理解及词义辨析能力",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q2": {
+            "Body": {
+                "Sub": "",
+                "An1": "for",
+                "An2": "with",
+                "An3": "ask",
+                "An4": "buy"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "",
+                "Content": "【原文】A little girl went into Jack’s shop (for) an ice cream.nn【翻译】小女孩走进杰克的商店，去买冰淇淋。nn【解析】全文的时态都为过去时，故此处可先排除C和D选项。for接宾语从句表目的。小女孩走进商店的目的就是为了买冰淇淋。再结合本段最后一句给出的暗示“…children come to my shop for ice cream.”，所以选A最合适。",
+                "Skill": "",
+                "Point": "本题考查学生对于上下文的理解及从句的掌握",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "1",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q3": {
+            "Body": {
+                "Sub": "",
+                "An1": "she",
+                "An2": "hers",
+                "An3": "his",
+                "An4": "her"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "dollarnn【注释】nnn. 元，美元nn",
+                "Content": "【原文】When Jack saw ten dollars in (her) hand…nn【翻译】当杰克看到她手里的10美元…nn【解析】根据句意，首先排除C。she是名词性物主代词，通常做主语；hers 后面不加名词；her是形容词性物主代词，后面需加名词，故选D。",
+                "Skill": "",
+                "Point": "本题考查学生对于上下文的理解及物主代词的掌握",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q4": {
+            "Body": {
+                "Sub": "",
+                "An1": "to pay for",
+                "An2": "to pay",
+                "An3": "cost",
+                "An4": "to cost"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "paynn【注释】nna）v. 付钱给；偿还；给予nnb）n. 工资，报偿nn【辨析】nn过去式/过去分词:paidnn【词组】nnpay back（偿还、报复）；pay…for(付…款)；pay off（偿清） nn",
+                "Content": "【原文】So he asked her (to pay) eight dollars.nn【翻译】所以他要求她支付8美元。nn【解析】ask sb.to do sth.固定用法，意为“要求某人做某事”。所以可先排除C。“cost”意为“某物值…钱”，主语一般是物，所以D不正确。选项A的习惯用法为“pay money for sth.”意思是为某物付钱。for后面应该是物品而不是钱，故选B。",
+                "Skill": "",
+                "Point": "本题考查学生词义辨析能力和固定搭配的掌握",
+                "S1": "1",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q5": {
+            "Body": {
+                "Sub": "",
+                "An1": "give",
+                "An2": "gave",
+                "An3": "gives",
+                "An4": "giving"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "",
+                "Content": "【原文】Then Jack (gave) her the ice cream and said…nn【翻译】然后杰克给了她冰淇淋并说道…nn【解析】本篇文章讲述的是个小故事，全文都用的是过去时，所以这里的动词也应该用过去时态，give的过去式gave，故答案为B。",
+                "Skill": "根据前后文的时态一致原则，选择过去时，很容易掌握",
+                "Point": "本题考查学生对于一般过去时及动词时态变化规则的掌握",
+                "S1": "0",
+                "S2": "0",
+                "S3": "1",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q6": {
+            "Body": {
+                "Sub": "",
+                "An1": "a little",
+                "An2": "a few",
+                "An3": "few",
+                "An4": "little"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "",
+                "Content": "【原文】Now only (a few) children come to my shop for ice cream.”nn【翻译】现在仅仅只有一些小朋友会来店里买冰淇淋。nn【解析】few修饰可数名词，little修饰的是不可数名词，children是child的复数形式，可数名词，意为“小孩”。故此处可以先排除A和D。a few表示肯定意义“有几个”，few为否定“没有，几乎没有”。根据only“仅仅”，可推断本句想表达的是肯定的意思，故应该选B。",
+                "Skill": "",
+                "Point": "本题考查学生上下文的理解能力及few和little的用法",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q7": {
+            "Body": {
+                "Sub": "",
+                "An1": "listened",
+                "An2": "listened to",
+                "An3": "hear",
+                "An4": "heard"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "",
+                "Content": "【原文】When the little girl (heard) this...nn【翻译】当小女孩听到这话的时候...nn【解析】listen强调(听)的过程,表示一种有意识地,主动地(听)的动作,用在这里不符合语境,故可先排除A和B；hear强调(听)的结果,表示(听见,听到),指偶然听见,有被动接受(听)的意思。短文通篇为过去时,故本题应用hear的过去式heard。",
+                "Skill": "",
+                "Point": "本题考查学生动词的词义辨析",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q8": {
+            "Body": {
+                "Sub": "",
+                "An1": "surprising",
+                "An2": "happy",
+                "An3": "surprised",
+                "An4": "surprise"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "surprisenn【注释】nna）vt.使惊奇，使诧异； nnb）n.令人吃惊的事物；惊奇nn【词组】nnby surprise（出其不意）；to one’s surprise（使人惊奇的是）；in surprise（吃惊地）",
+                "Content": "【原文】she answered, “I’m not (surprised)”nn【翻译】她回答，“我一点也不惊讶”nn【解析】surprising和surprised都是由surprise变换而来的，前者有主动含义，后者有被动含义。surprising的主语通常是物，而surprised的主语通常是人。故本题的正确选项为C",
+                "Skill": "",
+                "Point": "本题考查学生的词义辨析",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q9": {
+            "Body": {
+                "Sub": "",
+                "An1": "another",
+                "An2": "others",
+                "An3": "other",
+                "An4": "else"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "",
+                "Content": "【原文】because they can get one ice cream for only two dollars in (other) shops.”nn【翻译】因为他们在其他的商店里花2美元就可以买到冰淇淋。nn【解析】else是副词，可以先排除。“another”一般只能表单数，又、再/同类事物（三个以上）的另一个，其后只能接单数名词；others 表示复数意义，且其后不能再接名词。逐个排除后，仅剩选项C,other在这里用作定语，表示“其他的”最为合适。",
+                "Skill": "",
+                "Point": "本题考查学生other、others、the other、another等易混淆词汇的辨析",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q10": {
+            "Body": {
+                "Sub": "",
+                "An1": "said",
+                "An2": "spoke",
+                "An3": "talked",
+                "An4": "told"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "",
+                "Content": "【原文】His face turned red and he (said) sorry to her.nn【翻译】他的脸变红并向她说对不起。nn【解析】say后面的宾语为说话内容；speak的宾语应该是某种语言；talk是不及物动词；tell的习惯用法是tell sb. sth/tell sb. to do sth.综上所述，选择A最合适。",
+                "Skill": "",
+                "Point": "本题考查学生易混淆词汇的辨析能力",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        }
+    }
+}

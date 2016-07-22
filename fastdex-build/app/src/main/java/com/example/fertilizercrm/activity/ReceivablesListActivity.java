@@ -14,7 +14,7 @@ import com.example.fertilizercrm.utils.FerUtil;
 
 import org.apache.http.Header;
 import java.util.List;
-import butterknife.Bind;
+import butterknife.BindView;
 import com.example.fertilizercrm.common.utils.DimensionPixelUtil;
 
 /**
@@ -89,10 +89,10 @@ public class ReceivablesListActivity extends BeanArrayListActivity<ReceivablesLi
     }
 
     public static final class ViewHolder {
-        @Bind(R.id.tv_content)        TextView tv_content;
-        @Bind(R.id.tv_apply_name)     TextView tv_apply_name;
-        @Bind(R.id.tv_name)           TextView tv_name;
-        @Bind(R.id.tv_amount)         TextView tv_amount;
-        @Bind(R.id.tv_time)           TextView tv_time;
+        @BindView(R.id.tv_content)        TextView tv_content;
+        @BindView(R.id.tv_apply_name)     TextView tv_apply_name;
+        @BindView(R.id.tv_name)           TextView tv_name;
+        @BindView(R.id.tv_amount)         TextView tv_amount;
+        @BindView(R.id.tv_time)           TextView tv_time;
     }
 }

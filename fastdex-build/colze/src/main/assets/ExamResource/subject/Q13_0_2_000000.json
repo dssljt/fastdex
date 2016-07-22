@@ -1,0 +1,168 @@
+﻿{
+    "T": {
+        "Head": {
+            "Part": "完型填空",
+            "Type1": "TXT",
+            "Type2": "4",
+            "Rem": "REM",
+            "AnsQues": "7",
+            "Txt": "Q13_0_2_000000.txt",
+            "Pic": "",
+            "Sound": ""
+        },
+        "Q1": {
+            "Body": {
+                "Sub": "",
+                "An1": "Where",
+                "An2": "How",
+                "An3": "Whose",
+                "An4": "What"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "①rice cakenn【注释】nn年糕，米糕nn【扩展】nn中国特色小吃的中英文:nndumpling（汤团，饺子）；wonton（馄饨）；mooncake（月饼）；春卷（spring rolls）；bun（包子）；soybean milk（豆浆）；nn②wantnn【注释】nn想要，想nn【辨析】nna)同义词:neednnb)扩展:nnfeel like:想要；feel like doing sth.(想要做某事)；nnwant to do sth(想要做某事)；want sb to do sth (想要某人做某事)nn【词形变化】nna)复数/第三人称单数:wantsnnb)过去式/过去分词:wanted，wantednnc)现在分词:wanting",
+                "Content": "【原文】(What) are those, Mike?nn【翻译】那些是什么，麦克？nn【解析】特殊疑问词what“什么”，how“怎样”方式的提问，whose“谁的”where“在哪里”对地点的提问。从答语rice cakes可以得知是对物体的提问，因此选择what最合适。",
+                "Skill": "掌握特殊疑问词的用法，重点理解疑问词的含义，多加练习。",
+                "Point": "本题考查特殊疑问句中疑问词的正确用法:nn特殊疑问句包括疑问代词:what，who，which，whose，whomnn疑问副词:when，where，why，how",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "1",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q2": {
+            "Body": {
+                "Sub": "",
+                "An1": "please",
+                "An2": "thank",
+                "An3": "Ok",
+                "An4": "have"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "wantnn【注释】nn想要，想nn【辨析】nna)同义词:neednnb)扩展:nnfeel like:想要；feel like doing sth.(想要做某事)；nnwant to do sth(想要做某事)；want sb to do sth (想要某人做某事)nn【词形变化】nna)复数/第三人称单数:wantsnnb)过去式/过去分词:wanted，wantednnc)现在分词:wanting",
+                "Content": "【原文】Yes, (please).nn【翻译】是的，麻烦了nn【解析】一般疑问句的委婉的肯定答语:Yes, please. 委婉否定答语:No, thanks. 上句的问句是“你想要一杯么？”答语应该是委婉的，因此选择please最为合适。",
+                "Skill": "",
+                "Point": "本题考查邀请或提议的问句及其答语的使用。nn①用于接受邀请或提议nn例:Would you like something to drink? （要喝点什么吗?）Yes, please/No, thanks(好的/不，谢谢了。)nn②用于商店顾客回答店主的招呼，意为:是的，我要买东西；是的，请拿……给我看吧。如:nn例:Can I help you? (你要买什么东西吗?)Yes, please.(是的)nn③用于回答对方主动提供的帮助或机会等，意为:好的，请……吧! 如:nn例:Would you like some help? （需要帮助吗?）Yes, please. （好，请帮我一把吧。）nn④ 用于回答请求，意为:请。nn例:May I come in? （我可以进来吗?）Yes, please.（请进）",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "1",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q3": {
+            "Body": {
+                "Sub": "",
+                "An1": "red",
+                "An2": "delicious",
+                "An3": "big",
+                "An4": "long"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "deliciousnn【注释】nn adj. 美味的，可口的nn【辨析】nn delicious与delightful的比较:两者都可表示“愉快的”“令人高兴的”。nn①“delicious”一般用于指直觉(味觉、嗅觉、听觉、视觉)上的感受,多用于指味道之美；nn 例:The coffee smells delicious.（这咖啡味道很香）。nn②“delightful”则多用于指心理上的感觉。nn例:We had a delightful weekend together.（我们过了一个愉快的周末）。nn【词组】nn delicious meal（美餐）；smell delicious（闻起来香）；taste delicious（尝起来可口）",
+                "Content": "【原文】They’re (delicious).nn【翻译】他们很可口。nn【解析】通过排除法来使用，red红的，big大的，long长的，上下文理解可以知道此句说的是大米很可口，因此要选择delicious。",
+                "Skill": "做该种题型，必须注意上下文的联系和句子的理解，对各种类型的形容词做出总结和记忆。",
+                "Point": "本题考查形容词辨析，nn① 高频表示颜色的形容词有:red,yellow,green,white,black,purple,pinknn② 高频表示物体形状的形容词:big,long,wide,square,tall,short,thin,fat，strongnn③ 表示味道口味的形容词: delicious,bitter,sweet,salty,peppery等",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q4": {
+            "Body": {
+                "Sub": "",
+                "An1": "in",
+                "An2": "of",
+                "An3": "about",
+                "An4": "at"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "milknn【注释】:nnn.乳；牛奶；椰子汁；乳液；nnv.产奶，挤奶nn【词组】nnfresh milk（鲜牛奶）；low-fat milk（低脂牛奶）；sour milk（酸奶）；a bottle of milk（一瓶奶）；a glass of milk（一杯奶）nn【扩展】nn小学生常用食品相关的不可数名词:nnbread（面包）；meat（肉）；juice（果汁）；sugar（糖）；food（食物）；water（水）；coffee（咖啡）；chocolate（巧克力）",
+                "Content": "【原文】How (about) some milk?nn【翻译】喝些牛奶怎么样？nn【解析】how about....怎么样？与what about.....表示建议提议，固定句型，由上文可以知道，麦克说自己很喜欢大米，但是lily向他提议喝牛奶。",
+                "Skill": "固定句型的使用，掌握常考句型，加以练习",
+                "Point": "本题考查关于提议建议的固定句型.nn① would you like/want ......(你想要...么?)  nn例:would you like some milk?nn② could you ....  nn例:Could you fetch me some milk?nn③ What about+n/v-ing=how about +v-ing/n....怎么样 nn例:What about/how about swimming?",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q5": {
+            "Body": {
+                "Sub": "",
+                "An1": "like",
+                "An2": "likes",
+                "An3": "liking",
+                "An4": "liked"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "likenn【注释】nnv.喜欢、爱好nnadj.相像的、相同的nnprep.跟…一样nn【辨析】nna) 同义词:love, nnb) 反义词:dislikennc) 扩展:nn①用作动词:like to do sth (喜欢做某事)；nn例:I like to swim with you today.今天我喜欢和你一起去游泳。nn②用作介词:nnbe like, look like后接名词或代词作宾语，意为'像……；跟……一样'。nn例:What is he like?他是怎么样的一个人？",
+                "Content": "【原文】I don’t （like） to drink milk very much.nn【翻译】我非常不喜欢喝牛奶。nn【解析】本题是一般现在时的否定句句式，don't后需跟动词原形，故本题的正确答案为A",
+                "Skill": "做该类题型一定要注意动词的词义和辨析，多加总结联系上下文做出选择。",
+                "Point": "助动词do/does的用法规则:nn①在任何句型中，只要有助动词do/does出现，动词一律原形nn例1:Mary doesn’t like chocolate. (玛丽不喜欢巧克力)nn例2:Does your mother work in the factory?(你妈妈在工厂工作吗)？nn②do/does的形式取决于句子主语。第三人称用does，其余用donn例1:What does the word mean? (这单词什么意思？) nn例2:Many animals don’t eat grass. (许多动物不吃草。)",
+                "S1": "0",
+                "S2": "0",
+                "S3": "1",
+                "S4": "1",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q6": {
+            "Body": {
+                "Sub": "",
+                "An1": "for",
+                "An2": "on",
+                "An3": "in",
+                "An4": "to"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "cerealnn【注释】nna）n. 谷类，谷物；谷类食品；谷类植物nnb）adj. 谷类的；谷类制成的nn【辨析】nnpaddy  表示稻谷cereal 表示谷类植物，燕麦片grain  粮食，颗粒nnrice   稻谷，米饭",
+                "Content": "【原文】In our country, we eat cereal (for) breakfast.nn【翻译】在我们国家，把谷类粥作为早餐食用。nn【解析】for+名词:表示做某项用途，“作为”；on+时间“在某时”；in+地点“在某地”；to“到，至”因此根据含义，排除其他三项，for最为合适。",
+                "Skill": "做该类题，需要对上下文进行联系，掌握介词的正确使用含义。",
+                "Point": "本题考查for的用法:nn① 表示“当作、作为”。 例:I like some bread and milk for breakfast. （我喜欢把面包和牛奶作为早餐。）② 表示理由或原因,意为“因为、由于”。nn例:Thank you for helping me with my English. （谢谢你帮我学习英语。）③ 表示动作的对象或接受者,意为“给……”、“对…… (而言)”。 例:Let me pick it up for you. （让我为你捡起来。）nn④ 表示时间、距离,意为“计、达”，for+时间段nn例:I usually do the running for an hour in the morning. （我早晨通常跑步一小时。）⑤ 表示去向、目的,意为“向、往、取、买”等。nn例:Let’s go for a walk. （我们出去散步吧。）⑥ 用于一些固定搭配中。nn例1:Who are you waiting for? （你在等谁?）例2:For example, Mr. Green is a kind teacher. （比如,格林先生是一位心地善良的老师。）",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q7": {
+            "Body": {
+                "Sub": "",
+                "An1": "of",
+                "An2": "on",
+                "An3": "to",
+                "An4": "at"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "putnn【注释】nnvt. 放；表达；移动；安置；赋予nn【辨析】nn同义词:setnn【词形变化】nna)复数/第三人称单数:putsnnb)过去式/过去分词:putnnc)现在分词:puttingnn【词组】nnput away（舍弃、抛弃）；put in（提交、放入、种植）；put on（穿上、上演、假装、使…上场）；put into（使进入）；put up（提供、建造、举起、推举，提名）",
+                "Content": "【原文】I put milk and sugar (on) it.nn【翻译】我在麦片粥里加了牛奶和糖。nn【解析】在麦片里加入糖，用on表示动作的方向和位置，在麦片的表面，of “的”，to“至，到”at“在某个具体的点”，因此只有on有这种含义，排除其他三项。",
+                "Skill": "灵活使用和辨析介词之间的差异，多加练习培养语感是最好的方法。",
+                "Point": "本题考查介词的用法:",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        }
+    }
+}

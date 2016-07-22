@@ -13,7 +13,7 @@ import com.example.fertilizercrm.fragment.MeFragment;
 import java.util.List;
 import java.util.Map;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -93,13 +93,13 @@ public class MeAdapter extends BaseAdapter {
     }
 
     public static class ViewHolder {
-        @Bind(R.id.iv)
+        @BindView(R.id.iv)
         ImageView iv;
 
-        @Bind(R.id.tv)
+        @BindView(R.id.tv)
         TextView tv;
 
-        @Bind(R.id.tv_unread_address_number)
+        @BindView(R.id.tv_unread_address_number)
         TextView tv_unread_address_number;
     }
 }

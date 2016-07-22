@@ -33,7 +33,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.example.fertilizercrm.common.utils.Logger;
@@ -43,7 +43,7 @@ import com.example.fertilizercrm.common.utils.Logger;
  */
 public class CustomerMapActivity extends BaseActivity {
     private static JSONArray data;
-    @Bind(R.id.map_view)  MapView mMapView;
+    @BindView(R.id.map_view)  MapView mMapView;
     // 定位相关
     LocationClient mLocClient;
     public MyLocationListenner myListener = new MyLocationListenner();

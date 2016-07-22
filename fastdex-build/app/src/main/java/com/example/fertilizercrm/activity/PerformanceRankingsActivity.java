@@ -12,13 +12,13 @@ import com.example.fertilizercrm.view.PerformanceRankingsHeadView;
 import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import butterknife.Bind;
+import butterknife.BindView;
 
 /**
  * 业绩排名
  */
 public class PerformanceRankingsActivity extends JSONArrayListActivity<PerformanceRankingsActivity.ViewHolder> {
-    @Bind(R.id.head_view) PerformanceRankingsHeadView headView;
+    @BindView(R.id.head_view) PerformanceRankingsHeadView headView;
 
     @Override
     protected int getLayoutResId() {
@@ -99,7 +99,7 @@ public class PerformanceRankingsActivity extends JSONArrayListActivity<Performan
     }
 
     public static final class ViewHolder {
-        @Bind(R.id.tv_name)     TextView tv_name;
-        @Bind(R.id.tv_quantity) TextView tv_quantity;
+        @BindView(R.id.tv_name)     TextView tv_name;
+        @BindView(R.id.tv_quantity) TextView tv_quantity;
     }
 }

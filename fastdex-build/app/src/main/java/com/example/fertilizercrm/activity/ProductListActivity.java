@@ -21,7 +21,7 @@ import org.json.JSONArray;
 
 import java.util.ArrayList;
 import java.util.List;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.example.fertilizercrm.common.utils.Logger;
 
@@ -70,8 +70,8 @@ public class ProductListActivity extends BaseActivity {
     private String suserid;
     private String susertype = Role.defaultRole().getCodeStr();
 
-    @Bind(R.id.lv) ListView lv;
-    @Bind(R.id.tv_empty) View tv_empty;
+    @BindView(R.id.lv) ListView lv;
+    @BindView(R.id.tv_empty) View tv_empty;
     private ProductListHeadView headView;
     private ProductListAdapter adapter;
 

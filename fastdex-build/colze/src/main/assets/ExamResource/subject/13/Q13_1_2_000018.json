@@ -1,0 +1,234 @@
+﻿{
+    "T": {
+        "Head": {
+            "Part": "完型填空",
+            "Type1": "TXT",
+            "Type2": "4",
+            "Rem": "REM",
+            "AnsQues": "10",
+            "Txt": "Q13_1_2_000018.txt",
+            "Pic": "",
+            "Sound": ""
+        },
+        "Q1": {
+            "Body": {
+                "Sub": "",
+                "An1": "hope",
+                "An2": "need",
+                "An3": "bring",
+                "An4": "like"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "weathernn【注释】nnn. 天气；气候；处境nnv. 经受住；使风化；使受风吹雨打nnadj. 露天的；迎风的nn【辨析】nn同义词:climatennweather与climate的比较:climate指某一地区常年的气候情况，包括气温、降雨量。weather指某地区具体的短时间内的天气，包括晴雨寒暖等情况。nn【词组】nnbad /good weather (恶劣的/好的天气)； weather report（气象报告）；weather station（气象站）；under the weather（身体不适）；in all weathers（不论任何天气）；make heavy weather of sth. (遇到……困难)",
+                "Content": "【原文】I (like) the snowy weather.nn【翻译】我喜欢下雪的天气。nn【解析】hope意为“希望，期待”；need意为“需要”；bring意为“带来”；like意为“喜欢”。前句“Do you like hot or cold weather? ”已给予暗示，根据上下文意思，需填的是like。",
+                "Skill": "该句前面反复出现like，可猜测此处也可能是like。",
+                "Point": "本题考查上下文语境及词义的辨析。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q2": {
+            "Body": {
+                "Sub": "",
+                "An1": "morning",
+                "An2": "noon",
+                "An3": "afternoon",
+                "An4": "evening"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "getnn【注释】nnvt. 使得；获得；受到；变成nnvi. 成为；变得；到达nn【词形变化】nn过去式/过去分词:got/gottennnb)现在分词:gettingnn【词组】nnget up （起床）；get out （出去）；get away（逃脱）；get on/off（上/下车）；get to（抵达）；get back （回来）；get ready for（为…作准备）；get on well with（与某人相处得好）；get along with(与…相处)",
+                "Content": "【原文】After I get up this (morning), I see there is a lot of snow on the ground.nn【翻译】早上我起床之后，看见地上有很多雪。nn【解析】morning意为“早上”；noon意为“中午”；afternoon意为“下午”；evening意为“晚上”；get up意为“起床”。根据语义，应该选A。",
+                "Skill": "",
+                "Point": "本题考查词义辨析。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q3": {
+            "Body": {
+                "Sub": "",
+                "An1": "dry",
+                "An2": "white",
+                "An3": "wet",
+                "An4": "sunny"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "worldnn【注释】nnn.(全)世界，地球；世间(人)；界，领域nn【辨析】nn同义词: universenn【词组】nnall over the world (全世界); ); move/go up in the world (在社会上得到更高的地位); the outside world (未知世界)",
+                "Content": "【原文】And all the world is (white).nn【翻译】整个世界都是白色的。nn【解析】dry意为“干的”；white意为“白色的”；wet 意为“潮湿的”；sunny意为“阳光充足的”。前文提到“I see there is a lot of snow on the ground.我看到地上有很多雪。”雪是白色的，故选B。",
+                "Skill": "",
+                "Point": "本题考查对上下语境的理解",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q4": {
+            "Body": {
+                "Sub": "",
+                "An1": "and",
+                "An2": "so",
+                "An3": "because",
+                "An4": "but"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "happynn【注释】nnadj. 幸福的；高兴的；巧妙的nn【辨析】nn同义词:pleased, glad, joyful, cheerfulnn反义词:unhappynn【词形变化】nn比较级:happiernn最高级:happiestnn形容词:happilynn名词:happiness nn【词组】nnmake sb. happy (使某人快乐)；happy ending (美丽结局)；be happy with (与……在一起很高兴)；nnhappy birthday to you (祝你生日快乐)",
+                "Content": "【原文】I am very happy (because) I like snow very much.nn【翻译】我很高兴因为我非常喜欢雪。nn【解析】上句提到我很开心，下句提到我喜欢雪，因此下句是上句的原因。and表示并列；so表示结果；because表示原因；but表示转折。根据上下文语境，故选because。",
+                "Skill": "",
+                "Point": "本题考查连词的选用。nn常用连词解析:nn①and是并列关系，意为“和，与，而且”nn例:Work hard and you will learn English well. （你若用功，就能把英语学好。）nn②but代表转折关系，意为“但是”。nn例:I like many kinds of fruits, but I do not like apple.（我喜欢各种水果，但是不喜欢苹果。）nn③so代表顺承关系，意为“所以，因此”。nn例:The weather looks bad, so we had better take umbrellas.（天气不好，所以我们做好带把伞。）nn④because代表原因，“因为”。nn例:I am very tired, because I have not slept for two days.（因为我两天没有睡好了，所以我很累。）",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q5": {
+            "Body": {
+                "Sub": "",
+                "An1": "meal",
+                "An2": "snowman",
+                "An3": "bed",
+                "An4": "walk"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "Makenn【注释】nnvt. 使得；布置；制造；认为；安排；引起；构成nnvi. 开始；前进； nnn. 制造；构造；nn【词形变化】nn第三人称单数:makesnnb)过去式/过去分词:made（作形容词时，意为“成功的，创造的”）nn现在分词:making（作名词时，意为“发展，制造，行程”）nn形容词:makeablenne)名词:makernn【词组】nnmake sure (确信，证实)；make up (弥补)；make full use of (充分利用)；make friends with (与……交友)；make up for (补偿，弥补)；make a difference (有影响，有关系)；make out (辨认出)；make a decision (做决定)；nnmake for (导致，有助于，走向)；make a living (谋生，维持生活)",
+                "Content": "【原文】And I can make a (snowman) with my friends.nn【翻译】而且，我能和朋友们一起堆雪人。nn【解析】meal 意为“一餐，一顿饭，膳食”；snowman意为“雪人”；bed意为“床”；walk意为“步行”。根据上下文语境，下雪了，地上有很多雪，这样就能和朋友堆雪人了。故选B。",
+                "Skill": "这个空，在下一句就可以找到答案“So after breakfast, I ask some friends to make a snowman in front of my house.”",
+                "Point": "本题考查词义辨析。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q6": {
+            "Body": {
+                "Sub": "",
+                "An1": "want",
+                "An2": "wish",
+                "An3": "take",
+                "An4": "ask"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "frontnn【注释】nnn. 前面；正面；前线nnvt. 面对；朝向；对付nnvi. 朝向nnadj. 前面的；正面的nnadv. 在前面；向前nn【辨析】nn同义词:face, fore, headnn反义词:back, hind, rearnn【词形变化】nn【词组】nnin front/in the front (在前面)；up front (预先，在最前面)；in front of (在……前面)",
+                "Content": "【原文】So after breakfast, I (ask) some friends to make a snowman in front of my house.nn【翻译】所以，吃过早饭后，我邀请我的朋友到我家门前堆雪人。nn【解析】want 意为“想要”；wish 意为“渴望”；take 意为“拿”；ask 意为“询问，要求，邀请”。ask sb. to do sth. 意为“邀请某人做某事，要求某人做某事”。将选项带入句子，邀请朋友堆雪人最为合理，应选D。",
+                "Skill": "",
+                "Point": "本题考查词义辨析。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q7": {
+            "Body": {
+                "Sub": "",
+                "An1": "quickly",
+                "An2": "hard",
+                "An3": "slowly",
+                "An4": "nicely"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "Finishnn【注释】nnvt. 完成；结束；用完nnvi. 结束，终止；终结nnn. 结束nn【辨析】nn同义词:complete, accomplishnnb)反义词:begin, commence, startnn【词形变化】nn第三人称单数:finishesnn过去式/过去分词:finished（作形容词时，意为“完结的，完成的，精巧的”）nn现在分词:finishing（作形容词时，意为“(最后的，终点的”；作名词时，意为“完成，结束；最后的休整”） 【词组】nnfinish off/up (完成)；from start to finish (自始至终，从起点到终点)；the finishing touches (完成某事前所必需的)最后修饰；",
+                "Content": "【原文】We work so (hard) that we finish it in a short time.nn【翻译】我们很努力地堆（雪人），因此我们在很短的时间内就完成了。nn【解析】lovely 意为“可爱的”；hard 意为“努力地，辛苦地，困难地”；slowly 意为“缓慢地，慢慢地”；nicely 意为“漂亮地，恰好地，精细地”。句中提到在短时间内就完成了，因此推断他们在很努力的堆雪人，work hard 意为“努力工作，努力学习”，故选B。",
+                "Skill": "",
+                "Point": "本题考查上下文语境的理解，与词义的辨析。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q8": {
+            "Body": {
+                "Sub": "",
+                "An1": "have",
+                "An2": "buy",
+                "An3": "wear",
+                "An4": "wash"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "letnn【注释】nnvt. 允许；出租；假设；妨碍nnvi. 出租；被承包nnc)n. 障碍；出租屋nn【辨析】nn同义词:allow, admit, permitnn【词形变化】nn第三人称单数:letsnn过去式/过去分词:letnn现在分词:letting（作名词时，意为“出租，租金”）nn【词组】nnlet out (放出，泄露，出租)；let alone (更不用说)；let go off (放开某人/某物)；let sb. /sth. go (放走某人)；nnlet sb. go (解雇某人)；let yourself in for (给自己惹上（麻烦）)；let sb. Know (让某人知道)",
+                "Content": "【原文】After making it, we let the snow man (wear) a nice hat.nn【翻译】堆完雪人后，我们给雪人带上一顶很漂亮的帽子。nn【解析】have意为“有”；buy意为“买”；wear意为“穿”；wash 意为“洗”。句子提到给雪人带上帽子，故选wear。",
+                "Skill": "",
+                "Point": "本题考查动词词义辨析。nnwear, dress, put on均含有“穿衣，穿”的意思。nn①wear最常用词，指“穿衣、鞋袜或戴手套等”，侧重穿戴的状态。nn例:He wears a gold chain round his neck. （他戴着金项链。）nn②dress普通用词，指“给自己或他人穿衣”。既表动作又可表状态。nn例:Is she old enough to dress herself yet? （她会自己穿衣服了吗？）nn③put on普通用语，指“把衣服、鞋袜、帽子、手套等戴上去”，侧重穿戴的动作。nn例:She put on her coat and went out. （她穿上衣服，然后走出去。）",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q9": {
+            "Body": {
+                "Sub": "",
+                "An1": "tired",
+                "An2": "busy",
+                "An3": "quiet",
+                "An4": "relaxed"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "realnn【注释】nnadj. 实际的；真实的；实在的nnadv. 真正地；确实地nnn. 现实；实数nn【辨析】nn同义词:actual, true, certain,nn反义词: ideal, imaginary, unrealnn【词形变化】nn形容词:realistic；realized；realizablenn副词:really；realisticallynn名词:reality；realization；realism；realist；realnessnn动词:realize nn【词组】nnfor real (确实地，真正地)；in real terms (实价)；real world (现实世界，真正的世界)；real time (实时；同时)",
+                "Content": "【原文】We are very (tired) but we are very happy.nn【翻译】我们很累，但是我们很开心。nn【解析】tired 意为“疲倦的”；busy意为“忙碌的”；quiet意为“安静的”；relaxed意为“放松的”。but是转折关系的连词，因此，前面所填词要与happy表达的意思相反，故选A。",
+                "Skill": "",
+                "Point": "本题考查形容词义辨析。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q10": {
+            "Body": {
+                "Sub": "",
+                "An1": "talk",
+                "An2": "dinner",
+                "An3": "trip",
+                "An4": "time"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "havenn【注释】nnvt. 有；让；拿；从事；允许nn【词形变化】nna)第三人称单数:hasnnb)过去式/过去分词:hadnnc)现在分词:havingnn【词组】nnhave to do (不得不做某事)；have lunch (吃午饭)； nnhave it/ things out with (同……讲个明白)；",
+                "Content": "【原文】We have a great (time) today.nn【翻译】今天我们玩得很开心。nn【解析】词组have a great time意为“玩得开心，玩得愉快”；have a talk意为“谈话，听报告”；have dinner意为“吃饭”，dinner前无冠词；have a trip 旅行。根据文章孩子们在下雪天堆雪人，过的很愉快，应选D。",
+                "Skill": "",
+                "Point": "本题考查固定词组搭配，与对上下文语境的理解。",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        }
+    }
+}

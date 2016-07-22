@@ -7,7 +7,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.example.fertilizercrm.common.utils.Logger;
 
@@ -33,7 +33,7 @@ public class CommonAddressListActivity extends BaseActivity {
      */
     public static final String DATA_ADDRESS = "address";
 
-    @Bind(R.id.lv) ListView lv;
+    @BindView(R.id.lv) ListView lv;
     List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 
     @Override

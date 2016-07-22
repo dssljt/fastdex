@@ -6,7 +6,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import com.example.fertilizercrm.R;
@@ -24,7 +24,7 @@ public class SalesmanAuditActivity extends BaseActivity {
     private static final String KEY_ICON = "icon";
     private static final String KEY_TITLE = "title";
 
-    @Bind(R.id.grid_view) GridView mGridView;
+    @BindView(R.id.grid_view) GridView mGridView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

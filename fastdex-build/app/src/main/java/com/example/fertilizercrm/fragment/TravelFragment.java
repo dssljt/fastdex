@@ -21,7 +21,7 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.example.fertilizercrm.common.utils.Logger;
@@ -31,14 +31,14 @@ import com.example.fertilizercrm.common.utils.Logger;
  * 业务申请-出差
  */
 public class TravelFragment extends BaseFragment {
-    @Bind(R.id.et_subject)    EditText et_subject;
-    @Bind(R.id.et_day)        EditText et_day;
-    @Bind(R.id.tv_type)       TextView tv_type;
-    @Bind(R.id.tv_start_date) TextView tv_start_date;
-    @Bind(R.id.tv_end_date)   TextView tv_end_date;
-    @Bind(R.id.et_city)       TextView et_city;
-    @Bind(R.id.et_target_city)TextView et_target_city;
-    @Bind(R.id.et_content)    TextView et_content;
+    @BindView(R.id.et_subject)    EditText et_subject;
+    @BindView(R.id.et_day)        EditText et_day;
+    @BindView(R.id.tv_type)       TextView tv_type;
+    @BindView(R.id.tv_start_date) TextView tv_start_date;
+    @BindView(R.id.tv_end_date)   TextView tv_end_date;
+    @BindView(R.id.et_city)       TextView et_city;
+    @BindView(R.id.et_target_city)TextView et_target_city;
+    @BindView(R.id.et_content)    TextView et_content;
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private Date startDate;

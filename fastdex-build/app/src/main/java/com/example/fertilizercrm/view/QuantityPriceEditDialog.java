@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.example.fertilizercrm.R;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.example.fertilizercrm.common.utils.Logger;
@@ -38,15 +38,15 @@ public class QuantityPriceEditDialog extends Dialog {
     public static final String DEFAULT_EMPTY_PRICE = "0.00";
     public static final String DEFAULT_EMPTY_QUANTIT = "0";
 
-    @Bind(R.id.rl_quantity) View rl_quantity;//价格背景框
-    @Bind(R.id.iv_quantity) ImageView iv_quantity;
-    @Bind(R.id.tv_quantity_label) TextView tv_quantity_label;
-    @Bind(R.id.tv_quantity) TextView tv_quantity;
-    @Bind(R.id.tv_name) TextView tv_name;
-    @Bind(R.id.rl_price)    View rl_price;   //价格背景框
-    @Bind(R.id.iv_price) ImageView iv_price;
-    @Bind(R.id.tv_price_label) TextView tv_price_label;
-    @Bind(R.id.tv_price) TextView tv_price;
+    @BindView(R.id.rl_quantity) View rl_quantity;//价格背景框
+    @BindView(R.id.iv_quantity) ImageView iv_quantity;
+    @BindView(R.id.tv_quantity_label) TextView tv_quantity_label;
+    @BindView(R.id.tv_quantity) TextView tv_quantity;
+    @BindView(R.id.tv_name) TextView tv_name;
+    @BindView(R.id.rl_price)    View rl_price;   //价格背景框
+    @BindView(R.id.iv_price) ImageView iv_price;
+    @BindView(R.id.tv_price_label) TextView tv_price_label;
+    @BindView(R.id.tv_price) TextView tv_price;
 
     private Context context;
     private String quantitUnit = "吨";

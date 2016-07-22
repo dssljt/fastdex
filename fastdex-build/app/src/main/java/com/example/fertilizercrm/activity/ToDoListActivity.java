@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import butterknife.Bind;
+import butterknife.BindView;
 import com.example.fertilizercrm.common.utils.Logger;
 
 import com.example.fertilizercrm.R;
@@ -260,10 +260,10 @@ public class ToDoListActivity extends JSONArrayListActivity<ToDoListActivity.Vie
     }
 
     public static final class ViewHolder {
-        @Bind(R.id.rl_container) View rl_container;
-        @Bind(R.id.tv_time)     TextView tv_time;
-        @Bind(R.id.tv_type)     TextView tv_type;
-        @Bind(R.id.tv_title)    TextView tv_title;
-        @Bind(R.id.btn_examine) Button btn_examine;
+        @BindView(R.id.rl_container) View rl_container;
+        @BindView(R.id.tv_time)     TextView tv_time;
+        @BindView(R.id.tv_type)     TextView tv_type;
+        @BindView(R.id.tv_title)    TextView tv_title;
+        @BindView(R.id.btn_examine) Button btn_examine;
     }
 }

@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.example.fertilizercrm.common.utils.Logger;
@@ -31,23 +31,23 @@ public class ProductActivity extends BaseActivity {
      */
     public static final String KEY_PRODUCT = "product";
 
-    @Bind(R.id.switch_view)  ProductInfoSwitchView switch_view;
-    @Bind(R.id.ll_container) View ll_container;
-    @Bind(R.id.tv_intro)     TextView tv_intro;//介绍
+    @BindView(R.id.switch_view)  ProductInfoSwitchView switch_view;
+    @BindView(R.id.ll_container) View ll_container;
+    @BindView(R.id.tv_intro)     TextView tv_intro;//介绍
 
-    @Bind(R.id.iv)           ImageView iv;//产品图片
-    @Bind(R.id.tv_name)      TextView tv_name;//产品名字
-    @Bind(R.id.tv_detail)    TextView tv_detail;//化肥详情
-    @Bind(R.id.tv_group_name)TextView tv_group_name;//品牌
-    @Bind(R.id.tv_factory)   TextView tv_factory;//厂家
-    @Bind(R.id.tv_scale)     TextView tv_scale;//配比
-    @Bind(R.id.tv_desc)      TextView tv_desc;//规格
-    @Bind(R.id.tv_provider)  TextView tv_provider;//供货商
-    @Bind(R.id.tv_inprice)   TextView tv_inprice;//进价
-    @Bind(R.id.tv_outprice)  TextView tv_outprice;//送到售价
-    @Bind(R.id.tv_outprice2) TextView tv_outprice2;//自提售价
-    @Bind(R.id.tv_stock)     TextView tv_stock;//库存
-    @Bind(R.id.rl_inprice)   View rl_inprice;
+    @BindView(R.id.iv)           ImageView iv;//产品图片
+    @BindView(R.id.tv_name)      TextView tv_name;//产品名字
+    @BindView(R.id.tv_detail)    TextView tv_detail;//化肥详情
+    @BindView(R.id.tv_group_name)TextView tv_group_name;//品牌
+    @BindView(R.id.tv_factory)   TextView tv_factory;//厂家
+    @BindView(R.id.tv_scale)     TextView tv_scale;//配比
+    @BindView(R.id.tv_desc)      TextView tv_desc;//规格
+    @BindView(R.id.tv_provider)  TextView tv_provider;//供货商
+    @BindView(R.id.tv_inprice)   TextView tv_inprice;//进价
+    @BindView(R.id.tv_outprice)  TextView tv_outprice;//送到售价
+    @BindView(R.id.tv_outprice2) TextView tv_outprice2;//自提售价
+    @BindView(R.id.tv_stock)     TextView tv_stock;//库存
+    @BindView(R.id.rl_inprice)   View rl_inprice;
 
     private Product product;
     private DecimalFormat decimalFormat = new DecimalFormat("0.00");

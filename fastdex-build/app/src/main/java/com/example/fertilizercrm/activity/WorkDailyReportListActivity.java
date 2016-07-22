@@ -14,13 +14,13 @@ import com.example.fertilizercrm.view.WorkDailyReportHeadView;
 import org.apache.http.Header;
 import java.util.ArrayList;
 import java.util.List;
-import butterknife.Bind;
+import butterknife.BindView;
 
 /**
  * 工作日报列表
  */
 public class WorkDailyReportListActivity extends BeanArrayListActivity<WorkDailyReportListActivity.ViewHolder,WorkDailyInfo> {
-    @Bind(R.id.head_view) WorkDailyReportHeadView head_view;
+    @BindView(R.id.head_view) WorkDailyReportHeadView head_view;
     private List<WorkDailyInfo> jsonArray;
 
     @Override
@@ -114,7 +114,7 @@ public class WorkDailyReportListActivity extends BeanArrayListActivity<WorkDaily
     }
 
     public static final class ViewHolder {
-        @Bind(R.id.tv_name)     TextView tv_name;
-        @Bind(R.id.tv_content)  TextView tv_content;
+        @BindView(R.id.tv_name)     TextView tv_name;
+        @BindView(R.id.tv_content)  TextView tv_content;
     }
 }

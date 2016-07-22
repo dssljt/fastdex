@@ -24,7 +24,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.Stack;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import com.example.fertilizercrm.common.utils.Logger;
 
 /**
@@ -53,7 +53,6 @@ public class AreaActivity extends JSONArrayListActivity<AreaActivity.ViewHolder>
             label = "地区选择";
         }
         label = label.trim();
-
         getTitleView().setTitle(label);
         getTitleView().setRightClickListener(new View.OnClickListener() {
             @Override
@@ -249,6 +248,6 @@ public class AreaActivity extends JSONArrayListActivity<AreaActivity.ViewHolder>
     }
 
     public static class ViewHolder {
-        @Bind(R.id.tv) TextView tv;
+        @BindView(R.id.tv) TextView tv;
     }
 }

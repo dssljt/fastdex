@@ -1,0 +1,234 @@
+﻿{
+    "T": {
+        "Head": {
+            "Part": "完型填空",
+            "Type1": "TXT",
+            "Type2": "4",
+            "Rem": "REM",
+            "AnsQues": "10",
+            "Txt": "Q13_2_2_000019.txt",
+            "Pic": "",
+            "Sound": ""
+        },
+        "Q1": {
+            "Body": {
+                "Sub": "",
+                "An1": "read",
+                "An2": "see",
+                "An3": "feel",
+                "An4": "realize"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "advertisementnn【注释】nnn. 广告，宣传nn",
+                "Content": "【原文】We can (see) them in the newspapernn【翻译】我们可以在报纸上看到它们。nn【解析】根据下一句中的hear them over the radio（在广播听到它们）可知这里填的词与“hear”相对。read（读；阅读）see（看；看见）feel（感觉；感到）realize（实现；认识到）一般我们说看广告，因此用see。",
+                "Skill": "根据生活中的常识做题",
+                "Point": "本题考查考生的逻辑思维和动词的辨析",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q2": {
+            "Body": {
+                "Sub": "",
+                "An1": "and",
+                "An2": "only",
+                "An3": "even",
+                "An4": "even though"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "",
+                "Content": "【原文】We can see them in the newspaper, ...,(even) when we watch a ball game, ads will meet our eyes.nn【翻译】我们可以在报纸上看到它们,...,甚至当我们观看一场球赛,广告都会占据着我们的视线。nn【解析】这句话表达了广告无处不在，而在给出的四个选项中，只有even表达的意思更近一层。所以选择C。",
+                "Skill": "",
+                "Point": "本题考查考生对语境的整体把握及对这几个词的情感色彩的把握",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q3": {
+            "Body": {
+                "Sub": "",
+                "An1": "playing",
+                "An2": "taking",
+                "An3": "getting",
+                "An4": "doing"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "①activitynn【注释】nnn. 活动；行动；活跃nn【辨析】nn反义词: inactivitynn【词形变化】nna）动词:act （行动）nnb）名词:act（行为） action（行动，活动）nnc）复数:activitiesnn",
+                "Content": "【原文】It is true that in the activities of business ads are (playing) a more and more important part.nn【翻译】的确,在商业活动中，广告扮演着越来越重要的角色。nn【解析】从上一段中我们可以知道广告随处可见，所以它应该是有很重要的作用才能如此普遍存在。具有重要的作用英语可以表达为“play an important part”前面有be动词are，所以应该用-ing形式playing。",
+                "Skill": "",
+                "Point": "本题考查考生对固定搭配的词组的掌握",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q4": {
+            "Body": {
+                "Sub": "",
+                "An1": "sellers",
+                "An2": "sales",
+                "An3": "shopping",
+                "An4": "producing"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "increasenn【注释】nna）n. 增加，增长；提高nnb）vi. 增加，增大；繁殖nnc）vt. 增加，加大nn【辨析】nna)同义词:raisennb)反义词:decreasennc)扩展:raise多指高度的增长；increase多指数量的增加nn【词组】nnincrease in（使在…增加）；increase production（增产）；increase by（按…增长）；price increase（价格上涨）；on the increase（正在增加）nn",
+                "Content": "【原文】They tell people about new products and help more in (sales).nn【翻译】它们把新产品介绍给大众,在销售上给予更多的帮助。nn【解析】sellers（卖者）sales（销售；销售额）shopping（购物；买东西）producing（生产）根据上文可知广告的作用很重要，且下文提到“In this way they help to be on the increase of products.”。因此可以判断这里指的是销售，英语表达为in sales",
+                "Skill": "",
+                "Point": "本题考查考生对上下文的理解以及固定的搭配",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q5": {
+            "Body": {
+                "Sub": "",
+                "An1": "But",
+                "An2": "Also",
+                "An3": "Anyway",
+                "An4": "However"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "disadvantagenn【注释】nnn. 缺点；不利条件nn【辨析】nna)同义词:shortcomingnnb)反义词:advantagennc)disadvantage与shortcoming的区别nndisadvantage 不利,不利条件,损害,损失。主要形容事；shortcoming n. 短处,缺点。一般指向人nn【词组】nnat a disadvantage（处于不利地位）；to the disadvantage of（对…不利）；disadvantage factor（不利因素）nn",
+                "Content": "【原文】(However), ads also bring people all kinds of disadvantages.nn【翻译】然而，广告也带给了人们各种各样的不便。nn【解析】这里用However。根据上下文可知，上文说的是广告的优点，而下文是说广告的缺点。因此，应该用表示转折的连接词，且这句中用逗号隔开，所以应选D。",
+                "Skill": "",
+                "Point": "本题考查考生的上下文理解和对几个连词的使用",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "1",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q6": {
+            "Body": {
+                "Sub": "",
+                "An1": "shop",
+                "An2": "supermarket",
+                "An3": "production",
+                "An4": "market"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "manufacturernn【注释】nn[经] 制造商；[经] 厂商",
+                "Content": "【原文】For example, some of the manufacturers, in their hope to win a big (market) for their productsnn【翻译】例如，一些生产者希望他们的商品拥有更大的市场。nn【解析】shop（商店）supermarket（超市）production（产品；生产）market（市场）由上文可知生产者做广告的目的是为了让自己的产品销售的更好，也就是占据更大的市场。所以这里选D。",
+                "Skill": "",
+                "Point": "本题考查考生对上下文的理解和逻辑思维的能力，以及名词的辨析",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q7": {
+            "Body": {
+                "Sub": "",
+                "An1": "tell the truth",
+                "An2": "say anything",
+                "An3": "think a lot",
+                "An4": "describe anything"
+            },
+            "Key": {
+                "Ans": "A",
+                "Word": "dishonestnn【注释】nnadj. 不诚实的；欺诈的nn【辨析】nna)同义词:insincere , deceptivennb)反义词:honestnn【词形变化】nn副词:dishonestlynn【词组】nndishonest act（欺诈行为）；Dishonest Scales（诡诈天平）；Dishonest Trader（奸商）",
+                "Content": "【原文】For example,...are even so dishonest that they don’t (tell the truth) about their products.nn【翻译】例如,一些制造商希望为产品赢得更大的市场，于是非常不诚实地隐瞒消费者产品的真相。nn【解析】这里用tell the truth。根据题目中的dishonest，可知他们没有说实话，而在空前有了否定词don’t，所以这里应该是一个表示肯定的词，和否定词一起构成“说谎”的意思。所以选择A。",
+                "Skill": "",
+                "Point": "本题考查考生对整个句子的理解和对固定词组的掌握",
+                "S1": "0",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q8": {
+            "Body": {
+                "Sub": "",
+                "An1": "continued",
+                "An2": "stopped",
+                "An3": "attacked",
+                "An4": "performed"
+            },
+            "Key": {
+                "Ans": "B",
+                "Word": "①stopnn【注释】nna）v. 停止；堵塞；断绝nnb）n. 停止；车站；障碍；逗留nn【辨析】nna)同义词:cease, pausennb)反义词:continuennc)扩展:nnstop to do停下来去做某事；stop doing停止做某事nn【词组】nnbus stop（公共汽车站）；stop at （住宿）；put a stop to （使停止；制止）；stop short （中途停下）nnnn②appearnn【注释】nna）v.出现，呈现，看上去好像，nn【辨析】nna）反义词:disappearnn【词形变化】nn名词:appearance （外貌）nn【词组】nnappear in（出现在…）appear on（在…上出现）appear to be（好像是，仿佛）appear under（以…出现）",
+                "Content": "【原文】When you are watching an interesting TV play, it is suddenly (stopped) by some ads and they are appearing on the screen.nn【翻译】当你看一些有趣的电视节目的时候，一些广告总是突然出现在屏幕上打断你。nn【解析】continue（继续）stop（停止，使中断）attack（攻击）perform（执行）这段说的是广告的缺点，因此突然出现的广告是打断了你看电视节目。所以选B。",
+                "Skill": "",
+                "Point": "本题考查考生对上下文的理解以及动词的辨析",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q9": {
+            "Body": {
+                "Sub": "",
+                "An1": "fit",
+                "An2": "encourage",
+                "An3": "prefer",
+                "An4": "attract"
+            },
+            "Key": {
+                "Ans": "D",
+                "Word": "attractnn【注释】nnv. 吸引；引人注意nn 【辨析】nna)同义词:appealnnb)反义词:distractnnc)扩展:be attracted by 被…吸引nn例:be attracted by her beauty（被她的美貌打动 ）nn【词形变化】nn名词:attractionnn【词组】nnattract investment（招商）；attract on（吸引某人的注意力）",
+                "Content": "【原文】Also some ads (attract) children, and they ask their parents to buy them something in the ads.nn【翻译】也有很多广告吸引孩子们，致使他们要求自己的父母去为他们买广告里的产品。nn【解析】fit（适合) encourage（鼓励）prefer（宁可）attract（吸引）后句里面孩子要求父母去给他们买广告里的产品，显然是广告吸引了孩子。所以选择D。",
+                "Skill": "",
+                "Point": "本题考查考生对语境的理解",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q10": {
+            "Body": {
+                "Sub": "",
+                "An1": "hardly",
+                "An2": "badly",
+                "An3": "really",
+                "An4": "nearly"
+            },
+            "Key": {
+                "Ans": "C",
+                "Word": "pointnn【注释】nna）n. 点，要点；得分；标点；[机] 尖端nnb）vt. 指向；弄尖；加标点于nnc）vi. 表明；指向nn【词组】nnpoint of view （观点；立场）；point out （指出，指明）；at this point （这时候，此时此刻）；point in （有意义；在…有作用）；starting point （出发点；起始点）",
+                "Content": "【原文】From this point, ads (really) have some disadvantages.nn【翻译】从这一点上来说，广告确实存在一些弊端。nn【解析】hardly （几乎不）badly（很，严重地）really（实际上）nearly（差不多，几乎）根据整段可知说的广告存在弊端，所以这里是对这一观点的肯定。所以选择C。",
+                "Skill": "",
+                "Point": "本题考查考生对文章的理解",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        }
+    }
+}

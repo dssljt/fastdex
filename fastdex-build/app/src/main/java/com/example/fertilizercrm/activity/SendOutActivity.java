@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 import com.example.fertilizercrm.common.utils.Logger;
 import com.bigkoo.alertview.AlertView;
@@ -50,11 +50,11 @@ public class SendOutActivity extends ListViewActivity<SendOutAdapter> {
      */
     private static final int REQUEST_CODE_COMMON_ADDRESS = 3;
 
-    @Bind(R.id.tv_customer)    TextView tv_customer;
-    @Bind(R.id.tv_quantity)    TextView tv_quantity;//数量
-    @Bind(R.id.tv_total_sales) TextView tv_total_sales;//销售总金额
-    @Bind(R.id.tv_total_should)TextView tv_total_should;//应收总计
-    @Bind(R.id.head_view)      SendOutOrInHeadView head_view;
+    @BindView(R.id.tv_customer)    TextView tv_customer;
+    @BindView(R.id.tv_quantity)    TextView tv_quantity;//数量
+    @BindView(R.id.tv_total_sales) TextView tv_total_sales;//销售总金额
+    @BindView(R.id.tv_total_should)TextView tv_total_should;//应收总计
+    @BindView(R.id.head_view)      SendOutOrInHeadView head_view;
 
     private RoleBean roleBean;
     private Product selectAddressProduct;

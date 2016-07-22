@@ -13,7 +13,7 @@ import com.example.fertilizercrm.R;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.example.fertilizercrm.common.utils.Logger;
@@ -24,11 +24,11 @@ import com.example.fertilizercrm.common.utils.Logger;
  * @see com.example.fertilizercrm.activity.ProductListActivity
  */
 public class ProductListHeadView extends LinearLayout {
-    @Bind(R.id.et)         EditText et;
-    @Bind(R.id.tv_all)     TextView tv_all;
-    @Bind(R.id.tv_stock)   TextView tv_stock;
-    @Bind(R.id.iv_all)     ImageView iv_all;
-    @Bind(R.id.iv_stock)   ImageView iv_stock;
+    @BindView(R.id.et)         EditText et;
+    @BindView(R.id.tv_all)     TextView tv_all;
+    @BindView(R.id.tv_stock)   TextView tv_stock;
+    @BindView(R.id.iv_all)     ImageView iv_all;
+    @BindView(R.id.iv_stock)   ImageView iv_stock;
     private int ordertype = 0;//默认0-desc排序。1-asc排序
     private OnEventListener mOnEventListener;
     private String ptype = "";

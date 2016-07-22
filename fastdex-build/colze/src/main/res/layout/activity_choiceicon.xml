@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dopart_navibar" >
+
+        <ImageButton
+            android:id="@+id/ib_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:onClick="onViewClick"
+            android:padding="10dp"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="选择头像"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:background="@drawable/white_rect" >
+
+        <Button
+            android:id="@+id/button_boy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_selector"
+            android:onClick="onViewClick"
+            android:padding="5dp"
+            android:text="男生"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/button_girl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button_boy"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/button_selector"
+            android:onClick="onViewClick"
+            android:padding="5dp"
+            android:text="女生"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="5dp"
+            android:layout_below="@+id/button_girl" />
+
+        <ImageView
+            android:id="@+id/image_face"
+            android:layout_width="59dp"
+            android:layout_height="66dp"
+            android:layout_centerInParent="true"
+            android:scaleType="fitXY" />
+
+        <ImageView
+            android:id="@+id/image_hair"
+            android:layout_width="59dp"
+            android:layout_height="66dp"
+            android:layout_centerInParent="true"
+            android:scaleType="fitXY" />
+
+        <ImageView
+            android:id="@+id/image_eye"
+            android:layout_width="59dp"
+            android:layout_height="66dp"
+            android:layout_centerInParent="true"
+            android:scaleType="fitXY" />
+
+        <ImageView
+            android:id="@+id/image_nose"
+            android:layout_width="59dp"
+            android:layout_height="66dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:scaleType="fitXY" />
+
+        <Button
+            android:id="@+id/button_sure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/button_girl"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:background="@drawable/icon_button_sure_rect"
+            android:onClick="onViewClick"
+            android:padding="5dp"
+            android:text="确  认"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/button_hair"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_weight="1"
+            android:background="@drawable/button_selector"
+            android:padding="5dp"
+            android:text="发型"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" 
+            android:onClick="onViewClick"/>
+
+        <Button
+            android:id="@+id/button_hair_color"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_weight="1"
+            android:background="@drawable/button_selector"
+            android:padding="5dp"
+            android:text="发色"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" 
+            android:onClick="onViewClick"/>
+
+        <Button
+            android:id="@+id/button_face"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_weight="1"
+            android:background="@drawable/button_selector"
+            android:padding="5dp"
+            android:text="脸型"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" 
+            android:onClick="onViewClick"/>
+
+        <Button
+            android:id="@+id/button_eye"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_weight="1"
+            android:background="@drawable/button_selector"
+            android:padding="5dp"
+            android:text="眼眉"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" 
+            android:onClick="onViewClick"/>
+
+        <Button
+            android:id="@+id/button_nose"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_weight="1"
+            android:background="@drawable/button_selector"
+            android:padding="5dp"
+            android:text="口鼻"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:onClick="onViewClick" />
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/icon_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/white_rect"
+        android:cacheColorHint="#00000000"
+        android:columnWidth="90dp"
+        android:listSelector="#00000000"
+        android:numColumns="auto_fit"
+        android:scrollbars="none"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="5dp" >
+    </GridView>
+
+</LinearLayout>

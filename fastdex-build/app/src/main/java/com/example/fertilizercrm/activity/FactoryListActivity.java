@@ -16,7 +16,7 @@ import org.apache.http.Header;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import com.example.fertilizercrm.common.utils.Logger;
 
 /**
@@ -87,7 +87,7 @@ public class FactoryListActivity extends BeanArrayListActivity<FactoryListActivi
     }
 
     public static final class ViewHolder {
-        @Bind(R.id.tv_name)     TextView tv_name;
-        @Bind(R.id.tv_mobile)   TextView tv_mobile;
+        @BindView(R.id.tv_name)     TextView tv_name;
+        @BindView(R.id.tv_mobile)   TextView tv_mobile;
     }
 }

@@ -6,7 +6,7 @@ import android.text.TextUtils;
 import android.util.Base64;
 import android.widget.Button;
 import android.widget.TextView;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.example.fertilizercrm.common.utils.Logger;
@@ -37,11 +37,11 @@ public class CustomerVisitAddActivity extends BaseActivity {
 
     private static final int REQUEST_CODE_GET_CUSTOMER = 1;
     public static final String KEY_VISIT_INFO = "visit_info";
-    @Bind(R.id.image_ll) ImageLinearLayout image_ll;
-    @Bind(R.id.tv_visit_date) TextView tv_visit_date;
-    @Bind(R.id.tv_visit_name) TextView tv_visit_name;
-    @Bind(R.id.et_content)    TextView et_content;
-    @Bind(R.id.btn_submit)    Button btn_submit;
+    @BindView(R.id.image_ll) ImageLinearLayout image_ll;
+    @BindView(R.id.tv_visit_date) TextView tv_visit_date;
+    @BindView(R.id.tv_visit_name) TextView tv_visit_name;
+    @BindView(R.id.et_content)    TextView et_content;
+    @BindView(R.id.btn_submit)    Button btn_submit;
     private Date visitDate;
     private RoleBean roleBean;
     private VisitInfo visitInfo;

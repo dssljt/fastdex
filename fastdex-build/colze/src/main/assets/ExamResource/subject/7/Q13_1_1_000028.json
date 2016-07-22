@@ -1,0 +1,124 @@
+﻿{
+    "T": {
+        "Head": {
+            "Part": "完型填空",
+            "Type1": "TXT",
+            "Type2": "1",
+            "Rem": "REM",
+            "AnsQues": "5",
+            "Txt": "Q13_1_1_000028.txt",
+            "Pic": "",
+            "Sound": ""
+        },
+        "Q1": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "picnic",
+                "Word": "picnicnn【注释】nnn.野餐郊游；nnv.去野餐，参加野餐；野餐式地用餐；在户外用餐；用野餐招待nn【词形变化】nn名词形式(n.):picnicker 郊游的人nn形容词形式(adj.):picnicky 郊游的，行乐的nn【词组】nngo for a picnic（去野餐）；hold a picnic（举行野餐）；plan a picnic（筹划野餐）",
+                "Content": "【原文】We want to go for a (picnic) with our teacher.nn【翻译】我们想和我们的老师一起去野餐。nn【解析】学生和老师一同出游，go for 加一种活动表示参加某种活动，go for a picnic是个常用搭配，去野餐。",
+                "Skill": "遇到这类一时无法判定答案的题型，可以迅速浏览全文来抓住主旨。又像本题是处于文章的开端，一般是属于开篇交待或介绍情况，那么就可以从下文中通过搜索关键字、逻辑推理来找出合适的答案。",
+                "Point": "本题考查常用词组搭配及词汇积累",
+                "S1": "1",
+                "S2": "1",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q2": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "funny",
+                "Word": "funnynn【注释】nnadj.有趣的，好笑的，滑稽的nnn.笑话nn【辨析】nn同义词:amusednn【词形变化】nn名词形式:fun 乐趣；有趣的人或事nn比较级:funniernn最高级:funniest",
+                "Content": "【原文】All the students think it is (funny).nn【翻译】所有的学生觉得这会很有意思。nn【解析】根据句意可知，空格前是be动词，所以这里需要一个形容词，出去活动，一般都会很有趣，f开头的字母容易想到，funny。fun通常做名词用，在口语中才有形容词的用法。",
+                "Skill": "解答该类题，应根据逻辑句意选择合适的词，根据句式中需要的词性，写出对应词性的词。",
+                "Point": "本题考查词汇中的形容词和对句意的理解。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q3": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "gate",
+                "Word": "gatenn【注释】nnn.门；闸门；登机门；入场费nn【辨析】nn同义词:doornngate与door的比较:gate通常指城墙、围墙、院墙等的门，往往译成“城门”“栅门”“闸门”；door主要指楼、房间、碗橱、壁橱等建筑或家具上的门；\n例句:\nHe stood within the door.他站在室内。（不是室外）nnHe stood within the gate.他站在大门内。（是室外nn【词组】nnclose the gate（关上大门）；leave a gate open（敞开大门）；lock a gate（锁门）；flood gate（水闸门）；within the gate（在门里面）",
+                "Content": "【原文】We meet at the school (gate) at about seven thirty.nn【翻译】我们约定七点三十分在学校门口见面。nn【解析】从句意来推测，是约定在校门口见面，g开头并合适这个句子的词汇就是gate。",
+                "Skill": "",
+                "Point": "本题考查对句意的理解。",
+                "S1": "0",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "1",
+                "Frequency": ""
+            }
+        },
+        "Q4": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "singing",
+                "Word": "singnn【注释】nnv.唱，歌唱，吟诵nn【辨析】正误解析:她唱着哄婴儿入睡。nn［误］She sang a baby sleeping.nn［误］She sang a baby having slept.nn［正］She sang a baby to sleep.nn［析］sing a baby to sleep是习惯用语，意思是“唱着哄婴儿入睡”。nn【词形变化】nna)过去式/过去分词:sang/sungnnb)现在分词:singingnn【词组】nnsing the lead （领唱）；sing for（为…歌唱，因…歌唱）；sing in chorus（合唱）；sing with sb（与…一起唱）；sing to（由…伴奏着唱，和着…唱）",
+                "Content": "【原文】Look! John is (singing).nn【翻译】看！约翰在唱歌。nn【解析】根据后句“Lucia and Tom在跳舞”可推断本空格填写的应该是个与dance呼应的动词。题目已给首字母s，故sing最为合理。另外，还需注意时态，当有单词look，listen等单词，意思是“快看！快听！”时，句子要用现在进行时态，所以要在sing后面加上“ing”",
+                "Skill": "",
+                "Point": "本题考查时态中，现在进行式的辨识与运用。nn现在进行时的构成是:主语+be+v.ing〔现在分词〕形式nn①肯定句:主语+be+现在分词+其他nn②否定句:主语+be+not+现在分词+其他nn③一般疑问句:Be+主语+现在分词+其他",
+                "S1": "0",
+                "S2": "0",
+                "S3": "1",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        },
+        "Q5": {
+            "Body": {
+                "Sub": "",
+                "An1": "",
+                "An2": "",
+                "An3": "",
+                "An4": ""
+            },
+            "Key": {
+                "Ans": "others",
+                "Word": "othernn【注释】nnadj.别的；其他的；（两个中的）另一个；其余的nnpron.其他的；（指两个人或事物中的第二个）那个；（指一组中其余的人或事物）其余的；（指与说话人所在位置等相反的方向或地点）另一边nnn.the other对立面；对立的事物nn【辨析】nn同义词:elsenn正误解析:约翰比班上其他的男生都高。nn［误］John is taller than any boy in the class.nn［正］John is taller than any other boy in the class.nn［析］than any boy in the class指的是“班里的任何一个男孩,也包括约翰在内”，如果在any之后没有other，听起来好像约翰不是这个班的，所以必须加上other才指除约翰以外班上其余的任何一个男孩。nn【词组】nnin other words（换句话说，即，也就是说）；on the other hand（另一方面；相反）；other than（通常用于否定句）  除...之外；不同；不同于；不",
+                "Content": "【原文】The (others) are talking.nn【翻译】剩余的同学在聊天。nn【解析】根据上下文，指“剩余的同学”，其系动词为are，可知应用复数形式。",
+                "Skill": "表示“其余的”有很多不同形式，后面加不加名词、后面的动词是单数还是复数，都会有不同的形式，注意根据不同的提示词，判断最佳答案。nn技巧:",
+                "Point": "本题考查other的用法。nn①泛指另一个用anothenn②一定范围内两人(物)，一个用one，另一个用the other。nn③一定范围内三者，一个用one，另一个用one (another)，第三个可用the other，a third。nn④一定范围内，除去一部分人/物，剩余的全部用the others。nn⑤泛指别的人或物时，用others当在一定范围内，除去一部分后，剩余部分但不是全部时，也用others。",
+                "S1": "1",
+                "S2": "0",
+                "S3": "0",
+                "S4": "0",
+                "S5": "0",
+                "Frequency": ""
+            }
+        }
+    }
+}
