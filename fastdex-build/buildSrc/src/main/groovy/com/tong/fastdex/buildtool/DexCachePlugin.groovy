@@ -49,10 +49,11 @@ class DexCachePlugin implements Plugin<Project>,TaskExecutionListener  {
     Set<String> scanKeepMainDexList(Project project) {
         Set<String> keepMainDexList = new HashSet<>()
         String applicationClassName = FastDexUtils.getApplicationClassName(FastDexUtils.getManifestFile(project))
+        String packageName = FastDexUtils.getManifestPackageName(FastDexUtils.getManifestFile(project))
         keepMainDexList.add(applicationClassName.replaceAll("\\.","/") + ".class")
-        keepMainDexList.add("**/R.class")
-        keepMainDexList.add("**/R\$**.class")
-        keepMainDexList.add("**/BuildConfig.class")
+        keepMainDexList.add(packageName.replaceAll("\\.","/")  + "/R.class")
+        keepMainDexList.add(packageName.replaceAll("\\.","/")  + "/R\$**.class")
+       // keepMainDexList.add("**/BuildConfig.class")
 
         FolderComparator folderComparator = null
         dlog('scanKeepMainDexList incremental: ' + project.fastdex.incremental)
@@ -156,9 +157,81 @@ class DexCachePlugin implements Plugin<Project>,TaskExecutionListener  {
 
     }
 
+    void removeFinalModifier(Project project,File rootFile) {
+        if (rootFile.isFile()) {
+            String content = FastDexUtils.readUTF8Content(rootFile)
+            content = content.replaceAll("final","")
+            BufferedOutputStream bos = null
+            try {
+                bos = rootFile.newOutputStream()
+                bos.write(content.getBytes("UTF-8"))
+                bos.flush()
+            } finally {
+              if (bos != null) {
+                  try {
+                      bos.close()
+                  } catch (Exception e){
+
+                  }
+              }
+            }
+        } else {
+            File[] files = rootFile.listFiles()
+            for (File file : files) {
+                removeFinalModifier(project,file)
+            }
+        }
+    }
+
+    void copyDex(Project project) {
+        dlog('copyDex')
+        //缓存dex
+        project.copy {
+            from(new File(project.getBuildDir(), "/intermediates/transforms/dex/debug/folders/1000/1f/main/"))
+            into(getCacheDir())
+
+            include('classes3.dex')
+            rename('classes3.dex', 'classes4.dex')
+
+            include('classes2.dex')
+            rename('classes2.dex', 'classes3.dex')
+
+            include('classes.dex')
+            rename('classes.dex', 'classes2.dex')
+        }
+    }
+
+    void copyJavaSource(Project project) {
+        dlog('copyJavaSource')
+        //对source目录做快照
+        FastDexUtils.deleteFile(new File(getCacheDir(), "/java"))
+        if (project.fastdex.incremental) {
+            //如果开启增量更新，对sourceSet对快照
+            project.copy {
+                from(new File(project.getProjectDir(), 'src/main/java'))
+                into(new File(getCacheDir(), "/java"))
+            }
+        }
+    }
+
     @Override
     void afterExecute(Task task, TaskState state) {
-        if ('transformClassesWithJarMergingForDebug'.equals(task.name)) {
+        if ('assembleDebug'.equals(task.name)) {
+            Properties properties = new Properties()
+            properties.load(appProject.rootProject.file('local.properties').newDataInputStream())
+            def enable = properties.getProperty('fastdex.enable',"true")
+
+            if ("false".equals(enable)) {
+                copyJavaSource(appProject)
+            }
+        }
+        if ('processDebugResources'.equals(task.name)) {
+//            def bootTaskName = appProject.gradle.startParameter.taskNames[0]
+//            if ('cacheDex'.equals(bootTaskName)) {
+//                removeFinalModifier(appProject,new File(appProject.getBuildDir(),"/generated/source/r/debug"))
+//            }
+        }
+        else if ('transformClassesWithJarMergingForDebug'.equals(task.name)) {
             Properties properties = new Properties()
             properties.load(appProject.rootProject.file('local.properties').newDataInputStream())
             def enable = properties.getProperty('fastdex.enable',"true")
@@ -172,8 +245,13 @@ class DexCachePlugin implements Plugin<Project>,TaskExecutionListener  {
             properties.load(appProject.rootProject.file('local.properties').newDataInputStream())
             def enable = properties.getProperty('fastdex.enable',"true")
 
-            if (hasCachedDex() && !"false".equals(enable)) {
-                hookDex(appProject)
+            if (hasCachedDex()) {
+                if ("false".equals(enable)) {
+                    copyDex(appProject)
+                }
+                else {
+                    hookDex(appProject)
+                }
             }
         }
         else if ('assembleDebug'.equals(task.name)) {
@@ -206,11 +284,9 @@ class DexCachePlugin implements Plugin<Project>,TaskExecutionListener  {
         def bootTaskName = project.gradle.startParameter.taskNames[0]
         dlog('bootTaskName: ' + bootTaskName + ' projectDir: ' + project.getProjectDir())
 
-        project.task('cleanDex', group: PROJECT_NAME, description: 'Clean all dex',type: Delete,dependsOn: 'clean') {
-            project.afterEvaluate {
-                dlog('cleanDex')
-                delete getCacheDir()
-            }
+        project.task('cleanDex', group: PROJECT_NAME, description: 'Clean all dex',type: Delete,dependsOn: 'clean') << {
+            dlog('cleanDex')
+            delete getCacheDir()
         }
 
         project.task('cacheDex', group: PROJECT_NAME, description: 'Build all dex',dependsOn: ['cleanDex','transformClassesWithDexForDebug']) {
@@ -218,31 +294,8 @@ class DexCachePlugin implements Plugin<Project>,TaskExecutionListener  {
                 dlog('cacheDex doLast')
                 esureCacheDir()
 
-                //缓存dex
-                project.copy {
-                    from(new File(project.getBuildDir(), "/intermediates/transforms/dex/debug/folders/1000/1f/main/"))
-                    into(getCacheDir())
-
-                    include('classes3.dex')
-                    rename('classes3.dex', 'classes4.dex')
-
-                    include('classes2.dex')
-                    rename('classes2.dex', 'classes3.dex')
-
-                    include('classes.dex')
-                    rename('classes.dex', 'classes2.dex')
-                }
-
-                dlog('==project.fastdex.incremental: ' + project.fastdex.incremental)
-                //对source目录做快照
-                new File(getCacheDir(), "/java").delete()
-                if (project.fastdex.incremental) {
-                    //如果开启增量更新，对sourceSet对快照
-                    project.copy {
-                        from(new File(project.getProjectDir(), 'src/main/java'))
-                        into(new File(getCacheDir(), "/java"))
-                    }
-                }
+                copyDex(project)
+                copyJavaSource(project)
             }
         }
     }
