@@ -154,7 +154,15 @@ class DexCachePlugin implements Plugin<Project>,TaskExecutionListener  {
 
     @Override
     void beforeExecute(Task task) {
+        if ('assembleDebug'.equals(task.name)) {
+            Properties properties = new Properties()
+            properties.load(appProject.rootProject.file('local.properties').newDataInputStream())
+            def enable = properties.getProperty('fastdex.enable',"true")
 
+            if ("false".equals(enable)) {
+                copyJavaSource(appProject)
+            }
+        }
     }
 
     void removeFinalModifier(Project project,File rootFile) {
@@ -216,15 +224,6 @@ class DexCachePlugin implements Plugin<Project>,TaskExecutionListener  {
 
     @Override
     void afterExecute(Task task, TaskState state) {
-        if ('assembleDebug'.equals(task.name)) {
-            Properties properties = new Properties()
-            properties.load(appProject.rootProject.file('local.properties').newDataInputStream())
-            def enable = properties.getProperty('fastdex.enable',"true")
-
-            if ("false".equals(enable)) {
-                copyJavaSource(appProject)
-            }
-        }
         if ('processDebugResources'.equals(task.name)) {
 //            def bootTaskName = appProject.gradle.startParameter.taskNames[0]
 //            if ('cacheDex'.equals(bootTaskName)) {
