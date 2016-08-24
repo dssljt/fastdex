@@ -4,18 +4,12 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
-
-import com.baidu.mapapi.SDKInitializer;
 import com.easemob.EMCallBack;
 import com.example.fertilizercrm.easemob.chatuidemo.DemoHXSDKHelper;
 import com.example.fertilizercrm.basic.DataManager;
-import com.example.fertilizercrm.component.LocationPushService;
 import com.tencent.bugly.crashreport.CrashReport;
-
-
 import java.util.ArrayList;
 import java.util.List;
-
 import cn.jpush.android.api.JPushInterface;
 import com.example.fertilizercrm.common.httpclient.expand.AsyncHttpClientAdapter;
 import com.example.fertilizercrm.common.imageloader.cache.disc.naming.Md5FileNameGenerator;
@@ -120,7 +114,6 @@ public class FertilizerApplication extends Application {
         try {
             Logger.d("<< logout");
             //关闭上送位置服务
-            LocationPushService.stop(this);
             DataManager.getInstance().clear();
             JPushInterface.stopPush(this);
         } catch (Throwable e) {

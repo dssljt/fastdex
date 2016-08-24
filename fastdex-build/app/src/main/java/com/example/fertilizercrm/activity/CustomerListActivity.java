@@ -74,7 +74,7 @@ public class CustomerListActivity extends ListViewActivity<CustomerListAdapter> 
         getTitleView().setTitle("我的客户").setRightImageResource(R.drawable.ico_map).setRightClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomerMapActivity.start(getContext(),adapter.getData());
+
             }
         });
         if (currentRole() == Role.erji

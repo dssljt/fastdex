@@ -184,7 +184,6 @@ public class MainActivity extends BaseActivity implements EMEventListener {
         //((DemoHXSDKHelper) HXSDKHelper.getInstance()).getUserProfileManager().asyncGetCurrentUserInfo();
 
         //开启上传位置服务
-        LocationPushService.start(this);
     }
 
     private void initFragments() {

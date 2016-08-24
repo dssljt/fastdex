@@ -1,6 +1,6 @@
 package com.example.fertilizercrm.basic;
 
-import com.baidu.mapapi.model.LatLng;
+
 import com.example.fertilizercrm.FertilizerApplication;
 import com.example.fertilizercrm.bean.LoginResponse;
 
@@ -14,7 +14,6 @@ public class DataManager {
 
 
     private LoginResponse loginResponse;
-    private LatLng currentLatLng;
 
     public synchronized static DataManager getInstance() {
         return instance;
@@ -29,15 +28,6 @@ public class DataManager {
 
     public LoginResponse getLoginResponse() {
         return loginResponse;
-    }
-
-
-    public void setCurrentLatLng(LatLng currentLatLng) {
-        this.currentLatLng = currentLatLng;
-    }
-
-    public LatLng getCurrentLatLng() {
-        return currentLatLng;
     }
 
     public void clear() {

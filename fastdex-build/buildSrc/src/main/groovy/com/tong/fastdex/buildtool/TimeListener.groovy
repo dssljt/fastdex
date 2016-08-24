@@ -26,7 +26,7 @@ class TimeListener implements TaskExecutionListener, BuildListener {
         def ms = clock.timeInMs
         times.add([ms, task.path])
 
-//        task.project.logger.warn "${task.path} spend ${ms}ms"
+        task.project.logger.warn "${task.path} spend ${ms}ms"
     }
 
     @Override

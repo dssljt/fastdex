@@ -1,7 +1,5 @@
 package com.example.fertilizercrm.bean;
 
-import com.baidu.mapapi.model.LatLng;
-
 /**
  * Created by tong on 16/1/16.
  * 轨迹信息
@@ -141,7 +139,4 @@ public class LocusInfo {
         return stype;
     }
 
-    public LatLng getLatLng() {
-      return new LatLng(latitude,longitude);
-    }
 }

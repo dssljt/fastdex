@@ -71,7 +71,6 @@ import com.example.fertilizercrm.easemob.chatuidemo.Constant;
 import com.example.fertilizercrm.easemob.chatuidemo.DemoHXSDKHelper;
 import com.example.fertilizercrm.R;
 import com.example.fertilizercrm.easemob.chatuidemo.activity.AlertDialog;
-import com.example.fertilizercrm.easemob.chatuidemo.activity.BaiduMapActivity;
 import com.example.fertilizercrm.easemob.chatuidemo.activity.ChatActivity;
 import com.example.fertilizercrm.easemob.chatuidemo.activity.ContextMenu;
 import com.example.fertilizercrm.easemob.chatuidemo.activity.ShowBigImage;
@@ -1569,12 +1568,7 @@ public class MessageAdapter extends BaseAdapter{
 
 		@Override
 		public void onClick(View v) {
-			Intent intent;
-			intent = new Intent(context, BaiduMapActivity.class);
-			intent.putExtra("latitude", location.latitude);
-			intent.putExtra("longitude", location.longitude);
-			intent.putExtra("address", address);
-			activity.startActivity(intent);
+
 		}
 
 	}

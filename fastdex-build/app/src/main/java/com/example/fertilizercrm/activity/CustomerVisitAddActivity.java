@@ -129,8 +129,6 @@ public class CustomerVisitAddActivity extends BaseActivity {
 //        } catch (UnsupportedEncodingException e) {
 //            e.printStackTrace();
 //        }
-        params.put("longitude", DataManager.getInstance().getCurrentLatLng().longitude);
-        params.put("latitude", DataManager.getInstance().getCurrentLatLng().latitude);
         params.put("visitDate", new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
         List<File> imageList = image_ll.getImageFiles();
         try {
