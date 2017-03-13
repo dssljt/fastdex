@@ -30,10 +30,6 @@ class FastdexPlugin implements Plugin<Project> {
 
         project.extensions.create('fastdex', FastdexExtension)
         def configuration = project.fastdex
-        if (!configuration.enabled) {
-            project.logger.debug("==fastdex disable")
-            return
-        }
 
         project.afterEvaluate {
             if (!project.plugins.hasPlugin('com.android.application')) {

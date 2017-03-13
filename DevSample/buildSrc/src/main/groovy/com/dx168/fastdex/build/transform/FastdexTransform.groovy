@@ -426,7 +426,6 @@ class FastdexTransform extends TransformProxy {
         project.ant.zip(baseDir: classesDir, destFile: outJar)
     }
 
-
     Set<String> scanAllJavaFileInSourceSet() {
         /**
          source dir
@@ -449,9 +448,16 @@ class FastdexTransform extends TransformProxy {
          rx.Scheduler
          */
         Set<String> result = new HashSet<>();
-        String[] srcDirs = project.android.sourceSets.main.java.srcDirs
+        List<String> srcLists = new ArrayList<>()
+        for (String srcDir : project.android.sourceSets.main.java.srcDirs) {
+            srcLists.add(srcDir);
+        }
 
-        for (String srcDir : srcDirs) {
+        def str = variantName.toLowerCase()
+        srcLists.add(new File(project.getBuildDir(),"/generated/source/apt/${str}").getAbsolutePath())
+        srcLists.add(new File(project.getBuildDir(),"/generated/source/buildConfig/${str}").getAbsolutePath())
+
+        for (String srcDir : srcLists) {
             project.logger.error("==fastdex sourceSet: " + srcDir)
 
             Path srcDirPath = new File(srcDir).toPath()
@@ -470,7 +476,6 @@ class FastdexTransform extends TransformProxy {
                 }
             })
         }
-
         return result
     }
 

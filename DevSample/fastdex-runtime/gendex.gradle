@@ -1,0 +1,9 @@
+task generateRuntimeDex(type: GradleBuild) {
+
+}
+
+project.afterEvaluate {
+    android.applicationVariants.all { variant ->
+
+    }
+}

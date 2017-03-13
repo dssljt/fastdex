@@ -64,7 +64,9 @@ public class ClassInjectFileVisitor extends SimpleFileVisitor<Path> {
         String className = relativePath.toString()
         className = className.substring(0,className.length() - FileUtils.CLASS_SUFFIX.length())
         //className => com.dx168.fastdex.sample.MainActivity
-        boolean result = sourceSetJavaFiles.contains(className) || className.startsWith("android/support/multidex/")
+        boolean result = sourceSetJavaFiles.contains(className)
+
+        // || className.startsWith("android/support/multidex/")
         return result
     }
 }
