@@ -5,4 +5,5 @@ package com.dx168.fastdex.build.extension
  */
 public class FastdexExtension {
     boolean enabled = true
+    boolean debug = false
 }

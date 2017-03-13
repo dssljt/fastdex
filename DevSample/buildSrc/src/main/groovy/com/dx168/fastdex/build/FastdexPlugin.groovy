@@ -8,7 +8,6 @@ import com.dx168.fastdex.build.task.FastdexCreateMaindexlistFileTask
 import com.dx168.fastdex.build.task.FastdexManifestTask
 import com.dx168.fastdex.build.task.FastdexResourceIdTask
 import com.dx168.fastdex.build.util.BuildTimeListener
-import com.dx168.fastdex.build.util.FileUtils
 import org.gradle.api.GradleException
 import org.gradle.api.Plugin
 import org.gradle.api.Project

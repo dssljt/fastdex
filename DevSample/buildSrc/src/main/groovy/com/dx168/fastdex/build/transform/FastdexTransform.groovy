@@ -97,18 +97,52 @@ class FastdexTransform extends TransformProxy {
                 FileUtils.cleanDir(dexOutputDir)
                 File cacheDexDir = FileUtils.getDexCacheDir(project,variantName)
 
-                FileUtils.copyResourceUsingStream(FileUtils.RUNTIME_DEX_FILENAME,new File(dexOutputDir,"classes.dex"))
-                FileUtils.copyFileUsingStream(patchDexFile,new File(dexOutputDir,"classes2.dex"))
-                FileUtils.copyFileUsingStream(new File(cacheDexDir,"classes.dex"),new File(dexOutputDir,"classes3.dex"))
+                //runtime.dex            => classes.dex
+                //antilazyload.dex       => classes2.dex
+                //patch.dex              => classes3.dex
+                //dex_cache.classes.dex  => classes4.dex
+                //dex_cache.classes2.dex => classes5.dex
 
-                int point = 3
+                //copy fastdex-runtime.dex
+                FileUtils.copyResourceUsingStream(FileUtils.RUNTIME_DEX_FILENAME,new File(dexOutputDir,"classes.dex"))
+                //copy fastdex-antilazyload.dex
+                FileUtils.copyResourceUsingStream(FileUtils.ANTILAZYLOAD_DEX_FILENAME,new File(dexOutputDir,"classes2.dex"))
+                //copy patch.dex
+                FileUtils.copyFileUsingStream(patchDexFile,new File(dexOutputDir,"classes3.dex"))
+                FileUtils.copyFileUsingStream(new File(cacheDexDir,"classes.dex"),new File(dexOutputDir,"classes4.dex"))
+
+                int point = 2
                 File dexFile = new File(cacheDexDir,"classes" + point + ".dex")
                 while (FileUtils.isLegalFile(dexFile.getAbsolutePath())) {
-                    FileUtils.copyFileUsingStream(dexFile,new File(dexOutputDir,"classes" + (point + 1) + ".dex"))
+                    FileUtils.copyFileUsingStream(dexFile,new File(dexOutputDir,"classes" + (point + 3) + ".dex"))
                     point++
                     dexFile = new File(cacheDexDir,"classes" + point + ".dex")
                 }
-                FileUtils.copyResourceUsingStream(FileUtils.ANTILAZYLOAD_DEX_FILENAME,new File(dexOutputDir,"classes" + (point + 1) + ".dex"))
+
+                //log
+                StringBuilder sb = new StringBuilder()
+                sb.append("cached_dex[")
+                File[] dexFiles = cacheDexDir.listFiles()
+                for (File file : dexFiles) {
+                    if (file.getName().endsWith(FileUtils.DEX_SUFFIX)) {
+                        sb.append(file.getName())
+                        if (file != dexFiles[dexFiles.length - 1]) {
+                            sb.append(",")
+                        }
+                    }
+                }
+                sb.append("] cur-dex[")
+                dexFiles = dexOutputDir.listFiles()
+                for (File file : dexFiles) {
+                    if (file.getName().endsWith(FileUtils.DEX_SUFFIX)) {
+                        sb.append(file.getName())
+                        if (file != dexFiles[dexFiles.length - 1]) {
+                            sb.append(",")
+                        }
+                    }
+                }
+                sb.append("]")
+                project.logger.error("==fastdex ${sb}")
             }
             else {
                 //fail
@@ -292,20 +326,49 @@ class FastdexTransform extends TransformProxy {
         //dexelements [fastdex-runtime.dex fastdex-antilazyload.dex ${dex_cache}.listFiles]
         FileUtils.cleanDir(dexOutputDir)
 
+        //runtime.dex            => classes.dex
+        //antilazyload.dex       => classes2.dex
+        //dex_cache.classes.dex  => classes3.dex
+        //dex_cache.classes2.dex => classes4.dex
+
         //copy fastdex-runtime.dex
         FileUtils.copyResourceUsingStream(FileUtils.RUNTIME_DEX_FILENAME,new File(dexOutputDir,"classes.dex"))
         //copy fastdex-antilazyload.dex
         FileUtils.copyResourceUsingStream(FileUtils.ANTILAZYLOAD_DEX_FILENAME,new File(dexOutputDir,"classes2.dex"))
 
         FileUtils.copyFileUsingStream(new File(cacheDexDir,"classes.dex"),new File(dexOutputDir,"classes3.dex"))
-
-        int point = 3
+        int point = 2
         File dexFile = new File(cacheDexDir,"classes" + point + ".dex")
         while (FileUtils.isLegalFile(dexFile.getAbsolutePath())) {
-            FileUtils.copyFileUsingStream(dexFile,new File(dexOutputDir,"classes" + (point + 1) + ".dex"))
+            FileUtils.copyFileUsingStream(dexFile,new File(dexOutputDir,"classes" + (point + 2) + ".dex"))
             point++
             dexFile = new File(cacheDexDir,"classes" + point + ".dex")
         }
+
+        //log
+        StringBuilder sb = new StringBuilder()
+        sb.append("cached_dex[")
+        File[] dexFiles = cacheDexDir.listFiles()
+        for (File file : dexFiles) {
+            if (file.getName().endsWith(FileUtils.DEX_SUFFIX)) {
+                sb.append(file.getName())
+                if (file != dexFiles[dexFiles.length - 1]) {
+                    sb.append(",")
+                }
+            }
+        }
+        sb.append("] cur-dex[")
+        dexFiles = dexOutputDir.listFiles()
+        for (File file : dexFiles) {
+            if (file.getName().endsWith(FileUtils.DEX_SUFFIX)) {
+                sb.append(file.getName())
+                if (file != dexFiles[dexFiles.length - 1]) {
+                    sb.append(",")
+                }
+            }
+        }
+        sb.append("]")
+        project.logger.error("==fastdex first build ${sb}")
     }
 
     void executeMerge(TransformInvocation transformInvocation,File mergedJar) {
