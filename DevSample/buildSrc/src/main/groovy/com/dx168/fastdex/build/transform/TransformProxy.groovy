@@ -6,13 +6,7 @@ import com.android.build.api.transform.QualifiedContent
 import com.android.build.api.transform.Status
 import com.android.build.api.transform.Transform
 import com.android.build.api.transform.TransformInput
-import com.android.build.gradle.internal.transforms.JarMerger
-import com.dx168.fastdex.build.util.FileUtils
 import com.google.common.collect.ImmutableList
-
-import java.lang.reflect.InvocationHandler
-import java.lang.reflect.Method
-import java.lang.reflect.Proxy
 
 /**
  * Created by tong on 17/10/3.
@@ -42,31 +36,6 @@ public class TransformProxy extends Transform {
     @Override
     boolean isIncremental() {
         return base.isIncremental()
-    }
-
-    JarMerger getClassJarMerger(File jarFile) {
-        JarMerger jarMerger = new JarMerger(jarFile)
-
-        Class<?> zipEntryFilterClazz
-        try {
-            zipEntryFilterClazz = Class.forName("com.android.builder.packaging.ZipEntryFilter")
-        } catch (Throwable t) {
-            zipEntryFilterClazz = Class.forName("com.android.builder.signing.SignedJarBuilder\$IZipEntryFilter")
-        }
-
-        Class<?>[] classArr = new Class[1];
-        classArr[0] = zipEntryFilterClazz
-        InvocationHandler handler = new InvocationHandler(){
-            public Object invoke(Object proxy, Method method, Object[] args)
-                    throws Throwable {
-                return args[0].endsWith(FileUtils.CLASS_SUFFIX);
-            }
-        };
-        Object proxy = Proxy.newProxyInstance(zipEntryFilterClazz.getClassLoader(), classArr, handler);
-
-        jarMerger.setFilter(proxy);
-
-        return jarMerger
     }
 
     /**

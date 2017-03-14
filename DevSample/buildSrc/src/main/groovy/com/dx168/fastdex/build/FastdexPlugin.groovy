@@ -18,6 +18,7 @@ import org.gradle.api.execution.TaskExecutionGraphListener
 import java.lang.reflect.Field
 import com.dx168.fastdex.build.transform.FastdexTransform
 import com.dx168.fastdex.build.extension.FastdexExtension
+import com.dx168.fastdex.build.task.FastdexCustomJavacTask
 
 /**
  * Registers the plugin's tasks.
@@ -65,22 +66,31 @@ class FastdexPlugin implements Plugin<Project> {
                     // Not in instant run mode, continue.
                 }
 
+                //clean cache task(user trigger)
+                FastdexCleanTask cleanTask = project.tasks.create("fastdexCleanFor${variantName}", FastdexCleanTask)
+                cleanTask.variantName = variantName
+
                 def minifyEnabled = android.buildTypes["${variantName.toLowerCase()}"].minifyEnabled
                 if (minifyEnabled) {
                     project.logger.error("==fastdex disable fastdex [android.buildTypes${variantName.toLowerCase()}.minifyEnabled=true]")
                 }
                 else {
+                    Task compileTask = project.tasks.getByName("compile${variantName}JavaWithJavac")
+                    Task customJavacTask = project.tasks.create("fastdexCustomCompile${variantName}JavaWithJavac", FastdexCustomJavacTask)
+                    customJavacTask.variantName = variantName
+                    customJavacTask.compileTask = compileTask
+
+                    compileTask.dependsOn customJavacTask
+
                     Task multidexlistTask = project.tasks.getByName("transformClassesWithMultidexlistFor${variantName}")
                     if (multidexlistTask != null) {
                         FastdexCreateMaindexlistFileTask createFileTask = project.tasks.create("fastdexCreate${variantName}MaindexlistFileTask", FastdexCreateMaindexlistFileTask)
                         createFileTask.variantName = variantName
+                        //createFileTask.manifestPath = variantOutput.processManifest.manifestOutputFile
 
                         multidexlistTask.dependsOn createFileTask
                         multidexlistTask.enabled = false
                     }
-
-                    FastdexCleanTask fastdexCleanTask = project.tasks.create("fastdexCleanFor${variantName}", FastdexCleanTask)
-                    fastdexCleanTask.variantName = variantName
 
                     FastdexManifestTask manifestTask = project.tasks.create("fastdexProcess${variantName}Manifest", FastdexManifestTask)
                     manifestTask.manifestPath = variantOutput.processManifest.manifestOutputFile

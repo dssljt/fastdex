@@ -1,23 +1,15 @@
 package com.dx168.fastdex.build.transform
 
-import com.android.build.api.transform.DirectoryInput
-import com.android.build.api.transform.JarInput
 import com.android.build.api.transform.Transform
 import com.android.build.api.transform.TransformException
-import com.android.build.api.transform.TransformInput
 import com.android.build.api.transform.TransformInvocation
-import com.android.build.gradle.internal.pipeline.TransformInvocationBuilder
-import com.android.build.gradle.internal.transforms.JarMerger
-import com.dx168.fastdex.build.util.ClassInjectFileVisitor
-import com.dx168.fastdex.build.util.JavaDirDiff
-import com.google.common.collect.Lists
+import com.dx168.fastdex.build.util.ClassInject
+import com.dx168.fastdex.build.util.Constant
+import com.dx168.fastdex.build.util.FastdexUtils
+import com.dx168.fastdex.build.util.GradleUtils
+import org.gradle.api.GradleException
 import org.gradle.api.Project
 import com.android.build.api.transform.Format
-import java.nio.file.FileVisitResult
-import java.nio.file.Files
-import java.nio.file.Path
-import java.nio.file.SimpleFileVisitor
-import java.nio.file.attribute.BasicFileAttributes
 import com.dx168.fastdex.build.util.FileUtils
 
 /**
@@ -37,54 +29,13 @@ class FastdexTransform extends TransformProxy {
 
     @Override
     void transform(TransformInvocation transformInvocation) throws TransformException, IOException, InterruptedException {
-        if (checkBuildCache()) {
-            project.logger.error("==fastdex discover cached dex!!")
-            //compare changed class
-            Set<String> result = new HashSet<>()
-            String[] srcDirs = project.android.sourceSets.main.java.srcDirs
-            File snapshootDir = new File(FileUtils.getFastdexBuildDir(project,variantName),FileUtils.FASTDEX_SNAPSHOOT_DIR)
-
-            Set<String> changedJavaClassNames = new HashSet<>()
-            for (String srcDir : srcDirs) {
-                File newDir = new File(srcDir)
-                File oldDir = new File(snapshootDir,srcDir)
-
-                changedJavaClassNames.addAll(JavaDirDiff.diff(newDir,oldDir,true,project.logger))
-            }
-            if (changedJavaClassNames.isEmpty()) {
-                base.transform(transformInvocation)
-                return
-            }
-
-            changedJavaClassNames.add(getBuildConfigClassName())
-
-            //add all changed file to jar
-            File mergedJar = new File(FileUtils.getFastdexBuildDir(project,variantName),"latest-merged.jar")
-            FileUtils.deleteFile(mergedJar)
-            executeMerge(transformInvocation,mergedJar)
-
-            File classesDir = new File(FileUtils.getFastdexBuildDir(project,variantName),"patch-" + FileUtils.FASTDEX_CLASSES_DIR)
-            FileUtils.deleteDir(classesDir)
-            FileUtils.ensumeDir(classesDir)
-
-            project.copy {
-                from project.zipTree(mergedJar)
-                for (String className : changedJavaClassNames) {
-                    include className
-                }
-
-                into classesDir
-            }
-            FileUtils.deleteFile(mergedJar)
-
-            File patchJar = new File(FileUtils.getFastdexBuildDir(project,variantName),"patch-combined.jar")
-            project.ant.zip(baseDir: classesDir, destFile: patchJar)
-
-            project.logger.error("==fastdex will generate dex file ${changedJavaClassNames}")
+        if (FastdexUtils.hasValidCache(project,variantName)) {
+            //get patch jar
+            File patchJar = generatePatchJar(transformInvocation)
 
             String dxcmd = "${project.android.getSdkDirectory()}/build-tools/${project.android.getBuildToolsVersion()}/dx"
 
-            File patchDexFile = new File(FileUtils.getFastdexBuildDir(project,variantName),"patch.dex")
+            File patchDexFile = new File(FastdexUtils.getBuildDir(project,variantName),"patch.dex")
             FileUtils.deleteFile(patchDexFile)
             dxcmd = "${dxcmd} --dex --output=${patchDexFile} ${patchJar}"
             project.logger.error("==fastdex generate dex cmd \n" + dxcmd)
@@ -95,7 +46,7 @@ class FastdexTransform extends TransformProxy {
                 //dexelements [fastdex-runtime.dex fastdex-antilazyload.dex patch.dex ${dex_cache}.listFiles]
                 File dexOutputDir = getDexOutputDir(transformInvocation)
                 FileUtils.cleanDir(dexOutputDir)
-                File cacheDexDir = FileUtils.getDexCacheDir(project,variantName)
+                File cacheDexDir = FastdexUtils.getDexCacheDir(project,variantName)
 
                 //runtime.dex            => classes.dex
                 //antilazyload.dex       => classes2.dex
@@ -104,9 +55,9 @@ class FastdexTransform extends TransformProxy {
                 //dex_cache.classes2.dex => classes5.dex
 
                 //copy fastdex-runtime.dex
-                FileUtils.copyResourceUsingStream(FileUtils.RUNTIME_DEX_FILENAME,new File(dexOutputDir,"classes.dex"))
+                FileUtils.copyResourceUsingStream(Constant.RUNTIME_DEX_FILENAME,new File(dexOutputDir,"classes.dex"))
                 //copy fastdex-antilazyload.dex
-                FileUtils.copyResourceUsingStream(FileUtils.ANTILAZYLOAD_DEX_FILENAME,new File(dexOutputDir,"classes2.dex"))
+                FileUtils.copyResourceUsingStream(Constant.ANTILAZYLOAD_DEX_FILENAME,new File(dexOutputDir,"classes2.dex"))
                 //copy patch.dex
                 FileUtils.copyFileUsingStream(patchDexFile,new File(dexOutputDir,"classes3.dex"))
                 FileUtils.copyFileUsingStream(new File(cacheDexDir,"classes.dex"),new File(dexOutputDir,"classes4.dex"))
@@ -124,7 +75,7 @@ class FastdexTransform extends TransformProxy {
                 sb.append("cached_dex[")
                 File[] dexFiles = cacheDexDir.listFiles()
                 for (File file : dexFiles) {
-                    if (file.getName().endsWith(FileUtils.DEX_SUFFIX)) {
+                    if (file.getName().endsWith(Constant.DEX_SUFFIX)) {
                         sb.append(file.getName())
                         if (file != dexFiles[dexFiles.length - 1]) {
                             sb.append(",")
@@ -134,7 +85,7 @@ class FastdexTransform extends TransformProxy {
                 sb.append("] cur-dex[")
                 dexFiles = dexOutputDir.listFiles()
                 for (File file : dexFiles) {
-                    if (file.getName().endsWith(FileUtils.DEX_SUFFIX)) {
+                    if (file.getName().endsWith(Constant.DEX_SUFFIX)) {
                         sb.append(file.getName())
                         if (file != dexFiles[dexFiles.length - 1]) {
                             sb.append(",")
@@ -145,96 +96,80 @@ class FastdexTransform extends TransformProxy {
                 project.logger.error("==fastdex ${sb}")
             }
             else {
+                throw new GradleException("==fastdex generate dex fail: \n${dxcmd}")
                 //fail
-                base.transform(transformInvocation)
+                //base.transform(transformInvocation)
             }
         }
         else {
-            FileUtils.deleteDir(FileUtils.getFastdexBuildDir(project,variantName))
-            File mergedJar = new File(FileUtils.getFastdexBuildDir(project,variantName),"merged.jar")
-            File outJar = new File(FileUtils.getFastdexBuildDir(project,variantName),"injected.jar")
+            //normal build
+            File combinedJar = new File(FastdexUtils.getBuildDir(project,variantName),Constant.COMBINED_JAR_FILENAME)
+            GradleUtils.executeMerge(transformInvocation,combinedJar)
 
-            injectAndMergeJar(transformInvocation,mergedJar,outJar)
+            File injectedJar = FastdexUtils.getInjectedJarFile(project,variantName)
+            ClassInject.injectJar(project,variantName,combinedJar, injectedJar)
+
+            FileUtils.deleteFile(combinedJar)
             createSourceSetSnapshoot()
             keepDependenciesList()
-
             //invoke the original transform method
-            TransformInvocationBuilder builder = new TransformInvocationBuilder(transformInvocation.getContext());
-            builder.addInputs(jarFileToInputs(outJar))
-            builder.addOutputProvider(transformInvocation.getOutputProvider())
-            builder.addReferencedInputs(transformInvocation.getReferencedInputs())
-            builder.addSecondaryInputs(transformInvocation.getSecondaryInputs())
-            builder.setIncrementalMode(transformInvocation.isIncremental())
-            base.transform(builder.build())
-
+            base.transform(GradleUtils.createNewTransformInvocation(this,transformInvocation,injectedJar))
             //save dex
-            copyDex(transformInvocation)
+            copyNormalBuildDex(transformInvocation)
             //save R.txt
             copyRTxt()
         }
     }
 
-    boolean checkBuildCache() {
-        File cacheDexDir = FileUtils.getDexCacheDir(project,variantName)
-        if (!FileUtils.dirExists(cacheDexDir.getAbsolutePath())) {
-            return false;
+    File generatePatchJar(TransformInvocation transformInvocation) {
+        File customPatchJar = FastdexUtils.getCustomJavacTaskOutputFile(project,variantName)
+        if (FileUtils.isLegalFile(customPatchJar)) {
+            project.logger.error("==fastdex use custom jar")
+            return customPatchJar
         }
+        //compare changed class
+        Set<String> changedJavaClassNames = FastdexUtils.scanChangedClasses(project,variantName,manifestPath)
+        //add all changed file to jar
+        File mergedJar = new File(FastdexUtils.getBuildDir(project,variantName),"latest-merged.jar")
 
-        boolean result = false
-        for (File file : cacheDexDir.listFiles()) {
-            if (file.getName().endsWith(FileUtils.DEX_SUFFIX)) {
-                result = true
-                break
+        FileUtils.deleteFile(mergedJar)
+        GradleUtils.executeMerge(transformInvocation,mergedJar)
+
+        File classesDir = new File(FastdexUtils.getBuildDir(project,variantName),"patch-" + Constant.FASTDEX_CLASSES_DIR)
+        FileUtils.deleteDir(classesDir)
+        FileUtils.ensumeDir(classesDir)
+
+        project.copy {
+            from project.zipTree(mergedJar)
+            for (String className : changedJavaClassNames) {
+                className = className.replaceAll("\\.java","\\.class")
+                include className
+                include "${className.replaceAll("\\.class","")}\$*.class"
             }
+
+            into classesDir
         }
+        FileUtils.deleteFile(mergedJar)
 
-        if (result) {
-            //check dependencies
-            //remove
-            //old    current
-            //1.aar  1.aar
-            //2.aar
+        File patchJar = new File(FastdexUtils.getBuildDir(project,variantName),"patch-combined.jar")
+        project.ant.zip(baseDir: classesDir, destFile: patchJar)
 
-            //add
-            //old    current
-            //1.aar  1.aar
-            //       2.aar
+        FileUtils.deleteDir(classesDir)
 
-            //change
-            //old    current
-            //1.aar  1.aar
-            //2.aar  xx.aar
+        project.logger.error("==fastdex will generate dex file ${changedJavaClassNames}")
 
-            //handler add change
-
-            Set<String> cachedDependencies = getCachedDependenciesList()//old
-            Set<String> currentDependencies = getDependenciesList()//current
-            currentDependencies.removeAll(cachedDependencies)
-
-            if (!currentDependencies.isEmpty()) {
-                result = false
-                project.logger.error("==fastdex ${variantName.toLowerCase()} dependencies changed")
-                project.logger.error("==fastdex we will remove ${variantName.toLowerCase()} cache")
-            }
-        }
-
-        if (!result) {
-            //remove fastdex build dir
-            File fastdexBuildDir = FileUtils.getFastdexBuildDir(project,variantName)
-            FileUtils.deleteDir(fastdexBuildDir)
-        }
-        return result
+        return patchJar
     }
 
     void copyRTxt() {
         File sourceFile = new File(project.getBuildDir(),"/intermediates/symbols/${variantName}/R.txt")
-        File destFile = new File(FileUtils.getFastdexBuildDir(project,variantName),FileUtils.R_TXT)
+        File destFile = new File(FastdexUtils.getBuildDir(project,variantName),Constant.R_TXT)
         FileUtils.copyFileUsingStream(sourceFile,destFile)
     }
 
     void createSourceSetSnapshoot() {
         String[] srcDirs = project.android.sourceSets.main.java.srcDirs
-        File snapshootDir = new File(FileUtils.getFastdexBuildDir(project,variantName),FileUtils.FASTDEX_SNAPSHOOT_DIR)
+        File snapshootDir = new File(FastdexUtils.getBuildDir(project,variantName),Constant.FASTDEX_SNAPSHOOT_DIR)
         FileUtils.ensumeDir(snapshootDir)
         for (String srcDir : srcDirs) {
 //            project.copy {
@@ -242,60 +177,20 @@ class FastdexTransform extends TransformProxy {
 //                into(new File(snapshootDir,srcDir))
 //            }
 
-            FileUtils.copyDir(new File(srcDir),new File(snapshootDir,srcDir),FileUtils.JAVA_SUFFIX)
+            FileUtils.copyDir(new File(srcDir),new File(snapshootDir,srcDir),Constant.JAVA_SUFFIX)
         }
     }
 
     void keepDependenciesList() {
-        Set<String> dependenciesList = getDependenciesList()
+        Set<String> dependenciesList = GradleUtils.getCurrentDependList(project,variantName)
         StringBuilder sb = new StringBuilder()
         dependenciesList.each {
             sb.append(it)
             sb.append("\n")
         }
 
-        File dependenciesListFile = new File(FileUtils.getFastdexBuildDir(project,variantName),FileUtils.DEPENDENCIES_MAPPING_FILENAME);
+        File dependenciesListFile = new File(FastdexUtils.getBuildDir(project,variantName),Constant.DEPENDENCIES_MAPPING_FILENAME);
         FileUtils.write2file(sb.toString().getBytes(),dependenciesListFile)
-    }
-
-    Set<String> getDependenciesList() {
-        Set<String> result = new HashSet<>()
-//        project.configurations.compile.each { File file ->
-//            //project.logger.error("==fastdex compile: ${file.absolutePath}")
-//            result.add(file.getAbsolutePath())
-//        }
-//
-//        project.configurations."${str}Compile".each { File file ->
-//            //project.logger.error("==fastdex ${str}Compile: ${file.absolutePath}")
-//            result.add(file.getAbsolutePath())
-//        }
-
-        project.configurations.all.findAll { !it.allDependencies.empty }.each { c ->
-            if ("compile".equals(c.name) || "_${variantName.toLowerCase()}Compile") {
-                c.allDependencies.each { dep ->
-                    String depStr =  "$dep.group:$dep.name:$dep.version"
-                    if (!"null:unspecified:null".equals(depStr)) {
-                        result.add(depStr)
-                    }
-                }
-            }
-        }
-
-        return result
-    }
-
-    Set<String> getCachedDependenciesList() {
-        Set<String> result = new HashSet<>()
-        File dependenciesListFile = new File(FileUtils.getFastdexBuildDir(project,variantName),FileUtils.DEPENDENCIES_MAPPING_FILENAME);
-        if (FileUtils.isLegalFile(dependenciesListFile.getAbsolutePath())) {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(dependenciesListFile)))
-            String line = null
-            while ((line = reader.readLine()) != null) {
-                result.add(line)
-            }
-            reader.close()
-        }
-        return result
     }
 
     File getDexOutputDir(TransformInvocation transformInvocation) {
@@ -310,12 +205,12 @@ class FastdexTransform extends TransformProxy {
         return outputDir;
     }
 
-    void copyDex(TransformInvocation transformInvocation) {
+    void copyNormalBuildDex(TransformInvocation transformInvocation) {
         File dexOutputDir = getDexOutputDir(transformInvocation)
 
         project.logger.error("==fastdex dex output directory: " + dexOutputDir)
 
-        File cacheDexDir = FileUtils.getDexCacheDir(project,variantName)
+        File cacheDexDir = FastdexUtils.getDexCacheDir(project,variantName)
         File[] files = dexOutputDir.listFiles()
         files.each { file ->
             if (file.getName().endsWith(".dex")) {
@@ -332,9 +227,9 @@ class FastdexTransform extends TransformProxy {
         //dex_cache.classes2.dex => classes4.dex
 
         //copy fastdex-runtime.dex
-        FileUtils.copyResourceUsingStream(FileUtils.RUNTIME_DEX_FILENAME,new File(dexOutputDir,"classes.dex"))
+        FileUtils.copyResourceUsingStream(Constant.RUNTIME_DEX_FILENAME,new File(dexOutputDir,"classes.dex"))
         //copy fastdex-antilazyload.dex
-        FileUtils.copyResourceUsingStream(FileUtils.ANTILAZYLOAD_DEX_FILENAME,new File(dexOutputDir,"classes2.dex"))
+        FileUtils.copyResourceUsingStream(Constant.ANTILAZYLOAD_DEX_FILENAME,new File(dexOutputDir,"classes2.dex"))
 
         FileUtils.copyFileUsingStream(new File(cacheDexDir,"classes.dex"),new File(dexOutputDir,"classes3.dex"))
         int point = 2
@@ -350,7 +245,7 @@ class FastdexTransform extends TransformProxy {
         sb.append("cached_dex[")
         File[] dexFiles = cacheDexDir.listFiles()
         for (File file : dexFiles) {
-            if (file.getName().endsWith(FileUtils.DEX_SUFFIX)) {
+            if (file.getName().endsWith(Constant.DEX_SUFFIX)) {
                 sb.append(file.getName())
                 if (file != dexFiles[dexFiles.length - 1]) {
                     sb.append(",")
@@ -360,7 +255,7 @@ class FastdexTransform extends TransformProxy {
         sb.append("] cur-dex[")
         dexFiles = dexOutputDir.listFiles()
         for (File file : dexFiles) {
-            if (file.getName().endsWith(FileUtils.DEX_SUFFIX)) {
+            if (file.getName().endsWith(Constant.DEX_SUFFIX)) {
                 sb.append(file.getName())
                 if (file != dexFiles[dexFiles.length - 1]) {
                     sb.append(",")
@@ -369,120 +264,5 @@ class FastdexTransform extends TransformProxy {
         }
         sb.append("]")
         project.logger.error("==fastdex first build ${sb}")
-    }
-
-    void executeMerge(TransformInvocation transformInvocation,File mergedJar) {
-        List<JarInput> jarInputs = Lists.newArrayList();
-        List<DirectoryInput> dirInputs = Lists.newArrayList();
-
-        for (TransformInput input : transformInvocation.getInputs()) {
-            jarInputs.addAll(input.getJarInputs());
-        }
-
-        for (TransformInput input : transformInvocation.getInputs()) {
-            dirInputs.addAll(input.getDirectoryInputs());
-        }
-
-        if (dirInputs.isEmpty() && jarInputs.size() == 1) {
-            //Only one jar that does not need to merge
-            FileUtils.copyFileUsingStream(jarInputs.get(0).getFile(),mergedJar)
-        }
-        else {
-            JarMerger jarMerger = getClassJarMerger(mergedJar)
-
-            jarInputs.each { jar ->
-                project.logger.error("==fastdex add jar " + jar.getFile())
-                jarMerger.addJar(jar.getFile())
-            }
-            dirInputs.each { dir ->
-                project.logger.error("==fastdex add dir " + dir)
-                jarMerger.addFolder(dir.getFile())
-            }
-
-            jarMerger.close()
-        }
-    }
-
-    void injectAndMergeJar(TransformInvocation transformInvocation,File mergedJar,File outJar) {
-        executeMerge(transformInvocation,mergedJar)
-
-        //unzip merged.jar
-        File unzipDir = new File(FileUtils.getFastdexBuildDir(project,variantName),"merged")
-
-        project.copy {
-            from project.zipTree(mergedJar)
-            into unzipDir
-        }
-
-        Set<String> sourceSetJavaFiles = scanAllJavaFileInSourceSet()
-        //project.logger.error("==fastdex sourceSetJavaFiles: " + sourceSetJavaFiles)
-
-        File classesDir = new File(FileUtils.getFastdexBuildDir(project,variantName),FileUtils.FASTDEX_CLASSES_DIR)
-        FileUtils.ensumeDir(classesDir)
-        Files.walkFileTree(unzipDir.toPath(),new ClassInjectFileVisitor(project,sourceSetJavaFiles,unzipDir.toPath(),classesDir.toPath()))
-
-        project.logger.error("==fastdex inject complete")
-
-        project.ant.zip(baseDir: classesDir, destFile: outJar)
-    }
-
-    Set<String> scanAllJavaFileInSourceSet() {
-        /**
-         source dir
-         ├── com
-         │   └── dx168
-         │       └── fastdex
-         │           └── sample
-         │               ├── Application.class
-         │               ├── BuildConfig.class
-         │               └── MainActivity.class
-         └── rx
-         ├── Observable.class
-         └── Scheduler.class
-
-         result =>
-         com.dx168.fastdex.sample.Application
-         com.dx168.fastdex.sample.BuildConfig
-         com.dx168.fastdex.sample.MainActivity
-         rx.Observable
-         rx.Scheduler
-         */
-        Set<String> result = new HashSet<>();
-        List<String> srcLists = new ArrayList<>()
-        for (String srcDir : project.android.sourceSets.main.java.srcDirs) {
-            srcLists.add(srcDir);
-        }
-
-        def str = variantName.toLowerCase()
-        srcLists.add(new File(project.getBuildDir(),"/generated/source/apt/${str}").getAbsolutePath())
-        srcLists.add(new File(project.getBuildDir(),"/generated/source/buildConfig/${str}").getAbsolutePath())
-
-        for (String srcDir : srcLists) {
-            project.logger.error("==fastdex sourceSet: " + srcDir)
-
-            Path srcDirPath = new File(srcDir).toPath()
-            Files.walkFileTree(srcDirPath,new SimpleFileVisitor<Path>(){
-                @Override
-                FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-                    if (!file.toFile().getName().endsWith(FileUtils.JAVA_SUFFIX)) {
-                        return FileVisitResult.CONTINUE;
-                    }
-                    Path relativePath = srcDirPath.relativize(file)
-
-                    String className = relativePath.toString()
-                    className = className.substring(0,className.length() - FileUtils.JAVA_SUFFIX.length())
-                    result.add(className)
-                    return FileVisitResult.CONTINUE
-                }
-            })
-        }
-        return result
-    }
-
-    String getBuildConfigClassName() {
-        def xml = new XmlParser().parse(new InputStreamReader(new FileInputStream(manifestPath), "utf-8"))
-        String packageName = xml.attribute('package')
-
-        return "${packageName.replaceAll("\\.","/")}/BuildConfig.class"
     }
 }

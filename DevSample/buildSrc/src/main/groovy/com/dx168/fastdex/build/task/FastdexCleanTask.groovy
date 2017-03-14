@@ -1,6 +1,6 @@
 package com.dx168.fastdex.build.task
 
-import com.dx168.fastdex.build.util.FileUtils
+import com.dx168.fastdex.build.util.FastdexUtils
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
 
@@ -17,10 +17,10 @@ public class FastdexCleanTask extends DefaultTask {
     @TaskAction
     void clean() {
         if (variantName == null) {
-            FileUtils.deleteDir(FileUtils.getFastdexBuildDir(project))
+            FastdexUtils.cleanAllCache()
         }
         else {
-            FileUtils.deleteDir(FileUtils.getFastdexBuildDir(project,variantName))
+            FastdexUtils.cleanCache(project,variantName)
         }
     }
 }
