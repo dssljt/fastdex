@@ -21,6 +21,20 @@ public class FastdexUtils {
         return file;
     }
 
+    public static final String firstCharToUpperCase(String str) {
+        if (str == null || str.length() == 0) {
+            return ""
+        }
+        return str.substring(0,1).toUpperCase() + str.substring(1)
+    }
+
+    public static final String firstCharToLowerCase(String str) {
+        if (str == null || str.length() == 0) {
+            return ""
+        }
+        return str.substring(0,1).toLowerCase() + str.substring(1)
+    }
+
     public static boolean hasValidCache(Project project,String variantName) {
         File cacheDexDir = getDexCacheDir(project,variantName)
         if (!FileUtils.dirExists(cacheDexDir.getAbsolutePath())) {

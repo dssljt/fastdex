@@ -8,6 +8,7 @@ import com.dx168.fastdex.build.task.FastdexCreateMaindexlistFileTask
 import com.dx168.fastdex.build.task.FastdexManifestTask
 import com.dx168.fastdex.build.task.FastdexResourceIdTask
 import com.dx168.fastdex.build.util.BuildTimeListener
+import com.dx168.fastdex.build.util.FastdexUtils
 import org.gradle.api.GradleException
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -70,9 +71,9 @@ class FastdexPlugin implements Plugin<Project> {
                 FastdexCleanTask cleanTask = project.tasks.create("fastdexCleanFor${variantName}", FastdexCleanTask)
                 cleanTask.variantName = variantName
 
-                def minifyEnabled = android.buildTypes["${variantName.toLowerCase()}"].minifyEnabled
-                if (minifyEnabled) {
-                    project.logger.error("==fastdex disable fastdex [android.buildTypes${variantName.toLowerCase()}.minifyEnabled=true]")
+                boolean proguardEnable = variant.getBuildType().buildType.minifyEnabled
+                if (proguardEnable) {
+                    project.logger.error("==fastdex disable fastdex [android.buildTypes${variant.getBuildType().buildType}.minifyEnabled=true]")
                 }
                 else {
                     Task compileTask = project.tasks.getByName("compile${variantName}JavaWithJavac")
