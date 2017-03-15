@@ -1,0 +1,157 @@
+package com.dx168.fastdex.build
+
+import com.android.build.api.transform.Transform
+import com.android.build.gradle.internal.pipeline.TransformTask
+import com.android.build.gradle.internal.transforms.DexTransform
+import com.dx168.fastdex.build.task.FastdexCleanTask
+import com.dx168.fastdex.build.task.FastdexCreateMaindexlistFileTask
+import com.dx168.fastdex.build.task.FastdexManifestTask
+import com.dx168.fastdex.build.task.FastdexResourceIdTask
+import com.dx168.fastdex.build.util.BuildTimeListener
+import org.gradle.api.GradleException
+import org.gradle.api.Plugin
+import org.gradle.api.Project
+import org.gradle.api.Task
+import org.gradle.api.UnknownTaskException
+import org.gradle.api.execution.TaskExecutionGraph
+import org.gradle.api.execution.TaskExecutionGraphListener
+import java.lang.reflect.Field
+import com.dx168.fastdex.build.transform.FastdexTransform
+import com.dx168.fastdex.build.extension.FastdexExtension
+import com.dx168.fastdex.build.task.FastdexCustomJavacTask
+
+/**
+ * 注册相应节点的任务
+ * Created by tong on 17/10/3.
+ */
+class FastdexPlugin implements Plugin<Project> {
+    @Override
+    public void apply(Project project) {
+        project.gradle.addListener(new BuildTimeListener())
+
+        project.extensions.create('fastdex', FastdexExtension)
+        def configuration = project.fastdex
+
+        project.afterEvaluate {
+            if (!project.plugins.hasPlugin('com.android.application')) {
+                throw new GradleException('generateTinkerApk: Android Application plugin required')
+            }
+
+            def android = project.extensions.android
+            //open jumboMode
+            android.dexOptions.jumboMode = true
+            //close preDexLibraries
+            try {
+                android.dexOptions.preDexLibraries = false
+            } catch (Throwable e) {
+                //no preDexLibraries field, just continue
+            }
+
+            project.tasks.create("fastdexCleanAll", FastdexCleanTask)
+
+            android.applicationVariants.all { variant ->
+                def variantOutput = variant.outputs.first()
+                def variantName = variant.name.capitalize()
+
+                try {
+                    def instantRunTask = project.tasks.getByName("transformClassesWithInstantRunFor${variantName}")
+                    if (instantRunTask) {
+                        throw new GradleException(
+                                "Fastdex does not support instant run mode, please trigger build"
+                                        + " by assemble${variantName} or disable instant run"
+                                        + " in 'File->Settings...'."
+                        )
+                    }
+                } catch (UnknownTaskException e) {
+                    // Not in instant run mode, continue.
+                }
+
+                //clean cache task(user trigger)
+                FastdexCleanTask cleanTask = project.tasks.create("fastdexCleanFor${variantName}", FastdexCleanTask)
+                cleanTask.variantName = variantName
+
+                boolean proguardEnable = variant.getBuildType().buildType.minifyEnabled
+                if (proguardEnable) {
+                    project.logger.error("==fastdex disable fastdex [android.buildTypes${variant.getBuildType().buildType}.minifyEnabled=true]")
+                }
+                else {
+                    Task compileTask = project.tasks.getByName("compile${variantName}JavaWithJavac")
+                    Task customJavacTask = project.tasks.create("fastdexCustomCompile${variantName}JavaWithJavac", FastdexCustomJavacTask)
+                    customJavacTask.applicationVariant = variant
+                    customJavacTask.variantName = variantName
+                    customJavacTask.compileTask = compileTask
+
+                    compileTask.dependsOn customJavacTask
+
+                    Task multidexlistTask = project.tasks.getByName("transformClassesWithMultidexlistFor${variantName}")
+                    if (multidexlistTask != null) {
+                        /**
+                         * transformClassesWithMultidexlistFor${variantName}的作用是计算哪些类必须放在第一个dex里面，由于fastdex使用替换Application的方案隔离了项目代码的dex，
+                         * 所以这个任务就没有存在的意义了，禁止掉这个任务以提高打包速度，但是transformClassesWithDexFor${variantName}会使用这个任务输出的txt文件，
+                         * 所以就生成一个空文件防止报错
+                         */
+                        FastdexCreateMaindexlistFileTask createFileTask = project.tasks.create("fastdexCreate${variantName}MaindexlistFileTask", FastdexCreateMaindexlistFileTask)
+                        createFileTask.applicationVariant = variant
+
+                        multidexlistTask.dependsOn createFileTask
+                        multidexlistTask.enabled = false
+                    }
+
+                    //替换项目的Application为com.dx168.fastdex.runtime.FastdexApplication
+                    FastdexManifestTask manifestTask = project.tasks.create("fastdexProcess${variantName}Manifest", FastdexManifestTask)
+                    manifestTask.manifestPath = variantOutput.processManifest.manifestOutputFile
+                    manifestTask.variantName = variantName
+                    manifestTask.mustRunAfter variantOutput.processManifest
+
+                    variantOutput.processResources.dependsOn manifestTask
+
+                    //保持补丁打包时R文件中相同的节点和第一次打包时的值保持一致
+                    FastdexResourceIdTask applyResourceTask = project.tasks.create("fastdexProcess${variantName}ResourceId", FastdexResourceIdTask)
+                    applyResourceTask.resDir = variantOutput.processResources.resDir
+                    applyResourceTask.variantName = variantName
+                    //let applyResourceTask run after manifestTask
+                    applyResourceTask.mustRunAfter manifestTask
+                    variantOutput.processResources.dependsOn applyResourceTask
+
+                    project.getGradle().getTaskGraph().addTaskExecutionGraphListener(new TaskExecutionGraphListener() {
+                        @Override
+                        public void graphPopulated(TaskExecutionGraph taskGraph) {
+                            for (Task task : taskGraph.getAllTasks()) {
+                                if (task.getProject().equals(project)
+                                        && task instanceof TransformTask
+                                        && task.name.toLowerCase().contains(variant.name.toLowerCase())) {
+
+                                    Transform transform = ((TransformTask) task).getTransform()
+                                    if ((((transform instanceof DexTransform) || transform.getName().equals("dex"))
+                                            && !(transform instanceof FastdexTransform))) {
+
+                                        String manifestPath = variantOutput.processManifest.manifestOutputFile
+
+                                        //代理DexTransform,实现自定义的转换
+                                        FastdexTransform fastdexTransform = new FastdexTransform(task.transform,project,variant,manifestPath)
+                                        Field field = getFieldByName(task.getClass(),'transform')
+                                        field.setAccessible(true)
+                                        field.set(task,fastdexTransform)
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+        }
+    }
+
+    Field getFieldByName(Class<?> aClass, String name) {
+        Class<?> currentClass = aClass;
+        while (currentClass != null) {
+            try {
+                return currentClass.getDeclaredField(name);
+            } catch (NoSuchFieldException e) {
+                // ignored.
+            }
+            currentClass = currentClass.getSuperclass();
+        }
+        return null;
+    }
+}
