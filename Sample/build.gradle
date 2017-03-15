@@ -6,7 +6,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.1.2'
-        classpath 'com.dx168.fastdex:gradle-plugin:0.0.2-beta2'
+        classpath 'com.dx168.fastdex:gradle-plugin:0.0.2-beta5'
     }
 }
 

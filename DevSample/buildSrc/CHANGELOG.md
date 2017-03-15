@@ -13,3 +13,16 @@ Features:
 Bugfixes:
 
   - 修复注入代码时仅注入默认构造方法的问题
+
+## 0.0.2-beta5 (2017-3-15)
+
+  Bugfixes:
+
+    - 修复buildType中有大写字母报错的问题
+
+  Features:
+
+     - 适配多个flavor的场景
+
+
+

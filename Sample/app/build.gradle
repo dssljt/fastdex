@@ -1,6 +1,15 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.dx168.fastdex'
 
+//project.afterEvaluate {
+//    android.applicationVariants.all { variant ->
+//        def variantOutput = variant.outputs.first()
+//        def variantName = variant.name.capitalize()
+//
+//        println("=== ${variant.flavorName} ==  ${variant.getVariantData().getScope().getMainDexListFile()}")
+//    }
+//}
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
@@ -52,6 +61,16 @@ android {
             signingConfig signingConfigs.config
         }
     }
+
+//    productFlavors {
+//        normal {
+//
+//        }
+//
+//        samsung {
+//
+//        }
+//    }
 }
 
 dependencies {
