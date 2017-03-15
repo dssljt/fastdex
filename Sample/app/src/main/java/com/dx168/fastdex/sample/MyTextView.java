@@ -12,5 +12,7 @@ public class MyTextView extends TextView {
         super(context, attrs);
 
         setText(R.string.s3);
+
+        MainActivity.aa();
     }
 }

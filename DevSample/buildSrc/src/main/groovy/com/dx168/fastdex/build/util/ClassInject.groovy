@@ -27,7 +27,7 @@ import java.nio.file.attribute.BasicFileAttributes
 
  public class MainActivity {
      public MainActivity() {
-        System.out.println(Antilazyload.class);
+        System.out.println(Antilazyload.str);
      }
  }
  ''''''
@@ -47,7 +47,7 @@ public class ClassInject implements Opcodes {
         File classesDir = new File(FastdexUtils.getBuildDir(project,variantName),Constant.FASTDEX_CLASSES_DIR)
         FileUtils.ensumeDir(classesDir)
         Files.walkFileTree(unzipDir.toPath(),new ClassInjectFileVisitor(project,sourceSetJavaFiles,unzipDir.toPath(),classesDir.toPath()))
-        project.logger.error("==fastdex inject complete")
+        project.logger.error("==fastdex inject complete: ${outJar}")
         project.ant.zip(baseDir: classesDir, destFile: outJar)
 
         FileUtils.deleteDir(unzipDir)
@@ -204,7 +204,7 @@ public class ClassInject implements Opcodes {
                                          String desc,
                                          String signature,
                                          String[] exceptions) {
-            if ("<init>".equals(name) && "()V".equals(desc)) {
+            if ("<init>".equals(name)) {
                 //get origin method
                 MethodVisitor mv = cv.visitMethod(access, name, desc, signature, exceptions);
                 //System.out.println(name + " | " + desc + " | " + signature);

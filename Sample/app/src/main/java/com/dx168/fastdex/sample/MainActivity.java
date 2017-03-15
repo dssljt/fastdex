@@ -8,6 +8,10 @@ import android.widget.Toast;
  * Created by tong on 17/10/3.
  */
 public class MainActivity extends Activity {
+    public static void aa() {
+
+    }
+
     public MainActivity() {
     }
 
@@ -15,6 +19,8 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        new MyTextView(this,null);
 
         String s1 = getString(R.string.s1);
         String s3 = getString(R.string.s3);
@@ -30,6 +36,7 @@ public class MainActivity extends Activity {
 
             }
         };
+
 
         new Runnable(){
             @Override
