@@ -34,14 +34,15 @@ import java.nio.file.attribute.BasicFileAttributes
  * Created by tong on 17/10/3.
  */
 public class ClassInject implements Opcodes {
-    public static final void injectJar(Project project,String variantName,File combinedJar, File outJar) {
+    public static final void injectJar(Project project,Object applicationVariant,File combinedJar, File outJar) {
+        String variantName = applicationVariant.name.capitalize()
         //unzip merged.jar
         File unzipDir = new File(FastdexUtils.getBuildDir(project,variantName),"merged")
         project.copy {
             from project.zipTree(combinedJar)
             into unzipDir
         }
-        Set<String> sourceSetJavaFiles = scanNeedInjectClass(project,variantName)
+        Set<String> sourceSetJavaFiles = scanNeedInjectClass(project,applicationVariant)
         //project.logger.error("==fastdex sourceSetJavaFiles: " + sourceSetJavaFiles)
 
         File classesDir = new File(FastdexUtils.getBuildDir(project,variantName),Constant.FASTDEX_CLASSES_DIR)
@@ -52,6 +53,23 @@ public class ClassInject implements Opcodes {
 
         FileUtils.deleteDir(unzipDir)
         FileUtils.deleteDir(classesDir)
+    }
+
+    private static final void injectClass(File source, File dest) {
+        byte[] classBytes = FileUtils.readContents(source)
+        ClassReader classReader = new ClassReader(classBytes);
+        ClassWriter classWriter = new ClassWriter(classReader, ClassWriter.COMPUTE_MAXS);
+        ClassVisitor classVisitor = new MyClassVisitor(classWriter);
+        classReader.accept(classVisitor, Opcodes.ASM5);
+
+
+        File parent = dest.getParentFile();
+        if (parent != null && (!parent.exists())) {
+            parent.mkdirs();
+        }
+        FileOutputStream fos = new FileOutputStream(dest);
+        fos.write(classWriter.toByteArray());
+        fos.close();
     }
 
     private static class ClassInjectFileVisitor extends SimpleFileVisitor<Path> {
@@ -66,20 +84,6 @@ public class ClassInject implements Opcodes {
             this.scanPath = scanPath
             this.outputPath = outputPath
         }
-
-//        @Override
-//        FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
-//            if (scanPath.equals(dir)) {
-//                return FileVisitResult.CONTINUE;
-//            }
-//            Path relativePath = scanPath.relativize(dir)
-//            Path packagePath = outputPath.resolve(relativePath)
-//            boolean result = FileUtils.ensumeDir(packagePath.toFile())
-//            if (!result) {
-//                project.logger.error("==fastdex create folder fail: " + packagePath.toFile())
-//            }
-//            return FileVisitResult.CONTINUE;
-//        }
 
         @Override
         public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
@@ -110,13 +114,11 @@ public class ClassInject implements Opcodes {
             className = className.substring(0,className.length() - Constant.CLASS_SUFFIX.length())
             //className => com.dx168.fastdex.sample.MainActivity
             boolean result = sourceSetJavaFiles.contains(className)
-
-            // || className.startsWith("android/support/multidex/")
             return result
         }
     }
 
-    private static Set<String> scanNeedInjectClass(Project project,String variantName) {
+    private static Set<String> scanNeedInjectClass(Project project,Object applicationVariant) {
         /**
          source dir
          ├── com
@@ -143,15 +145,15 @@ public class ClassInject implements Opcodes {
             srcLists.add(srcDir);
         }
 
-        def variantStr = variantName.toLowerCase()
-        File aptDir = new File(project.getBuildDir(),"/generated/source/apt/${variantStr}")
-        if (FileUtils.dirExists(aptDir.getAbsolutePath())) {
-            srcLists.add(aptDir.getAbsolutePath())
-        }
-
-        File buildConfigDir = new File(project.getBuildDir(),"/generated/source/buildConfig/${variantStr}")
+        File buildConfigDir = applicationVariant.getVariantData().getScope().getBuildConfigSourceOutputDir()
         if (FileUtils.dirExists(buildConfigDir.getAbsolutePath())) {
             srcLists.add(buildConfigDir.getAbsolutePath())
+        }
+
+        //File aptDir = new File(project.getBuildDir(),"/generated/source/apt/${variantStr}")
+        File aptDir = new File(buildConfigDir.getParentFile().getParentFile(),"apt")
+        if (FileUtils.dirExists(aptDir.getAbsolutePath())) {
+            srcLists.add(aptDir.getAbsolutePath())
         }
 
         for (String srcDir : srcLists) {
@@ -174,23 +176,6 @@ public class ClassInject implements Opcodes {
             })
         }
         return result
-    }
-
-    private static final void injectClass(File source, File dest) {
-        byte[] classBytes = FileUtils.readContents(source)
-        ClassReader classReader = new ClassReader(classBytes);
-        ClassWriter classWriter = new ClassWriter(classReader, ClassWriter.COMPUTE_MAXS);
-        ClassVisitor classVisitor = new MyClassVisitor(classWriter);
-        classReader.accept(classVisitor, Opcodes.ASM5);
-
-
-        File parent = dest.getParentFile();
-        if (parent != null && (!parent.exists())) {
-            parent.mkdirs();
-        }
-        FileOutputStream fos = new FileOutputStream(dest);
-        fos.write(classWriter.toByteArray());
-        fos.close();
     }
 
     private static class MyClassVisitor extends ClassVisitor {

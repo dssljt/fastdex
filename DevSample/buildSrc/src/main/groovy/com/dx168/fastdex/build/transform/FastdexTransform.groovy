@@ -17,13 +17,15 @@ import com.dx168.fastdex.build.util.FileUtils
  */
 class FastdexTransform extends TransformProxy {
     Project project
+    def applicationVariant
     String variantName
     String manifestPath
 
-    FastdexTransform(Transform base, Project project, String variantName,String manifestPath) {
+    FastdexTransform(Transform base, Project project,Object variant,String manifestPath) {
         super(base)
         this.project = project
-        this.variantName = variantName
+        this.applicationVariant = variant
+        this.variantName = variant.name.capitalize()
         this.manifestPath = manifestPath
     }
 
@@ -104,10 +106,10 @@ class FastdexTransform extends TransformProxy {
         else {
             //normal build
             File combinedJar = new File(FastdexUtils.getBuildDir(project,variantName),Constant.COMBINED_JAR_FILENAME)
-            GradleUtils.executeMerge(transformInvocation,combinedJar)
+            GradleUtils.executeMerge(project,transformInvocation,combinedJar)
 
             File injectedJar = FastdexUtils.getInjectedJarFile(project,variantName)
-            ClassInject.injectJar(project,variantName,combinedJar, injectedJar)
+            ClassInject.injectJar(project,applicationVariant,combinedJar, injectedJar)
 
             FileUtils.deleteFile(combinedJar)
             createSourceSetSnapshoot()
@@ -131,20 +133,29 @@ class FastdexTransform extends TransformProxy {
         Set<String> changedJavaClassNames = FastdexUtils.scanChangedClasses(project,variantName,manifestPath)
         //add all changed file to jar
         File mergedJar = new File(FastdexUtils.getBuildDir(project,variantName),"latest-merged.jar")
-
         FileUtils.deleteFile(mergedJar)
-        GradleUtils.executeMerge(transformInvocation,mergedJar)
+
+        GradleUtils.executeMerge(project,transformInvocation,mergedJar)
 
         File classesDir = new File(FastdexUtils.getBuildDir(project,variantName),"patch-" + Constant.FASTDEX_CLASSES_DIR)
-        FileUtils.deleteDir(classesDir)
-        FileUtils.ensumeDir(classesDir)
+        FileUtils.cleanDir(classesDir)
 
+        Set<String> includePatterns = new HashSet<>()
+        for (String className : changedJavaClassNames) {
+            includePatterns.add(className)
+            includePatterns.add("${className.replaceAll("\\.class","")}\$*.class")
+        }
+
+        if (project.fastdex.debug) {
+            project.logger.error("==fastdex debug mergeJar: ${mergedJar}")
+            project.logger.error("==fastdex debug changedJavaClassNames: ${changedJavaClassNames}")
+            project.logger.error("==fastdex debug includePatterns: ${includePatterns}")
+            project.logger.error("==fastdex debug unzipDir: ${classesDir}")
+        }
         project.copy {
             from project.zipTree(mergedJar)
-            for (String className : changedJavaClassNames) {
-                className = className.replaceAll("\\.java","\\.class")
-                include className
-                include "${className.replaceAll("\\.class","")}\$*.class"
+            for (String pattern : includePatterns) {
+                include pattern
             }
 
             into classesDir
@@ -153,6 +164,9 @@ class FastdexTransform extends TransformProxy {
 
         File patchJar = new File(FastdexUtils.getBuildDir(project,variantName),"patch-combined.jar")
         project.ant.zip(baseDir: classesDir, destFile: patchJar)
+        if (!FileUtils.isLegalFile(patchJar)) {
+            throw new GradleException("==fastdex generate patchJar fail: \nclassesDir: ${classesDir}\npatchJar: ${patchJar}")
+        }
 
         FileUtils.deleteDir(classesDir)
 
@@ -162,7 +176,7 @@ class FastdexTransform extends TransformProxy {
     }
 
     void copyRTxt() {
-        File sourceFile = new File(project.getBuildDir(),"/intermediates/symbols/${variantName}/R.txt")
+        File sourceFile = new File(applicationVariant.getVariantData().getScope().getSymbolLocation(),"R.txt")
         File destFile = new File(FastdexUtils.getBuildDir(project,variantName),Constant.R_TXT)
         FileUtils.copyFileUsingStream(sourceFile,destFile)
     }

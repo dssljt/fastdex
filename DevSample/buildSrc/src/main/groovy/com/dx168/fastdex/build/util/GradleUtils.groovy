@@ -1,16 +1,12 @@
 package com.dx168.fastdex.build.util
 
 import com.google.common.collect.Lists
-import org.gradle.api.Project
-import com.android.build.api.transform.DirectoryInput
-import com.android.build.api.transform.JarInput
-import com.android.build.api.transform.TransformInput
-import com.android.build.api.transform.TransformInvocation
 import com.android.build.gradle.internal.transforms.JarMerger
+import org.gradle.api.GradleException
+
 import java.lang.reflect.InvocationHandler
 import java.lang.reflect.Method
 import java.lang.reflect.Proxy
-import com.android.build.gradle.internal.pipeline.TransformInvocationBuilder
 import com.android.build.api.transform.DirectoryInput
 import com.android.build.api.transform.JarInput
 import com.android.build.api.transform.QualifiedContent
@@ -18,16 +14,9 @@ import com.android.build.api.transform.Status
 import com.android.build.api.transform.TransformInput
 import com.android.build.api.transform.TransformInvocation
 import com.android.build.gradle.internal.pipeline.TransformInvocationBuilder
-import com.dx168.fastdex.build.util.Constant
-import com.dx168.fastdex.build.util.FastdexUtils
-import com.dx168.fastdex.build.util.FileUtils
-import com.dx168.fastdex.build.util.GradleUtils
-import com.dx168.fastdex.build.util.JavaDirDiff
 import com.google.common.collect.ImmutableList
 import com.android.build.api.transform.Transform
 import org.gradle.api.Project
-
-
 
 /**
  * Created by tong on 17/3/14.
@@ -46,7 +35,7 @@ public class GradleUtils {
 //        }
 
         project.configurations.all.findAll { !it.allDependencies.empty }.each { c ->
-            if ("compile".equals(c.name) || "_${variantName.toLowerCase()}Compile") {
+            if ("compile".equals(c.name) || "_${variantName.toLowerCase()}Compile".equals(c.name)) {
                 c.allDependencies.each { dep ->
                     String depStr =  "$dep.group:$dep.name:$dep.version"
                     if (!"null:unspecified:null".equals(depStr)) {
@@ -65,7 +54,7 @@ public class GradleUtils {
         return "${packageName.replaceAll("\\.","/")}/BuildConfig.class"
     }
 
-    public static void executeMerge(TransformInvocation transformInvocation, File mergedJar) {
+    public static void executeMerge(Project project,TransformInvocation transformInvocation, File mergedJar) {
         List<JarInput> jarInputs = Lists.newArrayList();
         List<DirectoryInput> dirInputs = Lists.newArrayList();
 
@@ -94,6 +83,10 @@ public class GradleUtils {
             }
 
             jarMerger.close()
+        }
+
+        if (!FileUtils.isLegalFile(mergedJar)) {
+            throw new GradleException("merge jar fail: \n jarInputs: ${jarInputs}\n dirInputs: ${dirInputs}\n mergedJar: ${mergedJar}")
         }
     }
 

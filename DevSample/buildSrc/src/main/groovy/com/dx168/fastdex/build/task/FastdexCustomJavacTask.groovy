@@ -18,6 +18,7 @@ import java.nio.file.attribute.BasicFileAttributes
  * Created by tong on 17/3/12.
  */
 public class FastdexCustomJavacTask extends DefaultTask {
+    def applicationVariant
     String variantName
     String manifestPath
     Task compileTask
@@ -62,12 +63,8 @@ public class FastdexCustomJavacTask extends DefaultTask {
             compileTask.enabled = true
             return
         }
-//        File buildConfigDir = new File(project.getBuildDir(),"/generated/source/buildConfig/${variantStr}")
-//        String buildCo
-//        FileUtils.copyFileUsingStream(new File(buildConfigDir,GradleUtils.getBuildConfigClassName(manifestPath)),new File(patchJavaFileDir,str))
 
         //compile java
-
         File androidJar = new File("${project.android.getSdkDirectory()}/platforms/${project.android.getCompileSdkVersion()}/android.jar")
         File classpathJar = FastdexUtils.getInjectedJarFile(project,variantName)
         project.logger.error("==fastdex androidJar: ${androidJar}")
@@ -81,11 +78,10 @@ public class FastdexCustomJavacTask extends DefaultTask {
                 classpath: classpathJar
         )
 
-        project.logger.error("==fastdex compile success")
+        project.logger.error("==fastdex compile success: ${patchClassesFileDir}")
         compileTask.enabled = false
 
-        String str = variantName.toLowerCase()
-        File classesDir = project.file("build/intermediates/classes/${str}")
+        File classesDir = applicationVariant.getVariantData().getScope().getJavaOutputDir()
         Files.walkFileTree(patchClassesFileDir.toPath(),new SimpleFileVisitor<Path>(){
             @Override
             FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
@@ -114,7 +110,6 @@ public class FastdexCustomJavacTask extends DefaultTask {
 //            //jarMergingTask.enabled = true
 //        }
     }
-
 
     void prepareEnv() {
         //delete expired cache
@@ -196,7 +191,6 @@ public class FastdexCustomJavacTask extends DefaultTask {
         }
         return result
     }
-
 
     private class CheckException extends Exception {
         CheckException(String var1) {

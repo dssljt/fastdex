@@ -8,7 +8,7 @@ import org.gradle.api.tasks.TaskAction
  * Created by tong on 17/3/12.
  */
 public class FastdexCreateMaindexlistFileTask extends DefaultTask {
-    String variantName
+    def applicationVariant
 
     FastdexCreateMaindexlistFileTask() {
         group = 'fastdex'
@@ -16,8 +16,8 @@ public class FastdexCreateMaindexlistFileTask extends DefaultTask {
 
     @TaskAction
     void createFile() {
-        if (variantName != null) {
-            File maindexlistFile = new File(project.getBuildDir(),"/intermediates/multi-dex/${variantName.toLowerCase()}/maindexlist.txt")
+        if (applicationVariant != null) {
+            File maindexlistFile = applicationVariant.getVariantData().getScope().getMainDexListFile()
             File parentFile = maindexlistFile.getParentFile()
             FileUtils.ensumeDir(parentFile)
 

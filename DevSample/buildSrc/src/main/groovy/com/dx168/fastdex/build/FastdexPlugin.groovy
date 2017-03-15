@@ -70,13 +70,14 @@ class FastdexPlugin implements Plugin<Project> {
                 FastdexCleanTask cleanTask = project.tasks.create("fastdexCleanFor${variantName}", FastdexCleanTask)
                 cleanTask.variantName = variantName
 
-                def minifyEnabled = android.buildTypes["${variantName.toLowerCase()}"].minifyEnabled
-                if (minifyEnabled) {
-                    project.logger.error("==fastdex disable fastdex [android.buildTypes${variantName.toLowerCase()}.minifyEnabled=true]")
+                boolean proguardEnable = variant.getBuildType().buildType.minifyEnabled
+                if (proguardEnable) {
+                    project.logger.error("==fastdex disable fastdex [android.buildTypes${variant.getBuildType().buildType}.minifyEnabled=true]")
                 }
                 else {
                     Task compileTask = project.tasks.getByName("compile${variantName}JavaWithJavac")
                     Task customJavacTask = project.tasks.create("fastdexCustomCompile${variantName}JavaWithJavac", FastdexCustomJavacTask)
+                    customJavacTask.applicationVariant = variant
                     customJavacTask.variantName = variantName
                     customJavacTask.compileTask = compileTask
 
@@ -85,7 +86,7 @@ class FastdexPlugin implements Plugin<Project> {
                     Task multidexlistTask = project.tasks.getByName("transformClassesWithMultidexlistFor${variantName}")
                     if (multidexlistTask != null) {
                         FastdexCreateMaindexlistFileTask createFileTask = project.tasks.create("fastdexCreate${variantName}MaindexlistFileTask", FastdexCreateMaindexlistFileTask)
-                        createFileTask.variantName = variantName
+                        createFileTask.applicationVariant = variant
                         //createFileTask.manifestPath = variantOutput.processManifest.manifestOutputFile
 
                         multidexlistTask.dependsOn createFileTask
@@ -120,7 +121,7 @@ class FastdexPlugin implements Plugin<Project> {
                                             && !(transform instanceof FastdexTransform))) {
 
                                         String manifestPath = variantOutput.processManifest.manifestOutputFile
-                                        FastdexTransform fastdexTransform = new FastdexTransform(task.transform,project,variantName,manifestPath)
+                                        FastdexTransform fastdexTransform = new FastdexTransform(task.transform,project,variant,manifestPath)
                                         Field field = getFieldByName(task.getClass(),'transform')
                                         field.setAccessible(true)
                                         field.set(task,fastdexTransform)
