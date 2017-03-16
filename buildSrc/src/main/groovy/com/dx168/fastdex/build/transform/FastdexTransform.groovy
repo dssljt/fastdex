@@ -33,9 +33,11 @@ import com.dx168.fastdex.build.util.FileUtils
  * 补丁打包时的流程
  * 1、检查缓存的有效性
  * @see com.dx168.fastdex.build.task.FastdexCustomJavacTask 的prepareEnv方法说明
- * 2、合并所有变化的class并生成jar包
- * 3、生成补丁dex
- * 4、把所有的dex按照一定规律放在transformClassesWithMultidexlistFor${variantName}任务的输出目录
+ * 2、扫描所有变化的java文件并编译成class
+ * @see com.dx168.fastdex.build.task.FastdexCustomJavacTask
+ * 3、合并所有变化的class并生成jar包
+ * 4、生成补丁dex
+ * 5、把所有的dex按照一定规律放在transformClassesWithMultidexlistFor${variantName}任务的输出目录
  *    fastdex-runtime.dex    => classes.dex
  *    patch.dex              => classes2.dex
  *    dex_cache.classes.dex  => classes3.dex

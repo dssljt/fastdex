@@ -61,7 +61,7 @@ def inception = '2017'
 
 Properties props = new Properties()
 try {
-    props.load(project.rootProject.getRootDir().getParentFile().file('local.properties').newDataInputStream())
+    props.load(new File(project.rootDir.parentFile,'local.properties').newDataInputStream())
 } catch (Throwable e) {
     e.printStackTrace()
 }

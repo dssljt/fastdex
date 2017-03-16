@@ -17,9 +17,9 @@ dependencies {
     if (gradle.startParameter.projectDir == project.projectDir) {
         // gradlew -p buildSrc xx
         provided 'com.android.tools.build:gradle:2.1.2'
-        compile 'com.tencent.tinker:tinker-patch-lib:1.7.5'
+        compile 'com.tencent.tinker:tinker-patch-lib:1.7.2'
     } else {
         compile 'com.android.tools.build:gradle:2.1.2'
-        compile 'com.tencent.tinker:tinker-patch-lib:1.7.5'
+        compile 'com.tencent.tinker:tinker-patch-lib:1.7.2'
     }
 }
