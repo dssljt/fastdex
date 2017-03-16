@@ -28,9 +28,7 @@ class FastdexPlugin implements Plugin<Project> {
     @Override
     public void apply(Project project) {
         project.gradle.addListener(new BuildTimeListener())
-
         project.extensions.create('fastdex', FastdexExtension)
-        def configuration = project.fastdex
 
         project.afterEvaluate {
             if (!project.plugins.hasPlugin('com.android.application')) {
@@ -54,6 +52,7 @@ class FastdexPlugin implements Plugin<Project> {
                 def variantName = variant.name.capitalize()
 
                 try {
+                    //与instant run有冲突需要禁掉instant run
                     def instantRunTask = project.tasks.getByName("transformClassesWithInstantRunFor${variantName}")
                     if (instantRunTask) {
                         throw new GradleException(
@@ -66,11 +65,12 @@ class FastdexPlugin implements Plugin<Project> {
                     // Not in instant run mode, continue.
                 }
 
-                //clean cache task(user trigger)
+                //创建清理指定variantName缓存的任务(用户触发)
                 FastdexCleanTask cleanTask = project.tasks.create("fastdexCleanFor${variantName}", FastdexCleanTask)
                 cleanTask.variantName = variantName
 
                 boolean proguardEnable = variant.getBuildType().buildType.minifyEnabled
+                //TODO 暂时忽略开启混淆的buildType(目前的快照对比方案 无法映射java文件的类名和混淆后的class的类名)
                 if (proguardEnable) {
                     project.logger.error("==fastdex disable fastdex [android.buildTypes${variant.getBuildType().buildType}.minifyEnabled=true]")
                 }
@@ -122,8 +122,8 @@ class FastdexPlugin implements Plugin<Project> {
                                         && task.name.toLowerCase().contains(variant.name.toLowerCase())) {
 
                                     Transform transform = ((TransformTask) task).getTransform()
-                                    if ((((transform instanceof DexTransform) || transform.getName().equals("dex"))
-                                            && !(transform instanceof FastdexTransform))) {
+                                    if ((((transform instanceof DexTransform)) && !(transform instanceof FastdexTransform))) {
+                                        project.logger.error("==fastdex find dex transform. transform class: " + task.transform.getClass() + " . task name: " + task.name)
 
                                         String manifestPath = variantOutput.processManifest.manifestOutputFile
 

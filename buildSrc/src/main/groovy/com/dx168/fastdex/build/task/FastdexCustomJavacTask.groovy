@@ -138,7 +138,7 @@ public class FastdexCustomJavacTask extends DefaultTask {
                 //old
                 Set<String> cachedDependencies = getCachedDependList()
                 //current
-                Set<String> currentDependencies = GradleUtils.getCurrentDependList(project,variantName)
+                Set<String> currentDependencies = GradleUtils.getCurrentDependList(project,applicationVariant)
                 currentDependencies.removeAll(cachedDependencies)
 
                 //check dependencies

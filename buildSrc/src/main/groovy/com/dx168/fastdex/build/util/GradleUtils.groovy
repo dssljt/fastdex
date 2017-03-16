@@ -22,12 +22,12 @@ import org.gradle.api.Project
  */
 public class GradleUtils {
     /**
-     * 获取指定buildType的依赖列表
+     * 获取指定variant的依赖列表
      * @param project
-     * @param variantName
+     * @param applicationVariant
      * @return
      */
-    public static Set<String> getCurrentDependList(Project project,String variantName) {
+    public static Set<String> getCurrentDependList(Project project,Object applicationVariant) {
         Set<String> result = new HashSet<>()
 //        project.configurations.compile.each { File file ->
 //            //project.logger.error("==fastdex compile: ${file.absolutePath}")
@@ -40,7 +40,10 @@ public class GradleUtils {
 //        }
 
         project.configurations.all.findAll { !it.allDependencies.empty }.each { c ->
-            if ("compile".equals(c.name) || "_${variantName.toLowerCase()}Compile".equals(c.name)) {
+            String buildTypeName = applicationVariant.getBuildType().buildType.getName()
+            if (c.name.toString().equals("compile")
+                    || c.name.toString().equals("apt")
+                    || c.name.toString().equals("_${buildTypeName}Compile".toString())) {
                 c.allDependencies.each { dep ->
                     String depStr =  "$dep.group:$dep.name:$dep.version"
                     if (!"null:unspecified:null".equals(depStr)) {

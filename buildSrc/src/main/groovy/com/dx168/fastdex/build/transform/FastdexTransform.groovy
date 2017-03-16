@@ -208,7 +208,7 @@ class FastdexTransform extends TransformProxy {
      * 保存全量打包时的依赖列表
      */
     void keepDependenciesList() {
-        Set<String> dependenciesList = GradleUtils.getCurrentDependList(project,variantName)
+        Set<String> dependenciesList = GradleUtils.getCurrentDependList(project,applicationVariant)
         StringBuilder sb = new StringBuilder()
         dependenciesList.each {
             sb.append(it)

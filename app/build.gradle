@@ -2,14 +2,25 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'com.dx168.fastdex'
 
-//project.afterEvaluate {
-//    android.applicationVariants.all { variant ->
-//        def variantOutput = variant.outputs.first()
-//        def variantName = variant.name.capitalize()
-//
-//        println("=== ${variant.flavorName} ==  ${variant.getVariantData().getScope().getMainDexListFile()}")
-//    }
-//}
+project.afterEvaluate {
+    android.applicationVariants.all { variant ->
+        project.configurations.all.findAll { !it.allDependencies.empty }.each { c ->
+            String buildTypeName = variant.getBuildType().buildType.getName()
+            if (c.name.toString().equals("compile")
+                    || c.name.toString().equals("apt")
+                    || c.name.toString().equals("_${buildTypeName}Compile".toString())) {
+                println("###${c.name} | ${buildTypeName}")
+
+                c.allDependencies.each { dep ->
+                    String depStr =  "$dep.group:$dep.name:$dep.version"
+                    if (!"null:unspecified:null".equals(depStr)) {
+                        println("===${c.name} ${depStr}")
+                    }
+                }
+            }
+        }
+    }
+}
 
 android {
     compileSdkVersion 23
@@ -56,21 +67,18 @@ android {
             signingConfig signingConfigs.config
         }
 
-        product {
-            minifyEnabled false
+        //fastdex 会忽略开启混淆的buildType
+        product{
+            minifyEnabled true
             shrinkResources false
             signingConfig signingConfigs.config
         }
     }
 
 //    productFlavors {
-//        normal {
-//
-//        }
-//
-//        samsung {
-//
-//        }
+////        normal {
+////
+////        }
 //    }
 }
 
@@ -110,8 +118,8 @@ dependencies {
 //    compile 'com.google.guava:guava:18.0'
 //    compile 'com.android.support:design:23.4.0'
 //    compile 'com.mogujie.aceso:aceso-android-lib:0.0.1'
-//    compile 'com.bigkoo:alertview:1.0.2'
-//    compile 'com.bigkoo:pickerview:2.0.8'
+    compile 'com.bigkoo:alertview:1.0.2'
+    compile 'com.bigkoo:pickerview:2.0.8'
 
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
