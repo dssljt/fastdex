@@ -83,7 +83,12 @@ class FastdexPlugin implements Plugin<Project> {
 
                     compileTask.dependsOn customJavacTask
 
-                    Task multidexlistTask = getMultidexlistTask()
+                    Task multidexlistTask = null
+                    try {
+                        multidexlistTask = project.tasks.getByName("transformClassesWithMultidexlistFor${variantName}")
+                    } catch (Throwable e) {
+                        //fix issue #1 如果没有开启multidex会报错
+                    }
                     if (multidexlistTask != null) {
                         /**
                          * transformClassesWithMultidexlistFor${variantName}的作用是计算哪些类必须放在第一个dex里面，由于fastdex使用替换Application的方案隔离了项目代码的dex，
@@ -140,16 +145,6 @@ class FastdexPlugin implements Plugin<Project> {
                 }
             }
         }
-    }
-
-    Task getMultidexlistTask() {
-        Task task = null
-        try {
-            task = project.tasks.getByName("transformClassesWithMultidexlistFor${variantName}")
-        } catch (Throwable e) {
-
-        }
-        return task
     }
 
     Field getFieldByName(Class<?> aClass, String name) {

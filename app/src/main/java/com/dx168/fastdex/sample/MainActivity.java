@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
 
 
         String s2 = getString(R.string.s2);
-        Toast.makeText(this,"haha" + " | " + s1 + " | " + s2 + " | " + s3,Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"hah22a" + " | " + s1 + " | " + s2 + " | " + s3,Toast.LENGTH_LONG).show();
 
         new Runnable(){
             @Override
@@ -41,7 +41,7 @@ public class MainActivity extends Activity {
         new Runnable(){
             @Override
             public void run() {
-                Toast.makeText(getApplicationContext(),"h1",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"h122333",Toast.LENGTH_LONG).show();
             }
         }.run();
     }
