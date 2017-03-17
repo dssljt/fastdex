@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
-//apply plugin: 'com.dx168.fastdex'
+apply plugin: 'com.dx168.fastdex'
 
 project.afterEvaluate {
     android.applicationVariants.all { variant ->
