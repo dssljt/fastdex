@@ -54,7 +54,7 @@ public class FastdexCustomJavacTask extends DefaultTask {
         Set<String> changedJavaClassNames = new HashSet<>()
         for (String srcDir : srcDirs) {
             File newDir = new File(srcDir)
-            File oldDir = new File(snapshootDir,srcDir)
+            File oldDir = new File(snapshootDir,FastdexUtils.fixSourceSetDir(srcDir))
 
             Set<JavaDirDiff.DiffInfo> set = JavaDirDiff.diff(newDir,oldDir,false,project.logger)
 

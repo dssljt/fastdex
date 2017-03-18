@@ -202,7 +202,8 @@ class FastdexTransform extends TransformProxy {
 //                into(new File(snapshootDir,srcDir))
 //            }
             //之前使用gradle的api复制文件，但是lastModified会发生变化造成对比出问题，所以换成自己的实现
-            FileUtils.copyDir(new File(srcDir),new File(snapshootDir,srcDir),Constant.JAVA_SUFFIX)
+
+            FileUtils.copyDir(new File(srcDir),new File(snapshootDir,FastdexUtils.fixSourceSetDir(srcDir)),Constant.JAVA_SUFFIX)
         }
     }
 

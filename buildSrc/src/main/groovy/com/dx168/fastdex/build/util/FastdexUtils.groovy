@@ -1,6 +1,9 @@
 package com.dx168.fastdex.build.util
 
+import org.apache.tools.ant.taskdefs.condition.Os
 import org.gradle.api.Project
+
+import java.security.MessageDigest
 
 /**
  * Created by tong on 17/3/14.
@@ -149,7 +152,7 @@ public class FastdexUtils {
         Set<String> changedJavaClassNames = new HashSet<>()
         for (String srcDir : srcDirs) {
             File newDir = new File(srcDir)
-            File oldDir = new File(snapshootDir,srcDir)
+            File oldDir = new File(snapshootDir,fixSourceSetDir(srcDir))
 
             Set<JavaDirDiff.DiffInfo> set = JavaDirDiff.diff(newDir,oldDir,true,project.logger)
 
@@ -162,5 +165,16 @@ public class FastdexUtils {
         }
         changedJavaClassNames.add(GradleUtils.getBuildConfigRelativePath(manifestPath))
         return changedJavaClassNames
+    }
+
+    public static String fixSourceSetDir(String srcDir) {
+        if (srcDir == null || srcDir.length() == 0) {
+            return srcDir
+        }
+//        if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+//            return MessageDigest.getInstance("MD5").digest(srcDir.bytes).encodeHex().toString()
+//        }
+//        return srcDir
+        return MessageDigest.getInstance("MD5").digest(srcDir.bytes).encodeHex().toString()
     }
 }
