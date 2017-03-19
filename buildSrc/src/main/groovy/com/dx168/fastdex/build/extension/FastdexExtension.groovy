@@ -8,5 +8,5 @@ public class FastdexExtension {
     /**
      * 是否换成fastdex的编译方式
      */
-    boolean hookJavac = false
+    boolean useCustomCompile = true
 }

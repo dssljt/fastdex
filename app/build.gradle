@@ -2,6 +2,11 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'com.dx168.fastdex'
 
+fastdex {
+    //开启自定义的compile任务
+    useCustomCompile = true
+}
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
