@@ -75,13 +75,15 @@ class FastdexPlugin implements Plugin<Project> {
                     project.logger.error("==fastdex disable fastdex [android.buildTypes${variant.getBuildType().buildType}.minifyEnabled=true]")
                 }
                 else {
-                    Task compileTask = project.tasks.getByName("compile${variantName}JavaWithJavac")
-                    Task customJavacTask = project.tasks.create("fastdexCustomCompile${variantName}JavaWithJavac", FastdexCustomJavacTask)
-                    customJavacTask.applicationVariant = variant
-                    customJavacTask.variantName = variantName
-                    customJavacTask.compileTask = compileTask
+                    if (project.fastdex.hookJavac) {
+                        Task compileTask = project.tasks.getByName("compile${variantName}JavaWithJavac")
+                        Task customJavacTask = project.tasks.create("fastdexCustomCompile${variantName}JavaWithJavac", FastdexCustomJavacTask)
+                        customJavacTask.applicationVariant = variant
+                        customJavacTask.variantName = variantName
+                        customJavacTask.compileTask = compileTask
 
-                    compileTask.dependsOn customJavacTask
+                        compileTask.dependsOn customJavacTask
+                    }
 
                     Task multidexlistTask = null
                     try {

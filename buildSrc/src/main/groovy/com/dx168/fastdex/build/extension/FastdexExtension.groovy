@@ -5,4 +5,8 @@ package com.dx168.fastdex.build.extension
  */
 public class FastdexExtension {
     boolean debug = false
+    /**
+     * 是否换成fastdex的编译方式
+     */
+    boolean hookJavac = false
 }
