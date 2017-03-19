@@ -266,20 +266,40 @@ class FastdexTransform extends TransformProxy {
         //dex_cache.classes2.dex => classes3.dex
         //dex_cache.classesN.dex => classes(N + 1).dex
 
-        FileUtils.cleanDir(dexOutputDir)
+
+        //classes.dex  => classes2.dex.tmp
+        //classes2.dex => classes3.dex.tmp
+        //classes2.dex => classes4.dex.tmp
+        //classesN.dex => classes(N + 1).dex.tmp
         File cacheDexDir = FastdexUtils.getDexCacheDir(project,variantName)
 
-        //copy fastdex-runtime.dex
-        FileUtils.copyResourceUsingStream(Constant.RUNTIME_DEX_FILENAME,new File(dexOutputDir,"classes.dex"))
-        FileUtils.copyFileUsingStream(new File(cacheDexDir,"classes.dex"),new File(dexOutputDir,"classes2.dex"))
+        String tmpSuffix = ".tmp"
+        new File(dexOutputDir,"classes.dex").renameTo(new File(dexOutputDir,"classes2.dex${tmpSuffix}"))
+
         int point = 2
-        File dexFile = new File(cacheDexDir,"classes" + point + ".dex")
+        File dexFile = new File(dexOutputDir,"classes" + point + ".dex")
         while (FileUtils.isLegalFile(dexFile.getAbsolutePath())) {
             FileUtils.copyFileUsingStream(dexFile,new File(dexOutputDir,"classes" + (point + 1) + ".dex"))
+
+            new File(dexOutputDir,"classes${point}.dex").renameTo(new File(dexOutputDir,"classes${point + 1}.dex${tmpSuffix}"))
             point++
-            dexFile = new File(cacheDexDir,"classes" + point + ".dex")
+            dexFile = new File(cacheDexDir,"classes${point}.dex")
         }
 
+        //fastdex-runtime.dex = > classes.dex
+        //copy fastdex-runtime.dex
+        FileUtils.copyResourceUsingStream(Constant.RUNTIME_DEX_FILENAME,new File(dexOutputDir,"classes.dex"))
+
+        //classes2.dex.tmp => classes2.dex.tmp
+        //classes3.dex.tmp => classes3.dex.tmp
+        //classesN.dex.tmp => classesN.dex.tmp
+        point = 2
+        dexFile = new File(dexOutputDir,"classes${point}.dex${tmpSuffix}")
+        while (FileUtils.isLegalFile(dexFile.getAbsolutePath())) {
+            dexFile.renameTo(new File(dexOutputDir,"classes${point}.dex"))
+            point++
+            dexFile = new File(cacheDexDir,"classes${point}.dex${tmpSuffix}")
+        }
         printLogWhenDexGenerateComplete(dexOutputDir,true)
     }
 
@@ -345,6 +365,11 @@ class FastdexTransform extends TransformProxy {
             }
         }
         sb.append("]")
-        project.logger.error("==fastdex first build ${sb}")
+        if (normalBuild) {
+            project.logger.error("==fastdex first build ${sb}")
+        }
+        else {
+            project.logger.error("==fastdex patch build ${sb}")
+        }
     }
 }
