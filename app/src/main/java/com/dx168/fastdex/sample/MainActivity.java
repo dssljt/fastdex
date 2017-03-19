@@ -37,6 +37,8 @@ public class MainActivity extends Activity {
             }
         };
 
+        SampleApplication realApp = (SampleApplication)getApplication();
+
 
         new Runnable(){
             @Override
