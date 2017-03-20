@@ -138,7 +138,18 @@ class FastdexTransform extends TransformProxy {
         GradleUtils.executeMerge(project,transformInvocation,mergedJar)
 
         File classesDir = new File(FastdexUtils.getBuildDir(project,variantName),"patch-" + Constant.FASTDEX_CLASSES_DIR)
-        FileUtils.cleanDir(classesDir)
+        //FileUtils.cleanDir(classesDir)
+        //=== tmp ===
+        if (FileUtils.dirExists(classesDir.getAbsolutePath())) {
+            FileUtils.deleteDir(classesDir)
+        }
+        classesDir.mkdirs()
+        if (!FileUtils.dirExists(classesDir.getAbsolutePath())) {
+            if (!classesDir.mkdirs()) {
+                throw new GradleException("Create directory fail: ${classesDir}")
+            }
+        }
+        //=== tmp end ===
 
         //根据变化的java文件列表生成解压的pattern
         Set<String> includePatterns = new HashSet<>()

@@ -82,7 +82,9 @@ public class FastdexUtils {
      * @return
      */
     public static boolean cleanCache(Project project,String variantName) {
-        return FileUtils.deleteDir(getBuildDir(project,variantName))
+        File dir = getBuildDir(project,variantName)
+        project.logger.error("==fastdex clean dir: ${dir}")
+        return FileUtils.deleteDir(dir)
     }
 
     /**
@@ -91,8 +93,10 @@ public class FastdexUtils {
      * @param variantName
      * @return
      */
-    public static boolean cleanAllCache(Project project,String variantName) {
-        return FileUtils.deleteDir(getBuildDir(project))
+    public static boolean cleanAllCache(Project project) {
+        File dir = getBuildDir(project)
+        project.logger.error("==fastdex clean dir: ${dir}")
+        return FileUtils.deleteDir(dir)
     }
 
     /**

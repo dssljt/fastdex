@@ -18,7 +18,7 @@ public class FastdexCleanTask extends DefaultTask {
     @TaskAction
     void clean() {
         if (variantName == null) {
-            FastdexUtils.cleanAllCache()
+            FastdexUtils.cleanAllCache(project)
         }
         else {
             FastdexUtils.cleanCache(project,variantName)
