@@ -75,22 +75,24 @@ class FastdexPlugin implements Plugin<Project> {
                     project.logger.error("==fastdex disable fastdex [android.buildTypes${variant.getBuildType().buildType}.minifyEnabled=true]")
                 }
                 else {
-                    if (project.fastdex.useCustomCompile) {
-                        Task compileTask = project.tasks.getByName("compile${variantName}JavaWithJavac")
-                        Task customJavacTask = project.tasks.create("fastdexCustomCompile${variantName}JavaWithJavac", FastdexCustomJavacTask)
-                        customJavacTask.applicationVariant = variant
-                        customJavacTask.variantName = variantName
-                        customJavacTask.compileTask = compileTask
 
-                        compileTask.dependsOn customJavacTask
+                    Task compileTask = project.tasks.getByName("compile${variantName}JavaWithJavac")
+                    Task customJavacTask = project.tasks.create("fastdexCustomCompile${variantName}JavaWithJavac", FastdexCustomJavacTask)
+                    customJavacTask.applicationVariant = variant
+                    customJavacTask.variantName = variantName
+                    customJavacTask.compileTask = compileTask
+
+                    compileTask.dependsOn customJavacTask
+
+                    Task generateSourcesTask = getGenerateSourcesTask(project,variantName)
+                    if (generateSourcesTask != null) {
+                        compileTask.mustRunAfter generateSourcesTask
+                    }
+                    else {
+                        compileTask.mustRunAfter variantOutput.processResources
                     }
 
-                    Task multidexlistTask = null
-                    try {
-                        multidexlistTask = project.tasks.getByName("transformClassesWithMultidexlistFor${variantName}")
-                    } catch (Throwable e) {
-                        //fix issue #1 如果没有开启multidex会报错
-                    }
+                    Task multidexlistTask = getTransformClassesWithMultidexlistTask(project,variantName)
                     if (multidexlistTask != null) {
                         /**
                          * transformClassesWithMultidexlistFor${variantName}的作用是计算哪些类必须放在第一个dex里面，由于fastdex使用替换Application的方案隔离了项目代码的dex，
@@ -109,7 +111,6 @@ class FastdexPlugin implements Plugin<Project> {
                     manifestTask.manifestPath = variantOutput.processManifest.manifestOutputFile
                     manifestTask.variantName = variantName
                     manifestTask.mustRunAfter variantOutput.processManifest
-
                     variantOutput.processResources.dependsOn manifestTask
 
                     //保持补丁打包时R文件中相同的节点和第一次打包时的值保持一致
@@ -146,6 +147,25 @@ class FastdexPlugin implements Plugin<Project> {
                     });
                 }
             }
+        }
+    }
+
+    Task getGenerateSourcesTask(Project project, String variantName) {
+        String generateSourcesTaskName = "generate${variantName}Sources"
+        try {
+            return  project.tasks.getByName(generateSourcesTaskName)
+        } catch (Throwable e) {
+            return null
+        }
+    }
+
+    Task getTransformClassesWithMultidexlistTask(Project project, String variantName) {
+        String transformClassesWithMultidexlistTaskName = "transformClassesWithMultidexlistFor${variantName}"
+        try {
+            return project.tasks.getByName(transformClassesWithMultidexlistTaskName)
+        } catch (Throwable e) {
+            //fix issue #1 如果没有开启multidex会报错
+            return null
         }
     }
 

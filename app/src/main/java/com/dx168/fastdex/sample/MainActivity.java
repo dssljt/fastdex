@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
 
 
         String s2 = getString(R.string.s2);
-        Toast.makeText(this,"哈哈1" + " | " + s1 + " | " + s2 + " | " + s3,Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"哈" + " | " + s1 + " | " + s2 + " | " + s3,Toast.LENGTH_LONG).show();
 
         new Runnable(){
             @Override
@@ -46,5 +46,16 @@ public class MainActivity extends Activity {
                 Toast.makeText(getApplicationContext(),"223",Toast.LENGTH_LONG).show();
             }
         }.run();
+
+        new T1();
+        new T2();
+    }
+
+    private class T1 {
+
+    }
+
+    private static class T2 {
+
     }
 }

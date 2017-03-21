@@ -137,6 +137,11 @@ class FastdexTransform extends TransformProxy {
         //合并所有的输入jar
         GradleUtils.executeMerge(project,transformInvocation,mergedJar)
 
+        if (changedJavaClassNames.isEmpty()) {
+            project.logger.error("==fastdex changedJavaClassNames.size == 0")
+            return mergedJar
+        }
+
         File classesDir = new File(FastdexUtils.getBuildDir(project,variantName),"patch-" + Constant.FASTDEX_CLASSES_DIR)
         //FileUtils.cleanDir(classesDir)
         //=== tmp ===
