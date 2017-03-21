@@ -20,6 +20,8 @@ import java.nio.file.attribute.BasicFileAttributes
  *
  * 全量打包时使用默认的任务，补丁打包使用此任务以提高效率(仅编译变化的java文件不去扫描代码内容)
  *
+ * https://ant.apache.org/manual/Tasks/javac.html
+ *
  * Created by tong on 17/3/12.
  */
 public class FastdexCustomJavacTask extends DefaultTask {
@@ -36,6 +38,11 @@ public class FastdexCustomJavacTask extends DefaultTask {
     void compile() {
         //检查缓存的有效性
         prepareEnv()
+
+        if (!project.fastdex.useCustomCompile) {
+            project.logger.error("==fastdex useCustomCompile=false,disable customJavacTask")
+            return
+        }
 
         boolean hasValidCache = FastdexUtils.hasDexCache(project,variantName)
         if (!hasValidCache) {
@@ -74,10 +81,14 @@ public class FastdexCustomJavacTask extends DefaultTask {
         File classpathJar = FastdexUtils.getInjectedJarFile(project,variantName)
         project.logger.error("==fastdex androidJar: ${androidJar}")
         project.logger.error("==fastdex classpath: ${classpathJar}")
+
+        //https://ant.apache.org/manual/Tasks/javac.html
+        //最好检测下项目根目录的gradle.properties文件,是否有这个配置org.gradle.jvmargs=-Dfile.encoding=UTF-8
         project.ant.javac(
                 srcdir: patchJavaFileDir,
                 source: '1.7',
                 target: '1.7',
+                encoding: 'UTF-8',
                 destdir: patchClassesFileDir,
                 bootclasspath: androidJar,
                 classpath: classpathJar
