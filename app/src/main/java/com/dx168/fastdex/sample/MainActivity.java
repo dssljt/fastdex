@@ -21,6 +21,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         new CustomView(this,null);
+        //new CustomView2(this,null);
 
         String s1 = getString(R.string.s1);
         String s3 = getString(R.string.s3);
@@ -28,7 +29,7 @@ public class MainActivity extends Activity {
 
 
         String s2 = getString(R.string.s2);
-        Toast.makeText(this,"哈哈1" + " | " + s1 + " | " + s2 + " | " + s3,Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"h23" + " | " + s1 + " | " + s2 + " | " + s3,Toast.LENGTH_LONG).show();
 
         new Runnable(){
             @Override
