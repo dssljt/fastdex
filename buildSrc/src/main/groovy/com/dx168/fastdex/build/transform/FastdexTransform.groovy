@@ -63,8 +63,10 @@ class FastdexTransform extends TransformProxy {
     @Override
     void transform(TransformInvocation transformInvocation) throws TransformException, IOException, InterruptedException {
         if (FastdexUtils.hasDexCache(project,variantName)) {
+            project.logger.error("==fastdex patch transform start")
             //生成补丁jar包
             File patchJar = generatePatchJar(transformInvocation)
+            project.logger.error("==fastdex patch transform generate patch jar complete")
 
             //拼接生成dex的命令
             String dxcmd = "${project.android.getSdkDirectory()}/build-tools/${project.android.getBuildToolsVersion()}/dx"
@@ -72,16 +74,18 @@ class FastdexTransform extends TransformProxy {
             FileUtils.deleteFile(patchDex)
             //TODO 补丁的方法数也有可能超过65535个，最好加上使dx生成多个dex的参数，但是一般补丁不会那么大所以暂时不处理
             dxcmd = "${dxcmd} --dex --output=${patchDex} ${patchJar}"
-            project.logger.error("==fastdex generate dex cmd \n" + dxcmd)
+            project.logger.error("==fastdex patch transform generate dex cmd \n" + dxcmd)
 
             //调用dx命令
             def process = dxcmd.execute()
             int status = process.waitFor()
             process.destroy()
             if (status == 0) {
-                project.logger.error("==fastdex generate dex success: ${patchDex}")
+                project.logger.error("==fastdex patch transform generate dex success: ${patchDex}")
                 //获取dex输出路径
                 File dexOutputDir = getDexOutputDir(transformInvocation)
+
+                project.logger.error("==fastdex patch transform dexdir: ${dexOutputDir}")
                 //复制补丁打包的dex到输出路径
                 hookPatchBuildDex(dexOutputDir,patchDex)
             }
@@ -90,13 +94,26 @@ class FastdexTransform extends TransformProxy {
             }
         }
         else {
+            project.logger.error("==fastdex normal transform start")
             //normal build
             File combinedJar = new File(FastdexUtils.getBuildDir(project,variantName),Constant.COMBINED_JAR_FILENAME)
             GradleUtils.executeMerge(project,transformInvocation,combinedJar)
-
+            if (FileUtils.isLegalFile(combinedJar)) {
+                project.logger.error("==fastdex normal transform merge jar success: ${combinedJar}")
+            }
+            else {
+                throw new GradleException("==fastdex normal transform merge jar fail: \noutputJar: ${combinedJar}")
+            }
             File injectedJar = FastdexUtils.getInjectedJarFile(project,variantName)
             //注入项目代码
             ClassInject.injectJar(project,applicationVariant,combinedJar, injectedJar)
+
+            if (FileUtils.isLegalFile(injectedJar)) {
+                project.logger.error("==fastdex normal transform inject jar success: ${injectedJar}")
+            }
+            else {
+                throw new GradleException("==fastdex normal transform inject jar fail: \ninputJar: ${combinedJar}\noutputJar: ${injectedJar}")
+            }
             FileUtils.deleteFile(combinedJar)
 
             //生成项目代码快照
@@ -114,6 +131,8 @@ class FastdexTransform extends TransformProxy {
             hookNormalBuildDex(dexOutputDir)
             //save R.txt
             copyRTxt()
+
+            project.logger.error("==fastdex normal transform end")
         }
     }
 
@@ -330,6 +349,7 @@ class FastdexTransform extends TransformProxy {
         //dex_cache.classes.dex  => classes3.dex
         //dex_cache.classes2.dex => classes4.dex
         //dex_cache.classesN.dex => classes(N + 2).dex
+        project.logger.error("==fastdex patch transform hook patch dex start")
 
         FileUtils.cleanDir(dexOutputDir)
         File cacheDexDir = FastdexUtils.getDexCacheDir(project,variantName)
