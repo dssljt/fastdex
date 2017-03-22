@@ -113,6 +113,12 @@ class FastdexPlugin implements Plugin<Project> {
                     manifestTask.mustRunAfter variantOutput.processManifest
                     variantOutput.processResources.dependsOn manifestTask
 
+                    //fix issue#8
+                    def tinkerPatchManifestTask = getTinkerPatchManifestTask(project, variantName)
+                    if (tinkerPatchManifestTask != null) {
+                        manifestTask.mustRunAfter tinkerPatchManifestTask
+                    }
+
                     //保持补丁打包时R文件中相同的节点和第一次打包时的值保持一致
                     FastdexResourceIdTask applyResourceTask = project.tasks.create("fastdexProcess${variantName}ResourceId", FastdexResourceIdTask)
                     applyResourceTask.resDir = variantOutput.processResources.resDir
@@ -147,6 +153,15 @@ class FastdexPlugin implements Plugin<Project> {
                     });
                 }
             }
+        }
+    }
+
+    Task getTinkerPatchManifestTask(Project project, String variantName) {
+        String tinkerPatchManifestTaskName = "tinkerpatchSupportProcess${variantName}Manifest"
+        try {
+            return  project.tasks.getByName(tinkerPatchManifestTaskName)
+        } catch (Throwable e) {
+            return null
         }
     }
 
