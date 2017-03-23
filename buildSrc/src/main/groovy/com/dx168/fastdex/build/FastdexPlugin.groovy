@@ -72,10 +72,12 @@ class FastdexPlugin implements Plugin<Project> {
                 boolean proguardEnable = variant.getBuildType().buildType.minifyEnabled
                 //TODO 暂时忽略开启混淆的buildType(目前的快照对比方案 无法映射java文件的类名和混淆后的class的类名)
                 if (proguardEnable) {
-                    project.logger.error("==fastdex disable fastdex [android.buildTypes${variant.getBuildType().buildType}.minifyEnabled=true]")
+                    String buildTypeName = variant.getBuildType().buildType.getName()
+                    project.logger.error("====================fastdex====================")
+                    project.logger.error("==fastdex android.buildTypes.${buildTypeName}.minifyEnabled=true, just ignore")
+                    project.logger.error("====================fastdex====================")
                 }
                 else {
-
                     Task compileTask = project.tasks.getByName("compile${variantName}JavaWithJavac")
                     Task customJavacTask = project.tasks.create("fastdexCustomCompile${variantName}JavaWithJavac", FastdexCustomJavacTask)
                     customJavacTask.applicationVariant = variant

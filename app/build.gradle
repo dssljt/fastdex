@@ -3,6 +3,8 @@ apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'com.dx168.fastdex'
 
 fastdex {
+    //debug模式输出的调试信息比较多
+    debug = true
     //default false
     //自定义的compile任务,用来代替compileXXXXJavaWithJavac
     //0.0.3-beta3之前默认是开启的,0.0.3-beta3后默认关闭了,如果想开启useCustomCompile=true

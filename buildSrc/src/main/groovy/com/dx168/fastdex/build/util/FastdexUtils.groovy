@@ -3,6 +3,11 @@ package com.dx168.fastdex.build.util
 import org.apache.tools.ant.taskdefs.condition.Os
 import org.gradle.api.Project
 
+import java.nio.file.FileVisitResult
+import java.nio.file.Files
+import java.nio.file.Path
+import java.nio.file.SimpleFileVisitor
+import java.nio.file.attribute.BasicFileAttributes
 import java.security.MessageDigest
 
 /**
@@ -144,13 +149,86 @@ public class FastdexUtils {
     }
 
     /**
+     *扫描所有的项目代码(sourceSet、app/build/generated)
+     */
+    public static Set<String> getNeedInjectClassPatterns(Project project,Object applicationVariant) {
+        /**
+         source dir
+         ├── com
+         │   └── dx168
+         │       └── fastdex
+         │           └── sample
+         │               ├── Application.class
+         │               ├── BuildConfig.class
+         │               └── MainActivity.class
+         └── rx
+         ├── Observable.class
+         └── Scheduler.class
+
+         result =>
+         com.dx168.fastdex.sample.Application
+         com.dx168.fastdex.sample.BuildConfig
+         com.dx168.fastdex.sample.MainActivity
+         rx.Observable
+         rx.Scheduler
+         */
+        Set<String> result = new HashSet<>();
+        List<String> srcLists = new ArrayList<>()
+        for (String srcDir : project.android.sourceSets.main.java.srcDirs) {
+            srcLists.add(srcDir);
+        }
+
+        //app/build/generated/source/buildConfig/${variantStr}
+        File buildConfigDir = applicationVariant.getVariantData().getScope().getBuildConfigSourceOutputDir()
+        if (FileUtils.dirExists(buildConfigDir.getAbsolutePath())) {
+            srcLists.add(buildConfigDir.getAbsolutePath())
+        }
+
+        //处理butterknife的输出路径 app/build/generated/source/apt/${variantStr}
+        File aptDir = new File(new File(buildConfigDir.getParentFile().getParentFile(),"apt"),buildConfigDir.getName())
+        if (FileUtils.dirExists(aptDir.getAbsolutePath())) {
+            srcLists.add(aptDir.getAbsolutePath())
+        }
+
+        for (String srcDir : srcLists) {
+            project.logger.error("==fastdex sourceSet: " + srcDir)
+
+            Path srcDirPath = new File(srcDir).toPath()
+            Files.walkFileTree(srcDirPath,new SimpleFileVisitor<Path>(){
+                @Override
+                FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+                    if (!file.toFile().getName().endsWith(Constant.JAVA_SUFFIX)) {
+                        return FileVisitResult.CONTINUE;
+                    }
+                    Path relativePath = srcDirPath.relativize(file)
+                    String className = relativePath.toString()
+
+                    //防止windows路径出问题
+                    if (className.contains("\\")) {
+                        className = className.replace("\\", "/");
+                    }
+                    //  com/dx168/fastdex/sample/MainActivity.java => com/dx168/fastdex/sample/MainActivity
+                    className = className.substring(0,className.length() - Constant.JAVA_SUFFIX.length())
+                    //  com/dx168/fastdex/sample/MainActivity => com/dx168/fastdex/sample/MainActivity.class
+                    result.add("${className}${Constant.CLASS_SUFFIX}")
+
+                    //  com/dx168/fastdex/sample/MainActivity => com/dx168/fastdex/sample/MainActivity$*.class
+                    result.add("${className}\$\\S{0,}${Constant.CLASS_SUFFIX}")
+                    return FileVisitResult.CONTINUE
+                }
+            })
+        }
+        return result
+    }
+
+    /**
      * 补丁打包时扫描那些java文件发生了变化
      * @param project
      * @param variantName
      * @param manifestPath
      * @return
      */
-    public static Set<String> scanChangedClasses(Project project,String variantName,String manifestPath) {
+    public static Set<String> getChangedClassPatterns(Project project,String variantName,String manifestPath) {
         String[] srcDirs = project.android.sourceSets.main.java.srcDirs
         File snapshootDir = new File(getBuildDir(project,variantName),Constant.FASTDEX_SNAPSHOOT_DIR)
         Set<String> changedJavaClassNames = new HashSet<>()
@@ -161,11 +239,20 @@ public class FastdexUtils {
             Set<JavaDirDiff.DiffInfo> set = JavaDirDiff.diff(newDir,oldDir,true,project.logger)
 
             for (JavaDirDiff.DiffInfo diff : set) {
-                String str = diff.relativePath
-                str = str.substring(0,str.length() - ".java".length())
-                str = "${str}.class"
-                changedJavaClassNames.add(str)
-            }
+                //假如MainActivity发生变化，生成的class
+                //包括MainActivity.class  MainActivity$1.class MainActivity$2.class ...
+                //如果依赖的有butterknife,还会动态生成MainActivity$$ViewBinder.class，所以尽量别使用这玩意，打包会很慢的
+
+                String className = diff.relativePath
+                //className = com/dx168/fastdex/sample/MainActivity.java || com\\dx168\\fastdex\\sample\\MainActivity.java
+                //防止windows路径出问题
+                if (className.contains("\\")) {
+                    className = className.replace("\\", "/");
+                }
+
+                className = className.substring(0,className.length() - Constant.JAVA_SUFFIX.length())
+                changedJavaClassNames.add("${className}${Constant.CLASS_SUFFIX}")
+                changedJavaClassNames.add("${className}\\\$\\S{0,}${Constant.CLASS_SUFFIX}")}
         }
         changedJavaClassNames.add(GradleUtils.getBuildConfigRelativePath(manifestPath))
         return changedJavaClassNames

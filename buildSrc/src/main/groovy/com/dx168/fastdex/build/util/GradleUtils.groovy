@@ -73,7 +73,7 @@ public class GradleUtils {
      * @param transformInvocation
      * @param outputJar             输出路径
      */
-    public static void executeMerge(Project project,TransformInvocation transformInvocation, File outputJar) {
+    public static File executeMerge(Project project,TransformInvocation transformInvocation, File outputJar) {
         List<JarInput> jarInputs = Lists.newArrayList();
         List<DirectoryInput> dirInputs = Lists.newArrayList();
 
@@ -87,7 +87,8 @@ public class GradleUtils {
 
         if (dirInputs.isEmpty() && jarInputs.size() == 1) {
             //Only one jar that does not need to merge
-            FileUtils.copyFileUsingStream(jarInputs.get(0).getFile(),outputJar)
+            //FileUtils.copyFileUsingStream(jarInputs.get(0).getFile(),outputJar)
+            return jarInputs.get(0).getFile()
         }
         else {
             JarMerger jarMerger = getClassJarMerger(outputJar)

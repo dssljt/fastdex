@@ -3,10 +3,10 @@ package com.dx168.fastdex.build.transform
 import com.android.build.api.transform.Transform
 import com.android.build.api.transform.TransformException
 import com.android.build.api.transform.TransformInvocation
-import com.dx168.fastdex.build.util.ClassInject
 import com.dx168.fastdex.build.util.Constant
 import com.dx168.fastdex.build.util.FastdexUtils
 import com.dx168.fastdex.build.util.GradleUtils
+import com.dx168.fastdex.build.util.JarOperation
 import org.gradle.api.GradleException
 import org.gradle.api.Project
 import com.android.build.api.transform.Format
@@ -76,16 +76,20 @@ class FastdexTransform extends TransformProxy {
             dxcmd = "${dxcmd} --dex --output=${patchDex} ${patchJar}"
             project.logger.error("==fastdex patch transform generate dex cmd \n" + dxcmd)
 
+            long start = System.currentTimeMillis();
             //调用dx命令
             def process = dxcmd.execute()
             int status = process.waitFor()
             process.destroy()
+            long end = System.currentTimeMillis();
             if (status == 0) {
-                project.logger.error("==fastdex patch transform generate dex success: ${patchDex}")
+                project.logger.error("==fastdex patch transform generate dex success: \n==${patchDex} use: ${end - start}ms")
                 //获取dex输出路径
                 File dexOutputDir = getDexOutputDir(transformInvocation)
 
-                project.logger.error("==fastdex patch transform dexdir: ${dexOutputDir}")
+                if (project.fastdex.debug) {
+                    project.logger.error("==fastdex patch transform dexdir: ${dexOutputDir}")
+                }
                 //复制补丁打包的dex到输出路径
                 hookPatchBuildDex(dexOutputDir,patchDex)
             }
@@ -97,21 +101,18 @@ class FastdexTransform extends TransformProxy {
             project.logger.error("==fastdex normal transform start")
             //normal build
             File combinedJar = new File(FastdexUtils.getBuildDir(project,variantName),Constant.COMBINED_JAR_FILENAME)
-            GradleUtils.executeMerge(project,transformInvocation,combinedJar)
+            combinedJar = GradleUtils.executeMerge(project,transformInvocation,combinedJar)
             if (FileUtils.isLegalFile(combinedJar)) {
-                project.logger.error("==fastdex normal transform merge jar success: ${combinedJar}")
+                project.logger.error("==fastdex normal transform merge jar success: \n${combinedJar}")
             }
             else {
                 throw new GradleException("==fastdex normal transform merge jar fail: \noutputJar: ${combinedJar}")
             }
             File injectedJar = FastdexUtils.getInjectedJarFile(project,variantName)
-            //注入项目代码
-            ClassInject.injectJar(project,applicationVariant,combinedJar, injectedJar)
+            //往项目代码注入解决pre-verify问题的code
+            JarOperation.transformNormalJar(project,combinedJar,injectedJar,FastdexUtils.getNeedInjectClassPatterns(project,applicationVariant))
 
-            if (FileUtils.isLegalFile(injectedJar)) {
-                project.logger.error("==fastdex normal transform inject jar success: ${injectedJar}")
-            }
-            else {
+            if (!FileUtils.isLegalFile(injectedJar)) {
                 throw new GradleException("==fastdex normal transform inject jar fail: \ninputJar: ${combinedJar}\noutputJar: ${injectedJar}")
             }
             FileUtils.deleteFile(combinedJar)
@@ -147,70 +148,35 @@ class FastdexTransform extends TransformProxy {
             project.logger.error("==fastdex use custom jar")
             return customPatchJar
         }
-        //对比那些java文件方法变化
-        Set<String> changedJavaClassNames = FastdexUtils.scanChangedClasses(project,variantName,manifestPath)
+        //根据变化的java文件列表生成解压的pattern
+        Set<String> changedClassPatterns = FastdexUtils.getChangedClassPatterns(project,variantName,manifestPath)
+
         //add all changed file to jar
         File mergedJar = new File(FastdexUtils.getBuildDir(project,variantName),"latest-merged.jar")
         FileUtils.deleteFile(mergedJar)
 
         //合并所有的输入jar
-        GradleUtils.executeMerge(project,transformInvocation,mergedJar)
+        mergedJar = GradleUtils.executeMerge(project,transformInvocation,mergedJar)
 
-        if (changedJavaClassNames.isEmpty()) {
-            project.logger.error("==fastdex changedJavaClassNames.size == 0")
+        if (changedClassPatterns.isEmpty()) {
+            project.logger.error("==fastdex changedClassPatterns.size == 0")
             return mergedJar
-        }
-
-        File classesDir = new File(FastdexUtils.getBuildDir(project,variantName),"patch-" + Constant.FASTDEX_CLASSES_DIR)
-        //FileUtils.cleanDir(classesDir)
-        //=== tmp ===
-        if (FileUtils.dirExists(classesDir.getAbsolutePath())) {
-            FileUtils.deleteDir(classesDir)
-        }
-        classesDir.mkdirs()
-        if (!FileUtils.dirExists(classesDir.getAbsolutePath())) {
-            if (!classesDir.mkdirs()) {
-                throw new GradleException("Create directory fail: ${classesDir}")
-            }
-        }
-        //=== tmp end ===
-
-        //根据变化的java文件列表生成解压的pattern
-        Set<String> includePatterns = new HashSet<>()
-        for (String className : changedJavaClassNames) {
-            includePatterns.add(className)
-            //假如MainActivity发生变化，生成的class
-            //包括MainActivity.class  MainActivity$1.class MainActivity$2.class ...
-            //如果依赖的有butterknife,还会动态生成MainActivity$$ViewBinder.class，所以尽量别使用这玩意，打包会很慢的
-            includePatterns.add("${className.replaceAll("\\.class","")}\$*.class")
         }
 
         if (project.fastdex.debug) {
             project.logger.error("==fastdex debug mergeJar: ${mergedJar}")
-            project.logger.error("==fastdex debug changedJavaClassNames: ${changedJavaClassNames}")
-            project.logger.error("==fastdex debug includePatterns: ${includePatterns}")
-            project.logger.error("==fastdex debug unzipDir: ${classesDir}")
+            project.logger.error("==fastdex debug changedClassPatterns: ${changedClassPatterns}")
         }
-        //把需要打补丁的class提取出来
-        project.copy {
-            from project.zipTree(mergedJar)
-            for (String pattern : includePatterns) {
-                include pattern
-            }
 
-            into classesDir
-        }
-        FileUtils.deleteFile(mergedJar)
-
-        //生成补丁jar
         File patchJar = new File(FastdexUtils.getBuildDir(project,variantName),"patch-combined.jar")
-        project.ant.zip(baseDir: classesDir, destFile: patchJar)
+        //生成补丁jar
+        JarOperation.transformPatchJar(project,mergedJar,patchJar,changedClassPatterns)
+
         if (!FileUtils.isLegalFile(patchJar)) {
             throw new GradleException("==fastdex generate patchJar fail: \nclassesDir: ${classesDir}\npatchJar: ${patchJar}")
         }
 
-        FileUtils.deleteDir(classesDir)
-        project.logger.error("==fastdex will generate dex file ${changedJavaClassNames}")
+        project.logger.error("==fastdex will generate dex file ${changedClassPatterns}")
         return patchJar
     }
 
@@ -232,12 +198,7 @@ class FastdexTransform extends TransformProxy {
         File snapshootDir = new File(FastdexUtils.getBuildDir(project,variantName),Constant.FASTDEX_SNAPSHOOT_DIR)
         FileUtils.ensumeDir(snapshootDir)
         for (String srcDir : srcDirs) {
-//            project.copy {
-//                from(new File(srcDir))
-//                into(new File(snapshootDir,srcDir))
-//            }
             //之前使用gradle的api复制文件，但是lastModified会发生变化造成对比出问题，所以换成自己的实现
-
             FileUtils.copyDir(new File(srcDir),new File(snapshootDir,FastdexUtils.fixSourceSetDir(srcDir)),Constant.JAVA_SUFFIX)
         }
     }
@@ -392,13 +353,15 @@ class FastdexTransform extends TransformProxy {
         }
         sb.append("] cur-dex[")
         dexFiles = dexOutputDir.listFiles()
+        int idx = 0
         for (File file : dexFiles) {
             if (file.getName().endsWith(Constant.DEX_SUFFIX)) {
                 sb.append(file.getName())
-                if (file != dexFiles[dexFiles.length - 1]) {
+                if (idx < (dexFiles.length - 1)) {
                     sb.append(",")
                 }
             }
+            idx ++
         }
         sb.append("]")
         if (normalBuild) {

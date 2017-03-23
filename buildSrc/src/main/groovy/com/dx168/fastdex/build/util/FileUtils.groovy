@@ -5,8 +5,6 @@ import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.SimpleFileVisitor
 import java.nio.file.attribute.BasicFileAttributes
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
 
 /**
  * Created by tong on 17/3/10.
@@ -198,46 +196,6 @@ public class FileUtils {
             if (os != null) {
                 os.close();
             }
-        }
-    }
-
-    public static boolean checkDirectory(String dir) {
-        File dirObj = new File(dir);
-        deleteDir(dirObj);
-
-        if (!dirObj.exists()) {
-            dirObj.mkdirs();
-        }
-        return true;
-    }
-
-    private static void zipFile(File resFile, ZipOutputStream zipout, String rootpath) throws IOException {
-        rootpath = rootpath + (rootpath.trim().length() == 0 ? "" : File.separator) + resFile.getName();
-        if (resFile.isDirectory()) {
-            File[] fileList = resFile.listFiles();
-            for (File file : fileList) {
-                zipFile(file, zipout, rootpath);
-            }
-        } else {
-            final byte[] fileContents = readContents(resFile);
-            //linux format！！
-            if (rootpath.contains("\\")) {
-                rootpath = rootpath.replace("\\", "/");
-            }
-            ZipEntry entry = new ZipEntry(rootpath);
-//            if (compressMethod == ZipEntry.DEFLATED) {
-            entry.setMethod(ZipEntry.DEFLATED);
-//            } else {
-//                entry.setMethod(ZipEntry.STORED);
-//                entry.setSize(fileContents.length);
-//                final CRC32 checksumCalculator = new CRC32();
-//                checksumCalculator.update(fileContents);
-//                entry.setCrc(checksumCalculator.getValue());
-//            }
-            zipout.putNextEntry(entry);
-            zipout.write(fileContents);
-            zipout.flush();
-            zipout.closeEntry();
         }
     }
 
