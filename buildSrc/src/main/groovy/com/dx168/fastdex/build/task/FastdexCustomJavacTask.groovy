@@ -77,7 +77,7 @@ public class FastdexCustomJavacTask extends DefaultTask {
         }
 
         //compile java
-        File androidJar = new File("${project.android.getSdkDirectory()}/platforms/${project.android.getCompileSdkVersion()}/android.jar")
+        File androidJar = new File("${FastdexUtils.getSdkDirectory(project)}/platforms/${project.android.getCompileSdkVersion()}/android.jar")
         File classpathJar = FastdexUtils.getInjectedJarFile(project,variantName)
         project.logger.error("==fastdex androidJar: ${androidJar}")
         project.logger.error("==fastdex classpath: ${classpathJar}")

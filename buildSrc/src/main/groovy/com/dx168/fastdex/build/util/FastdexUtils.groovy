@@ -2,7 +2,6 @@ package com.dx168.fastdex.build.util
 
 import org.apache.tools.ant.taskdefs.condition.Os
 import org.gradle.api.Project
-
 import java.nio.file.FileVisitResult
 import java.nio.file.Files
 import java.nio.file.Path
@@ -14,6 +13,21 @@ import java.security.MessageDigest
  * Created by tong on 17/3/14.
  */
 public class FastdexUtils {
+    public static final String getSdkDirectory(Project project) {
+        String sdkDirectory = project.android.getSdkDirectory()
+        if (sdkDirectory.contains("\\")) {
+            sdkDirectory = sdkDirectory.replace("\\", "/");
+        }
+        return sdkDirectory
+    }
+    public static final String getDxCmdPath(Project project) {
+        File dx = new File(FastdexUtils.getSdkDirectory(project),"build-tools${File.separator}${project.android.getBuildToolsVersion()}${File.separator}dx")
+        if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+            return "${dx.absolutePath}.bat"
+        }
+        return dx.getAbsolutePath()
+    }
+
     /**
      * 获取fastdex的build目录
      * @param project

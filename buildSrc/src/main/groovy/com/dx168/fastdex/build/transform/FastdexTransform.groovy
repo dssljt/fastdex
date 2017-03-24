@@ -68,8 +68,9 @@ class FastdexTransform extends TransformProxy {
             File patchJar = generatePatchJar(transformInvocation)
             project.logger.error("==fastdex patch transform generate patch jar complete")
 
-            //拼接生成dex的命令
-            String dxcmd = "${project.android.getSdkDirectory()}/build-tools/${project.android.getBuildToolsVersion()}/dx"
+            //拼接生成dex的命令 project.android.getSdkDirectory()
+            String dxcmd = FastdexUtils.getDxCmdPath(project)
+
             File patchDex = new File(FastdexUtils.getBuildDir(project,variantName),"patch.dex")
             FileUtils.deleteFile(patchDex)
             //TODO 补丁的方法数也有可能超过65535个，最好加上使dx生成多个dex的参数，但是一般补丁不会那么大所以暂时不处理
@@ -275,8 +276,6 @@ class FastdexTransform extends TransformProxy {
         int point = 2
         File dexFile = new File(dexOutputDir,"classes" + point + ".dex")
         while (FileUtils.isLegalFile(dexFile.getAbsolutePath())) {
-            FileUtils.copyFileUsingStream(dexFile,new File(dexOutputDir,"classes" + (point + 1) + ".dex"))
-
             new File(dexOutputDir,"classes${point}.dex").renameTo(new File(dexOutputDir,"classes${point + 1}.dex${tmpSuffix}"))
             point++
             dexFile = new File(cacheDexDir,"classes${point}.dex")
@@ -294,7 +293,7 @@ class FastdexTransform extends TransformProxy {
         while (FileUtils.isLegalFile(dexFile.getAbsolutePath())) {
             dexFile.renameTo(new File(dexOutputDir,"classes${point}.dex"))
             point++
-            dexFile = new File(cacheDexDir,"classes${point}.dex${tmpSuffix}")
+            dexFile = new File(dexOutputDir,"classes${point}.dex${tmpSuffix}")
         }
         printLogWhenDexGenerateComplete(dexOutputDir,true)
     }
