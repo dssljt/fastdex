@@ -111,22 +111,6 @@ public class FastdexCustomJavacTask extends DefaultTask {
                 return FileVisitResult.CONTINUE
             }
         })
-
-        //FileUtils.deleteDir(patchClassesFileDir)
-
-//        File customJavacTaskOutputFile = FastdexUtils.getCustomJavacTaskOutputFile(project,variantName)
-//        project.ant.zip(baseDir: patchClassesFileDir, destFile: customJavacTaskOutputFile)
-
-//        if (FileUtils.isLegalFile(customJavacTaskOutputFile)) {
-//            project.logger.error("==fastdex compile success: ${customJavacTaskOutputFile}")
-//            compileTask.enabled = false
-//            //jarMergingTask.enabled = false
-//        }
-//        else {
-//            project.logger.error("==fastdex compile fail!")
-//            compileTask.enabled = true
-//            //jarMergingTask.enabled = true
-//        }
     }
 
     /*
@@ -207,7 +191,7 @@ public class FastdexCustomJavacTask extends DefaultTask {
     Set<String> getCachedDependList() {
         Set<String> result = new HashSet<>()
         File cachedDependListFile = FastdexUtils.getCachedDependListFile(project,variantName)
-        if (FileUtils.isLegalFile(cachedDependListFile.getAbsolutePath())) {
+        if (FileUtils.isLegalFile(cachedDependListFile)) {
             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(cachedDependListFile)))
             String line = null
             while ((line = reader.readLine()) != null) {

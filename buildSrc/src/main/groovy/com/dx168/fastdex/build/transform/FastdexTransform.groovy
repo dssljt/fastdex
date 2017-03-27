@@ -275,7 +275,7 @@ class FastdexTransform extends TransformProxy {
 
         int point = 2
         File dexFile = new File(dexOutputDir,"classes" + point + ".dex")
-        while (FileUtils.isLegalFile(dexFile.getAbsolutePath())) {
+        while (FileUtils.isLegalFile(dexFile)) {
             new File(dexOutputDir,"classes${point}.dex").renameTo(new File(dexOutputDir,"classes${point + 1}.dex${tmpSuffix}"))
             point++
             dexFile = new File(cacheDexDir,"classes${point}.dex")
@@ -290,7 +290,7 @@ class FastdexTransform extends TransformProxy {
         //classesN.dex.tmp => classesN.dex.tmp
         point = 2
         dexFile = new File(dexOutputDir,"classes${point}.dex${tmpSuffix}")
-        while (FileUtils.isLegalFile(dexFile.getAbsolutePath())) {
+        while (FileUtils.isLegalFile(dexFile)) {
             dexFile.renameTo(new File(dexOutputDir,"classes${point}.dex"))
             point++
             dexFile = new File(dexOutputDir,"classes${point}.dex${tmpSuffix}")
@@ -322,7 +322,7 @@ class FastdexTransform extends TransformProxy {
 
         int point = 2
         File dexFile = new File(cacheDexDir,"classes" + point + ".dex")
-        while (FileUtils.isLegalFile(dexFile.getAbsolutePath())) {
+        while (FileUtils.isLegalFile(dexFile)) {
             FileUtils.copyFileUsingStream(dexFile,new File(dexOutputDir,"classes" + (point + 2) + ".dex"))
             point++
             dexFile = new File(cacheDexDir,"classes" + point + ".dex")
