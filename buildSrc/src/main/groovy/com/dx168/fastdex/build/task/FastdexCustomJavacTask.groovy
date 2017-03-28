@@ -173,7 +173,6 @@ public class FastdexCustomJavacTask extends DefaultTask {
             }
         }
 
-        FileUtils.deleteFile(FastdexUtils.getCustomJavacTaskOutputFile(project,variantName))
         if (hasValidCache) {
             project.logger.error("==fastdex discover cached for ${variantName.toLowerCase()}")
         }
