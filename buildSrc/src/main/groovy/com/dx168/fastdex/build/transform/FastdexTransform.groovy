@@ -9,7 +9,6 @@ import com.dx168.fastdex.build.util.GradleUtils
 import com.dx168.fastdex.build.util.JarOperation
 import org.gradle.api.GradleException
 import org.gradle.api.Project
-import com.android.build.api.transform.Format
 import com.dx168.fastdex.build.util.FileUtils
 
 /**
@@ -86,7 +85,7 @@ class FastdexTransform extends TransformProxy {
             if (status == 0) {
                 project.logger.error("==fastdex patch transform generate dex success: \n==${patchDex} use: ${end - start}ms")
                 //获取dex输出路径
-                File dexOutputDir = getDexOutputDir(transformInvocation)
+                File dexOutputDir = GradleUtils.getDexOutputDir(project,base,transformInvocation)
 
                 if (project.fastdex.debug) {
                     project.logger.error("==fastdex patch transform dexdir: ${dexOutputDir}")
@@ -126,7 +125,7 @@ class FastdexTransform extends TransformProxy {
             base.transform(GradleUtils.createNewTransformInvocation(this,transformInvocation,injectedJar))
 
             //获取dex输出路径
-            File dexOutputDir = getDexOutputDir(transformInvocation)
+            File dexOutputDir = GradleUtils.getDexOutputDir(project,base,transformInvocation)
             //缓存dex
             cacheNormalBuildDex(dexOutputDir)
             //复制全量打包的dex到输出路径
@@ -217,23 +216,6 @@ class FastdexTransform extends TransformProxy {
 
         File dependenciesListFile = new File(FastdexUtils.getBuildDir(project,variantName),Constant.DEPENDENCIES_MAPPING_FILENAME);
         FileUtils.write2file(sb.toString().getBytes(),dependenciesListFile)
-    }
-
-    /**
-     * 获取transformClassesWithDexFor${variantName}任务的dex输出目录
-     * @param transformInvocation
-     * @return
-     */
-    File getDexOutputDir(TransformInvocation transformInvocation) {
-        def outputProvider = transformInvocation.getOutputProvider();
-        File outputDir = null;
-        try {
-            outputDir = outputProvider.getContentLocation("main", base.getOutputTypes(), base.getScopes(), Format.DIRECTORY);
-        } catch (Throwable e) {
-            e.printStackTrace()
-        }
-
-        return outputDir;
     }
 
     /**

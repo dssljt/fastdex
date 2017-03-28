@@ -8,6 +8,7 @@ import com.dx168.fastdex.build.task.FastdexCreateMaindexlistFileTask
 import com.dx168.fastdex.build.task.FastdexManifestTask
 import com.dx168.fastdex.build.task.FastdexResourceIdTask
 import com.dx168.fastdex.build.util.BuildTimeListener
+import com.dx168.fastdex.build.util.GradleUtils
 import org.gradle.api.GradleException
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -33,6 +34,12 @@ class FastdexPlugin implements Plugin<Project> {
         project.afterEvaluate {
             if (!project.plugins.hasPlugin('com.android.application')) {
                 throw new GradleException('generateTinkerApk: Android Application plugin required')
+            }
+
+            //最低支持2.0.0
+            String androidGralePluginVersion = GradleUtils.getAndroidGralePluginVersion(project)
+            if (androidGralePluginVersion.compareTo("2.0.0") < 0) {
+                throw new GradleException("Your version too old 'com.android.tools.build:gradle:${androidGralePluginVersion}', minimum support version 2.0.0")
             }
 
             def android = project.extensions.android
