@@ -27,6 +27,12 @@ public class FastdexManifestTask extends DefaultTask {
 
     @TaskAction
     def updateManifest() {
+        transformManifest()
+
+        //addAaptOptionsParams()
+    }
+
+    def transformManifest() {
         def ns = new Namespace("http://schemas.android.com/apk/res/android", "android")
 
         def xml = new XmlParser().parse(new InputStreamReader(new FileInputStream(fastdexVariant.manifestPath), "utf-8"))
@@ -63,6 +69,21 @@ public class FastdexManifestTask extends DefaultTask {
             FileUtils.copyFileUsingStream(manifestFile, new File(buildDir,MANIFEST_XML))
             project.logger.error("fastdex gen AndroidManifest.xml in ${MANIFEST_XML}")
         }
+    }
+
+    def addAaptOptionsParams() {
+
+        def aaptOptions = project.android.aaptOptions
+        if (aaptOptions.additionalParameters == null) {
+            aaptOptions.additionalParameters = new ArrayList<>()
+        }
+        List<String> additionalParameters = aaptOptions.additionalParameters
+
+        //-P 查看是否有-p参数
+       // boolean hasGenerate
+
+        project.logger.error("===fastdex ${aaptOptions}")
+        project.logger.error("===fastdex ${additionalParameters}")
     }
 }
 

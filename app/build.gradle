@@ -71,6 +71,10 @@ android {
         }
     }
 
+//    aaptOptions {
+//        additionalParameters '-P',"build/public.xml"
+//    }
+
 //    productFlavors {
 ////        normal {
 ////

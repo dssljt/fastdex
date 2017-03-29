@@ -17,9 +17,6 @@ apply from: 'provided.gradle'
 // > ./gradlew bintrayUpload
 //--------------------------------------------------------------------------------------------------
 task bintrayUpload(type: GradleBuild) {
-    if (!new File(project.rootDir.parentFile,'local.properties').exists()) {
-        throw new GradleException('Miss local.properties')
-    }
     buildFile = 'bintray.gradle'
     tasks = ['bintrayUpload']
 }
