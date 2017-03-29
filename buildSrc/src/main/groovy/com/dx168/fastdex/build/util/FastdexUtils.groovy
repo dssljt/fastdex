@@ -41,7 +41,7 @@ public class FastdexUtils {
      * @return
      */
     public static final File getBuildDir(Project project) {
-        File file = new File(project.getBuildDir(),Constant.FASTDEX_BUILD_DIR);
+        File file = new File(project.getBuildDir(),com.dx168.fastdex.build.Constant.FASTDEX_BUILD_DIR);
         return file;
     }
 
@@ -61,7 +61,7 @@ public class FastdexUtils {
      * @return
      */
     public static final File getDexCacheDir(Project project,String variantName) {
-        File file = new File(getBuildDir(project,variantName),Constant.FASTDEX_DEX_CACHE_DIR);
+        File file = new File(getBuildDir(project,variantName),com.dx168.fastdex.build.Constant.FASTDEX_DEX_CACHE_DIR);
         return file;
     }
 
@@ -92,7 +92,7 @@ public class FastdexUtils {
         //check dex
         boolean result = false
         for (File file : cacheDexDir.listFiles()) {
-            if (file.getName().endsWith(Constant.DEX_SUFFIX)) {
+            if (file.getName().endsWith(com.dx168.fastdex.build.Constant.DEX_SUFFIX)) {
                 result = true
                 break
             }
@@ -132,7 +132,7 @@ public class FastdexUtils {
      * @return
      */
     public static File getCachedResourceMappingFile(Project project,String variantName) {
-        File resourceMappingFile = new File(getBuildDir(project,variantName),Constant.R_TXT)
+        File resourceMappingFile = new File(getBuildDir(project,variantName),com.dx168.fastdex.build.Constant.R_TXT)
         return resourceMappingFile
     }
 
@@ -143,7 +143,7 @@ public class FastdexUtils {
      * @return
      */
     public static File getCachedDependListFile(Project project,String variantName) {
-        File cachedDependListFile = new File(getBuildDir(project,variantName),Constant.DEPENDENCIES_MAPPING_FILENAME)
+        File cachedDependListFile = new File(getBuildDir(project,variantName),com.dx168.fastdex.build.Constant.DEPENDENCIES_MAPPING_FILENAME)
         return cachedDependListFile
     }
 
@@ -154,7 +154,7 @@ public class FastdexUtils {
      * @return
      */
     public static File getInjectedJarFile(Project project,String variantName) {
-        File injectedJarFile = new File(getBuildDir(project,variantName),Constant.INJECTED_JAR_FILENAME)
+        File injectedJarFile = new File(getBuildDir(project,variantName),com.dx168.fastdex.build.Constant.INJECTED_JAR_FILENAME)
         return injectedJarFile
     }
 
@@ -167,7 +167,7 @@ public class FastdexUtils {
      */
     public static Set<String> getChangedClassPatterns(Project project,String variantName,String manifestPath) {
         String[] srcDirs = project.android.sourceSets.main.java.srcDirs
-        File snapshootDir = new File(getBuildDir(project,variantName),Constant.FASTDEX_SNAPSHOOT_DIR)
+        File snapshootDir = new File(getBuildDir(project,variantName),com.dx168.fastdex.build.Constant.FASTDEX_SNAPSHOOT_DIR)
         Set<String> changedJavaClassNames = new HashSet<>()
         for (String srcDir : srcDirs) {
             File newDir = new File(srcDir)
@@ -187,9 +187,9 @@ public class FastdexUtils {
                     className = className.replace("\\", "/");
                 }
 
-                className = className.substring(0,className.length() - Constant.JAVA_SUFFIX.length())
-                changedJavaClassNames.add("${className}${Constant.CLASS_SUFFIX}")
-                changedJavaClassNames.add("${className}\\\$\\S{0,}${Constant.CLASS_SUFFIX}")}
+                className = className.substring(0,className.length() - com.dx168.fastdex.build.Constant.JAVA_SUFFIX.length())
+                changedJavaClassNames.add("${className}${com.dx168.fastdex.build.Constant.CLASS_SUFFIX}")
+                changedJavaClassNames.add("${className}\\\$\\S{0,}${com.dx168.fastdex.build.Constant.CLASS_SUFFIX}")}
         }
         changedJavaClassNames.add(GradleUtils.getBuildConfigRelativePath(manifestPath))
         return changedJavaClassNames
@@ -263,7 +263,7 @@ public class FastdexUtils {
                 Files.walkFileTree(classpath,new SimpleFileVisitor<Path>(){
                     @Override
                     FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-                        if (!file.toFile().getName().endsWith(Constant.CLASS_SUFFIX)) {
+                        if (!file.toFile().getName().endsWith(com.dx168.fastdex.build.Constant.CLASS_SUFFIX)) {
                             return FileVisitResult.CONTINUE;
                         }
                         Path relativePath = classpath.relativize(file)

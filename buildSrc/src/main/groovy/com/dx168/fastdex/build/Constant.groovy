@@ -1,16 +1,17 @@
-package com.dx168.fastdex.build.util;
+package com.dx168.fastdex.build;
 
 /**
  * Created by tong on 17/3/14.
  */
 public interface Constant {
+    /**
+     * 最低支持的android gradle build版本
+     */
+    public static final String MIN_SUPPORT_ANDROID_GRADLE_VERSION = "2.0.0"
     public static final String FASTDEX_BUILD_DIR = "fastdex"
     public static final String FASTDEX_DEX_CACHE_DIR = "dex_cache"
-    public static final String FASTDEX_CLASSES_DIR = "classes"
     public static final String FASTDEX_SNAPSHOOT_DIR = "snapshoot"
-    public static final String COMBINED_JAR_FILENAME = "normal-build-combined.jar"
     public static final String INJECTED_JAR_FILENAME = "injected-combined.jar"
-    public static final String CUSTOM_JAVAC_JAR_FILENAME = "custom-javac-combind.jar"
     public static final String JAVA_SUFFIX = ".java"
     public static final String CLASS_SUFFIX = ".class"
     public static final String DEX_SUFFIX = ".dex"

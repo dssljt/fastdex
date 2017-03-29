@@ -4,9 +4,10 @@ import com.android.build.api.transform.Transform
 import com.android.build.api.transform.TransformException
 import com.android.build.api.transform.TransformInvocation
 import com.dx168.fastdex.build.util.ClassInject
-import com.dx168.fastdex.build.util.Constant
+import com.dx168.fastdex.build.Constant
 import com.dx168.fastdex.build.util.FastdexUtils
 import com.dx168.fastdex.build.util.GradleUtils
+import com.dx168.fastdex.build.variant.FastdexVariant
 import com.google.common.collect.Lists
 import org.gradle.api.GradleException
 import org.gradle.api.Project
@@ -54,17 +55,16 @@ import com.android.ide.common.process.ProcessOutputHandler
  * Created by tong on 17/10/3.
  */
 class FastdexTransform extends TransformProxy {
-    Project project
-    def applicationVariant
-    String variantName
-    String manifestPath
+    FastdexVariant fastdexVariant
 
-    FastdexTransform(Transform base, Project project,Object variant,String manifestPath) {
+    Project project
+    String variantName
+
+    FastdexTransform(Transform base, FastdexVariant fastdexVariant) {
         super(base)
-        this.project = project
-        this.applicationVariant = variant
-        this.variantName = variant.name.capitalize()
-        this.manifestPath = manifestPath
+        this.fastdexVariant = fastdexVariant
+        this.project = fastdexVariant.project
+        this.variantName = fastdexVariant.variantName
     }
 
     @Override
@@ -85,8 +85,8 @@ class FastdexTransform extends TransformProxy {
             final List<File> inputFiles = new ArrayList<>()
             inputFiles.add(patchJar)
 
-            String androidGralePluginVersion = GradleUtils.getAndroidGralePluginVersion(project)
-            if ("2.0.0".equals(androidGralePluginVersion)) {
+            String androidGradlePluginVersion = fastdexVariant.androidGradlePluginVersion
+            if ("2.0.0".equals(androidGradlePluginVersion)) {
                 base.androidBuilder.convertByteCode(
                         inputFiles,
                         patchDex.parentFile,
@@ -99,7 +99,7 @@ class FastdexTransform extends TransformProxy {
                         outputHandler,
                         false)
             }
-            else if ("2.1.0".equals(androidGralePluginVersion) || "2.1.2".equals(androidGralePluginVersion) || "2.1.3".equals(androidGralePluginVersion)) {
+            else if ("2.1.0".equals(androidGradlePluginVersion) || "2.1.2".equals(androidGradlePluginVersion) || "2.1.3".equals(androidGradlePluginVersion)) {
                 base.androidBuilder.convertByteCode(
                         inputFiles,
                         patchDex.parentFile,
@@ -111,7 +111,7 @@ class FastdexTransform extends TransformProxy {
                         true,
                         outputHandler)
             }
-            else if (androidGralePluginVersion.startsWith("2.2.")) {
+            else if (androidGradlePluginVersion.startsWith("2.2.")) {
                 base.androidBuilder.convertByteCode(
                         inputFiles,
                         patchDex.parentFile,
@@ -121,7 +121,7 @@ class FastdexTransform extends TransformProxy {
                         base.getOptimize(),
                         outputHandler);
             }
-            else if ("2.3.0".equals(androidGralePluginVersion)) {
+            else if ("2.3.0".equals(androidGradlePluginVersion)) {
                 base.androidBuilder.convertByteCode(
                         inputFiles,
                         patchDex.parentFile,
@@ -155,7 +155,7 @@ class FastdexTransform extends TransformProxy {
             hookPatchBuildDex(dexOutputDir,patchDex)
         }
         else {
-            def config = applicationVariant.getVariantData().getVariantConfiguration()
+            def config = fastdexVariant.androidVariant.getVariantData().getVariantConfiguration()
             boolean isMultiDexEnabled = config.isMultiDexEnabled()
 
             project.logger.error("==fastdex normal transform start")
@@ -214,7 +214,7 @@ class FastdexTransform extends TransformProxy {
      * @return
      */
     File generatePatchJar(TransformInvocation transformInvocation) {
-        def config = applicationVariant.getVariantData().getVariantConfiguration()
+        def config = fastdexVariant.androidVariant.getVariantData().getVariantConfiguration()
         boolean isMultiDexEnabled = config.isMultiDexEnabled()
         if (isMultiDexEnabled) {
             //如果开启了multidex,FastdexJarMergingTransform完成了jar merge的操作
@@ -226,7 +226,7 @@ class FastdexTransform extends TransformProxy {
             //补丁jar
             File patchJar = new File(FastdexUtils.getBuildDir(project,variantName),"patch-combined.jar")
             //根据变化的java文件列表生成解压的pattern
-            Set<String> changedClassPatterns = FastdexUtils.getChangedClassPatterns(project,variantName,manifestPath)
+            Set<String> changedClassPatterns = FastdexUtils.getChangedClassPatterns(project,variantName,fastdexVariant.manifestPath)
             if (!changedClassPatterns.isEmpty()) {
                 //所有的class目录
                 Set<File> directoryInputFiles = FastdexUtils.getDirectoryInputFiles(transformInvocation)
@@ -244,7 +244,7 @@ class FastdexTransform extends TransformProxy {
      * 保存资源映射文件
      */
     void copyRTxt() {
-        File sourceFile = new File(applicationVariant.getVariantData().getScope().getSymbolLocation(),"R.txt")
+        File sourceFile = new File(fastdexVariant.androidVariant.getVariantData().getScope().getSymbolLocation(),"R.txt")
         File destFile = new File(FastdexUtils.getBuildDir(project,variantName),Constant.R_TXT)
         FileUtils.copyFileUsingStream(sourceFile,destFile)
     }
@@ -267,7 +267,7 @@ class FastdexTransform extends TransformProxy {
      * 保存全量打包时的依赖列表
      */
     void keepDependenciesList() {
-        Set<String> dependenciesList = GradleUtils.getCurrentDependList(project,applicationVariant)
+        Set<String> dependenciesList = GradleUtils.getCurrentDependList(project,fastdexVariant.androidVariant)
         StringBuilder sb = new StringBuilder()
         dependenciesList.each {
             sb.append(it)

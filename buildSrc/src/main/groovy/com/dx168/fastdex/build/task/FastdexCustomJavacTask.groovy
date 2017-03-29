@@ -1,10 +1,11 @@
 package com.dx168.fastdex.build.task
 
-import com.dx168.fastdex.build.util.Constant
+import com.dx168.fastdex.build.Constant
 import com.dx168.fastdex.build.util.FastdexUtils
 import com.dx168.fastdex.build.util.FileUtils
 import com.dx168.fastdex.build.util.GradleUtils
 import com.dx168.fastdex.build.util.JavaDirDiff
+import com.dx168.fastdex.build.variant.FastdexVariant
 import org.gradle.api.DefaultTask
 import org.gradle.api.Task
 import org.gradle.api.tasks.TaskAction
@@ -25,9 +26,7 @@ import java.nio.file.attribute.BasicFileAttributes
  * Created by tong on 17/3/12.
  */
 public class FastdexCustomJavacTask extends DefaultTask {
-    def applicationVariant
-    String variantName
-    String manifestPath
+    FastdexVariant fastdexVariant
     Task compileTask
 
     FastdexCustomJavacTask() {
@@ -44,20 +43,20 @@ public class FastdexCustomJavacTask extends DefaultTask {
             return
         }
 
-        boolean hasValidCache = FastdexUtils.hasDexCache(project,variantName)
+        boolean hasValidCache = FastdexUtils.hasDexCache(project,fastdexVariant.variantName)
         if (!hasValidCache) {
             compileTask.enabled = true
             return
         }
 
-        File patchJavaFileDir = new File(FastdexUtils.getBuildDir(project,variantName),"custom-combind")
-        File patchClassesFileDir = new File(FastdexUtils.getBuildDir(project,variantName),"custom-combind-classes")
+        File patchJavaFileDir = new File(FastdexUtils.getBuildDir(project,fastdexVariant.variantName),"custom-combind")
+        File patchClassesFileDir = new File(FastdexUtils.getBuildDir(project,fastdexVariant.variantName),"custom-combind-classes")
         FileUtils.deleteDir(patchJavaFileDir)
         FileUtils.ensumeDir(patchClassesFileDir)
 
         //compare changed class
         String[] srcDirs = project.android.sourceSets.main.java.srcDirs
-        File snapshootDir = new File(FastdexUtils.getBuildDir(project,variantName),Constant.FASTDEX_SNAPSHOOT_DIR)
+        File snapshootDir = new File(FastdexUtils.getBuildDir(project,fastdexVariant.variantName),Constant.FASTDEX_SNAPSHOOT_DIR)
         Set<String> changedJavaClassNames = new HashSet<>()
         for (String srcDir : srcDirs) {
             File newDir = new File(srcDir)
@@ -78,7 +77,7 @@ public class FastdexCustomJavacTask extends DefaultTask {
 
         //compile java
         File androidJar = new File("${FastdexUtils.getSdkDirectory(project)}/platforms/${project.android.getCompileSdkVersion()}/android.jar")
-        File classpathJar = FastdexUtils.getInjectedJarFile(project,variantName)
+        File classpathJar = FastdexUtils.getInjectedJarFile(project,fastdexVariant.variantName)
         project.logger.error("==fastdex androidJar: ${androidJar}")
         project.logger.error("==fastdex classpath: ${classpathJar}")
 
@@ -99,7 +98,7 @@ public class FastdexCustomJavacTask extends DefaultTask {
 
         //如果变化的class直接生成jar包，并且成功hook transformClassesWithJarMergingFor${variantName}能进一步提高打包速度
         //由于无法解决一个技术点，所以这个机制暂时没有用到，暂时使用覆盖app/build/intermediates/classes内容的方式实现
-        File classesDir = applicationVariant.getVariantData().getScope().getJavaOutputDir()
+        File classesDir = fastdexVariant.androidVariant.getVariantData().getScope().getJavaOutputDir()
         Files.walkFileTree(patchClassesFileDir.toPath(),new SimpleFileVisitor<Path>(){
             @Override
             FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
@@ -123,17 +122,17 @@ public class FastdexCustomJavacTask extends DefaultTask {
      */
     void prepareEnv() {
         //delete expired cache
-        boolean hasValidCache = FastdexUtils.hasDexCache(project,variantName)
+        boolean hasValidCache = FastdexUtils.hasDexCache(project,fastdexVariant.variantName)
         if (hasValidCache) {
             try {
-                File cachedDependListFile = FastdexUtils.getCachedDependListFile(project,variantName)
+                File cachedDependListFile = FastdexUtils.getCachedDependListFile(project,fastdexVariant.variantName)
                 if (!FileUtils.isLegalFile(cachedDependListFile)) {
                     throw new CheckException("miss depend list file: ${cachedDependListFile}")
                 }
                 //old
                 Set<String> cachedDependencies = getCachedDependList()
                 //current
-                Set<String> currentDependencies = GradleUtils.getCurrentDependList(project,applicationVariant)
+                Set<String> currentDependencies = GradleUtils.getCurrentDependList(project,fastdexVariant.androidVariant)
                 currentDependencies.removeAll(cachedDependencies)
 
                 //check dependencies
@@ -154,31 +153,31 @@ public class FastdexCustomJavacTask extends DefaultTask {
 
                 //handler add and change
                 if (!currentDependencies.isEmpty()) {
-                    throw new CheckException("${variantName.toLowerCase()} dependencies changed")
+                    throw new CheckException("${fastdexVariant.variantName.toLowerCase()} dependencies changed")
                 }
 
-                File cachedResourceMappingFile = FastdexUtils.getCachedResourceMappingFile(project,variantName)
+                File cachedResourceMappingFile = FastdexUtils.getCachedResourceMappingFile(project,fastdexVariant.variantName)
                 if (!FileUtils.isLegalFile(cachedResourceMappingFile)) {
                     throw new CheckException("miss resource mapping file: ${cachedResourceMappingFile}")
                 }
 
-                File injectedJarFile = FastdexUtils.getInjectedJarFile(project,variantName)
+                File injectedJarFile = FastdexUtils.getInjectedJarFile(project,fastdexVariant.variantName)
                 if (!FileUtils.isLegalFile(injectedJarFile)) {
                     throw new CheckException("miss injected jar file: ${injectedJarFile}")
                 }
             } catch (CheckException e) {
                 hasValidCache = false
                 project.logger.error("==fastdex ${e.getMessage()}")
-                project.logger.error("==fastdex we will remove ${variantName.toLowerCase()} cache")
+                project.logger.error("==fastdex we will remove ${fastdexVariant.variantName.toLowerCase()} cache")
             }
         }
 
         if (hasValidCache) {
-            project.logger.error("==fastdex discover cached for ${variantName.toLowerCase()}")
+            project.logger.error("==fastdex discover cached for ${fastdexVariant.variantName.toLowerCase()}")
         }
         else {
-            FastdexUtils.cleanCache(project,variantName)
-            FileUtils.ensumeDir(FastdexUtils.getBuildDir(project,variantName))
+            FastdexUtils.cleanCache(project,fastdexVariant.variantName)
+            FileUtils.ensumeDir(fastdexVariant.buildDir)
         }
     }
 
@@ -189,7 +188,7 @@ public class FastdexCustomJavacTask extends DefaultTask {
      */
     Set<String> getCachedDependList() {
         Set<String> result = new HashSet<>()
-        File cachedDependListFile = FastdexUtils.getCachedDependListFile(project,variantName)
+        File cachedDependListFile = FastdexUtils.getCachedDependListFile(project,fastdexVariant.variantName)
         if (FileUtils.isLegalFile(cachedDependListFile)) {
             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(cachedDependListFile)))
             String line = null

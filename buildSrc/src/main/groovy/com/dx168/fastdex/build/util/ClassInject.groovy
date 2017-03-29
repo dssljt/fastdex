@@ -42,7 +42,7 @@ public class ClassInject implements Opcodes {
             Files.walkFileTree(classpath,new SimpleFileVisitor<Path>(){
                 @Override
                 FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-                    if (!file.toFile().getName().endsWith(Constant.CLASS_SUFFIX)) {
+                    if (!file.toFile().getName().endsWith(com.dx168.fastdex.build.Constant.CLASS_SUFFIX)) {
                         return FileVisitResult.CONTINUE;
                     }
                     project.logger.error("==fastdex inject: ${file.toFile().getAbsolutePath()}")

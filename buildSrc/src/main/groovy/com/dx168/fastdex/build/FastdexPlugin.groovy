@@ -11,6 +11,7 @@ import com.dx168.fastdex.build.task.FastdexResourceIdTask
 import com.dx168.fastdex.build.transform.FastdexJarMergingTransform
 import com.dx168.fastdex.build.util.BuildTimeListener
 import com.dx168.fastdex.build.util.GradleUtils
+import com.dx168.fastdex.build.variant.FastdexVariant
 import org.gradle.api.GradleException
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -46,9 +47,9 @@ class FastdexPlugin implements Plugin<Project> {
             }
 
             //最低支持2.0.0
-            String androidGralePluginVersion = GradleUtils.getAndroidGralePluginVersion(project)
-            if (androidGralePluginVersion.compareTo("2.0.0") < 0) {
-                throw new GradleException("Your version too old 'com.android.tools.build:gradle:${androidGralePluginVersion}', minimum support version 2.0.0")
+            String androidGradlePluginVersion = GradleUtils.getAndroidGralePluginVersion(project)
+            if (androidGradlePluginVersion.compareTo(Constant.MIN_SUPPORT_ANDROID_GRADLE_VERSION) < 0) {
+                throw new GradleException("Your version too old 'com.android.tools.build:gradle:${androidGradlePluginVersion}', minimum support version 2.0.0")
             }
 
             def android = project.extensions.android
@@ -81,9 +82,11 @@ class FastdexPlugin implements Plugin<Project> {
                     // Not in instant run mode, continue.
                 }
 
+                FastdexVariant fastdexVariant = new FastdexVariant(project,variant)
+
                 //创建清理指定variantName缓存的任务(用户触发)
                 FastdexCleanTask cleanTask = project.tasks.create("fastdexCleanFor${variantName}", FastdexCleanTask)
-                cleanTask.variantName = variantName
+                cleanTask.fastdexVariant = fastdexVariant
 
                 boolean proguardEnable = variant.getBuildType().buildType.minifyEnabled
                 //TODO 暂时忽略开启混淆的buildType(目前的快照对比方案 无法映射java文件的类名和混淆后的class的类名)
@@ -96,10 +99,8 @@ class FastdexPlugin implements Plugin<Project> {
                 else {
                     Task compileTask = project.tasks.getByName("compile${variantName}JavaWithJavac")
                     Task customJavacTask = project.tasks.create("fastdexCustomCompile${variantName}JavaWithJavac", FastdexCustomJavacTask)
-                    customJavacTask.applicationVariant = variant
-                    customJavacTask.variantName = variantName
+                    customJavacTask.fastdexVariant = fastdexVariant
                     customJavacTask.compileTask = compileTask
-
                     compileTask.dependsOn customJavacTask
 
                     Task generateSourcesTask = getGenerateSourcesTask(project,variantName)
@@ -118,7 +119,7 @@ class FastdexPlugin implements Plugin<Project> {
                          * 所以就生成一个空文件防止报错
                          */
                         FastdexCreateMaindexlistFileTask createFileTask = project.tasks.create("fastdexCreate${variantName}MaindexlistFileTask", FastdexCreateMaindexlistFileTask)
-                        createFileTask.applicationVariant = variant
+                        createFileTask.fastdexVariant = fastdexVariant
 
                         multidexlistTask.dependsOn createFileTask
                         multidexlistTask.enabled = false
@@ -126,8 +127,7 @@ class FastdexPlugin implements Plugin<Project> {
 
                     //替换项目的Application为com.dx168.fastdex.runtime.FastdexApplication
                     FastdexManifestTask manifestTask = project.tasks.create("fastdexProcess${variantName}Manifest", FastdexManifestTask)
-                    manifestTask.manifestPath = variantOutput.processManifest.manifestOutputFile
-                    manifestTask.variantName = variantName
+                    manifestTask.fastdexVariant = fastdexVariant
                     manifestTask.mustRunAfter variantOutput.processManifest
                     variantOutput.processResources.dependsOn manifestTask
 
@@ -139,8 +139,8 @@ class FastdexPlugin implements Plugin<Project> {
 
                     //保持补丁打包时R文件中相同的节点和第一次打包时的值保持一致
                     FastdexResourceIdTask applyResourceTask = project.tasks.create("fastdexProcess${variantName}ResourceId", FastdexResourceIdTask)
+                    applyResourceTask.fastdexVariant = fastdexVariant
                     applyResourceTask.resDir = variantOutput.processResources.resDir
-                    applyResourceTask.variantName = variantName
                     //let applyResourceTask run after manifestTask
                     applyResourceTask.mustRunAfter manifestTask
                     variantOutput.processResources.dependsOn applyResourceTask
@@ -158,9 +158,7 @@ class FastdexPlugin implements Plugin<Project> {
                                     if ((((transform instanceof JarMergingTransform)) && !(transform instanceof FastdexJarMergingTransform))) {
                                         project.logger.error("==fastdex find jarmerging transform. transform class: " + task.transform.getClass() + " . task name: " + task.name)
 
-                                        String manifestPath = variantOutput.processManifest.manifestOutputFile
-
-                                        FastdexJarMergingTransform jarMergingTransform = new FastdexJarMergingTransform(transform,project,variant,manifestPath)
+                                        FastdexJarMergingTransform jarMergingTransform = new FastdexJarMergingTransform(transform,fastdexVariant)
                                         Field field = getFieldByName(task.getClass(),'transform')
                                         field.setAccessible(true)
                                         field.set(task,jarMergingTransform)
@@ -169,10 +167,8 @@ class FastdexPlugin implements Plugin<Project> {
                                     if ((((transform instanceof DexTransform)) && !(transform instanceof FastdexTransform))) {
                                         project.logger.error("==fastdex find dex transform. transform class: " + task.transform.getClass() + " . task name: " + task.name)
 
-                                        String manifestPath = variantOutput.processManifest.manifestOutputFile
-
                                         //代理DexTransform,实现自定义的转换
-                                        FastdexTransform fastdexTransform = new FastdexTransform(transform,project,variant,manifestPath)
+                                        FastdexTransform fastdexTransform = new FastdexTransform(transform,fastdexVariant)
                                         Field field = getFieldByName(task.getClass(),'transform')
                                         field.setAccessible(true)
                                         field.set(task,fastdexTransform)

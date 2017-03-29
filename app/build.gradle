@@ -5,7 +5,7 @@ apply plugin: 'com.dx168.fastdex'
 fastdex {
     //default true
     //开启
-    fastdexEnable = false
+    fastdexEnable = true
 
     //default false
     //debug模式输出的调试信息比较多

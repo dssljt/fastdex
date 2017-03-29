@@ -5,7 +5,7 @@ import com.android.build.api.transform.TransformException
 import com.android.build.api.transform.TransformInvocation
 import com.dx168.fastdex.build.util.ClassInject
 import com.dx168.fastdex.build.util.FastdexUtils
-import org.gradle.api.Project
+import com.dx168.fastdex.build.variant.FastdexVariant
 import com.android.build.api.transform.Format
 import com.dx168.fastdex.build.util.FileUtils
 
@@ -14,24 +14,18 @@ import com.dx168.fastdex.build.util.FileUtils
  * Created by tong on 17/27/3.
  */
 class FastdexJarMergingTransform extends TransformProxy {
-    Project project
-    def applicationVariant
-    String variantName
-    String manifestPath
+    FastdexVariant fastdexVariant
 
-    FastdexJarMergingTransform(Transform base, Project project, Object variant, String manifestPath) {
+    FastdexJarMergingTransform(Transform base, FastdexVariant fastdexVariant) {
         super(base)
-        this.project = project
-        this.applicationVariant = variant
-        this.variantName = variant.name.capitalize()
-        this.manifestPath = manifestPath
+        this.fastdexVariant = fastdexVariant
     }
 
     @Override
     void transform(TransformInvocation transformInvocation) throws TransformException, IOException, InterruptedException {
-        if (FastdexUtils.hasDexCache(project,variantName)) {
+        if (FastdexUtils.hasDexCache(project,fastdexVariant.variantName)) {
             //根据变化的java文件列表生成解压的pattern
-            Set<String> changedClassPatterns = FastdexUtils.getChangedClassPatterns(project,variantName,manifestPath)
+            Set<String> changedClassPatterns = FastdexUtils.getChangedClassPatterns(fastdexVariant.project,fastdexVariant.variantName,fastdexVariant.manifestPath)
             if (!changedClassPatterns.isEmpty()) {
                 //补丁jar
                 File patchJar = getCombinedJarFile(transformInvocation)
@@ -64,7 +58,6 @@ class FastdexJarMergingTransform extends TransformProxy {
         // and format is SINGLE_JAR so output is a jar
         File jarFile = outputProvider.getContentLocation("combined", base.getOutputTypes(), base.getScopes(), Format.JAR);
         FileUtils.ensumeDir(jarFile.getParentFile());
-
         return jarFile
     }
 }

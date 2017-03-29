@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
 
 
         String s2 = getString(R.string.s2);
-        Toast.makeText(this,"ha111" + " | " + s1 + " | " + s2 + " | " + s3,Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"哈11" + " | " + s1 + " | " + s2 + " | " + s3,Toast.LENGTH_LONG).show();
 
         new Runnable(){
             @Override
