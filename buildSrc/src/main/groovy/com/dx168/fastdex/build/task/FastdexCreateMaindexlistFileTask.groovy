@@ -19,7 +19,7 @@ public class FastdexCreateMaindexlistFileTask extends DefaultTask {
 
     @TaskAction
     void createFile() {
-        if (applicationVariant != null) {
+        if (fastdexVariant.androidVariant != null) {
             File maindexlistFile = fastdexVariant.androidVariant.getVariantData().getScope().getMainDexListFile()
             File parentFile = maindexlistFile.getParentFile()
             FileUtils.ensumeDir(parentFile)

@@ -23,7 +23,7 @@ class FastdexJarMergingTransform extends TransformProxy {
 
     @Override
     void transform(TransformInvocation transformInvocation) throws TransformException, IOException, InterruptedException {
-        if (FastdexUtils.hasDexCache(project,fastdexVariant.variantName)) {
+        if (FastdexUtils.hasDexCache(fastdexVariant.project,fastdexVariant.variantName)) {
             //根据变化的java文件列表生成解压的pattern
             Set<String> changedClassPatterns = FastdexUtils.getChangedClassPatterns(fastdexVariant.project,fastdexVariant.variantName,fastdexVariant.manifestPath)
             if (!changedClassPatterns.isEmpty()) {
@@ -32,7 +32,7 @@ class FastdexJarMergingTransform extends TransformProxy {
                 //所有的class目录
                 Set<File> directoryInputFiles = FastdexUtils.getDirectoryInputFiles(transformInvocation)
                 //生成补丁jar
-                FastdexUtils.generatePatchJar(project,directoryInputFiles,patchJar,changedClassPatterns)
+                FastdexUtils.generatePatchJar(fastdexVariant.project,directoryInputFiles,patchJar,changedClassPatterns)
             }
             else {
                 //TODO IllegalState
@@ -41,7 +41,7 @@ class FastdexJarMergingTransform extends TransformProxy {
         else {
             //inject dir input
             Set<File> directoryInputFiles = FastdexUtils.getDirectoryInputFiles(transformInvocation)
-            ClassInject.injectDirectoryInputFiles(project,directoryInputFiles)
+            ClassInject.injectDirectoryInputFiles(fastdexVariant.project,directoryInputFiles)
             base.transform(transformInvocation)
         }
     }
