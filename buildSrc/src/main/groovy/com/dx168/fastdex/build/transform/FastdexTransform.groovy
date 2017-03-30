@@ -3,13 +3,22 @@ package com.dx168.fastdex.build.transform
 import com.android.build.api.transform.Transform
 import com.android.build.api.transform.TransformException
 import com.android.build.api.transform.TransformInvocation
-import com.dx168.fastdex.build.util.Constant
+import com.dx168.fastdex.build.util.ClassInject
+import com.dx168.fastdex.build.Constant
 import com.dx168.fastdex.build.util.FastdexUtils
 import com.dx168.fastdex.build.util.GradleUtils
-import com.dx168.fastdex.build.util.JarOperation
+import com.dx168.fastdex.build.variant.FastdexVariant
+import com.google.common.collect.Lists
 import org.gradle.api.GradleException
 import org.gradle.api.Project
 import com.dx168.fastdex.build.util.FileUtils
+import com.android.build.api.transform.JarInput
+import com.android.build.api.transform.TransformInput
+import com.android.ide.common.blame.Message
+import com.android.ide.common.blame.ParsingProcessOutputHandler
+import com.android.ide.common.blame.parser.DexParser
+import com.android.ide.common.blame.parser.ToolOutputParser
+import com.android.ide.common.process.ProcessOutputHandler
 
 /**
  * 用于dex生成
@@ -46,84 +55,129 @@ import com.dx168.fastdex.build.util.FileUtils
  * Created by tong on 17/10/3.
  */
 class FastdexTransform extends TransformProxy {
-    Project project
-    def applicationVariant
-    String variantName
-    String manifestPath
+    FastdexVariant fastdexVariant
 
-    FastdexTransform(Transform base, Project project,Object variant,String manifestPath) {
+    Project project
+    String variantName
+
+    FastdexTransform(Transform base, FastdexVariant fastdexVariant) {
         super(base)
-        this.project = project
-        this.applicationVariant = variant
-        this.variantName = variant.name.capitalize()
-        this.manifestPath = manifestPath
+        this.fastdexVariant = fastdexVariant
+        this.project = fastdexVariant.project
+        this.variantName = fastdexVariant.variantName
     }
 
     @Override
     void transform(TransformInvocation transformInvocation) throws TransformException, IOException, InterruptedException {
         if (FastdexUtils.hasDexCache(project,variantName)) {
-            project.logger.error("==fastdex patch transform start")
+            project.logger.error("==fastdex patch transform start,we will generate dex file")
             //生成补丁jar包
             File patchJar = generatePatchJar(transformInvocation)
-            project.logger.error("==fastdex patch transform generate patch jar complete")
-
-            //拼接生成dex的命令 project.android.getSdkDirectory()
-            String dxcmd = FastdexUtils.getDxCmdPath(project)
-
-            File patchDex = new File(FastdexUtils.getBuildDir(project,variantName),"patch.dex")
+            File patchDex = new File(FastdexUtils.getBuildDir(project,variantName),"classes.dex")
             FileUtils.deleteFile(patchDex)
-            //TODO 补丁的方法数也有可能超过65535个，最好加上使dx生成多个dex的参数，但是一般补丁不会那么大所以暂时不处理
-            dxcmd = "${dxcmd} --dex --output=${patchDex} ${patchJar}"
-            project.logger.error("==fastdex patch transform generate dex cmd \n" + dxcmd)
 
-            long start = System.currentTimeMillis();
-            //调用dx命令
-            def process = dxcmd.execute()
-            int status = process.waitFor()
-            process.destroy()
-            long end = System.currentTimeMillis();
-            if (status == 0) {
-                project.logger.error("==fastdex patch transform generate dex success: \n==${patchDex} use: ${end - start}ms")
-                //获取dex输出路径
-                File dexOutputDir = GradleUtils.getDexOutputDir(project,base,transformInvocation)
+            long start = System.currentTimeMillis()
 
-                if (project.fastdex.debug) {
-                    project.logger.error("==fastdex patch transform dexdir: ${dexOutputDir}")
-                }
-                //复制补丁打包的dex到输出路径
-                hookPatchBuildDex(dexOutputDir,patchDex)
+            ProcessOutputHandler outputHandler = new ParsingProcessOutputHandler(
+                    new ToolOutputParser(new DexParser(), Message.Kind.ERROR, base.logger),
+                    new ToolOutputParser(new DexParser(), base.logger),
+                    base.androidBuilder.getErrorReporter())
+            final List<File> inputFiles = new ArrayList<>()
+            inputFiles.add(patchJar)
+
+            String androidGradlePluginVersion = fastdexVariant.androidGradlePluginVersion
+            if ("2.0.0".equals(androidGradlePluginVersion)) {
+                base.androidBuilder.convertByteCode(
+                        inputFiles,
+                        patchDex.parentFile,
+                        false,
+                        null,
+                        base.dexOptions,
+                        null,
+                        false,
+                        true,
+                        outputHandler,
+                        false)
+            }
+            else if ("2.1.0".equals(androidGradlePluginVersion) || "2.1.2".equals(androidGradlePluginVersion) || "2.1.3".equals(androidGradlePluginVersion)) {
+                base.androidBuilder.convertByteCode(
+                        inputFiles,
+                        patchDex.parentFile,
+                        false,
+                        null,
+                        base.dexOptions,
+                        null,
+                        false,
+                        true,
+                        outputHandler)
+            }
+            else if (androidGradlePluginVersion.startsWith("2.2.")) {
+                base.androidBuilder.convertByteCode(
+                        inputFiles,
+                        patchDex.parentFile,
+                        false,
+                        null,
+                        base.dexOptions,
+                        base.getOptimize(),
+                        outputHandler);
+            }
+            else if ("2.3.0".equals(androidGradlePluginVersion)) {
+                base.androidBuilder.convertByteCode(
+                        inputFiles,
+                        patchDex.parentFile,
+                        false,
+                        base.mainDexListFile,
+                        base.dexOptions,
+                        outputHandler)
             }
             else {
-                throw new GradleException("==fastdex generate dex fail: \n${dxcmd}")
+                //拼接生成dex的命令 project.android.getSdkDirectory()
+                String dxcmd = "${FastdexUtils.getDxCmdPath(project)} --dex --output=${patchDex} ${patchJar}"
+                //TODO 补丁的方法数也有可能超过65535个，最好加上使dx生成多个dex的参数，但是一般补丁不会那么大所以暂时不处理
+                project.logger.error("==fastdex patch transform generate dex cmd \n" + dxcmd)
+                //调用dx命令
+                def process = dxcmd.execute()
+                int status = process.waitFor()
+                process.destroy()
+                if (status != 0) {
+                    throw new GradleException("==fastdex generate dex fail: \n${dxcmd}")
+                }
             }
+            long end = System.currentTimeMillis();
+            project.logger.error("==fastdex patch transform generate dex success: \n==${patchDex} use: ${end - start}ms")
+            //获取dex输出路径
+            File dexOutputDir = GradleUtils.getDexOutputDir(project,base,transformInvocation)
+
+            if (project.fastdex.debug) {
+                project.logger.error("==fastdex patch transform dex dir: ${dexOutputDir}")
+            }
+            //复制补丁打包的dex到输出路径
+            hookPatchBuildDex(dexOutputDir,patchDex)
         }
         else {
+            def config = fastdexVariant.androidVariant.getVariantData().getVariantConfiguration()
+            boolean isMultiDexEnabled = config.isMultiDexEnabled()
+
             project.logger.error("==fastdex normal transform start")
-            //normal build
-            File combinedJar = new File(FastdexUtils.getBuildDir(project,variantName),Constant.COMBINED_JAR_FILENAME)
-            combinedJar = GradleUtils.executeMerge(project,transformInvocation,combinedJar)
-            if (FileUtils.isLegalFile(combinedJar)) {
-                project.logger.error("==fastdex normal transform merge jar success: \n${combinedJar}")
-            }
-            else {
-                throw new GradleException("==fastdex normal transform merge jar fail: \noutputJar: ${combinedJar}")
-            }
-            File injectedJar = FastdexUtils.getInjectedJarFile(project,variantName)
-            //往项目代码注入解决pre-verify问题的code
-            JarOperation.transformNormalJar(project,combinedJar,injectedJar,FastdexUtils.getNeedInjectClassPatterns(project,applicationVariant))
-
-            if (!FileUtils.isLegalFile(injectedJar)) {
-                throw new GradleException("==fastdex normal transform inject jar fail: \ninputJar: ${combinedJar}\noutputJar: ${injectedJar}")
-            }
-            FileUtils.deleteFile(combinedJar)
-
             //生成项目代码快照
             createSourceSetSnapshoot()
             //保存依赖列表
             keepDependenciesList()
+            if (isMultiDexEnabled) {
+                //如果开启了multidex,FastdexJarMergingTransform完成了inject的操作，不需要在做处理
+                File combinedJar = getCombinedJarFile(transformInvocation)
+                File injectedJar = FastdexUtils.getInjectedJarFile(project,variantName)
+                FileUtils.copyFileUsingStream(combinedJar,injectedJar)
+            }
+            else {
+                //如果没有开启multidex需要在此处做注入
+                Set<File> directoryInputFiles = FastdexUtils.getDirectoryInputFiles(transformInvocation)
+                ClassInject.injectDirectoryInputFiles(project,directoryInputFiles)
+                File injectedJar = FastdexUtils.getInjectedJarFile(project,variantName)
+                GradleUtils.executeMerge(project,transformInvocation,injectedJar)
+            }
             //调用默认转换方法
-            base.transform(GradleUtils.createNewTransformInvocation(this,transformInvocation,injectedJar))
-
+            base.transform(transformInvocation)
             //获取dex输出路径
             File dexOutputDir = GradleUtils.getDexOutputDir(project,base,transformInvocation)
             //缓存dex
@@ -138,53 +192,59 @@ class FastdexTransform extends TransformProxy {
     }
 
     /**
+     * 获取输出jar路径
+     * @param invocation
+     * @return
+     */
+    public File getCombinedJarFile(TransformInvocation invocation) {
+        List<JarInput> jarInputs = Lists.newArrayList();
+        for (TransformInput input : invocation.getInputs()) {
+            jarInputs.addAll(input.getJarInputs());
+        }
+        if (jarInputs.size() != 1) {
+            throw new RuntimeException("==fastdex jar input size is ${jarInputs.size()}, expected is 1")
+        }
+        File combinedJar = jarInputs.get(0).getFile()
+        return combinedJar
+    }
+
+    /**
      * 生成补丁jar包
      * @param transformInvocation
      * @return
      */
     File generatePatchJar(TransformInvocation transformInvocation) {
-        File customPatchJar = FastdexUtils.getCustomJavacTaskOutputFile(project,variantName)
-        if (FileUtils.isLegalFile(customPatchJar)) {
-            project.logger.error("==fastdex use custom jar")
-            return customPatchJar
+        def config = fastdexVariant.androidVariant.getVariantData().getVariantConfiguration()
+        boolean isMultiDexEnabled = config.isMultiDexEnabled()
+        if (isMultiDexEnabled) {
+            //如果开启了multidex,FastdexJarMergingTransform完成了jar merge的操作
+            File patchJar = getCombinedJarFile(transformInvocation)
+            project.logger.error("==fastdex multiDex enabled use patch.jar: ${patchJar}")
+            return patchJar
         }
-        //根据变化的java文件列表生成解压的pattern
-        Set<String> changedClassPatterns = FastdexUtils.getChangedClassPatterns(project,variantName,manifestPath)
-
-        //add all changed file to jar
-        File mergedJar = new File(FastdexUtils.getBuildDir(project,variantName),"latest-merged.jar")
-        FileUtils.deleteFile(mergedJar)
-
-        //合并所有的输入jar
-        mergedJar = GradleUtils.executeMerge(project,transformInvocation,mergedJar)
-
-        if (changedClassPatterns.isEmpty()) {
-            project.logger.error("==fastdex changedClassPatterns.size == 0")
-            return mergedJar
+        else {
+            //补丁jar
+            File patchJar = new File(FastdexUtils.getBuildDir(project,variantName),"patch-combined.jar")
+            //根据变化的java文件列表生成解压的pattern
+            Set<String> changedClassPatterns = FastdexUtils.getChangedClassPatterns(project,variantName,fastdexVariant.manifestPath)
+            if (!changedClassPatterns.isEmpty()) {
+                //所有的class目录
+                Set<File> directoryInputFiles = FastdexUtils.getDirectoryInputFiles(transformInvocation)
+                //生成补丁jar
+                FastdexUtils.generatePatchJar(project,directoryInputFiles,patchJar,changedClassPatterns)
+            }
+            else {
+                //TODO IllegalState
+            }
+            return patchJar
         }
-
-        if (project.fastdex.debug) {
-            project.logger.error("==fastdex debug mergeJar: ${mergedJar}")
-            project.logger.error("==fastdex debug changedClassPatterns: ${changedClassPatterns}")
-        }
-
-        File patchJar = new File(FastdexUtils.getBuildDir(project,variantName),"patch-combined.jar")
-        //生成补丁jar
-        JarOperation.transformPatchJar(project,mergedJar,patchJar,changedClassPatterns)
-
-        if (!FileUtils.isLegalFile(patchJar)) {
-            throw new GradleException("==fastdex generate patchJar fail: \nclassesDir: ${classesDir}\npatchJar: ${patchJar}")
-        }
-
-        project.logger.error("==fastdex will generate dex file ${changedClassPatterns}")
-        return patchJar
     }
 
     /**
      * 保存资源映射文件
      */
     void copyRTxt() {
-        File sourceFile = new File(applicationVariant.getVariantData().getScope().getSymbolLocation(),"R.txt")
+        File sourceFile = new File(fastdexVariant.androidVariant.getVariantData().getScope().getSymbolLocation(),"R.txt")
         File destFile = new File(FastdexUtils.getBuildDir(project,variantName),Constant.R_TXT)
         FileUtils.copyFileUsingStream(sourceFile,destFile)
     }
@@ -207,7 +267,7 @@ class FastdexTransform extends TransformProxy {
      * 保存全量打包时的依赖列表
      */
     void keepDependenciesList() {
-        Set<String> dependenciesList = GradleUtils.getCurrentDependList(project,applicationVariant)
+        Set<String> dependenciesList = GradleUtils.getCurrentDependList(project,fastdexVariant.androidVariant)
         StringBuilder sb = new StringBuilder()
         dependenciesList.each {
             sb.append(it)

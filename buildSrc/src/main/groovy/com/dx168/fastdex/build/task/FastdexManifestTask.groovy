@@ -1,5 +1,6 @@
 package com.dx168.fastdex.build.task
 
+import com.dx168.fastdex.build.variant.FastdexVariant
 import groovy.xml.Namespace
 import groovy.xml.QName
 import org.gradle.api.DefaultTask
@@ -17,8 +18,8 @@ import com.dx168.fastdex.build.util.FastdexUtils
 public class FastdexManifestTask extends DefaultTask {
     static final String MANIFEST_XML = "AndroidManifest.xml"
     static final String FASTDEX_ORIGIN_APPLICATION_CLASSNAME = "FASTDEX_ORIGIN_APPLICATION_CLASSNAME"
-    String manifestPath
-    String variantName
+
+    FastdexVariant fastdexVariant
 
     FastdexManifestTask() {
         group = 'fastdex'
@@ -28,7 +29,7 @@ public class FastdexManifestTask extends DefaultTask {
     def updateManifest() {
         def ns = new Namespace("http://schemas.android.com/apk/res/android", "android")
 
-        def xml = new XmlParser().parse(new InputStreamReader(new FileInputStream(manifestPath), "utf-8"))
+        def xml = new XmlParser().parse(new InputStreamReader(new FileInputStream(fastdexVariant.manifestPath), "utf-8"))
 
         def application = xml.application[0]
         if (application) {
@@ -52,13 +53,13 @@ public class FastdexManifestTask extends DefaultTask {
             application.appendNode('meta-data', [(ns.name): FASTDEX_ORIGIN_APPLICATION_CLASSNAME, (ns.value): applicationName])
 
             // Write the manifest file
-            def printer = new XmlNodePrinter(new PrintWriter(manifestPath, "utf-8"))
+            def printer = new XmlNodePrinter(new PrintWriter(fastdexVariant.manifestPath, "utf-8"))
             printer.preserveWhitespace = true
             printer.print(xml)
         }
-        File manifestFile = new File(manifestPath)
+        File manifestFile = new File(fastdexVariant.manifestPath)
         if (manifestFile.exists()) {
-            File buildDir = FastdexUtils.getBuildDir(project,variantName)
+            File buildDir = FastdexUtils.getBuildDir(project,fastdexVariant.variantName)
             FileUtils.copyFileUsingStream(manifestFile, new File(buildDir,MANIFEST_XML))
             project.logger.error("fastdex gen AndroidManifest.xml in ${MANIFEST_XML}")
         }

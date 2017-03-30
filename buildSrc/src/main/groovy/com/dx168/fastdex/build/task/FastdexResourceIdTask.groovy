@@ -1,7 +1,8 @@
 package com.dx168.fastdex.build.task
 
-import com.dx168.fastdex.build.util.Constant
+import com.dx168.fastdex.build.Constant
 import com.dx168.fastdex.build.util.FileUtils
+import com.dx168.fastdex.build.variant.FastdexVariant
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
 import com.tencent.tinker.build.aapt.AaptResourceCollector
@@ -26,8 +27,8 @@ public class FastdexResourceIdTask extends DefaultTask {
     static final String RESOURCE_PUBLIC_XML = "public.xml"
     static final String RESOURCE_IDX_XML = "idx.xml"
 
+    FastdexVariant fastdexVariant
     String resDir
-    String variantName
 
     FastdexResourceIdTask() {
         group = 'fastdex'
@@ -35,7 +36,7 @@ public class FastdexResourceIdTask extends DefaultTask {
 
     @TaskAction
     def applyResourceId() {
-        File buildDir = FastdexUtils.getBuildDir(project,variantName)
+        File buildDir = FastdexUtils.getBuildDir(project,fastdexVariant.variantName)
 
         String resourceMappingFile = new File(buildDir,Constant.R_TXT)
 

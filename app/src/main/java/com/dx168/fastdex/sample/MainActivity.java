@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
 
 
         String s2 = getString(R.string.s2);
-        Toast.makeText(this,"11" + " | " + s1 + " | " + s2 + " | " + s3,Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"111" + " | " + s1 + " | " + s2 + " | " + s3,Toast.LENGTH_LONG).show();
 
         new Runnable(){
             @Override
@@ -40,10 +40,11 @@ public class MainActivity extends Activity {
 
         SampleApplication realApp = (SampleApplication)getApplication();
 
+
         new Runnable(){
             @Override
             public void run() {
-                Toast.makeText(getApplicationContext(),"223",Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(),"1223",Toast.LENGTH_LONG).show();
             }
         }.run();
 

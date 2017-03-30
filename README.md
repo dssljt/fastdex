@@ -5,6 +5,8 @@
 
 [ ![Download](https://api.bintray.com/packages/typ0520/maven/com.dx168.fastdex%3Agradle-plugin/images/download.svg) ](https://bintray.com/typ0520/maven/com.dx168.fastdex%3Agradle-plugin/_latestVersion)
 
+Android API 9(2.3)+  ; android-gradle-build 2.0.0+
+
 [版本记录](https://raw.githubusercontent.com/typ0520/fastdex/master/CHANGELOG.md)
 
 ## 使用方式
@@ -30,12 +32,6 @@
     apply plugin: 'com.dx168.fastdex'
     ````
 
-## 实现原理
-  gradle在执行transformClassesWithDexFor${variant}任务生成dex文件时会很慢(尤其是开启了multidex)，我们在开发中，修改的几乎全是项目代码，第三方库改动比较小。fastdex的原理就是预先把所有代码生成dex,
-  当下次执行assemble任务时只会把项目目录下变化的代码生成dex，然后和缓存的dex合并生成apk，这样即不影响调试，又能在生成dex的过程中省下了大量的时间。
-  
-  [详情](http://www.jianshu.com/p/53923d8f241c)
-
 ## 注意事项
 
 - 1、不要把fastdex打出来的包用在生产环境，因为fastdex打出来的包项目所有的代码都在第二个dex后面，会造成5.0以
@@ -44,13 +40,22 @@
     
 - 2、fastdex会忽略开启混淆的buildType
 
-- 3、开启自定义的编译任务能获得更快的构建速度，对使用了butterknife的大型项目效果最明显，这一特性目前还不稳定0.0.3-beta3后默认关闭了，如果想尝试在build.gradle中加入下面配置
+- 3、强烈建议你的application不要直接依赖library工程，打成aar包让application工程远程依赖，目前还没有做充分测试
+
+- 4、开启自定义的编译任务能获得更快的构建速度(这个特性目前不支持使用lambda)，对使用了butterknife的大型项目效果最明显，这一特性目前还不稳定0.0.3-beta3后默认关闭了，使用了，如果想尝试在build.gradle中加入下面配置
  
-    ````
-     fastdex {
-          useCustomCompile = true
-     }
-    ````
+  ````
+  fastdex {
+      useCustomCompile = true
+  }
+  ````
+
+
+## 实现原理
+  gradle在执行transformClassesWithDexFor${variant}任务生成dex文件时会很慢(尤其是开启了multidex)，我们在开发中，修改的几乎全是项目代码，第三方库改动比较小。fastdex的原理就是预先把所有代码生成dex,
+  当下次执行assemble任务时只会把项目目录下变化的代码生成dex，然后和缓存的dex合并生成apk，这样即不影响调试，又能在生成dex的过程中省下了大量的时间。
+  
+  [详情](http://www.jianshu.com/p/53923d8f241c)
 
 ## 打包流程
 ##### 全量打包时的流程:
@@ -84,14 +89,6 @@
      dex_cache.classes.dex  => classes3.dex
      dex_cache.classes2.dex => classes4.dex
      dex_cache.classesN.dex => classes(N + 2).dex
-
-## 后续的优化计划
-
-- 1、提高稳定性和容错性，这个是最关键的
-- 2、目前补丁打包的时候，是把没有变化的类从app/build/intermediates/transforms/jarMerging/debug/jars/1/1f/combined.jar中移除，如果能hook掉transformClassesWithJarMergingForDebug这个任务，仅把发生变化的class参与combined.jar的生成，能够在IO上省出很多的时间
-- 3、目前给项目源码目录做快照，使用的是文件copy的方式，如果能仅仅只把需要的信息写在文本文件里，能够在IO上省出一些时间
-- 4、目前还没有对libs目录中发生变化做监控，后续需要补上这一块
-- 5、apk的安装速度比较慢(尤其是ART下，安装时对应用的AOT编译，具体请参考张邵文大神的文章[Android N混合编译与对热补丁影响解析](http://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&mid=2649286341&idx=1&sn=054d595af6e824cbe4edd79427fc2706&scene=1&srcid=0811uOHr2RBQDKF0jKEdL4Vc##))，通过socket把代码补丁和资源补丁发送给app，做到免安装
 
 ## Thanks
 [Instant Run](https://developer.android.com/studio/run/index.html#instant-run)

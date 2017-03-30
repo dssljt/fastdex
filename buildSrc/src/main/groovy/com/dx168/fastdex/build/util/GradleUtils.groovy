@@ -84,6 +84,18 @@ public class GradleUtils {
      */
     public static File getDexOutputDir(Project project,Transform realTransform,TransformInvocation transformInvocation) {
         def outputProvider = transformInvocation.getOutputProvider()
+        def outputDir = null
+        String androidGradlePluginVersion = GradleUtils.getAndroidGralePluginVersion(project)
+
+        if (androidGradlePluginVersion.startsWith("2.4.")) {
+            outputDir = outputProvider.getContentLocation(
+                            "main",
+                            realTransform.getOutputTypes(),
+                            TransformManager.SCOPE_FULL_PROJECT,
+                            Format.DIRECTORY)
+
+            return outputDir
+        }
 
         List<JarInput> jarInputs = Lists.newArrayList();
         List<DirectoryInput> directoryInputs = Lists.newArrayList();
@@ -92,9 +104,7 @@ public class GradleUtils {
             directoryInputs.addAll(input.getDirectoryInputs());
         }
 
-        def outputDir = null
-        String androidGralePluginVersion = GradleUtils.getAndroidGralePluginVersion(project)
-        if (androidGralePluginVersion.compareTo("2.3.0") < 0) {
+        if (androidGradlePluginVersion.compareTo("2.3.0") < 0) {
             //2.3.0以前的版本
             if ((jarInputs.size() + directoryInputs.size()) == 1
                     || !realTransform.dexOptions.getPreDexLibraries()) {
@@ -199,7 +209,7 @@ public class GradleUtils {
         InvocationHandler handler = new InvocationHandler(){
             public Object invoke(Object proxy, Method method, Object[] args)
                     throws Throwable {
-                return args[0].endsWith(Constant.CLASS_SUFFIX);
+                return args[0].endsWith(com.dx168.fastdex.build.Constant.CLASS_SUFFIX);
             }
         };
         Object proxy = Proxy.newProxyInstance(zipEntryFilterClazz.getClassLoader(), classArr, handler);
