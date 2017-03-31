@@ -18,4 +18,6 @@ public interface Constant {
     public static final String R_TXT = "R.txt"
     public static final String RUNTIME_DEX_FILENAME = "fastdex-runtime.dex"
     public static final String DEPENDENCIES_MAPPING_FILENAME = "dependencies-mapping.txt"
+    public static final String FASTDEX_SOIRCESET_FILENAME = "sourceSets.json"
+
 }
