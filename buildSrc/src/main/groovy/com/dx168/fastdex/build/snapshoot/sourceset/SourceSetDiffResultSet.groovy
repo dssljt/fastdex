@@ -1,20 +1,18 @@
 package com.dx168.fastdex.build.snapshoot.sourceset;
 
-import com.dx168.fastdex.build.snapshoot.api.ResultSet;
+import com.dx168.fastdex.build.snapshoot.api.DiffResultSet;
 import com.dx168.fastdex.build.snapshoot.api.Status;
-import com.dx168.fastdex.build.snapshoot.string.StringDiffInfo;
-import java.util.HashSet;
-import java.util.Set;
+import com.dx168.fastdex.build.snapshoot.string.StringDiffInfo
 
 /**
  * Created by tong on 17/3/31.
  */
-public class SourceSetResultSet extends ResultSet<StringDiffInfo> {
+public class SourceSetDiffResultSet extends DiffResultSet<StringDiffInfo> {
     private final Set<String> addOrModifiedClassPatterns = new HashSet<>();
 
     public Set<JavaFileDiffInfo> changedJavaFileDiffInfos = new HashSet<JavaFileDiffInfo>();
 
-    public SourceSetResultSet() {
+    public SourceSetDiffResultSet() {
 
     }
 
@@ -28,7 +26,7 @@ public class SourceSetResultSet extends ResultSet<StringDiffInfo> {
         }
     }
 
-    public void mergeJavaDirectoryResultSet(JavaDirectoryResultSet javaDirectoryResultSet) {
+    public void mergeJavaDirectoryResultSet(JavaDirectoryDiffResultSet javaDirectoryResultSet) {
         this.addOrModifiedClassPatterns.addAll(javaDirectoryResultSet.getAddOrModifiedClassPatterns());
         this.changedJavaFileDiffInfos.addAll(javaDirectoryResultSet.changedDiffInfos);
     }
@@ -46,13 +44,17 @@ public class SourceSetResultSet extends ResultSet<StringDiffInfo> {
         return result;
     }
 
+    public Set<String> getAddOrModifiedClassPatterns() {
+        return addOrModifiedClassPatterns
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
 
-        SourceSetResultSet that = (SourceSetResultSet) o;
+        SourceSetDiffResultSet that = (SourceSetDiffResultSet) o;
 
         return changedJavaFileDiffInfos != null ? changedJavaFileDiffInfos.equals(that.changedJavaFileDiffInfos) : that.changedJavaFileDiffInfos == null;
 

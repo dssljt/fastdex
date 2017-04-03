@@ -1,10 +1,8 @@
 package com.dx168.fastdex.build.snapshoot.api;
 
 import com.dx168.fastdex.build.snapshoot.utils.SerializeUtils;
-import com.google.gson.annotations.Expose;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import com.google.gson.annotations.Expose
+
 import java.lang.reflect.Constructor;
 import java.util.*;
 
@@ -15,7 +13,7 @@ public class Snapshoot<DIFF_INFO extends DiffInfo,NODE extends Node> implements 
     public Collection<NODE> nodes;
 
     @Expose
-    private ResultSet<DIFF_INFO> lastDiffResult;
+    private DiffResultSet<DIFF_INFO> lastDiffResult;
 
     public Snapshoot() {
         createEmptyNodes();
@@ -34,8 +32,8 @@ public class Snapshoot<DIFF_INFO extends DiffInfo,NODE extends Node> implements 
      * 创建空的对比结果集
      * @return
      */
-    protected ResultSet<DIFF_INFO> createEmptyResultSet() {
-        return new ResultSet<DIFF_INFO>();
+    protected DiffResultSet<DIFF_INFO> createEmptyResultSet() {
+        return new DiffResultSet<DIFF_INFO>();
     }
 
     protected DiffInfo createEmptyDiffInfo() {
@@ -58,7 +56,7 @@ public class Snapshoot<DIFF_INFO extends DiffInfo,NODE extends Node> implements 
         return nodes;
     }
 
-    public ResultSet<DIFF_INFO> getLastDiffResult() {
+    public DiffResultSet<DIFF_INFO> getLastDiffResult() {
         return lastDiffResult;
     }
 
@@ -92,12 +90,12 @@ public class Snapshoot<DIFF_INFO extends DiffInfo,NODE extends Node> implements 
         diffInfo.old = old;
 
         switch (status) {
-            case NOCHANGED:
-            case ADDED:
-            case MODIFIED:
+            case Status.NOCHANGED:
+            case Status.ADDED:
+            case Status.MODIFIED:
                 diffInfo.uniqueKey = now.getUniqueKey();
                 break;
-            case DELETEED:
+            case Status.DELETEED:
                 diffInfo.uniqueKey = old.getUniqueKey();
                 break;
         }
@@ -110,7 +108,7 @@ public class Snapshoot<DIFF_INFO extends DiffInfo,NODE extends Node> implements 
      * @param diffInfos
      * @param diffInfo
      */
-    protected void addDiffInfo(ResultSet<DIFF_INFO> diffInfos,DIFF_INFO diffInfo) {
+    protected void addDiffInfo(DiffResultSet<DIFF_INFO> diffInfos, DIFF_INFO diffInfo) {
         diffInfos.add(diffInfo);
     }
 
@@ -119,7 +117,7 @@ public class Snapshoot<DIFF_INFO extends DiffInfo,NODE extends Node> implements 
      * @param otherSnapshoot
      * @return
      */
-    public ResultSet<DIFF_INFO> diff(Snapshoot<DIFF_INFO,NODE> otherSnapshoot) {
+    public DiffResultSet<DIFF_INFO> diff(Snapshoot<DIFF_INFO,NODE> otherSnapshoot) {
         //获取删除项
         Set<NODE> deletedNodes = new HashSet<>();
         deletedNodes.addAll(otherSnapshoot.getAllNodes());
@@ -137,7 +135,7 @@ public class Snapshoot<DIFF_INFO extends DiffInfo,NODE extends Node> implements 
         needDiffNodes.removeAll(deletedNodes);
         needDiffNodes.removeAll(increasedNodes);
 
-        ResultSet<DIFF_INFO> diffInfos = createEmptyResultSet();
+        DiffResultSet<DIFF_INFO> diffInfos = createEmptyResultSet();
         scanDeletedAndIncreased(diffInfos,otherSnapshoot,deletedNodes,increasedNodes);
         scanNeedDiffNodes(diffInfos,otherSnapshoot,needDiffNodes);
 
@@ -152,7 +150,7 @@ public class Snapshoot<DIFF_INFO extends DiffInfo,NODE extends Node> implements 
      * @param deletedNodes
      * @param increasedNodes
      */
-    protected void scanDeletedAndIncreased(ResultSet<DIFF_INFO> diffInfos, Snapshoot<DIFF_INFO,NODE> otherSnapshoot, Set<NODE> deletedNodes, Set<NODE> increasedNodes) {
+    protected void scanDeletedAndIncreased(DiffResultSet<DIFF_INFO> diffInfos, Snapshoot<DIFF_INFO,NODE> otherSnapshoot, Set<NODE> deletedNodes, Set<NODE> increasedNodes) {
         if (deletedNodes != null) {
             for (NODE node : deletedNodes) {
                 addDiffInfo(diffInfos,createDiffInfo(Status.DELETEED,null,node));
@@ -172,7 +170,7 @@ public class Snapshoot<DIFF_INFO extends DiffInfo,NODE extends Node> implements 
      * @param now
      * @param old
      */
-    protected void diffNode(ResultSet<DIFF_INFO> diffInfos, Snapshoot<DIFF_INFO, NODE> otherSnapshoot,NODE now,NODE old) {
+    protected void diffNode(DiffResultSet<DIFF_INFO> diffInfos, Snapshoot<DIFF_INFO, NODE> otherSnapshoot, NODE now, NODE old) {
         if (now.diffEquals(old)) {
             addDiffInfo(diffInfos,createDiffInfo(Status.NOCHANGED,now,old));
         }
@@ -187,7 +185,7 @@ public class Snapshoot<DIFF_INFO extends DiffInfo,NODE extends Node> implements 
      * @param otherSnapshoot
      * @param needDiffNodes
      */
-    protected void scanNeedDiffNodes(ResultSet<DIFF_INFO> diffInfos, Snapshoot<DIFF_INFO, NODE> otherSnapshoot, Set<NODE> needDiffNodes) {
+    protected void scanNeedDiffNodes(DiffResultSet<DIFF_INFO> diffInfos, Snapshoot<DIFF_INFO, NODE> otherSnapshoot, Set<NODE> needDiffNodes) {
         if (needDiffNodes == null || needDiffNodes.isEmpty()) {
             return;
         }
@@ -209,6 +207,15 @@ public class Snapshoot<DIFF_INFO extends DiffInfo,NODE extends Node> implements 
 
     public static Snapshoot load(InputStream inputStream, Class type) throws Exception {
         Snapshoot snapshoot = (Snapshoot) SerializeUtils.load(inputStream,type);
+        if (snapshoot != null) {
+            Constructor constructor = type.getConstructor(snapshoot.getClass());
+            snapshoot = (Snapshoot) constructor.newInstance(snapshoot);
+        }
+        return snapshoot;
+    }
+
+    public static Snapshoot load(File path, Class type) throws Exception {
+        Snapshoot snapshoot = (Snapshoot) SerializeUtils.load(new FileInputStream(path),type);
         if (snapshoot != null) {
             Constructor constructor = type.getConstructor(snapshoot.getClass());
             snapshoot = (Snapshoot) constructor.newInstance(snapshoot);

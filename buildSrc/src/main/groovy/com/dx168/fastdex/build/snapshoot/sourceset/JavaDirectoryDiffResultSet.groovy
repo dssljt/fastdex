@@ -1,6 +1,6 @@
 package com.dx168.fastdex.build.snapshoot.sourceset;
 
-import com.dx168.fastdex.build.snapshoot.api.ResultSet;
+import com.dx168.fastdex.build.snapshoot.api.DiffResultSet;
 import com.dx168.fastdex.build.snapshoot.api.Status;
 import com.dx168.fastdex.build.snapshoot.file.FileNode;
 import com.dx168.fastdex.build.Constant
@@ -8,13 +8,13 @@ import com.dx168.fastdex.build.Constant
 /**
  * Created by tong on 17/3/29.
  */
-public class JavaDirectoryResultSet extends ResultSet<JavaFileDiffInfo> {
+public class JavaDirectoryDiffResultSet extends DiffResultSet<JavaFileDiffInfo> {
     private final Set<String> addOrModifiedClassPatterns = new HashSet<>();
 
-    public JavaDirectoryResultSet() {
+    public JavaDirectoryDiffResultSet() {
     }
 
-    public JavaDirectoryResultSet(JavaDirectoryResultSet resultSet) {
+    public JavaDirectoryDiffResultSet(JavaDirectoryDiffResultSet resultSet) {
         super(resultSet);
     }
 
@@ -33,8 +33,8 @@ public class JavaDirectoryResultSet extends ResultSet<JavaFileDiffInfo> {
     }
 
     @Override
-    public void merge(ResultSet<JavaFileDiffInfo> resultSet) {
-        addOrModifiedClassPatterns.addAll(((JavaDirectoryResultSet)resultSet).addOrModifiedClassPatterns);
+    public void merge(DiffResultSet<JavaFileDiffInfo> resultSet) {
+        addOrModifiedClassPatterns.addAll(((JavaDirectoryDiffResultSet)resultSet).addOrModifiedClassPatterns);
         super.merge(resultSet);
     }
 

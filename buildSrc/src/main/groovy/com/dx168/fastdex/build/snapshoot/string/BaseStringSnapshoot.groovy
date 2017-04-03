@@ -1,8 +1,6 @@
 package com.dx168.fastdex.build.snapshoot.string;
 
-import com.dx168.fastdex.build.snapshoot.api.*;
-import java.io.IOException;
-import java.util.Set;
+import com.dx168.fastdex.build.snapshoot.api.*
 
 /**
  * Created by tong on 17/3/31.
@@ -34,7 +32,7 @@ public class BaseStringSnapshoot<DIFF_INFO extends StringDiffInfo,NODE extends S
     }
 
     @Override
-    protected void diffNode(ResultSet<DIFF_INFO> diffInfos, Snapshoot<DIFF_INFO, NODE> otherSnapshoot, NODE now, NODE old) {
+    protected void diffNode(DiffResultSet<DIFF_INFO> diffInfos, Snapshoot<DIFF_INFO, NODE> otherSnapshoot, NODE now, NODE old) {
         addDiffInfo(diffInfos,createDiffInfo(Status.NOCHANGED,now,old));
     }
 }

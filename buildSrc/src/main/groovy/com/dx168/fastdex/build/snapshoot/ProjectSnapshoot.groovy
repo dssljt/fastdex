@@ -1,7 +1,8 @@
 package com.dx168.fastdex.build.snapshoot
 
+import com.dx168.fastdex.build.snapshoot.api.DiffResultSet
 import com.dx168.fastdex.build.snapshoot.api.Snapshoot
-import com.dx168.fastdex.build.snapshoot.sourceset.SourceSetResultSet
+import com.dx168.fastdex.build.snapshoot.sourceset.SourceSetDiffResultSet
 import com.dx168.fastdex.build.snapshoot.sourceset.SourceSetSnapshoot
 import com.dx168.fastdex.build.util.FastdexUtils
 import com.dx168.fastdex.build.variant.FastdexVariant
@@ -11,42 +12,60 @@ import com.dx168.fastdex.build.variant.FastdexVariant
  */
 public class ProjectSnapshoot {
     FastdexVariant fastdexVariant
-    SourceSetSnapshoot nowSourceSetSnapshoot
-    SourceSetSnapshoot oldSourceSetSnapshoot
-    SourceSetResultSet sourceSetResultSet
+    SourceSetSnapshoot sourceSetSnapshoot
+    SourceSetDiffResultSet diffResultSet
+    SourceSetDiffResultSet oldDiffResultSet
 
     ProjectSnapshoot(FastdexVariant fastdexVariant) {
         this.fastdexVariant = fastdexVariant
     }
 
     def prepareEnv(boolean hasValidCache) {
-        if (nowSourceSetSnapshoot != null) {
+        if (sourceSetSnapshoot != null) {
             return
         }
 
         def project = fastdexVariant.project
         def srcDirs = project.android.sourceSets.main.java.srcDirs
-        nowSourceSetSnapshoot = new SourceSetSnapshoot(project.projectDir,srcDirs)
+        sourceSetSnapshoot = new SourceSetSnapshoot(project.projectDir,srcDirs)
 
         if (hasValidCache) {
             //load old cache
-            oldSourceSetSnapshoot = Snapshoot.load(new FileInputStream(FastdexUtils.getSourceSetFile(project,fastdexVariant.variantName)))
+            File sourceSetFile = FastdexUtils.getSourceSetFile(project,fastdexVariant.variantName)
+
+            SourceSetSnapshoot oldSourceSetSnapshoot = Snapshoot.load(sourceSetFile,SourceSetSnapshoot.class)
             boolean isSourceSetChanged = oldSourceSetSnapshoot.ensumeProjectDir(project.projectDir)
             if (isSourceSetChanged) {
-                project.logger.error("==fastdex sourceChanged \n old: ${oldSourceSetSnapshoot.nodes} \n now: ${nowSourceSetSnapshoot}")
+                project.logger.error("==fastdex sourceChanged \n old: ${oldSourceSetSnapshoot.nodes} \n now: ${sourceSetSnapshoot}")
                 //save
                 saveSourceSetSnapshoot(oldSourceSetSnapshoot)
             }
 
-            sourceSetResultSet = nowSourceSetSnapshoot.diff(oldSourceSetSnapshoot)
+            diffResultSet = sourceSetSnapshoot.diff(oldSourceSetSnapshoot)
+            if (fastdexVariant.configuration.debug) {
+                project.logger.error("==fastdex diffResultSet: ${diffResultSet}")
+            }
+
+            File diffResultSetFile = FastdexUtils.getDiffResultSetFile(project,fastdexVariant.variantName)
+            if (diffResultSetFile.exists()) {
+                oldDiffResultSet = DiffResultSet.load(diffResultSetFile,SourceSetDiffResultSet.class)
+            }
         }
         else {
             //save
-            saveSourceSetSnapshoot(nowSourceSetSnapshoot)
+            saveSourceSetSnapshoot(sourceSetSnapshoot)
         }
     }
 
     def saveSourceSetSnapshoot(SourceSetSnapshoot snapshoot) {
-        snapshoot.serializeTo(new FileOutputStream(FastdexUtils.getSourceSetFile(project,fastdexVariant.variantName)))
+        snapshoot.serializeTo(new FileOutputStream(FastdexUtils.getSourceSetFile(fastdexVariant.project,fastdexVariant.variantName)))
+    }
+
+    def isSourceSetChanged() {
+        diffResultSet.equals(oldDiffResultSet)
+    }
+
+    def getChangedClassPatterns() {
+        diffResultSet.getAddOrModifiedClassPatterns()
     }
 }

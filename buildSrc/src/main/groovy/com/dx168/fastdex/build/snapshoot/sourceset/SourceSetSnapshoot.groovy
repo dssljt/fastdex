@@ -5,11 +5,7 @@ import com.dx168.fastdex.build.snapshoot.file.FileNode;
 import com.dx168.fastdex.build.snapshoot.string.BaseStringSnapshoot;
 import com.dx168.fastdex.build.snapshoot.string.StringDiffInfo;
 import com.dx168.fastdex.build.snapshoot.string.StringNode;
-import com.google.gson.annotations.SerializedName;
-import java.io.File;
-import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
+import com.google.gson.annotations.SerializedName
 
 /**
  * Created by tong on 17/3/31.
@@ -59,13 +55,13 @@ public final class SourceSetSnapshoot extends BaseStringSnapshoot<StringDiffInfo
     }
 
     @Override
-    protected SourceSetResultSet createEmptyResultSet() {
-        return new SourceSetResultSet();
+    protected SourceSetDiffResultSet createEmptyResultSet() {
+        return new SourceSetDiffResultSet();
     }
 
     @Override
-    public ResultSet<StringDiffInfo> diff(Snapshoot<StringDiffInfo, StringNode> otherSnapshoot) {
-        SourceSetResultSet sourceSetResultSet = (SourceSetResultSet) super.diff(otherSnapshoot);
+    public DiffResultSet<StringDiffInfo> diff(Snapshoot<StringDiffInfo, StringNode> otherSnapshoot) {
+        SourceSetDiffResultSet sourceSetResultSet = (SourceSetDiffResultSet) super.diff(otherSnapshoot);
         SourceSetSnapshoot oldSnapshoot = (SourceSetSnapshoot)otherSnapshoot;
 
         for (DiffInfo diffInfo : sourceSetResultSet.getDiffInfos(Status.DELETEED)) {
@@ -85,19 +81,25 @@ public final class SourceSetSnapshoot extends BaseStringSnapshoot<StringDiffInfo
         for (DiffInfo diffInfo : sourceSetResultSet.getDiffInfos(Status.NOCHANGED)) {
             JavaDirectorySnapshoot now = getJavaDirectorySnapshootByPath(diffInfo.uniqueKey);
             JavaDirectorySnapshoot old = oldSnapshoot.getJavaDirectorySnapshootByPath(diffInfo.uniqueKey);
-            sourceSetResultSet.mergeJavaDirectoryResultSet((JavaDirectoryResultSet) now.diff(old));
+
+            JavaDirectoryDiffResultSet resultSet = (JavaDirectoryDiffResultSet) now.diff(old);
+
+            println("==fastdex now: ${now.getAllNodes()}")
+            println("==fastdex old: ${old.getAllNodes()}")
+            println("==fastdex resultSet: ${resultSet.getAllChangedDiffInfos()}")
+            sourceSetResultSet.mergeJavaDirectoryResultSet(resultSet);
         }
         return sourceSetResultSet;
     }
 
     //    @Override
-//    public SourceSetResultSet diff(Snapshoot<StringDiffInfo, StringNode> otherSnapshoot) {
+//    public SourceSetDiffResultSet diff(Snapshoot<StringDiffInfo, StringNode> otherSnapshoot) {
 //        JavaDirectorySnapshoot oldSnapshoot = (JavaDirectorySnapshoot)otherSnapshoot;
 //
 //
-//        SourceSetResultSet sourceSetResultSet = (SourceSetResultSet) super.diff(otherSnapshoot);
+//        SourceSetDiffResultSet sourceSetResultSet = (SourceSetDiffResultSet) super.diff(otherSnapshoot);
 //
-//        Set<JavaDirectoryResultSet> deletedDirectories = new HashSet<>();
+//        Set<JavaDirectoryDiffResultSet> deletedDirectories = new HashSet<>();
 //        for (DiffInfo diffInfo : sourceSetResultSet.getDiffInfos(Status.DELETEED)) {
 //            deletedDirectories.add(otherSnapshoot)
 //        }
@@ -119,7 +121,7 @@ public final class SourceSetSnapshoot extends BaseStringSnapshoot<StringDiffInfo
      * @return
      */
     public boolean isProjectDirChanged(File currentProjectDir) {
-        return currentProjectDir.getAbsolutePath().equals(path);
+        return !currentProjectDir.getAbsolutePath().equals(path);
     }
 
     /**

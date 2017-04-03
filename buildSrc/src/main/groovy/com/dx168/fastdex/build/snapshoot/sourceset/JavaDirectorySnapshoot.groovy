@@ -1,9 +1,7 @@
 package com.dx168.fastdex.build.snapshoot.sourceset;
 
 import com.dx168.fastdex.build.snapshoot.api.DiffInfo;
-import com.dx168.fastdex.build.snapshoot.file.*;
-import java.io.File;
-import java.io.IOException;
+import com.dx168.fastdex.build.snapshoot.file.*
 
 /**
  * Created by tong on 17/3/30.
@@ -23,8 +21,8 @@ public final class JavaDirectorySnapshoot extends BaseDirectorySnapshoot<JavaFil
     }
 
     @Override
-    protected JavaDirectoryResultSet createEmptyResultSet() {
-        return new JavaDirectoryResultSet();
+    protected JavaDirectoryDiffResultSet createEmptyResultSet() {
+        return new JavaDirectoryDiffResultSet();
     }
 
     @Override

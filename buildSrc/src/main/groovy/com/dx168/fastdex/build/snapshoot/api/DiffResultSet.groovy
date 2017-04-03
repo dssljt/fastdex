@@ -1,24 +1,19 @@
-package com.dx168.fastdex.build.snapshoot.api;
+package com.dx168.fastdex.build.snapshoot.api
 
-import com.dx168.fastdex.build.snapshoot.utils.SerializeUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.lang.reflect.Constructor;
-import java.util.HashSet;
-import java.util.Set;
+import com.dx168.fastdex.build.snapshoot.utils.SerializeUtils
+import java.lang.reflect.Constructor
 
 /**
  * Created by tong on 17/3/30.
  */
-public class ResultSet<T extends DiffInfo> implements STSerializable {
+public class DiffResultSet<T extends DiffInfo> implements STSerializable {
     public Set<T> changedDiffInfos = new HashSet<T>();
     public Set<T> nochangedDiffInfos = new HashSet<T>();
 
-    public ResultSet() {
+    public DiffResultSet() {
     }
 
-    public ResultSet(ResultSet resultSet) {
+    public DiffResultSet(DiffResultSet resultSet) {
         changedDiffInfos.addAll(resultSet.changedDiffInfos);
         nochangedDiffInfos.addAll(resultSet.nochangedDiffInfos);
     }
@@ -48,7 +43,7 @@ public class ResultSet<T extends DiffInfo> implements STSerializable {
      * 合并结果集
      * @param resultSet
      */
-    public void merge(ResultSet<T> resultSet) {
+    public void merge(DiffResultSet<T> resultSet) {
         if (changedDiffInfos == null) {
             changedDiffInfos = new HashSet<T>();
         }
@@ -111,7 +106,7 @@ public class ResultSet<T extends DiffInfo> implements STSerializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ResultSet<?> resultSet = (ResultSet<?>) o;
+        DiffResultSet<?> resultSet = (DiffResultSet<?>) o;
 
         return changedDiffInfos != null ? changedDiffInfos.equals(resultSet.changedDiffInfos) : resultSet.changedDiffInfos == null;
 
@@ -124,7 +119,7 @@ public class ResultSet<T extends DiffInfo> implements STSerializable {
 
     @Override
     public String toString() {
-        return "ResultSet{" +
+        return "DiffResultSet{" +
                 "changedJavaFileDiffInfos=" + changedDiffInfos +
                 '}';
     }
@@ -134,12 +129,16 @@ public class ResultSet<T extends DiffInfo> implements STSerializable {
         SerializeUtils.serializeTo(outputStream,this);
     }
 
-    public static ResultSet load(InputStream inputStream, Class type) throws Exception {
-        ResultSet resultSet = (ResultSet) SerializeUtils.load(inputStream,type);
+    public static DiffResultSet load(InputStream inputStream, Class type) throws Exception {
+        DiffResultSet resultSet = (DiffResultSet) SerializeUtils.load(inputStream,type);
         if (resultSet != null) {
             Constructor constructor = type.getConstructor(resultSet.getClass());
-            resultSet = (ResultSet) constructor.newInstance(resultSet);
+            resultSet = (DiffResultSet) constructor.newInstance(resultSet);
         }
         return resultSet;
+    }
+
+    public static DiffResultSet load(File file, Class type) throws Exception {
+        return load(new FileInputStream(file),type);
     }
 }

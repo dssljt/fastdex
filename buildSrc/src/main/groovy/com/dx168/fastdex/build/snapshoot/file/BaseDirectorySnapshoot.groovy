@@ -1,10 +1,8 @@
 package com.dx168.fastdex.build.snapshoot.file;
 
 import com.dx168.fastdex.build.snapshoot.api.DiffInfo;
-import com.dx168.fastdex.build.snapshoot.api.ResultSet;
-import com.dx168.fastdex.build.snapshoot.api.Snapshoot;
-import java.io.File;
-import java.io.IOException;
+import com.dx168.fastdex.build.snapshoot.api.DiffResultSet;
+import com.dx168.fastdex.build.snapshoot.api.Snapshoot
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -86,11 +84,11 @@ public class BaseDirectorySnapshoot<DIFF_INFO extends FileDiffInfo,NODE extends 
         return path != null ? path.hashCode() : 0;
     }
 
-    public static ResultSet<FileDiffInfo> diff(File now, File old) throws IOException {
+    public static DiffResultSet<FileDiffInfo> diff(File now, File old) throws IOException {
         return BaseDirectorySnapshoot.diff(now,old,null);
     }
 
-    public static ResultSet<FileDiffInfo> diff(File now, File old, ScanFilter scanFilter) throws IOException {
+    public static DiffResultSet<FileDiffInfo> diff(File now, File old, ScanFilter scanFilter) throws IOException {
         return  new BaseDirectorySnapshoot(now,scanFilter).diff(new BaseDirectorySnapshoot(old,scanFilter));
     }
 

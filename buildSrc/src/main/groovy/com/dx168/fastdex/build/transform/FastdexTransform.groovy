@@ -255,7 +255,7 @@ class FastdexTransform extends TransformProxy {
      */
     void createSourceSetSnapshoot() {
         String[] srcDirs = project.android.sourceSets.main.java.srcDirs
-        File snapshootDir = new File(FastdexUtils.getBuildDir(project,variantName),Constant.FASTDEX_SNAPSHOOT_DIR)
+        File snapshootDir = new File(FastdexUtils.getBuildDir(project,variantName),Constant.SNAPSHOOT_DIR)
         FileUtils.ensumeDir(snapshootDir)
         for (String srcDir : srcDirs) {
             //之前使用gradle的api复制文件，但是lastModified会发生变化造成对比出问题，所以换成自己的实现

@@ -42,7 +42,7 @@ public class FastdexUtils {
      * @return
      */
     public static final File getBuildDir(Project project) {
-        File file = new File(project.getBuildDir(),Constant.FASTDEX_BUILD_DIR);
+        File file = new File(project.getBuildDir(),Constant.BUILD_DIR);
         return file;
     }
 
@@ -62,7 +62,7 @@ public class FastdexUtils {
      * @return
      */
     public static final File getDexCacheDir(Project project,String variantName) {
-        File file = new File(getBuildDir(project,variantName),Constant.FASTDEX_DEX_CACHE_DIR);
+        File file = new File(getBuildDir(project,variantName),Constant.DEX_CACHE_DIR);
         return file;
     }
 
@@ -72,7 +72,7 @@ public class FastdexUtils {
      * @return
      */
     public static final File getSourceSetFile(Project project,String variantName) {
-        File file = new File(getBuildDir(project,variantName),Constant.FASTDEX_SOIRCESET_FILENAME);
+        File file = new File(getBuildDir(project,variantName),Constant.SOURCESET_SNAPSHOOT_FILENAME);
         return file;
     }
 
@@ -158,6 +158,11 @@ public class FastdexUtils {
         return cachedDependListFile
     }
 
+    public static File getDiffResultSetFile(Project project,String variantName) {
+        File diffResultFile = new File(getBuildDir(project,variantName),Constant.LAST_DIFF_RESULT_SET_FILENAME)
+        return diffResultFile
+    }
+
     /**
      * 获取全量打包时的包括所有代码的jar包
      * @param project
@@ -178,7 +183,7 @@ public class FastdexUtils {
      */
     public static Set<String> getChangedClassPatterns(Project project,String variantName,String manifestPath) {
         String[] srcDirs = project.android.sourceSets.main.java.srcDirs
-        File snapshootDir = new File(getBuildDir(project,variantName),Constant.FASTDEX_SNAPSHOOT_DIR)
+        File snapshootDir = new File(getBuildDir(project,variantName),Constant.SNAPSHOOT_DIR)
         Set<String> changedJavaClassNames = new HashSet<>()
         for (String srcDir : srcDirs) {
             File newDir = new File(srcDir)

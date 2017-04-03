@@ -20,7 +20,7 @@ public abstract class Node {
 
     @Override
     public final boolean equals(Object o) {
-        if (this == o) return true;
+        if (super.equals(o)) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         Node node = (Node) o;
@@ -28,7 +28,6 @@ public abstract class Node {
         String uniqueKey = getUniqueKey();
         String anUniqueKey = node.getUniqueKey();
         return uniqueKey != null ? uniqueKey.equals(anUniqueKey) : anUniqueKey == null;
-
     }
 
     @Override
