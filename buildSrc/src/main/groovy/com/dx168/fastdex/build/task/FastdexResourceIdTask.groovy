@@ -1,6 +1,6 @@
 package com.dx168.fastdex.build.task
 
-import com.dx168.fastdex.build.Constant
+import com.dx168.fastdex.build.lib.Constant
 import com.dx168.fastdex.build.util.FileUtils
 import com.dx168.fastdex.build.variant.FastdexVariant
 import org.gradle.api.DefaultTask

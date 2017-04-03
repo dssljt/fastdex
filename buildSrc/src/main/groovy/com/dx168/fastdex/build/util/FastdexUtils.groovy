@@ -15,7 +15,7 @@ import java.security.MessageDigest
 import java.util.regex.Pattern
 import java.util.zip.ZipEntry
 import java.util.zip.ZipOutputStream
-import com.dx168.fastdex.build.Constant
+import com.dx168.fastdex.build.lib.Constant
 
 /**
  * Created by tong on 17/3/14.

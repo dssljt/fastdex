@@ -4,7 +4,7 @@ import com.android.build.api.transform.Transform
 import com.android.build.api.transform.TransformException
 import com.android.build.api.transform.TransformInvocation
 import com.dx168.fastdex.build.util.ClassInject
-import com.dx168.fastdex.build.Constant
+import com.dx168.fastdex.build.lib.Constant
 import com.dx168.fastdex.build.util.FastdexUtils
 import com.dx168.fastdex.build.util.GradleUtils
 import com.dx168.fastdex.build.variant.FastdexVariant

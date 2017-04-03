@@ -1,7 +1,7 @@
 package com.dx168.fastdex.build.variant
 
 import com.dx168.fastdex.build.extension.FastdexExtension
-import com.dx168.fastdex.build.snapshoot.ProjectSnapshoot
+import com.dx168.fastdex.build.util.ProjectSnapshoot
 import com.dx168.fastdex.build.util.FastdexUtils
 import com.dx168.fastdex.build.util.FileUtils
 import com.dx168.fastdex.build.util.GradleUtils

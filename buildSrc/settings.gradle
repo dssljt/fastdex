@@ -1,1 +1,11 @@
 rootProject.name = 'gradle-plugin'
+
+
+def externalModules = [
+        ':fastdex-build-lib'
+] as String[]
+
+include externalModules
+externalModules.each {
+    project(it).projectDir = new File("../${it.substring(1)}")
+}

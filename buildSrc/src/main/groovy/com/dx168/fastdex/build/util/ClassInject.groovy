@@ -1,5 +1,6 @@
 package com.dx168.fastdex.build.util
 
+import com.dx168.fastdex.build.lib.Constant
 import org.gradle.api.Project
 import org.objectweb.asm.*
 import java.nio.file.FileVisitResult
@@ -42,7 +43,7 @@ public class ClassInject implements Opcodes {
             Files.walkFileTree(classpath,new SimpleFileVisitor<Path>(){
                 @Override
                 FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-                    if (!file.toFile().getName().endsWith(com.dx168.fastdex.build.Constant.CLASS_SUFFIX)) {
+                    if (!file.toFile().getName().endsWith(Constant.CLASS_SUFFIX)) {
                         return FileVisitResult.CONTINUE;
                     }
                     project.logger.error("==fastdex inject: ${file.toFile().getAbsolutePath()}")

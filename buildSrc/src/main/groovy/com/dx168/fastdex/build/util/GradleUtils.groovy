@@ -2,6 +2,7 @@ package com.dx168.fastdex.build.util
 
 import com.android.build.api.transform.Format
 import com.android.build.gradle.internal.pipeline.TransformManager
+import com.dx168.fastdex.build.lib.Constant
 import com.google.common.collect.Lists
 import com.android.build.gradle.internal.transforms.JarMerger
 import org.gradle.api.GradleException
@@ -209,7 +210,7 @@ public class GradleUtils {
         InvocationHandler handler = new InvocationHandler(){
             public Object invoke(Object proxy, Method method, Object[] args)
                     throws Throwable {
-                return args[0].endsWith(com.dx168.fastdex.build.Constant.CLASS_SUFFIX);
+                return args[0].endsWith(Constant.CLASS_SUFFIX);
             }
         };
         Object proxy = Proxy.newProxyInstance(zipEntryFilterClazz.getClassLoader(), classArr, handler);

@@ -1,8 +1,7 @@
 package com.dx168.fastdex.build.task
 
-import com.dx168.fastdex.build.snapshoot.sourceset.JavaFileDiffInfo
-import com.dx168.fastdex.build.snapshoot.sourceset.SourceSetDiffResultSet
-import com.dx168.fastdex.build.snapshoot.api.Status
+import com.dx168.fastdex.build.lib.snapshoot.sourceset.JavaFileDiffInfo
+import com.dx168.fastdex.build.lib.snapshoot.api.Status
 import com.dx168.fastdex.build.util.FastdexUtils
 import com.dx168.fastdex.build.util.FileUtils
 import com.dx168.fastdex.build.variant.FastdexVariant
