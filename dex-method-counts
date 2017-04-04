@@ -1,1 +1,0 @@
-java -jar dex-method-counts.jar app/build/outputs/apk/app-debug.apk
