@@ -66,10 +66,6 @@ public class FastdexCustomJavacTask extends DefaultTask {
             return
         }
 
-        if (true) {
-            return
-        }
-
         File patchJavaFileDir = new File(FastdexUtils.getBuildDir(project,fastdexVariant.variantName),"custom-combind")
         File patchClassesFileDir = new File(FastdexUtils.getBuildDir(project,fastdexVariant.variantName),"custom-combind-classes")
         FileUtils.deleteDir(patchJavaFileDir)

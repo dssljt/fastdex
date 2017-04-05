@@ -9,7 +9,6 @@ import com.dx168.fastdex.build.snapshoot.string.BaseStringSnapshoot;
 import com.dx168.fastdex.build.snapshoot.string.StringDiffInfo;
 import com.dx168.fastdex.build.snapshoot.string.StringNode;
 import com.google.gson.annotations.SerializedName;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.HashSet;
@@ -33,22 +32,24 @@ public final class SourceSetSnapshoot extends BaseStringSnapshoot<StringDiffInfo
         directorySnapshootSet.addAll(snapshoot.directorySnapshootSet);
     }
 
-    public SourceSetSnapshoot(File projectDir, Set<String> sourceSets) throws IOException {
-        super(sourceSets);
+    public SourceSetSnapshoot(File projectDir, Set<File> sourceSets) throws IOException {
+        super(SourceSetSnapshoot.getSourceSetStringArray(sourceSets));
         init(projectDir,sourceSets);
     }
 
-    public SourceSetSnapshoot(File projectDir,String ...sourceSets) throws IOException {
+    public SourceSetSnapshoot(File projectDir, String ...sourceSets) throws IOException {
         super(sourceSets);
 
-        Set<String> set = new HashSet<>();
-        for (String str : sourceSets) {
-            set.add(str);
+        Set<File> result = new HashSet<>();
+        if (sourceSets != null) {
+            for (String string : sourceSets) {
+                result.add(new File(string));
+            }
         }
-        init(projectDir,set);
+        init(projectDir,result);
     }
 
-    private void init(File projectDir,Set<String> sourceSets) throws IOException {
+    private void init(File projectDir,Set<File> sourceSetFiles) throws IOException {
         if (projectDir == null || projectDir.length() == 0) {
             throw new RuntimeException("Invalid projectPath");
         }
@@ -57,8 +58,8 @@ public final class SourceSetSnapshoot extends BaseStringSnapshoot<StringDiffInfo
             directorySnapshootSet = new HashSet<>();
         }
 
-        for (String sourceSet : sourceSets) {
-            directorySnapshootSet.add(new JavaDirectorySnapshoot(new File(sourceSet)));
+        for (File sourceSet : sourceSetFiles) {
+            directorySnapshootSet.add(new JavaDirectorySnapshoot(sourceSet));
         }
     }
 
@@ -70,8 +71,9 @@ public final class SourceSetSnapshoot extends BaseStringSnapshoot<StringDiffInfo
     @Override
     public DiffResultSet<StringDiffInfo> diff(Snapshoot<StringDiffInfo, StringNode> otherSnapshoot) {
         SourceSetDiffResultSet sourceSetResultSet = (SourceSetDiffResultSet) super.diff(otherSnapshoot);
-        SourceSetSnapshoot oldSnapshoot = (SourceSetSnapshoot)otherSnapshoot;
+        sourceSetResultSet.currentPath = path;
 
+        SourceSetSnapshoot oldSnapshoot = (SourceSetSnapshoot)otherSnapshoot;
         for (DiffInfo diffInfo : sourceSetResultSet.getDiffInfos(Status.DELETEED)) {
             JavaDirectorySnapshoot javaDirectorySnapshoot = oldSnapshoot.getJavaDirectorySnapshootByPath(diffInfo.uniqueKey);
             for (FileNode node : javaDirectorySnapshoot.nodes) {
@@ -95,20 +97,6 @@ public final class SourceSetSnapshoot extends BaseStringSnapshoot<StringDiffInfo
         }
         return sourceSetResultSet;
     }
-
-    //    @Override
-//    public SourceSetDiffResultSet diff(Snapshoot<StringDiffInfo, StringNode> otherSnapshoot) {
-//        JavaDirectorySnapshoot oldSnapshoot = (JavaDirectorySnapshoot)otherSnapshoot;
-//
-//
-//        SourceSetDiffResultSet sourceSetResultSet = (SourceSetDiffResultSet) super.diff(otherSnapshoot);
-//
-//        Set<JavaDirectoryDiffResultSet> deletedDirectories = new HashSet<>();
-//        for (DiffInfo diffInfo : sourceSetResultSet.getDiffInfos(Status.DELETEED)) {
-//            deletedDirectories.add(otherSnapshoot)
-//        }
-//        return sourceSetResultSet;
-//    }
 
     private JavaDirectorySnapshoot getJavaDirectorySnapshootByPath(String path) {
         for (JavaDirectorySnapshoot snapshoot : directorySnapshootSet) {
@@ -153,5 +141,15 @@ public final class SourceSetSnapshoot extends BaseStringSnapshoot<StringDiffInfo
         return "SourceSetSnapshoot{" +
                 "directorySnapshootSet=" + directorySnapshootSet +
                 '}';
+    }
+
+    public static Set<String> getSourceSetStringArray(Set<File> sourceSets) {
+        Set<String> result = new HashSet<>();
+        if (sourceSets != null) {
+            for (File file : sourceSets) {
+                result.add(file.getAbsolutePath());
+            }
+        }
+        return result;
     }
 }

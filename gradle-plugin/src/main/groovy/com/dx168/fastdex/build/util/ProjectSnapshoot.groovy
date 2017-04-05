@@ -30,7 +30,7 @@ public class ProjectSnapshoot {
             //load old cache
             File sourceSetFile = FastdexUtils.getSourceSetFile(project,fastdexVariant.variantName)
 
-            SourceSetSnapshoot oldSourceSetSnapshoot = Snapshoot.load(sourceSetFile,SourceSetSnapshoot.class)
+            SourceSetSnapshoot oldSourceSetSnapshoot = SourceSetSnapshoot.load(sourceSetFile,SourceSetSnapshoot.class)
             boolean isSourceSetChanged = oldSourceSetSnapshoot.ensumeProjectDir(project.projectDir)
             if (isSourceSetChanged) {
                 project.logger.error("==fastdex sourceChanged \n old: ${oldSourceSetSnapshoot.nodes} \n now: ${sourceSetSnapshoot}")
@@ -52,6 +52,11 @@ public class ProjectSnapshoot {
             //save
             saveSourceSetSnapshoot(sourceSetSnapshoot)
         }
+    }
+
+    def transformSrcDirs(Set<File> srcDirs) {
+
+        //project.android.sourceSets.main.java.srcDirs
     }
 
     def saveSourceSetSnapshoot(SourceSetSnapshoot snapshoot) {
