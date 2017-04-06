@@ -1,9 +1,8 @@
 package com.dx168.fastdex.build.task
 
+import com.dx168.fastdex.build.snapshoot.sourceset.SourceSetDiffResultSet
 import com.dx168.fastdex.build.util.FastdexUtils
 import com.dx168.fastdex.build.util.FileUtils
-import com.dx168.fastdex.build.snapshoot.sourceset.JavaFileDiffInfo
-import com.dx168.fastdex.build.snapshoot.api.Status
 import com.dx168.fastdex.build.variant.FastdexVariant
 import org.gradle.api.DefaultTask
 import org.gradle.api.Task
@@ -53,41 +52,24 @@ public class FastdexCustomJavacTask extends DefaultTask {
 
         if (!projectSnapshoot.isSourceSetChanged()) {
             project.logger.error("==fastdex source set not changed, just ignore")
-        }
-        Set<String> changedJavaClassNames = new HashSet<>()
-        Set<JavaFileDiffInfo> javaFileDiffInfos = projectSnapshoot.diffResultSet.getJavaFileDiffInfos(Status.ADDED, Status.MODIFIED)
-        project.logger.error("==fastdex javaFileDiffInfos :${javaFileDiffInfos}")
-        for (JavaFileDiffInfo diffInfo : javaFileDiffInfos) {
-            project.logger.error("==fastdex diffInfo :${diffInfo}")
-        }
-        project.logger.error("==fastdex changedJavaClassNames : ${changedJavaClassNames}")
-        if (changedJavaClassNames.isEmpty()) {
             compileTask.enabled = true
             return
         }
+
+        SourceSetDiffResultSet sourceSetDiffResultSet = projectSnapshoot.diffResultSet
+        Set<String> addOrModifiedRelativePaths = sourceSetDiffResultSet.addOrModifiedRelativePaths
+
 
         File patchJavaFileDir = new File(FastdexUtils.getBuildDir(project,fastdexVariant.variantName),"custom-combind")
         File patchClassesFileDir = new File(FastdexUtils.getBuildDir(project,fastdexVariant.variantName),"custom-combind-classes")
         FileUtils.deleteDir(patchJavaFileDir)
         FileUtils.ensumeDir(patchClassesFileDir)
 
-        //compare changed class
-        String[] srcDirs = project.android.sourceSets.main.java.srcDirs
-        for (String srcDir : srcDirs) {
+        for (String relativePath : addOrModifiedRelativePaths) {
+            project.logger.error("==fastdex changed java file :${relativePath}")
 
-            File newDir = new File(srcDir)
-//            File oldDir = new File(snapshootDir,FastdexUtils.fixSourceSetDir(srcDir))
-//
-//            Set<JavaDirDiff.DiffInfo> set = JavaDirDiff.diff(newDir,oldDir,false,project.logger)
-//
-//            for (JavaDirDiff.DiffInfo diff : set) {
-//                FileUtils.copyFileUsingStream(new File(diff.absolutePath),new File(patchJavaFileDir,diff.relativePath))
-//                changedJavaClassNames.add(diff.relativePath)
-//            }
-
+            FileUtils.copyFileUsingStream(new File(sourceSetDiffResultSet.currentPath,relativePath),new File(patchJavaFileDir,relativePath))
         }
-
-
 
         //compile java
         File androidJar = new File("${FastdexUtils.getSdkDirectory(project)}/platforms/${project.android.getCompileSdkVersion()}/android.jar")
@@ -110,8 +92,7 @@ public class FastdexCustomJavacTask extends DefaultTask {
         project.logger.error("==fastdex compile success: ${patchClassesFileDir}")
         compileTask.enabled = false
 
-        //如果变化的class直接生成jar包，并且成功hook transformClassesWithJarMergingFor${variantName}能进一步提高打包速度
-        //由于无法解决一个技术点，所以这个机制暂时没有用到，暂时使用覆盖app/build/intermediates/classes内容的方式实现
+        //覆盖app/build/intermediates/classes内容
         File classesDir = fastdexVariant.androidVariant.getVariantData().getScope().getJavaOutputDir()
         Files.walkFileTree(patchClassesFileDir.toPath(),new SimpleFileVisitor<Path>(){
             @Override

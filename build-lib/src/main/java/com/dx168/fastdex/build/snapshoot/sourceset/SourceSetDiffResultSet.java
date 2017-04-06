@@ -3,7 +3,7 @@ package com.dx168.fastdex.build.snapshoot.sourceset;
 import com.dx168.fastdex.build.snapshoot.api.DiffResultSet;
 import com.dx168.fastdex.build.snapshoot.api.Status;
 import com.dx168.fastdex.build.snapshoot.string.StringDiffInfo;
-
+import com.google.gson.annotations.Expose;
 import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,10 +13,15 @@ import java.util.Set;
  */
 public class SourceSetDiffResultSet extends DiffResultSet<StringDiffInfo> {
     public Set<JavaFileDiffInfo> changedJavaFileDiffInfos = new HashSet<JavaFileDiffInfo>();
+
+    @Expose
     public String currentPath;
+    @Expose
     public Set<String> addOrModifiedClassPatterns = new HashSet<>();
+    @Expose
     public Set<File> addOrModifiedFiles = new HashSet<>();
-    public Set<File> addOrModifiedRelativePaths = new HashSet<>();
+    @Expose
+    public Set<String> addOrModifiedRelativePaths = new HashSet<>();
 
     public SourceSetDiffResultSet() {
 
@@ -38,32 +43,17 @@ public class SourceSetDiffResultSet extends DiffResultSet<StringDiffInfo> {
             switch (javaFileDiffInfo.status) {
                 case ADDED:
                 case MODIFIED:
+                    addOrModifiedRelativePaths.add(javaFileDiffInfo.uniqueKey);
+                    addOrModifiedFiles.add(new File(currentPath,javaFileDiffInfo.uniqueKey));
 
+                    String classRelativePath = javaFileDiffInfo.uniqueKey.substring(0, javaFileDiffInfo.uniqueKey.length() - ".java".length());
+                    addOrModifiedClassPatterns.add(classRelativePath + ".class");
+                    addOrModifiedClassPatterns.add(classRelativePath + "\\$\\S{0,}$.class");
                     break;
             }
         }
         this.changedJavaFileDiffInfos.addAll(changedDiffInfos);
     }
-
-//    public Set<JavaFileDiffInfo> getJavaFileDiffInfos(Status ...statuses) {
-//        Set<JavaFileDiffInfo> result = new HashSet<JavaFileDiffInfo>();
-//        for (JavaFileDiffInfo diffInfo : changedJavaFileDiffInfos) {
-//            bb : for (Status status : statuses) {
-//                if (diffInfo.status == status) {
-//                    result.add(diffInfo);
-//                    break bb;
-//                }
-//            }
-//        }
-//        return result;
-//    }
-
-    public Set<String> getAddOrModifiedClassPatterns() {
-        //return addOrModifiedClassPatterns;
-
-        return null;
-    }
-
 
     @Override
     public boolean equals(Object o) {
@@ -71,9 +61,9 @@ public class SourceSetDiffResultSet extends DiffResultSet<StringDiffInfo> {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
 
-        SourceSetDiffResultSet that = (SourceSetDiffResultSet) o;
+        SourceSetDiffResultSet resultSet = (SourceSetDiffResultSet) o;
 
-        return changedJavaFileDiffInfos != null ? changedJavaFileDiffInfos.equals(that.changedJavaFileDiffInfos) : that.changedJavaFileDiffInfos == null;
+        return changedJavaFileDiffInfos != null ? changedJavaFileDiffInfos.equals(resultSet.changedJavaFileDiffInfos) : resultSet.changedJavaFileDiffInfos == null;
 
     }
 
@@ -87,7 +77,10 @@ public class SourceSetDiffResultSet extends DiffResultSet<StringDiffInfo> {
     @Override
     public String toString() {
         return "SourceSetDiffResultSet{" +
-                "changedJavaFileDiffInfos=" + changedJavaFileDiffInfos +
+                "addOrModifiedClassPatterns=" + addOrModifiedClassPatterns +
+                ", addOrModifiedFiles=" + addOrModifiedFiles +
+                ", addOrModifiedRelativePaths=" + addOrModifiedRelativePaths +
+                ", currentPath='" + currentPath + '\'' +
                 '}';
     }
 }
