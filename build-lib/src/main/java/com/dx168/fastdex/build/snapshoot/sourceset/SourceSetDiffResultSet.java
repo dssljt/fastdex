@@ -15,20 +15,21 @@ public class SourceSetDiffResultSet extends DiffResultSet<StringDiffInfo> {
     public Set<JavaFileDiffInfo> changedJavaFileDiffInfos = new HashSet<JavaFileDiffInfo>();
 
     @Expose
-    public String currentPath;
-    @Expose
     public Set<String> addOrModifiedClassPatterns = new HashSet<>();
+
     @Expose
-    public Set<File> addOrModifiedFiles = new HashSet<>();
-    @Expose
-    public Set<String> addOrModifiedRelativePaths = new HashSet<>();
+    public Set<PathInfo> addOrModifiedPathInfos = new HashSet<>();
 
     public SourceSetDiffResultSet() {
 
     }
 
-    public boolean isSourceSetChanged() {
-        return !getDiffInfos(Status.ADDED,Status.DELETEED).isEmpty();
+    public SourceSetDiffResultSet(SourceSetDiffResultSet resultSet) {
+        super(resultSet);
+    }
+
+    public boolean isJavaFileChanged() {
+        return !addOrModifiedClassPatterns.isEmpty();
     }
 
     public void addJavaFileDiffInfo(JavaFileDiffInfo diffInfo) {
@@ -37,18 +38,17 @@ public class SourceSetDiffResultSet extends DiffResultSet<StringDiffInfo> {
         }
     }
 
-    public void mergeJavaDirectoryResultSet(JavaDirectoryDiffResultSet javaDirectoryResultSet) {
+    public void mergeJavaDirectoryResultSet(String path,JavaDirectoryDiffResultSet javaDirectoryResultSet) {
         Set<JavaFileDiffInfo> changedDiffInfos = javaDirectoryResultSet.changedDiffInfos;
         for (JavaFileDiffInfo javaFileDiffInfo : changedDiffInfos) {
             switch (javaFileDiffInfo.status) {
                 case ADDED:
                 case MODIFIED:
-                    addOrModifiedRelativePaths.add(javaFileDiffInfo.uniqueKey);
-                    addOrModifiedFiles.add(new File(currentPath,javaFileDiffInfo.uniqueKey));
+                    addOrModifiedPathInfos.add(new PathInfo(new File(path,javaFileDiffInfo.uniqueKey),javaFileDiffInfo.uniqueKey));
 
                     String classRelativePath = javaFileDiffInfo.uniqueKey.substring(0, javaFileDiffInfo.uniqueKey.length() - ".java".length());
                     addOrModifiedClassPatterns.add(classRelativePath + ".class");
-                    addOrModifiedClassPatterns.add(classRelativePath + "\\$\\S{0,}$.class");
+                    addOrModifiedClassPatterns.add(classRelativePath + "\\$\\S{0,}.class");
                     break;
             }
         }
@@ -74,13 +74,12 @@ public class SourceSetDiffResultSet extends DiffResultSet<StringDiffInfo> {
         return result;
     }
 
+
     @Override
     public String toString() {
         return "SourceSetDiffResultSet{" +
                 "addOrModifiedClassPatterns=" + addOrModifiedClassPatterns +
-                ", addOrModifiedFiles=" + addOrModifiedFiles +
-                ", addOrModifiedRelativePaths=" + addOrModifiedRelativePaths +
-                ", currentPath='" + currentPath + '\'' +
+                ", addOrModifiedPathInfos=" + addOrModifiedPathInfos +
                 '}';
     }
 }

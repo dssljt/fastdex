@@ -69,90 +69,95 @@ class FastdexTransform extends TransformProxy {
 
     @Override
     void transform(TransformInvocation transformInvocation) throws TransformException, IOException, InterruptedException {
-        if (FastdexUtils.hasDexCache(project,variantName)) {
+        if (fastdexVariant.hasDexCache) {
             project.logger.error("==fastdex patch transform start,we will generate dex file")
-            //生成补丁jar包
-            File patchJar = generatePatchJar(transformInvocation)
-            File patchDex = new File(FastdexUtils.getBuildDir(project,variantName),"classes.dex")
-            FileUtils.deleteFile(patchDex)
+            if (fastdexVariant.projectSnapshoot.diffResultSet.isJavaFileChanged()) {
+                //生成补丁jar包
+                File patchJar = generatePatchJar(transformInvocation)
+                File patchDex = new File(FastdexUtils.getBuildDir(project,variantName),"classes.dex")
+                FileUtils.deleteFile(patchDex)
 
-            long start = System.currentTimeMillis()
+                long start = System.currentTimeMillis()
 
-            ProcessOutputHandler outputHandler = new ParsingProcessOutputHandler(
-                    new ToolOutputParser(new DexParser(), Message.Kind.ERROR, base.logger),
-                    new ToolOutputParser(new DexParser(), base.logger),
-                    base.androidBuilder.getErrorReporter())
-            final List<File> inputFiles = new ArrayList<>()
-            inputFiles.add(patchJar)
+                ProcessOutputHandler outputHandler = new ParsingProcessOutputHandler(
+                        new ToolOutputParser(new DexParser(), Message.Kind.ERROR, base.logger),
+                        new ToolOutputParser(new DexParser(), base.logger),
+                        base.androidBuilder.getErrorReporter())
+                final List<File> inputFiles = new ArrayList<>()
+                inputFiles.add(patchJar)
 
-            String androidGradlePluginVersion = fastdexVariant.androidGradlePluginVersion
-            if ("2.0.0".equals(androidGradlePluginVersion)) {
-                base.androidBuilder.convertByteCode(
-                        inputFiles,
-                        patchDex.parentFile,
-                        false,
-                        null,
-                        base.dexOptions,
-                        null,
-                        false,
-                        true,
-                        outputHandler,
-                        false)
-            }
-            else if ("2.1.0".equals(androidGradlePluginVersion) || "2.1.2".equals(androidGradlePluginVersion) || "2.1.3".equals(androidGradlePluginVersion)) {
-                base.androidBuilder.convertByteCode(
-                        inputFiles,
-                        patchDex.parentFile,
-                        false,
-                        null,
-                        base.dexOptions,
-                        null,
-                        false,
-                        true,
-                        outputHandler)
-            }
-            else if (androidGradlePluginVersion.startsWith("2.2.")) {
-                base.androidBuilder.convertByteCode(
-                        inputFiles,
-                        patchDex.parentFile,
-                        false,
-                        null,
-                        base.dexOptions,
-                        base.getOptimize(),
-                        outputHandler);
-            }
-            else if ("2.3.0".equals(androidGradlePluginVersion)) {
-                base.androidBuilder.convertByteCode(
-                        inputFiles,
-                        patchDex.parentFile,
-                        false,
-                        base.mainDexListFile,
-                        base.dexOptions,
-                        outputHandler)
+                String androidGradlePluginVersion = fastdexVariant.androidGradlePluginVersion
+                if ("2.0.0".equals(androidGradlePluginVersion)) {
+                    base.androidBuilder.convertByteCode(
+                            inputFiles,
+                            patchDex.parentFile,
+                            false,
+                            null,
+                            base.dexOptions,
+                            null,
+                            false,
+                            true,
+                            outputHandler,
+                            false)
+                }
+                else if ("2.1.0".equals(androidGradlePluginVersion) || "2.1.2".equals(androidGradlePluginVersion) || "2.1.3".equals(androidGradlePluginVersion)) {
+                    base.androidBuilder.convertByteCode(
+                            inputFiles,
+                            patchDex.parentFile,
+                            false,
+                            null,
+                            base.dexOptions,
+                            null,
+                            false,
+                            true,
+                            outputHandler)
+                }
+                else if (androidGradlePluginVersion.startsWith("2.2.")) {
+                    base.androidBuilder.convertByteCode(
+                            inputFiles,
+                            patchDex.parentFile,
+                            false,
+                            null,
+                            base.dexOptions,
+                            base.getOptimize(),
+                            outputHandler);
+                }
+                else if ("2.3.0".equals(androidGradlePluginVersion)) {
+                    base.androidBuilder.convertByteCode(
+                            inputFiles,
+                            patchDex.parentFile,
+                            false,
+                            base.mainDexListFile,
+                            base.dexOptions,
+                            outputHandler)
+                }
+                else {
+                    //拼接生成dex的命令 project.android.getSdkDirectory()
+                    String dxcmd = "${FastdexUtils.getDxCmdPath(project)} --dex --output=${patchDex} ${patchJar}"
+                    //TODO 补丁的方法数也有可能超过65535个，最好加上使dx生成多个dex的参数，但是一般补丁不会那么大所以暂时不处理
+                    project.logger.error("==fastdex patch transform generate dex cmd \n" + dxcmd)
+                    //调用dx命令
+                    def process = dxcmd.execute()
+                    int status = process.waitFor()
+                    process.destroy()
+                    if (status != 0) {
+                        throw new GradleException("==fastdex generate dex fail: \n${dxcmd}")
+                    }
+                }
+                long end = System.currentTimeMillis();
+                project.logger.error("==fastdex patch transform generate dex success: \n==${patchDex} use: ${end - start}ms")
+                //获取dex输出路径
+                File dexOutputDir = GradleUtils.getDexOutputDir(project,base,transformInvocation)
+
+                if (project.fastdex.debug) {
+                    project.logger.error("==fastdex patch transform dex dir: ${dexOutputDir}")
+                }
+                //复制补丁打包的dex到输出路径
+                hookPatchBuildDex(dexOutputDir,patchDex)
             }
             else {
-                //拼接生成dex的命令 project.android.getSdkDirectory()
-                String dxcmd = "${FastdexUtils.getDxCmdPath(project)} --dex --output=${patchDex} ${patchJar}"
-                //TODO 补丁的方法数也有可能超过65535个，最好加上使dx生成多个dex的参数，但是一般补丁不会那么大所以暂时不处理
-                project.logger.error("==fastdex patch transform generate dex cmd \n" + dxcmd)
-                //调用dx命令
-                def process = dxcmd.execute()
-                int status = process.waitFor()
-                process.destroy()
-                if (status != 0) {
-                    throw new GradleException("==fastdex generate dex fail: \n${dxcmd}")
-                }
+                project.logger.error("==fastdex no java files have changed, just ignore")
             }
-            long end = System.currentTimeMillis();
-            project.logger.error("==fastdex patch transform generate dex success: \n==${patchDex} use: ${end - start}ms")
-            //获取dex输出路径
-            File dexOutputDir = GradleUtils.getDexOutputDir(project,base,transformInvocation)
-
-            if (project.fastdex.debug) {
-                project.logger.error("==fastdex patch transform dex dir: ${dexOutputDir}")
-            }
-            //复制补丁打包的dex到输出路径
-            hookPatchBuildDex(dexOutputDir,patchDex)
         }
         else {
             def config = fastdexVariant.androidVariant.getVariantData().getVariantConfiguration()
@@ -160,7 +165,7 @@ class FastdexTransform extends TransformProxy {
 
             project.logger.error("==fastdex normal transform start")
             //生成项目代码快照
-            createSourceSetSnapshoot()
+            //createSourceSetSnapshoot()
             //保存依赖列表
             keepDependenciesList()
             if (isMultiDexEnabled) {
@@ -226,16 +231,11 @@ class FastdexTransform extends TransformProxy {
             //补丁jar
             File patchJar = new File(FastdexUtils.getBuildDir(project,variantName),"patch-combined.jar")
             //根据变化的java文件列表生成解压的pattern
-            Set<String> changedClassPatterns = FastdexUtils.getChangedClassPatterns(project,variantName,fastdexVariant.manifestPath)
-            if (!changedClassPatterns.isEmpty()) {
-                //所有的class目录
-                Set<File> directoryInputFiles = FastdexUtils.getDirectoryInputFiles(transformInvocation)
-                //生成补丁jar
-                FastdexUtils.generatePatchJar(project,directoryInputFiles,patchJar,changedClassPatterns)
-            }
-            else {
-                //TODO IllegalState
-            }
+            Set<String> changedClassPatterns = fastdexVariant.getChangedClassPatterns()
+            //所有的class目录
+            Set<File> directoryInputFiles = FastdexUtils.getDirectoryInputFiles(transformInvocation)
+            //生成补丁jar
+            FastdexUtils.generatePatchJar(project,directoryInputFiles,patchJar,changedClassPatterns)
             return patchJar
         }
     }
@@ -253,15 +253,15 @@ class FastdexTransform extends TransformProxy {
      * 生成项目代码快照
      * TODO 目前是复制了所有java文件，如果把信息都写到txt文件里，能够在IO上省一些时间
      */
-    void createSourceSetSnapshoot() {
-        String[] srcDirs = project.android.sourceSets.main.java.srcDirs
-        File snapshootDir = new File(FastdexUtils.getBuildDir(project,variantName),Constant.SNAPSHOOT_DIR)
-        FileUtils.ensumeDir(snapshootDir)
-        for (String srcDir : srcDirs) {
-            //之前使用gradle的api复制文件，但是lastModified会发生变化造成对比出问题，所以换成自己的实现
-            FileUtils.copyDir(new File(srcDir),new File(snapshootDir,FastdexUtils.fixSourceSetDir(srcDir)),Constant.JAVA_SUFFIX)
-        }
-    }
+//    void createSourceSetSnapshoot() {
+//        String[] srcDirs = project.android.sourceSets.main.java.srcDirs
+//        File snapshootDir = new File(FastdexUtils.getBuildDir(project,variantName),Constant.SNAPSHOOT_DIR)
+//        FileUtils.ensumeDir(snapshootDir)
+//        for (String srcDir : srcDirs) {
+//            //之前使用gradle的api复制文件，但是lastModified会发生变化造成对比出问题，所以换成自己的实现
+//            FileUtils.copyDir(new File(srcDir),new File(snapshootDir,FastdexUtils.fixSourceSetDir(srcDir)),Constant.JAVA_SUFFIX)
+//        }
+//    }
 
     /**
      * 保存全量打包时的依赖列表

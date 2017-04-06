@@ -23,10 +23,11 @@ class FastdexJarMergingTransform extends TransformProxy {
 
     @Override
     void transform(TransformInvocation transformInvocation) throws TransformException, IOException, InterruptedException {
-        if (FastdexUtils.hasDexCache(fastdexVariant.project,fastdexVariant.variantName)) {
-            //根据变化的java文件列表生成解压的pattern
-            Set<String> changedClassPatterns = FastdexUtils.getChangedClassPatterns(fastdexVariant.project,fastdexVariant.variantName,fastdexVariant.manifestPath)
-            if (!changedClassPatterns.isEmpty()) {
+        if (fastdexVariant.hasDexCache) {
+            if (fastdexVariant.projectSnapshoot.diffResultSet.isJavaFileChanged()) {
+                //根据变化的java文件列表生成解压的pattern
+                Set<String> changedClassPatterns = fastdexVariant.getChangedClassPatterns()
+
                 //补丁jar
                 File patchJar = getCombinedJarFile(transformInvocation)
                 //所有的class目录
@@ -35,7 +36,7 @@ class FastdexJarMergingTransform extends TransformProxy {
                 FastdexUtils.generatePatchJar(fastdexVariant.project,directoryInputFiles,patchJar,changedClassPatterns)
             }
             else {
-                //TODO IllegalState
+                fastdexVariant.project.logger.error("==fastdex no java files have changed, just ignore")
             }
         }
         else {

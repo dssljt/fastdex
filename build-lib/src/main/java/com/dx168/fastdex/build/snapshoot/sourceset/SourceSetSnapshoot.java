@@ -71,7 +71,6 @@ public final class SourceSetSnapshoot extends BaseStringSnapshoot<StringDiffInfo
     @Override
     public DiffResultSet<StringDiffInfo> diff(Snapshoot<StringDiffInfo, StringNode> otherSnapshoot) {
         SourceSetDiffResultSet sourceSetResultSet = (SourceSetDiffResultSet) super.diff(otherSnapshoot);
-        sourceSetResultSet.currentPath = path;
 
         SourceSetSnapshoot oldSnapshoot = (SourceSetSnapshoot)otherSnapshoot;
         for (DiffInfo diffInfo : sourceSetResultSet.getDiffInfos(Status.DELETEED)) {
@@ -93,7 +92,7 @@ public final class SourceSetSnapshoot extends BaseStringSnapshoot<StringDiffInfo
             JavaDirectorySnapshoot old = oldSnapshoot.getJavaDirectorySnapshootByPath(diffInfo.uniqueKey);
 
             JavaDirectoryDiffResultSet resultSet = (JavaDirectoryDiffResultSet) now.diff(old);
-            sourceSetResultSet.mergeJavaDirectoryResultSet(resultSet);
+            sourceSetResultSet.mergeJavaDirectoryResultSet(now.path,resultSet);
         }
         return sourceSetResultSet;
     }

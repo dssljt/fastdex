@@ -148,6 +148,18 @@ public class GradleUtils {
         return "${packageName.replaceAll("\\.","/")}/BuildConfig.class"
     }
 
+//    /**
+//     * 获取R.java的相对路径
+//     * @param manifestPath
+//     * @return
+//     */
+//    public static Set<String> getRJavaRelativePath(String manifestPath) {
+//        def xml = new XmlParser().parse(new InputStreamReader(new FileInputStream(manifestPath), "utf-8"))
+//        String packageName = xml.attribute('package')
+//
+//        return "${packageName.replaceAll("\\.","/")}/R.class"
+//    }
+
     /**
      * 合并所有的代码到一个jar钟
      * @param project

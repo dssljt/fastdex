@@ -20,6 +20,8 @@ public class FastdexVariant {
     final File buildDir
     final String androidGradlePluginVersion
     final ProjectSnapshoot projectSnapshoot
+    boolean hasDexCache
+    boolean firstPatchBuild
 
     FastdexVariant(Project project, Object androidVariant) {
         this.project = project
@@ -44,9 +46,15 @@ public class FastdexVariant {
     * 5、检查全量的代码jar包是否存在(app/build/fastdex/${variantName}/injected-combined.jar)
     */
     void prepareEnv() {
-        //delete expired cache
-        boolean hasValidCache = FastdexUtils.hasDexCache(project,variantName)
-        if (hasValidCache) {
+        hasDexCache = FastdexUtils.hasDexCache(project,variantName)
+        if (hasDexCache) {
+            File diffResultSetFile = FastdexUtils.getDiffResultSetFile(project,variantName)
+            if (!FileUtils.isLegalFile(diffResultSetFile)) {
+                firstPatchBuild = true
+            }
+        }
+
+        if (hasDexCache) {
             try {
                 File cachedDependListFile = FastdexUtils.getCachedDependListFile(project,variantName)
                 if (!FileUtils.isLegalFile(cachedDependListFile)) {
@@ -79,6 +87,11 @@ public class FastdexVariant {
                     throw new CheckException("${variantName.toLowerCase()} dependencies changed")
                 }
 
+                File sourceSetSnapshootFile = FastdexUtils.getSourceSetSnapshootFile(project,variantName)
+                if (!FileUtils.isLegalFile(sourceSetSnapshootFile)) {
+                    throw new CheckException("miss sourceSet snapshoot file: ${sourceSetSnapshootFile}")
+                }
+
                 File cachedResourceMappingFile = FastdexUtils.getCachedResourceMappingFile(project,variantName)
                 if (!FileUtils.isLegalFile(cachedResourceMappingFile)) {
                     throw new CheckException("miss resource mapping file: ${cachedResourceMappingFile}")
@@ -89,13 +102,13 @@ public class FastdexVariant {
                     throw new CheckException("miss injected jar file: ${injectedJarFile}")
                 }
             } catch (CheckException e) {
-                hasValidCache = false
+                hasDexCache = false
                 project.logger.error("==fastdex ${e.getMessage()}")
                 project.logger.error("==fastdex we will remove ${variantName.toLowerCase()} cache")
             }
         }
 
-        if (hasValidCache) {
+        if (hasDexCache) {
             project.logger.error("==fastdex discover cached for ${variantName.toLowerCase()}")
         }
         else {
@@ -103,7 +116,7 @@ public class FastdexVariant {
             FileUtils.ensumeDir(buildDir)
         }
 
-        projectSnapshoot.prepareEnv(hasValidCache)
+        projectSnapshoot.prepareEnv()
     }
 
     /**
@@ -122,6 +135,19 @@ public class FastdexVariant {
             }
             reader.close()
         }
+        return result
+    }
+
+    /**
+     * 补丁打包时扫获取需要参与dex生成的正则
+     * @param project
+     * @param variantName
+     * @param manifestPath
+     * @return
+     */
+    Set<String> getChangedClassPatterns() {
+        Set<String> result = projectSnapshoot.diffResultSet.addOrModifiedClassPatterns
+        result.add(GradleUtils.getBuildConfigRelativePath(manifestPath))
         return result
     }
 

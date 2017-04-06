@@ -56,7 +56,7 @@ public class FastdexUtils {
     }
 
     /**
-     * 获取fastdex指定variantName的dex缓存目录
+     * 获取指定variantName的dex缓存目录
      * @param project
      * @return
      */
@@ -66,11 +66,11 @@ public class FastdexUtils {
     }
 
     /**
-     * 获取fastdex指定variantName的dex缓存目录
+     * 获取指定variantName的源码目录快照
      * @param project
      * @return
      */
-    public static final File getSourceSetFile(Project project,String variantName) {
+    public static final File getSourceSetSnapshootFile(Project project, String variantName) {
         File file = new File(getBuildDir(project,variantName),Constant.SOURCESET_SNAPSHOOT_FILENAME);
         return file;
     }

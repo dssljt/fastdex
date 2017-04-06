@@ -1,5 +1,6 @@
 package com.dx168.fastdex.build.task
 
+import com.dx168.fastdex.build.snapshoot.sourceset.PathInfo
 import com.dx168.fastdex.build.snapshoot.sourceset.SourceSetDiffResultSet
 import com.dx168.fastdex.build.util.FastdexUtils
 import com.dx168.fastdex.build.util.FileUtils
@@ -44,31 +45,38 @@ public class FastdexCustomJavacTask extends DefaultTask {
             return
         }
 
-        boolean hasValidCache = FastdexUtils.hasDexCache(project,fastdexVariant.variantName)
+        boolean hasValidCache = fastdexVariant.hasDexCache
         if (!hasValidCache) {
             compileTask.enabled = true
             return
         }
 
-        if (!projectSnapshoot.isSourceSetChanged()) {
+        SourceSetDiffResultSet sourceSetDiffResultSet = projectSnapshoot.diffResultSet
+        //java文件是否发生变化
+        if (!sourceSetDiffResultSet.isJavaFileChanged()) {
+            compileTask.enabled = false
+            return
+        }
+
+        //此次变化是否和上次的变化一样
+        if (projectSnapshoot.diffResultSet != null
+                && projectSnapshoot.oldDiffResultSet != null
+                && projectSnapshoot.diffResultSet.equals(projectSnapshoot.oldDiffResultSet)) {
             project.logger.error("==fastdex source set not changed, just ignore")
             compileTask.enabled = true
             return
         }
-
-        SourceSetDiffResultSet sourceSetDiffResultSet = projectSnapshoot.diffResultSet
-        Set<String> addOrModifiedRelativePaths = sourceSetDiffResultSet.addOrModifiedRelativePaths
-
+        Set<PathInfo> addOrModifiedPathInfos = sourceSetDiffResultSet.addOrModifiedPathInfos
 
         File patchJavaFileDir = new File(FastdexUtils.getBuildDir(project,fastdexVariant.variantName),"custom-combind")
         File patchClassesFileDir = new File(FastdexUtils.getBuildDir(project,fastdexVariant.variantName),"custom-combind-classes")
         FileUtils.deleteDir(patchJavaFileDir)
         FileUtils.ensumeDir(patchClassesFileDir)
 
-        for (String relativePath : addOrModifiedRelativePaths) {
-            project.logger.error("==fastdex changed java file :${relativePath}")
+        for (PathInfo pathInfo : addOrModifiedPathInfos) {
+            project.logger.error("==fastdex changed java file :${pathInfo.relativePath}")
 
-            FileUtils.copyFileUsingStream(new File(sourceSetDiffResultSet.currentPath,relativePath),new File(patchJavaFileDir,relativePath))
+            FileUtils.copyFileUsingStream(pathInfo.absoluteFile,new File(patchJavaFileDir,pathInfo.relativePath))
         }
 
         //compile java

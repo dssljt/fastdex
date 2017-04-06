@@ -1,6 +1,5 @@
 package snapshoot;
 
-import com.dx168.fastdex.build.snapshoot.api.Snapshoot;
 import com.dx168.fastdex.build.snapshoot.file.FileNode;
 import com.dx168.fastdex.build.snapshoot.sourceset.JavaDirectorySnapshoot;
 import com.dx168.fastdex.build.snapshoot.sourceset.SourceSetDiffResultSet;
@@ -8,7 +7,6 @@ import com.dx168.fastdex.build.snapshoot.sourceset.SourceSetSnapshoot;
 import junit.framework.TestCase;
 import org.junit.Test;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 
@@ -56,7 +54,7 @@ public class SourceSetSnapshootTest extends TestCase {
         SourceSetSnapshoot old = new SourceSetSnapshoot(new File(workDir),source_set1);
 
         SourceSetDiffResultSet sourceSetResultSet = (SourceSetDiffResultSet) now.diff(old);
-        assertTrue(sourceSetResultSet.isSourceSetChanged());
+        assertTrue(sourceSetResultSet.isJavaFileChanged());
 
 
         System.out.println(sourceSetResultSet);
