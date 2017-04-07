@@ -2,6 +2,7 @@ package com.dx168.fastdex.build.util
 
 import com.android.build.api.transform.Format
 import com.android.build.gradle.internal.pipeline.TransformManager
+import com.android.builder.model.Version
 import com.google.common.collect.Lists
 import com.android.build.gradle.internal.transforms.JarMerger
 import org.gradle.api.GradleException
@@ -63,18 +64,22 @@ public class GradleUtils {
      * @return
      */
     public static String getAndroidGralePluginVersion(Project project) {
-        def androidResolvedDependency = project.rootProject
-                .buildscript
-                .configurations
-                .classpath
-                .resolvedConfiguration
-                .firstLevelModuleDependencies
-                .find { "com.android.tools.build".equals(it.moduleGroup) && "gradle".equals(it.moduleName) }
+//        def androidResolvedDependency = project.rootProject
+//                .buildscript
+//                .configurations
+//                .classpath
+//                .resolvedConfiguration
+//                .firstLevelModuleDependencies
+//                .find { "com.android.tools.build".equals(it.moduleGroup) && "gradle".equals(it.moduleName) }
+//
+//        if (androidResolvedDependency == null) {
+//            throw new GradleException("com.android.tools.build:gradle not found")
+//        }
+//        return androidResolvedDependency.moduleVersion
 
-        if (androidResolvedDependency == null) {
-            throw new GradleException("com.android.tools.build:gradle not found")
-        }
-        return androidResolvedDependency.moduleVersion
+        String version = Version.ANDROID_GRADLE_PLUGIN_VERSION
+        project.logger.error("==fastdex ANDROID_GRADLE_PLUGIN_VERSION: ${version}")
+        return version
     }
 
     /**

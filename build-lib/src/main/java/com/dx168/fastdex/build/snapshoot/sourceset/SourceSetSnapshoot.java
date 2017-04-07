@@ -73,10 +73,6 @@ public final class SourceSetSnapshoot extends BaseStringSnapshoot<StringDiffInfo
     public DiffResultSet<StringDiffInfo> diff(Snapshoot<StringDiffInfo, StringNode> otherSnapshoot) {
         SourceSetDiffResultSet sourceSetResultSet = (SourceSetDiffResultSet) super.diff(otherSnapshoot);
 
-        System.err.println("TODO debug sourceSetResultSet,nodes: " + nodes);
-        System.err.println("TODO debug oldsourceSetResultSet.nodes: " + otherSnapshoot.nodes);
-        System.err.println("TODO debug sourceSetResultSet: " + sourceSetResultSet.changedDiffInfos);
-
         SourceSetSnapshoot oldSnapshoot = (SourceSetSnapshoot)otherSnapshoot;
         for (DiffInfo diffInfo : sourceSetResultSet.getDiffInfos(Status.DELETEED)) {
             JavaDirectorySnapshoot javaDirectorySnapshoot = oldSnapshoot.getJavaDirectorySnapshootByPath(diffInfo.uniqueKey);
@@ -84,8 +80,6 @@ public final class SourceSetSnapshoot extends BaseStringSnapshoot<StringDiffInfo
                 sourceSetResultSet.addJavaFileDiffInfo(new JavaFileDiffInfo(Status.DELETEED,null,node));
             }
         }
-        System.err.println("TODO debug sourceSetResultSet2: " + sourceSetResultSet);
-
 
         for (DiffInfo diffInfo : sourceSetResultSet.getDiffInfos(Status.ADDED)) {
             JavaDirectorySnapshoot javaDirectorySnapshoot = getJavaDirectorySnapshootByPath(diffInfo.uniqueKey);
@@ -93,9 +87,6 @@ public final class SourceSetSnapshoot extends BaseStringSnapshoot<StringDiffInfo
                 sourceSetResultSet.addJavaFileDiffInfo(new JavaFileDiffInfo(Status.ADDED,node,null));
             }
         }
-
-        System.err.println("TODO debug sourceSetResultSet3: " + sourceSetResultSet);
-
 
         for (DiffInfo diffInfo : sourceSetResultSet.getDiffInfos(Status.NOCHANGED)) {
             JavaDirectorySnapshoot now = getJavaDirectorySnapshootByPath(diffInfo.uniqueKey);
@@ -105,7 +96,6 @@ public final class SourceSetSnapshoot extends BaseStringSnapshoot<StringDiffInfo
             sourceSetResultSet.mergeJavaDirectoryResultSet(now.path,resultSet);
         }
 
-        System.err.println("TODO debug sourceSetResultSet4: " + sourceSetResultSet);
         return sourceSetResultSet;
     }
 

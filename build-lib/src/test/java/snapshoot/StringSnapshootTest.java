@@ -5,6 +5,7 @@ import com.dx168.fastdex.build.snapshoot.api.DiffResultSet;
 import com.dx168.fastdex.build.snapshoot.api.Node;
 import com.dx168.fastdex.build.snapshoot.api.Status;
 import com.dx168.fastdex.build.snapshoot.string.StringDiffInfo;
+import com.dx168.fastdex.build.snapshoot.string.StringNode;
 import com.dx168.fastdex.build.snapshoot.string.StringSnapshoot;
 import junit.framework.TestCase;
 import org.junit.Test;
@@ -36,9 +37,9 @@ public class StringSnapshootTest extends TestCase {
     @Test
     public void testEqual() throws Throwable {
         Set<String> nodeSet = new HashSet<>();
-        nodeSet.add("a");
-        nodeSet.add("b");
-        nodeSet.add("c");
+        nodeSet.add("/Users/tong/Projects/fastdex/DevSample/app/src/main/java");
+        nodeSet.add("/Users/tong/Projects/fastdex/DevSample/app/src/main/java1");
+        nodeSet.add("/Users/tong/Projects/fastdex/DevSample/app/src/main/java2");
 
 
         StringSnapshoot snapshoot1 = new StringSnapshoot(nodeSet);
@@ -47,6 +48,23 @@ public class StringSnapshootTest extends TestCase {
         DiffResultSet resultSet = snapshoot1.diff(snapshoot2);
 
         assertTrue(resultSet.getAllChangedDiffInfos() == null || resultSet.getAllChangedDiffInfos().isEmpty());
+    }
+
+    @Test
+    public void testEqual2() throws Throwable {
+        Collection<Node> nodes1 = new HashSet<>();
+        nodes1.add(StringNode.create("/Users/tong/Projects/fastdex/DevSample/app/src/main/java"));
+
+        Collection<Node> nodes2 = new HashSet<>();
+        nodes2.add(StringNode.create("/Users/tong/Projects/fastdex/DevSample/app/src/main/java"));
+
+        Set<Node> increasedNodes = new HashSet<>();
+        increasedNodes.addAll(nodes1);
+        increasedNodes.removeAll(nodes2);
+
+        System.out.println(increasedNodes);
+
+        assertTrue(increasedNodes.isEmpty());
     }
 
     @Test

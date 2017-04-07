@@ -164,8 +164,6 @@ class FastdexTransform extends TransformProxy {
             boolean isMultiDexEnabled = config.isMultiDexEnabled()
 
             project.logger.error("==fastdex normal transform start")
-            //生成项目代码快照
-            //createSourceSetSnapshoot()
             //保存依赖列表
             keepDependenciesList()
             if (isMultiDexEnabled) {
@@ -248,20 +246,6 @@ class FastdexTransform extends TransformProxy {
         File destFile = new File(FastdexUtils.getBuildDir(project,variantName),Constant.R_TXT)
         FileUtils.copyFileUsingStream(sourceFile,destFile)
     }
-
-    /**
-     * 生成项目代码快照
-     * TODO 目前是复制了所有java文件，如果把信息都写到txt文件里，能够在IO上省一些时间
-     */
-//    void createSourceSetSnapshoot() {
-//        String[] srcDirs = project.android.sourceSets.main.java.srcDirs
-//        File snapshootDir = new File(FastdexUtils.getBuildDir(project,variantName),Constant.SNAPSHOOT_DIR)
-//        FileUtils.ensumeDir(snapshootDir)
-//        for (String srcDir : srcDirs) {
-//            //之前使用gradle的api复制文件，但是lastModified会发生变化造成对比出问题，所以换成自己的实现
-//            FileUtils.copyDir(new File(srcDir),new File(snapshootDir,FastdexUtils.fixSourceSetDir(srcDir)),Constant.JAVA_SUFFIX)
-//        }
-//    }
 
     /**
      * 保存全量打包时的依赖列表

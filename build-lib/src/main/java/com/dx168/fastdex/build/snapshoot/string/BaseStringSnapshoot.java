@@ -39,6 +39,7 @@ public class BaseStringSnapshoot<DIFF_INFO extends StringDiffInfo,NODE extends S
 
     @Override
     protected void diffNode(DiffResultSet<DIFF_INFO> diffInfos, Snapshoot<DIFF_INFO, NODE> otherSnapshoot, NODE now, NODE old) {
+        //不需要对比变化
         addDiffInfo(diffInfos,createDiffInfo(Status.NOCHANGED,now,old));
     }
 }

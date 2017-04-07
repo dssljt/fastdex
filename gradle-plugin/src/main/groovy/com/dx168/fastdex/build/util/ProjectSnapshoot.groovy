@@ -32,28 +32,16 @@ public class ProjectSnapshoot {
             SourceSetSnapshoot oldSourceSetSnapshoot = SourceSetSnapshoot.load(sourceSetSnapshootFile,SourceSetSnapshoot.class)
 
             String oldProjectDir = oldSourceSetSnapshoot.path
-            project.logger.error("==fastdex oldProjectDir: ${oldProjectDir}")
-            project.logger.error("==fastdex nowProjectDir: ${project.projectDir}")
-
             boolean isProjectDirChanged = oldSourceSetSnapshoot.ensumeProjectDir(project.projectDir)
             if (isProjectDirChanged) {
-                project.logger.error("==fastdex project-dir changed \n old: ${oldProjectDir} \n now: ${project.projectDir}")
+                project.logger.error("==fastdex project-dir changed old: ${oldProjectDir} now: ${project.projectDir}")
                 //save
                 saveSourceSetSnapshoot(oldSourceSetSnapshoot)
             }
 
             diffResultSet = sourceSetSnapshoot.diff(oldSourceSetSnapshoot)
-            if (fastdexVariant.configuration.debug) {
-                project.logger.error("==fastdex diffResultSet:${diffResultSet}")
-            }
-            File diffResultSetFile = FastdexUtils.getDiffResultSetFile(project,fastdexVariant.variantName)
-            if (fastdexVariant.firstPatchBuild) {
-                if (!diffResultSet.changedJavaFileDiffInfos.empty) {
-                    //全量打包后首次java文件发生变化
-                    diffResultSet.serializeTo(new FileOutputStream(diffResultSetFile))
-                }
-            }
-            else {
+            if (!fastdexVariant.firstPatchBuild) {
+                File diffResultSetFile = FastdexUtils.getDiffResultSetFile(project,fastdexVariant.variantName)
                 oldDiffResultSet = SourceSetDiffResultSet.load(diffResultSetFile,SourceSetDiffResultSet.class)
             }
         }
@@ -65,5 +53,13 @@ public class ProjectSnapshoot {
 
     def saveSourceSetSnapshoot(SourceSetSnapshoot snapshoot) {
         snapshoot.serializeTo(new FileOutputStream(FastdexUtils.getSourceSetSnapshootFile(fastdexVariant.project,fastdexVariant.variantName)))
+    }
+
+    def saveDiffResultSet() {
+        if (diffResultSet != null && !diffResultSet.changedJavaFileDiffInfos.empty) {
+            File diffResultSetFile = FastdexUtils.getDiffResultSetFile(fastdexVariant.project,fastdexVariant.variantName)
+            //全量打包后首次java文件发生变化
+            diffResultSet.serializeTo(new FileOutputStream(diffResultSetFile))
+        }
     }
 }

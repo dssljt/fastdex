@@ -125,22 +125,23 @@ public class Snapshoot<DIFF_INFO extends DiffInfo,NODE extends Node> implements 
         //获取删除项
         Set<NODE> deletedNodes = new HashSet<>();
         deletedNodes.addAll(otherSnapshoot.getAllNodes());
-        deletedNodes.removeAll(getAllNodes());
+        deletedNodes.removeAll(new ArrayList<NODE>(getAllNodes()));
 
         //新增项
         Set<NODE> increasedNodes = new HashSet<>();
         increasedNodes.addAll(getAllNodes());
-        increasedNodes.removeAll(otherSnapshoot.getAllNodes());
+        //如果不用ArrayList套一层有时候会发生移除不掉的情况 why?
+        increasedNodes.removeAll(new ArrayList<NODE>(otherSnapshoot.getAllNodes()));
 
         //需要检测是否变化的列表
         Set<NODE> needDiffNodes = new HashSet<>();
         needDiffNodes.addAll(getAllNodes());
         needDiffNodes.addAll(otherSnapshoot.getAllNodes());
-        needDiffNodes.removeAll(deletedNodes);
-        needDiffNodes.removeAll(increasedNodes);
+        needDiffNodes.removeAll(new ArrayList<NODE>(deletedNodes));
+        needDiffNodes.removeAll(new ArrayList<NODE>(increasedNodes));
 
         DiffResultSet<DIFF_INFO> diffInfos = createEmptyResultSet();
-        scanDeletedAndIncreased(diffInfos,otherSnapshoot,deletedNodes,increasedNodes);
+        scanDeletedAndIncreased(diffInfos,otherSnapshoot,deletedNodes,new HashSet<NODE>(increasedNodes));
         scanNeedDiffNodes(diffInfos,otherSnapshoot,needDiffNodes);
 
         this.lastDiffResult = diffInfos;
