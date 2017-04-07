@@ -54,6 +54,7 @@ public class FastdexCustomJavacTask extends DefaultTask {
         SourceSetDiffResultSet sourceSetDiffResultSet = projectSnapshoot.diffResultSet
         //java文件是否发生变化
         if (!sourceSetDiffResultSet.isJavaFileChanged()) {
+            project.logger.error("==fastdex no java files changed, just ignore")
             compileTask.enabled = false
             return
         }

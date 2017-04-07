@@ -15,6 +15,14 @@ public class StringNode extends Node {
         this.string = string;
     }
 
+    public void setString(String string) {
+        this.string = string;
+    }
+
+    public String getString() {
+        return string;
+    }
+
     @Override
     public String getUniqueKey() {
         return string;
@@ -22,5 +30,12 @@ public class StringNode extends Node {
 
     public static StringNode create(String string) {
          return new StringNode(string);
+    }
+
+    @Override
+    public String toString() {
+        return "StringNode{" +
+                "string='" + string + '\'' +
+                '}';
     }
 }

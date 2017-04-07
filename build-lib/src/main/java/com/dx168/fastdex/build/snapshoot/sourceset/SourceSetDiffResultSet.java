@@ -26,6 +26,10 @@ public class SourceSetDiffResultSet extends DiffResultSet<StringDiffInfo> {
 
     public SourceSetDiffResultSet(SourceSetDiffResultSet resultSet) {
         super(resultSet);
+        //from gson
+        this.changedJavaFileDiffInfos.addAll(resultSet.changedJavaFileDiffInfos);
+        this.addOrModifiedClassPatterns.addAll(resultSet.addOrModifiedClassPatterns);
+        this.addOrModifiedPathInfos.addAll(resultSet.addOrModifiedPathInfos);
     }
 
     public boolean isJavaFileChanged() {
@@ -74,11 +78,11 @@ public class SourceSetDiffResultSet extends DiffResultSet<StringDiffInfo> {
         return result;
     }
 
-
     @Override
     public String toString() {
         return "SourceSetDiffResultSet{" +
-                "addOrModifiedClassPatterns=" + addOrModifiedClassPatterns +
+                "changedJavaFileDiffInfos=" + changedJavaFileDiffInfos +
+                ", addOrModifiedClassPatterns=" + addOrModifiedClassPatterns +
                 ", addOrModifiedPathInfos=" + addOrModifiedPathInfos +
                 '}';
     }

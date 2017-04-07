@@ -103,6 +103,16 @@ public class SourceSetSnapshootTest extends TestCase {
         System.out.println(resultSet);
     }
 
+    @Test
+    public void testDiff3() throws Throwable {
+        if (!isDir(source_set1) || !isDir(source_set2) || !isDir(source_set11) || !isDir(source_set22)) {
+            System.err.println("Test-env not init!!");
+        }
+
+        SourceSetSnapshoot now = new SourceSetSnapshoot(new File("/Users/tong/Projects/fastdex/DevSample/app"),"");
+    }
+
+
     public boolean isDir(File dir) {
         if (dir == null) {
             return false;

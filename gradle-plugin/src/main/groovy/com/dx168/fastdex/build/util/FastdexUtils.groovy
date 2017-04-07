@@ -11,7 +11,6 @@ import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.SimpleFileVisitor
 import java.nio.file.attribute.BasicFileAttributes
-import java.security.MessageDigest
 import java.util.regex.Pattern
 import java.util.zip.ZipEntry
 import java.util.zip.ZipOutputStream
@@ -174,43 +173,6 @@ public class FastdexUtils {
     }
 
     /**
-     * 补丁打包时扫描那些java文件发生了变化
-     * @param project
-     * @param variantName
-     * @param manifestPath
-     * @return
-     */
-    public static Set<String> getChangedClassPatterns(Project project,String variantName,String manifestPath) {
-        String[] srcDirs = project.android.sourceSets.main.java.srcDirs
-        File snapshootDir = new File(getBuildDir(project,variantName),Constant.SNAPSHOOT_DIR)
-        Set<String> changedJavaClassNames = new HashSet<>()
-        for (String srcDir : srcDirs) {
-            File newDir = new File(srcDir)
-            File oldDir = new File(snapshootDir,fixSourceSetDir(srcDir))
-
-            Set<JavaDirDiff.DiffInfo> set = JavaDirDiff.diff(newDir,oldDir,true,project.logger)
-
-            for (JavaDirDiff.DiffInfo diff : set) {
-                //假如MainActivity发生变化，生成的class
-                //包括MainActivity.class  MainActivity$1.class MainActivity$2.class ...
-                //如果依赖的有butterknife,还会动态生成MainActivity$$ViewBinder.class，所以尽量别使用这玩意，打包会很慢的
-
-                String className = diff.relativePath
-                //className = com/dx168/fastdex/sample/MainActivity.java || com\\dx168\\fastdex\\sample\\MainActivity.java
-                //防止windows路径出问题
-                if (className.contains("\\")) {
-                    className = className.replace("\\", "/");
-                }
-
-                className = className.substring(0,className.length() - Constant.JAVA_SUFFIX.length())
-                changedJavaClassNames.add("${className}${Constant.CLASS_SUFFIX}")
-                changedJavaClassNames.add("${className}\\\$\\S{0,}${Constant.CLASS_SUFFIX}")}
-        }
-        changedJavaClassNames.add(GradleUtils.getBuildConfigRelativePath(manifestPath))
-        return changedJavaClassNames
-    }
-
-    /**
      * 获取所有编译的class存放目录
      * @param invocation
      * @return
@@ -227,17 +189,6 @@ public class FastdexUtils {
         }
 
         return dirClasspaths
-    }
-
-    public static String fixSourceSetDir(String srcDir) {
-        if (srcDir == null || srcDir.length() == 0) {
-            return srcDir
-        }
-//        if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-//            return MessageDigest.getInstance("MD5").digest(srcDir.bytes).encodeHex().toString()
-//        }
-//        return srcDir
-        return MessageDigest.getInstance("MD5").digest(srcDir.bytes).encodeHex().toString()
     }
 
     /**

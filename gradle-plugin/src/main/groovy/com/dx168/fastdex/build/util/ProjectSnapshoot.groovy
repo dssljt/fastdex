@@ -30,18 +30,22 @@ public class ProjectSnapshoot {
             //load old sourceSet
             File sourceSetSnapshootFile = FastdexUtils.getSourceSetSnapshootFile(project,fastdexVariant.variantName)
             SourceSetSnapshoot oldSourceSetSnapshoot = SourceSetSnapshoot.load(sourceSetSnapshootFile,SourceSetSnapshoot.class)
+
+            String oldProjectDir = oldSourceSetSnapshoot.path
+            project.logger.error("==fastdex oldProjectDir: ${oldProjectDir}")
+            project.logger.error("==fastdex nowProjectDir: ${project.projectDir}")
+
             boolean isProjectDirChanged = oldSourceSetSnapshoot.ensumeProjectDir(project.projectDir)
             if (isProjectDirChanged) {
-                project.logger.error("==fastdex sourceChanged \n old: ${oldSourceSetSnapshoot.nodes} \n now: ${sourceSetSnapshoot}")
+                project.logger.error("==fastdex project-dir changed \n old: ${oldProjectDir} \n now: ${project.projectDir}")
                 //save
                 saveSourceSetSnapshoot(oldSourceSetSnapshoot)
             }
 
             diffResultSet = sourceSetSnapshoot.diff(oldSourceSetSnapshoot)
-//            if (fastdexVariant.configuration.debug) {
-//                project.logger.error("==fastdex diffResultSet: ${diffResultSet}")
-//            }
-
+            if (fastdexVariant.configuration.debug) {
+                project.logger.error("==fastdex diffResultSet:${diffResultSet}")
+            }
             File diffResultSetFile = FastdexUtils.getDiffResultSetFile(project,fastdexVariant.variantName)
             if (fastdexVariant.firstPatchBuild) {
                 if (!diffResultSet.changedJavaFileDiffInfos.empty) {
